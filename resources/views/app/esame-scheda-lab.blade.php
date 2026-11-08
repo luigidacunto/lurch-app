@@ -31,7 +31,7 @@
 
 @include('app.partials.esami-annotazione', [
     'urlAnnotazione' => route('app.esame.scheda.annotazione', [$esame, $laboratorio, $socio]),
-    'chiLegge' => 'li leggono il direttore e, a scheda inviata, gli altri docenti nel confronto dei laboratori',
+    'chiLegge' => 'li leggono il direttore e, a scheda inviata, i tutor del discente e gli altri docenti nel confronto dei laboratori',
 ])
 
 @if($andamento)

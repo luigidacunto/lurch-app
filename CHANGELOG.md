@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.21 — 2026-11-08
+
+- feat: in «I miei tutorati» il tutor legge anche le note dei docenti sui propri discenti (itinere sempre, laboratorio a scheda inviata); la commissione continua a non vederle (solo il direttore). Sotto il campo della nota, il testo su chi la legge cita i tutor
+
 ## 1.85.20 — 2026-11-08
 
 - feat: gruppi di tutoraggio negli esami: nella sezione Gestione dell'esame la scheda «Tutoraggio» crea gruppi di discenti con uno o più docenti tutor (un discente in un solo gruppo, un docente anche in più gruppi); migrazione solo additiva (tre tabelle nuove)

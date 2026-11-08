@@ -35,8 +35,8 @@ class AppEsamiRiepilogoItinereController extends Controller
         $permessi = PermessiEsame::per($esame, SocioCorrente::id());
         abort_unless($permessi->vedeTutorati() && $esame->modello_snapshot, 404);
 
-        $direttore = $permessi->ha(PermessiEsame::DIRETTORE);
-        $r = RiepilogoItinere::per($esame, $direttore, $permessi->discentiTutorati()->all());
+        // Il tutor legge anche le note dei docenti sui suoi discenti (itinere e laboratori; di laboratorio solo a scheda inviata).
+        $r = RiepilogoItinere::per($esame, true, $permessi->discentiTutorati()->all());
 
         // Matrice voce × docente di ogni laboratorio con schede inviate, apribile sotto la riga del laboratorio.
         // ponytail: una query per (discente, laboratorio); va bene per i pochi discenti di un tutor.
@@ -44,7 +44,7 @@ class AppEsamiRiepilogoItinereController extends Controller
         foreach ($r['discenti'] as $d) {
             foreach ($d['laboratori'] as $lab) {
                 if ($lab['media'] !== null) {
-                    $dettagliLab[$d['socio']->id][$lab['id']] = RiepilogoItinere::dettaglioLaboratorio($esame, $d['socio']->id, $lab['id'], $direttore);
+                    $dettagliLab[$d['socio']->id][$lab['id']] = RiepilogoItinere::dettaglioLaboratorio($esame, $d['socio']->id, $lab['id'], true);
                 }
             }
         }

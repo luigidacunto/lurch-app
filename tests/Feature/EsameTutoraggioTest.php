@@ -160,6 +160,26 @@ class EsameTutoraggioTest extends TestCase
         $this->pwa('altro', 'app.esame')->assertOk()->assertDontSee('I miei tutorati');
     }
 
+    public function test_il_tutor_legge_le_note_degli_altri_docenti_sui_suoi_discenti(): void
+    {
+        $this->gruppo();
+        $this->schedaItinere('altro', 'x')->update(['annotazione' => 'Nota itinere su x']);
+        $this->schedaItinere('altro', 'y')->update(['annotazione' => 'Nota itinere su y']);
+        $lab = $this->schedaLab('altro', 'x', true);
+        foreach ($this->esame->modello_snapshot['semaforo']['competenze'] as $c) {
+            foreach ($c['voci'] as $v) {
+                $lab->voci()->create(['voce_codice' => $v['codice'], 'valore' => '1']);
+            }
+        }
+        $lab->update(['annotazione' => 'Nota lab su x']);
+        $this->schedaLab('direttore', 'x', false)->update(['annotazione' => 'Nota bozza lab']);
+
+        $this->pwa('tutor')->assertOk()->assertSee('Nota itinere su x')->assertSee('Nota lab su x')
+            ->assertDontSee('Nota itinere su y')->assertDontSee('Nota bozza lab');
+        // La commissione (non direttore) continua a non leggerle.
+        $this->pwa('presidente', 'app.esame.itinere.riepilogo')->assertOk()->assertDontSee('Nota itinere su x')->assertDontSee('Nota lab su x');
+    }
+
     public function test_tutor_tolto_dai_docenti_del_corso_perde_l_accesso(): void
     {
         $this->gruppo();

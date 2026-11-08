@@ -33,8 +33,8 @@ class RiepilogoItinere
     public const NOTA_AREA_SPECCHIO = "Quest'area tiene conto anche dell'andamento nei laboratori e di quanto emerso nel resto del percorso del corso.";
 
     /**
-     * $conAnnotazioni: solo per il direttore — le annotazioni libere dei docenti, mai a presidente,
-     * commissione o admin: 'annotazioni' (schede itinere) e 'laboratori[].docenti[].nota'. Per gli altri restano vuote.
+     * $conAnnotazioni: per il direttore e per il tutor (sui soli suoi discenti) — le annotazioni libere dei docenti, mai a
+     * presidente, commissione o admin: 'annotazioni' (schede itinere) e 'laboratori[].docenti[].nota'. Per gli altri restano vuote.
      * $soloDiscenti: id dei soci da includere (pagina del tutor); null = tutti.
      *
      * @return array{aree: list<array>, discenti: list<array>, lap: string}

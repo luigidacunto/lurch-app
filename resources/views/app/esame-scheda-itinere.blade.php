@@ -93,7 +93,7 @@
     </details>
 @endforeach
 
-@include('app.partials.esami-annotazione', ['urlAnnotazione' => route('app.esame.itinere.annotazione', [$esame, $socio]), 'chiLegge' => 'li legge anche il direttore'])
+@include('app.partials.esami-annotazione', ['urlAnnotazione' => route('app.esame.itinere.annotazione', [$esame, $socio]), 'chiLegge' => 'li leggono anche il direttore e i tutor del discente'])
 
 <div class="barra">
     <div class="barra-riga">
