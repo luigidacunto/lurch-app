@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Livewire\Attributes\Locked;
 
 class GestioneStaff extends Page
 {
@@ -39,6 +40,7 @@ class GestioneStaff extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.gestione-staff';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool

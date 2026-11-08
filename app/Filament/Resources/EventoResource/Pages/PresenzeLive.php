@@ -17,6 +17,7 @@ use Filament\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
+use Livewire\Attributes\Locked;
 
 class PresenzeLive extends Page
 {
@@ -24,6 +25,7 @@ class PresenzeLive extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.presenze-live';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool

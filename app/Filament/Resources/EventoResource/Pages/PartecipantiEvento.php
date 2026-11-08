@@ -8,6 +8,7 @@ use App\Models\OspiteEvento;
 use App\Models\Socio;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
+use Livewire\Attributes\Locked;
 
 class PartecipantiEvento extends Page
 {
@@ -15,6 +16,7 @@ class PartecipantiEvento extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.partecipanti-evento';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool

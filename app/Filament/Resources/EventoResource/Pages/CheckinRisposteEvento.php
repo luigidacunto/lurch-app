@@ -14,6 +14,7 @@ use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
+use Livewire\Attributes\Locked;
 
 class CheckinRisposteEvento extends Page
 {
@@ -21,6 +22,7 @@ class CheckinRisposteEvento extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.checkin-risposte-evento';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool

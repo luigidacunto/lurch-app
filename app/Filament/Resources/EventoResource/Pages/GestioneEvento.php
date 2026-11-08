@@ -19,6 +19,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Livewire\Attributes\Locked;
 
 class GestioneEvento extends Page
 {
@@ -28,6 +29,7 @@ class GestioneEvento extends Page
 
     protected static ?string $title = 'Gestione evento';
 
+    #[Locked]
     public Evento $record;
 
     public function getTitle(): string

@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Locked;
 
 class GestioneQuote extends Page
 {
@@ -20,6 +21,7 @@ class GestioneQuote extends Page
 
     protected static ?string $title = 'Gestione quote';
 
+    #[Locked]
     public Corso $record;
 
     public function getTitle(): string

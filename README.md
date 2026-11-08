@@ -334,7 +334,7 @@ Al termine dell'evento è possibile inviare un questionario di gradimento config
 
 | Componente | Tecnologia |
 |------------|------------|
-| Backend | PHP 8.3 + Laravel 12 |
+| Backend | PHP 8.4 + Laravel 12 |
 | Database | PostgreSQL 18 |
 | Frontend | Laravel Blade + Alpine.js + Tailwind CSS v4 |
 | Pannello admin | Filament 5 |
@@ -398,7 +398,7 @@ Per le istruzioni complete di installazione su Windows e Linux (sviluppo e produ
 
 | Strumento | Versione minima |
 |-----------|-----------------|
-| PHP | 8.3 |
+| PHP | 8.4 |
 | Composer | 2.x |
 | Node.js | 20+ |
 | PostgreSQL | 15+ |

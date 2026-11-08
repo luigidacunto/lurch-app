@@ -23,7 +23,7 @@ Per backup e disaster recovery vedi [backup-restore.md](backup-restore.md).
 
 | Strumento | Versione | Come installare |
 |-----------|----------|-----------------|
-| PHP | 8.3 | [windows.php.net/download](https://windows.php.net/download/) — Thread Safe x64; oppure via Scoop: `scoop install php` |
+| PHP | 8.4 | [windows.php.net/download](https://windows.php.net/download/) — Thread Safe x64; oppure via Scoop: `scoop install php` |
 | Composer | 2.x | [getcomposer.org/download](https://getcomposer.org/download/) |
 | Node.js | 20+ | [nodejs.org](https://nodejs.org/) |
 | PostgreSQL | 15+ | [postgresql.org/download/windows](https://www.postgresql.org/download/windows/) — installare con l'installer EDB |
@@ -342,15 +342,15 @@ Il pannello è disponibile su **http://127.0.0.1:8000/admin**.
 
 Istruzioni per Ubuntu 22.04 / Debian 12. Adatta i comandi `apt` se usi una distro diversa.
 
-### 1. Installa PHP 8.3 e le estensioni
+### 1. Installa PHP 8.4 e le estensioni
 
 ```bash
-sudo add-apt-repository ppa:ondrej/php   # Ubuntu — per avere PHP 8.3
+sudo add-apt-repository ppa:ondrej/php   # Ubuntu — per avere PHP 8.4
 sudo apt update
-sudo apt install php8.3 php8.3-fpm php8.3-cli \
-    php8.3-mbstring php8.3-curl php8.3-openssl \
-    php8.3-fileinfo php8.3-gd php8.3-intl php8.3-zip \
-    php8.3-pgsql php8.3-pdo-pgsql php8.3-xml php8.3-bcmath
+sudo apt install php8.4 php8.4-fpm php8.4-cli \
+    php8.4-mbstring php8.4-curl php8.4-openssl \
+    php8.4-fileinfo php8.4-gd php8.4-intl php8.4-zip \
+    php8.4-pgsql php8.4-pdo-pgsql php8.4-xml php8.4-bcmath
 ```
 
 Verifica:

@@ -27,7 +27,7 @@ Per backup e disaster recovery vedi [backup-restore.md](backup-restore.md).
 
 Nginx, PHP-FPM e SSL sono creati e gestiti da Hestia per il dominio — non serve configurarli a
 mano né usare `certbot` direttamente: si crea il dominio dal pannello, si abilita SSL (Let's
-Encrypt) da lì, e si sceglie la versione PHP (8.3) dal selettore del dominio.
+Encrypt) da lì, e si sceglie la versione PHP (8.4) dal selettore del dominio.
 
 PostgreSQL va creato vuoto dal pannello Hestia (utente + database dedicati) invece che via
 `CREATE USER`/`CREATE DATABASE` a mano.
@@ -60,6 +60,8 @@ Modifica `/home/<utente-sistema>/web/<dominio>/public_html/.env`:
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://tuodominio.it
+APP_LOCALE=it
+APP_FALLBACK_LOCALE=en
 
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
@@ -134,10 +136,10 @@ sudo supervisorctl status
 > Soluzione — svuota `disable_functions` nel php.ini CLI (sicuro: il CLI non è esposto al web):
 >
 > ```bash
-> sudo sed -i 's/^disable_functions = .*/disable_functions =/' /etc/php/8.3/cli/php.ini
+> sudo sed -i 's/^disable_functions = .*/disable_functions =/' /etc/php/8.4/cli/php.ini
 > ```
 >
-> Poi riavvia supervisor. Se usi una versione PHP diversa, sostituisci `8.3` con la versione corretta.
+> Poi riavvia supervisor. Se usi una versione PHP diversa, sostituisci `8.4` con la versione corretta.
 
 ### 4. Configura lo scheduler
 

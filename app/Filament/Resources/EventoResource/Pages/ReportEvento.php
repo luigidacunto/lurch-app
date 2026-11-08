@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\Locked;
 
 class ReportEvento extends Page
 {
@@ -21,6 +22,7 @@ class ReportEvento extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.report-evento';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool

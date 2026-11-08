@@ -300,8 +300,10 @@ class EsamePannelloTest extends TestCase
         $this->actingAs($this->utente('operatore', ['socio_id' => $this->socio('Altro')->id]));
         \Filament\Facades\Filament::setCurrentPanel(\Filament\Facades\Filament::getPanel('admin'));
 
-        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
-        \Livewire\Livewire::test(EsameResource\Pages\EditEsame::class, ['record' => $esame->getRouteKey()]);
+        // Il record fuori dalla query filtrata non si risolve: risposta 404 (Livewire 4.4 la restituisce
+        // come risposta del test invece di propagare la ModelNotFoundException).
+        \Livewire\Livewire::test(EsameResource\Pages\EditEsame::class, ['record' => $esame->getRouteKey()])
+            ->assertNotFound();
     }
 
     public function test_direttore_senza_permessi_non_puo_eseguire_azioni_sul_corso(): void

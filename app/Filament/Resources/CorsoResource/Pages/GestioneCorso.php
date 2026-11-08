@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Livewire\Attributes\Locked;
 
 class GestioneCorso extends Page
 {
@@ -48,6 +49,7 @@ class GestioneCorso extends Page
         return $protocollo ? 'Gestione corso — ' . $protocollo : 'Gestione corso';
     }
 
+    #[Locked]
     public Corso $record;
 
     /**

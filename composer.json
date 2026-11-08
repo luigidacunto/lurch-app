@@ -6,7 +6,7 @@
     "keywords": ["laravel", "framework"],
     "license": "AGPL-3.0-or-later",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "barryvdh/laravel-dompdf": "^3.1",
         "filament/filament": "^5.5",
         "laravel/framework": "^12.0",
@@ -82,6 +82,9 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "platform": {
+            "php": "8.4.0"
+        },
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {

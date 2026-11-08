@@ -4,6 +4,14 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.19 — 2026-11-08
+
+- fix: aggiornamento di sicurezza delle dipendenze composer (`composer audit` da 92 avvisi a 0): Filament 5.11.2, Laravel 12.71, Livewire 4.4.8, Symfony, league/commonmark, phpoffice/phpspreadsheet, guzzle, dompdf, medialibrary e altri
+- chore: PHP 8.4 come versione minima (`composer.json` con piattaforma fissata a 8.4.0); README e guide di installazione e deploy aggiornati
+- fix: le pagine personalizzate di evento e corso dichiarano `#[Locked]` sul record, come richiesto da Filament 5.11 per le proprietà bloccate ridichiarate
+- fix: vista delle briciole di pane riallineata al componente di Filament 5.11 (attributi di accessibilità), mantenendo «Dashboard» come primo livello
+- docs: `.env.example` e guida di deploy con `APP_LOCALE=it` e `APP_FALLBACK_LOCALE=en`: i testi senza traduzione italiana (messaggi di validazione di Laravel, testi nuovi di Filament) escono in inglese invece che come chiave grezza
+
 ## 1.85.18 — 2026-11-08
 
 - fix: dipendenze npm aggiornate per correggere vulnerabilità note (axios 1.21.0, vite 7.3.7, concurrently 9.2.5, shell-quote 1.12.0, source-map-js 1.2.2, follow-redirects 1.16.2)

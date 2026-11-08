@@ -424,15 +424,13 @@ class EsameRiepilogoItinereTest extends TestCase
             ->assertSee('Decidi punteggio');
     }
 
-    public function test_pagina_pannello_403_per_docente_semplice_e_discente(): void
+    public function test_pagina_pannello_negata_a_docente_semplice_e_discente(): void
     {
+        // L'esame non rientra nella query filtrata per questi utenti: risposta 404, non 403.
         foreach (['docB', 'x'] as $k) {
             $this->pannello($k);
-            try {
-                Livewire::test(EsameResource\Pages\RiepilogoItinereEsame::class, ['record' => $this->esame->getRouteKey()])->assertForbidden();
-            } catch (\Illuminate\Database\Eloquent\ModelNotFoundException|\Symfony\Component\HttpKernel\Exception\HttpException) {
-                $this->assertTrue(true);
-            }
+            Livewire::test(EsameResource\Pages\RiepilogoItinereEsame::class, ['record' => $this->esame->getRouteKey()])
+                ->assertNotFound();
         }
     }
 

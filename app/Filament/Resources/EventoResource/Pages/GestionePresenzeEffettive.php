@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\Locked;
 
 class GestionePresenzeEffettive extends Page
 {
@@ -20,6 +21,7 @@ class GestionePresenzeEffettive extends Page
 
     protected string $view = 'filament.resources.evento-resource.pages.gestione-presenze-effettive';
 
+    #[Locked]
     public Evento $record;
 
     public static function canAccess(array $parameters = []): bool
