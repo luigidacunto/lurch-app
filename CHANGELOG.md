@@ -4,6 +4,11 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.23 — 2026-11-08
+
+- feat: nuova scheda «Discenti» in fondo alla barra Valutazioni dell'esame: per ogni discente ammesso i contributi in centesimi di itinere, colloquio, prova pratica e test (intestazioni corte con il peso, es. «Itinere /30»), totale e stato idoneo / non idoneo solo quando tutte e quattro le prove sono fissate, e la finestra «Proiezione» (già della 1.85.22, spostata qui). Visibile a chi gestisce l'esame, dopo «Attiva esame»
+- feat: la pagina Discenti di Gestione resta la lista di configurazione con comitato, età compiuta alla data di fine del corso e stato ammesso / non ammesso, con i comandi per dichiarare la non ammissione
+
 ## 1.85.22 — 2026-11-08
 
 - feat: proiezione del punteggio per il direttore nella pagina Discenti dell'esame: colonne «Itinere (centesimi)» e «Totale» e finestra «Proiezione» con, per l'itinere, il punteggio d'area fissato o la media proposta dei docenti (con le medie di ciascuno), e per colloquio, prova pratica e test il punteggio fissato o un valore ipotetico; contributi in centesimi e totale ipotetico colorati rispetto al LAP. I valori ipotetici sono temporanei: non si salvano e non entrano nell'esito

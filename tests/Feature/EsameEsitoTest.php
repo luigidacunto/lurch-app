@@ -38,6 +38,64 @@ class EsameEsitoTest extends EsameChiusuraBase
         $this->esame->refresh();
     }
 
+    // ---- Gestione → Discenti: comitato, età alla fine del corso, stato di ammissione ------------
+
+    public function test_gestione_discenti_comitato_eta_e_stato(): void
+    {
+        // Corso finito il 2026-11-02: nata il 2000-11-02 → 26 anni compiuti quel giorno; nato il 2000-11-03 → 25.
+        $this->s['x']->update(['data_nascita' => '2000-11-02']);
+        $this->s['y']->update(['data_nascita' => '2000-11-03']);
+        $y = Iscrizione::where('corso_id', $this->corso->id)->where('partecipante_id', $this->s['y']->id)->first();
+        $y->update(['non_ammesso' => true, 'non_ammesso_motivo' => 'assenze']);
+        $x = Iscrizione::where('corso_id', $this->corso->id)->where('partecipante_id', $this->s['x']->id)->first();
+
+        $stato = fn ($pagina, $iscrizione, string $colonna) => (string) $pagina->instance()->getTable()->getColumn($colonna)->record($iscrizione)->getState();
+        $pagina = $this->pagina(EsameResource\Pages\DiscentiEsame::class, 'direttore');
+
+        $this->assertSame('26', $stato($pagina, $x, 'eta'));
+        $this->assertSame('25', $stato($pagina, $y, 'eta'));
+        $this->assertSame('Ammesso', $stato($pagina, $x, 'stato_ammissione'));
+        $this->assertSame('Non ammesso', $stato($pagina, $y, 'stato_ammissione'));
+        // I punteggi non stanno più in Gestione: sono nella scheda Valutazioni → Discenti.
+        $pagina->assertTableColumnDoesNotExist('proiezione_totale')->assertTableColumnExists('partecipante.comitatoLocale.nome');
+    }
+
+    public function test_riepilogo_discenti_solo_a_esame_attivato_e_per_chi_gestisce(): void
+    {
+        foreach (['direttore', 'super', 'adminReg'] as $chi) {
+            $this->pagina(EsameResource\Pages\RiepilogoDiscentiEsame::class, $chi)->assertSuccessful();
+        }
+        // Chi sola legge (commissione) e chi non gestisce: niente scheda.
+        foreach (['docComm', 'presidente', 'docente'] as $chi) {
+            $this->actingAs($this->u[$chi]);
+            $this->assertFalse(EsameResource\Pages\RiepilogoDiscentiEsame::canAccess(['record' => $this->esame]), $chi);
+        }
+    }
+
+    // ---- Valutazioni → Discenti: centesimi per prova, totale e stato solo a dati completi -------
+
+    public function test_discenti_totale_e_stato_solo_con_tutte_le_prove_fissate(): void
+    {
+        $this->discenteCompleto('x');   // 74,1 idoneo (Caso 1 del piano)
+        $this->finali('y');             // senza test: incompleto
+        $x = Iscrizione::where('corso_id', $this->corso->id)->where('partecipante_id', $this->s['x']->id)->first();
+        $y = Iscrizione::where('corso_id', $this->corso->id)->where('partecipante_id', $this->s['y']->id)->first();
+
+        $contenuto = fn ($pagina, $iscrizione, string $colonna) => strip_tags((string) $pagina->instance()->getTable()->getColumn($colonna)->record($iscrizione)->getState());
+        $pagina = $this->pagina(EsameResource\Pages\RiepilogoDiscentiEsame::class, 'direttore');
+
+        $this->assertSame('74,1', $contenuto($pagina, $x, 'proiezione_totale'));
+        $this->assertSame('Idoneo', $contenuto($pagina, $x, 'proiezione_stato'));
+        foreach (['proiezione_colloquio', 'proiezione_prova_pratica', 'proiezione_test_scritto', 'proiezione_itinere'] as $c) {
+            $this->assertNotSame('–', $contenuto($pagina, $x, $c), $c);
+        }
+        // y ha i finali ma non il test: totale e stato vuoti, contributi fissati sì, test «–».
+        $this->assertSame('', $contenuto($pagina, $y, 'proiezione_totale'));
+        $this->assertSame('', $contenuto($pagina, $y, 'proiezione_stato'));
+        $this->assertSame('–', $contenuto($pagina, $y, 'proiezione_test_scritto'));
+        $this->assertNotSame('–', $contenuto($pagina, $y, 'proiezione_colloquio'));
+    }
+
     // ---- accesso e permessi della tab -----------------------------------------------------------
 
     public function test_chi_legge_vede_la_tab_esito_gli_altri_no(): void

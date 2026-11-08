@@ -194,7 +194,7 @@ class EsameResource extends Resource
         // Due barre in base alla pagina: configurazione (sempre, finché si gestisce) e svolgimento
         // (dopo l'attivazione). Un link in coda passa dall'una all'altra.
         // ⚠️ Mai request()->routeIs(): nelle azioni Livewire la richiesta è livewire/update e la barra tornerebbe a Gestione.
-        $inSvolgimento = collect(['valutazioni', 'itinere', 'test-scritto', 'prova-pratica', 'prova-pratica-finale', 'colloquio', 'test-cartaceo', 'esito'])
+        $inSvolgimento = collect(['valutazioni', 'itinere', 'test-scritto', 'prova-pratica', 'prova-pratica-finale', 'colloquio', 'test-cartaceo', 'esito', 'riepilogo-discenti'])
             ->contains(fn (string $r) => $page instanceof (static::getPages()[$r]->getPage()));
         $puoGestire = static::canEdit($record);
         $puoSvolgimento = $record->puoVedereRiepilogoItinere(auth()->user());
@@ -227,6 +227,10 @@ class EsameResource extends Resource
             $tabs[] = $tab('prova-pratica', 'Prova pratica', 'heroicon-o-wrench-screwdriver');
             $tabs[] = $tab('colloquio', 'Autovalutazione', 'heroicon-o-chat-bubble-left-right');
             $tabs[] = $tab('esito', 'Esito', 'heroicon-o-trophy');
+            // Riepilogo dei punteggi per discente (con la proiezione): solo chi gestisce, in fondo a tutte le prove.
+            if ($puoGestire) {
+                $tabs[] = $tab('riepilogo-discenti', 'Discenti', 'heroicon-o-users');
+            }
         }
         if ($puoGestire) {
             $tabs[] = $vaiA('gestione', 'Gestione', 'heroicon-o-arrow-left');
@@ -252,6 +256,7 @@ class EsameResource extends Resource
             'test-scritto' => Pages\TestScrittoEsame::route('/{record}/valutazioni/test-scritto'),
             'domande-test' => Pages\DomandeTestEsame::route('/{record}/gestione/domande-test'),
             'esito' => Pages\EsitoEsame::route('/{record}/valutazioni/esito'),
+            'riepilogo-discenti' => Pages\RiepilogoDiscentiEsame::route('/{record}/valutazioni/discenti'),
             'test-cartaceo' => Pages\InserisciTestCartaceo::route('/{record}/valutazioni/test-scritto/{discente}/cartaceo'),
         ];
     }

@@ -567,8 +567,12 @@ class EsameRiepilogoItinereTest extends TestCase
         $iscrizione = Iscrizione::where('partecipante_id', $this->s['x']->id)->first();
         $codici = array_column($this->esame->modello_snapshot['itinere']['aree'], 'codice');
 
-        $pagina = Livewire::test(EsameResource\Pages\DiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
-            ->assertSuccessful()->assertSee('da completare')
+        $pagina = Livewire::test(EsameResource\Pages\RiepilogoDiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
+            ->assertSuccessful()->assertDontSee('da completare')
+            // Dati incompleti: totale e stato restano vuoti (nessun idoneo/non idoneo in tabella).
+            ->assertTableColumnStateSet('proiezione_totale', '', $iscrizione)
+            ->assertTableColumnStateSet('proiezione_stato', '', $iscrizione)
+            ->assertTableColumnStateSet('proiezione_colloquio', '–', $iscrizione)
             ->assertTableActionEnabled('proiezione', $iscrizione)
             ->mountTableAction('proiezione', $iscrizione);
         // La finestra è un «partial» di Livewire (non nell'HTML del test): si leggono etichette e stati dei componenti dello
@@ -598,7 +602,7 @@ class EsameRiepilogoItinereTest extends TestCase
 
         // Il non ammesso non ha proiezione.
         $na = Iscrizione::where('partecipante_id', $this->s['nonAmmesso']->id)->first();
-        Livewire::test(EsameResource\Pages\DiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
+        Livewire::test(EsameResource\Pages\RiepilogoDiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
             ->assertTableActionDisabled('proiezione', $na);
     }
 }
