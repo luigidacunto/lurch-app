@@ -1,0 +1,55 @@
+# Release automatica: a ogni push su `main` (cioè a ogni pubblicazione di `dev`) legge la versione da
+# `config/app.php`; se il tag `vX.Y.Z` non esiste ancora crea tag e release su GitHub, con le note ricavate
+# dai messaggi di commit dalla release precedente. Se la versione non è cambiata non fa nulla.
+# Non parte sui push a `dev` né sulle pull request: la release nasce solo dal passaggio verso `main`.
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write   # creazione di tag e release con il token del workflow
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (con storia e tag)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Versione da config/app.php
+        id: versione
+        run: |
+          VERSIONE=$(grep -oP "'version'\s*=>\s*'\K[^']+" config/app.php | head -n1)
+          if ! [[ "$VERSIONE" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Versione non valida o non trovata: '$VERSIONE'" >&2
+            exit 1
+          fi
+          echo "versione=$VERSIONE" >> "$GITHUB_OUTPUT"
+
+      - name: Crea la release se la versione è nuova
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSIONE: ${{ steps.versione.outputs.versione }}
+        run: |
+          TAG="v$VERSIONE"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "La release $TAG esiste già: niente da fare."
+            exit 0
+          fi
+          PRECEDENTE=$(git describe --tags --abbrev=0 --match 'v[0-9]*' 2>/dev/null || true)
+          if [ -n "$PRECEDENTE" ]; then
+            git log "$PRECEDENTE"..HEAD --no-merges --pretty='- %s' > note.md
+          else
+            git log --no-merges --pretty='- %s' > note.md
+          fi
+          [ -s note.md ] || echo "Prima pubblicazione di questa versione." > note.md
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "LURCH $VERSIONE" --notes-file note.md
+          echo "Creata la release $TAG."

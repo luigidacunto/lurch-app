@@ -4,6 +4,11 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.18 — 2026-11-08
+
+- fix: dipendenze npm aggiornate per correggere vulnerabilità note (axios 1.21.0, vite 7.3.7, concurrently 9.2.5, shell-quote 1.12.0, source-map-js 1.2.2, follow-redirects 1.16.2)
+- chore: release automatica su GitHub a ogni pubblicazione su `main` con una versione nuova (tag `vX.Y.Z` e note dai commit); Dependabot limitato agli aggiornamenti di sicurezza, raggruppati per ecosistema
+
 ## 1.85.17 — 2026-11-07
 
 - chore: codice e documentazione preparati per la pubblicazione open source (licenza AGPL-3.0, CONTRIBUTING, SECURITY, sezioni del README su marchi e licenza); documentazione interna spostata fuori dal repository; commenti impersonali; nei documenti segnaposto al posto dei dati dei server; aggiunti CHANGELOG e ROADMAP

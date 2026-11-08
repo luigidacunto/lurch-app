@@ -1,0 +1,26 @@
+# Dependabot: solo aggiornamenti di SICUREZZA. `open-pull-requests-limit: 0` spegne gli aggiornamenti di
+# versione programmati e lascia attivi quelli di sicurezza, raggruppati in una sola pull request per ecosistema.
+# Le pull request di sicurezza puntano sempre al branch predefinito (`main`) e non vanno unite su GitHub:
+# `main` riceve solo fast-forward da `dev`, dove la correzione si applica a mano; la pull request si chiude da sola
+# quando `main` contiene le versioni corrette.
+version: 2
+updates:
+  - package-ecosystem: composer
+    directory: /
+    open-pull-requests-limit: 0
+    schedule:
+      interval: weekly
+    groups:
+      composer-sicurezza:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /
+    open-pull-requests-limit: 0
+    schedule:
+      interval: weekly
+    groups:
+      npm-sicurezza:
+        applies-to: security-updates
+        patterns: ["*"]
