@@ -1,0 +1,77 @@
+# ===== COMMON (every repo: app repo, single repo, data repo) =====
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+*.swp
+*.swo
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.local
+
+# Keys and certificates
+*.key
+*.pem
+*.crt
+*.csr
+*.srl
+
+# Archives, backups and DB dumps (large and/or contain real data)
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.tgz
+*.bz2
+*.xz
+*.sql
+*.dump
+*.bak
+
+# Dot-folders at the repo root are local working folders, never versioned
+# (.claude/, .local/, .trash/, .playwright-output/, .obsidian/, .vscode/, .idea/, .venv/, ...).
+# Anchored to the root on purpose: dot-folders inside framework code are handled by the
+# framework's own .gitignore files.
+/.*/
+# Exception: GitHub configuration (workflows, Dependabot, templates) is versioned.
+!/.github/
+
+# ===== END COMMON =====
+
+# ===== LARAVEL =====
+# Append after common.gitignore. Root dot-folders (.idea/, .vscode/, .phpunit.cache/, ...),
+# .env* and Thumbs.db are already covered there.
+
+*.log
+.phpactor.json
+.phpunit.result.cache
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+/auth.json
+/node_modules
+/public/build
+/public/fonts-manifest.dev.json
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+
+# Schema dumps (php artisan schema:dump) are versioned despite the *.sql rule in common
+!/database/schema/*.sql
+
+# ===== END LARAVEL =====
+
+# ===== PROJECT =====
+# Any root file with "auth" in the name (auth.json variants, exported auth states)
+/*auth*
+
+# ===== END PROJECT =====

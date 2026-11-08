@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer components {
+    /* Switch on/off riutilizzabile per checkbox nei form pubblici (disponibilità staff, ecc.):
+       input reale nascosto (sr-only, resta accessibile da tastiera/screen reader) + questo span
+       come sibling, coerente col colore per tipologia (.toggle-violet/.toggle-teal). */
+    .toggle-switch {
+        @apply relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-gray-300 transition-colors duration-200 ease-in-out;
+    }
+    .toggle-switch::after {
+        content: '';
+        @apply absolute left-1 top-1 h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 ease-in-out;
+    }
+    .toggle-switch.is-on::after {
+        @apply translate-x-5;
+    }
+    input:checked ~ .toggle-switch::after {
+        @apply translate-x-5;
+    }
+    /* Colore di default (pasti/pernotti, consensi on-off generici) — le varianti sotto
+       lo sovrascrivono per i casi con significato specifico (docenza/logistica). */
+    input:checked ~ .toggle-switch {
+        @apply bg-red-600;
+    }
+    input:checked ~ .toggle-switch.toggle-violet {
+        @apply bg-violet-600;
+    }
+    input:checked ~ .toggle-switch.toggle-teal {
+        @apply bg-teal-600;
+    }
+    input:disabled ~ .toggle-switch {
+        @apply cursor-default opacity-60;
+    }
+}

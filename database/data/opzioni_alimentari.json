@@ -1,0 +1,43 @@
+{
+    "allergeni": [
+        {"nome": "Glutine",           "etichetta": "Glutine (Celiachia)"},
+        {"nome": "Crostacei",         "etichetta": "Crostacei"},
+        {"nome": "Uova",              "etichetta": "Uova"},
+        {"nome": "Pesce",             "etichetta": "Pesce"},
+        {"nome": "Arachidi",          "etichetta": "Arachidi"},
+        {"nome": "Soia",              "etichetta": "Soia"},
+        {"nome": "Latte e latticini", "etichetta": "Latte e latticini"},
+        {"nome": "Frutta a guscio",   "etichetta": "Frutta a guscio"},
+        {"nome": "Sedano",            "etichetta": "Sedano"},
+        {"nome": "Senape",            "etichetta": "Senape"},
+        {"nome": "Sesamo",            "etichetta": "Sesamo"},
+        {"nome": "Solfiti",           "etichetta": "Solfiti"},
+        {"nome": "Lupini",            "etichetta": "Lupini"},
+        {"nome": "Molluschi",         "etichetta": "Molluschi"}
+    ],
+    "intolleranze": [
+        {"nome": "Lattosio",           "etichetta": "Intolleranza al lattosio"},
+        {"nome": "Glutine",            "etichetta": "Sensibilità al glutine"},
+        {"nome": "Fruttosio",          "etichetta": "Intolleranza al fruttosio"},
+        {"nome": "Istamina",           "etichetta": "Intolleranza all'istamina"},
+        {"nome": "Favismo",            "etichetta": "Favismo"},
+        {"nome": "Nichel",             "etichetta": "Intolleranza al nichel alimentare"}
+    ],
+    "diete": [
+        {"nome": "Vegetariano",       "etichetta": "Vegetariano"},
+        {"nome": "Vegano",            "etichetta": "Vegano"},
+        {"nome": "Crudista",          "etichetta": "Crudista / raw food"},
+        {"nome": "Halal",             "etichetta": "Halal"},
+        {"nome": "Kosher",            "etichetta": "Kosher"},
+        {"nome": "Giainista",         "etichetta": "Dieta giainista"},
+        {"nome": "Vegetariana senza alliacee", "etichetta": "Vegetariana senza alliacee"}
+    ],
+    "esclusioni": [
+        {"nome": "No maiale",         "etichetta": "No maiale / suino"},
+        {"nome": "No manzo",          "etichetta": "No manzo / bovino"},
+        {"nome": "No pesce",          "etichetta": "No pesce"},
+        {"nome": "No frutti di mare", "etichetta": "No frutti di mare"},
+        {"nome": "No carne",          "etichetta": "No carne (qualsiasi)"},
+        {"nome": "No alcol",          "etichetta": "No alcol (anche ingredienti)"}
+    ]
+}

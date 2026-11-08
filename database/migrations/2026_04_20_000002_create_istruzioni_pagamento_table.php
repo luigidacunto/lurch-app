@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('istruzioni_pagamento', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('comitato_regionale_id')
+                  ->nullable()
+                  ->constrained('comitati_regionali')
+                  ->nullOnDelete();
+            $table->text('testo');
+            $table->boolean('attivo')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('istruzioni_pagamento');
+    }
+};

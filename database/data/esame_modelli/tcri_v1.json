@@ -1,0 +1,343 @@
+{
+  "tipo_codice": "TCRI",
+  "versione": 1,
+  "pesi": {
+    "itinere": 30,
+    "colloquio": 10,
+    "prova_pratica": 40,
+    "test_scritto": 20
+  },
+  "itinere": {
+    "scala": {
+      "min": 1,
+      "max": 5,
+      "livelli": [
+        {
+          "valore": 1,
+          "declinazione": "Il comportamento non emerge oppure risulta preponderante e incontrollato, nel complesso è inefficace/controproducente",
+          "specifica": "Richiede intervento strutturato e mirato"
+        },
+        {
+          "valore": 2,
+          "declinazione": "Il comportamento emerge occasionalmente o se sollecitato da terzi",
+          "specifica": "Con qualche accorgimento realizza il target (2/3)"
+        },
+        {
+          "valore": 3,
+          "declinazione": "Il comportamento emerge frequentemente",
+          "specifica": "È la valutazione minima accettabile"
+        },
+        {
+          "valore": 4,
+          "declinazione": "Il comportamento emerge ed è adeguato"
+        },
+        {
+          "valore": 5,
+          "declinazione": "Il comportamento emerge con continuità, autonomia ed efficacia anche in situazioni impegnative"
+        }
+      ]
+    },
+    "aree": [
+      {
+        "codice": "team_work",
+        "nome": "Team work",
+        "testo": "Team work capacità di lavorare in modo collaborativo, condividendo informazioni e responsabilità, valorizzando il contributo degli altri, offrendo supporto quando necessario e contribuendo attivamente al raggiungimento degli obiettivi del gruppo",
+        "voci": [
+          {
+            "codice": "itinere.team_work.1",
+            "testo": "Collaborazione: contribuisce al lavoro di gruppo."
+          },
+          {
+            "codice": "itinere.team_work.2",
+            "testo": "Supporto attivo: si attiva concretamente per aiutare gli altri."
+          },
+          {
+            "codice": "itinere.team_work.3",
+            "testo": "Ascolto e valorizzazione: riconosce ed integra le idee emergenti"
+          },
+          {
+            "codice": "itinere.team_work.4",
+            "testo": "Gestione del conflitto: affronta le divergenze in modo orientato alla soluzione"
+          }
+        ]
+      },
+      {
+        "codice": "comunicazione",
+        "nome": "Comunicazione",
+        "testo": "Comunicazione: capacità di trasmettere informazioni in modo chiaro, appropriato e tempestivo, adattando modalità e linguaggio all’interlocutore, ascoltando attivamente e verificando la corretta comprensione del messaggio.",
+        "voci": [
+          {
+            "codice": "itinere.comunicazione.1",
+            "testo": "Adeguatezza al contesto e all'interlocutore: adatta linguaggio, tono e modalità comunicativa alla situazione e alla persona."
+          },
+          {
+            "codice": "itinere.comunicazione.2",
+            "testo": "Ascolto Attivo: ascolta con attenzione, verifica la comprensione e risponde in modo pertinente."
+          },
+          {
+            "codice": "itinere.comunicazione.3",
+            "testo": "Gestione della comunicazione in contesti complessi: mantiene comunicazione efficace anche in situazioni critiche."
+          }
+        ]
+      },
+      {
+        "codice": "problem_solving",
+        "nome": "Problem solving",
+        "testo": "Problem solving: capacità di analisi di una situazione problematica, di individuare le cause e le priorità, elaborare, valutare alternative e adottare soluzioni efficaci e sostenibili, adattandosi alle circostanze.",
+        "voci": [
+          {
+            "codice": "itinere.problem_solving.1",
+            "testo": "Analisi del problema: Identifica elementi rilevanti e stabilisce priorità."
+          },
+          {
+            "codice": "itinere.problem_solving.2",
+            "testo": "Individuazione soluzioni: formula alternative concrete, pertinenti e realizzabili."
+          },
+          {
+            "codice": "itinere.problem_solving.3",
+            "testo": "Capacità decisionale: Individua la soluzione adeguata assumendo le dovute responsabilità."
+          },
+          {
+            "codice": "itinere.problem_solving.4",
+            "testo": "Proattività: anticipa bisogni e criticità."
+          }
+        ]
+      },
+      {
+        "codice": "crescita",
+        "nome": "Crescita",
+        "testo": "Crescita: capacità di riconoscere i propri punti di forza e le aree di miglioramento, accogliere i feedback e le indicazioni utilizzandole per modificare progressivamente  il proprio modo di agire e lavorare.",
+        "voci": [
+          {
+            "codice": "itinere.crescita.1",
+            "testo": "Accoglienza e utilizzo dei feedback: ascolta e accoglie i feedback ricevuti, ne comprende il significato e li utilizza per migliorare."
+          },
+          {
+            "codice": "itinere.crescita.2",
+            "testo": "Evoluzione durante il percorso: mostra progressi durante il percorso mettendo in pratica quanto appreso e modificando il proprio comportamento sulla base dell’esperienza."
+          }
+        ]
+      }
+    ]
+  },
+  "colloquio": {
+    "domande_guida": [
+      "Feedback: come hai vissuto i feedback ricevuti durante il percorso? Cosa hai imparato e come li hai utilizzati per migliorare?",
+      "Team work: come valuti il tuo modo di lavorare con gli altri? Quali aspetti ritieni efficaci e quali potresti migliorare?",
+      "Problem Solving: Come valuti il tuo modo di affrontare problemi ed imprevisti? Quali aspetti ritieni efficaci e quali potresti migliorare?",
+      "Comunicazione: Come valuti oggi il tuo modo di comunicare con gli altri? Quali aspetti ritieni efficaci e quali potresti migliorare?",
+      "Performance: Come valuti nel complesso la tua performance durante il percorso? Quali aspetti ritieni soddisfacenti e quali potresti migliorare?"
+    ],
+    "scala": {
+      "min": 1,
+      "max": 5,
+      "livelli": [
+        {
+          "valore": 1,
+          "descrittore": "Autovalutazione assente — Non risponde; non riconosce o nega gli aspetti critici della propria esperienza; assume prevalentemente una posizione difensiva, tende a minimizzare, giustificare o attribuire ad altri le responsabilità; mostra scarsa o nulla consapevolezza del proprio comportamento; non è in grado di analizzare l'esperienza."
+        },
+        {
+          "valore": 2,
+          "descrittore": "Autovalutazione insufficiente — Racconta solo parzialmente gli aspetti della propria esperienza; li restituisce in modo confuso, contraddittorio; la consapevolezza è limitata; la lettura del proprio comportamento risulta poco chiara; non riesce ad analizzare in modo autonomo cause, conseguenze e possibilità di miglioramento."
+        },
+        {
+          "valore": 3,
+          "descrittore": "Autovalutazione accettabile — Riconosce e descrive con sufficiente onestà i propri comportamenti, risultati, punti di forza e difficoltà; mostra una consapevolezza prevalentemente descrittiva: sa identificare ciò che è accaduto, ma non riesce ancora ad approfondirne pienamente le cause, le conseguenze e le implicazioni; l'analisi rimane limitata."
+        },
+        {
+          "valore": 4,
+          "descrittore": "Autovalutazione adeguata — Accetta e riconosce consapevolmente la responsabilità del proprio comportamento e dei risultati ottenuti; riconosce punti di forza e criticità con onestà e oggettività; analizza le esperienze individuandone cause e conseguenze; identifica ambiti concreti sui quali intervenire."
+        },
+        {
+          "valore": 5,
+          "descrittore": "Autovalutazione profonda — Elabora in modo autonomo, critico e consapevole la propria esperienza; integra punti di forza, criticità, vissuto personale e dinamiche di gruppo, individuando connessioni tra comportamenti, cause e risultati; trasforma l'analisi in obiettivi di miglioramento e in un piano di azione concreto e realistico."
+        }
+      ]
+    }
+  },
+  "semaforo": {
+    "scala": {
+      "rosso": {
+        "valore": "0",
+        "nome": "Rosso",
+        "descrizione": "Non fa, non viene eseguito",
+        "punti": "0 punti"
+      },
+      "giallo": {
+        "valore": "0.25",
+        "nome": "Giallo",
+        "descrizione": "Fatto ma non sufficientemente bene",
+        "punti": "0,25 punti"
+      },
+      "verde": {
+        "valore": "1",
+        "nome": "Verde",
+        "descrizione": "Viene fatto sufficientemente bene",
+        "punti": "1,00 punto"
+      }
+    },
+    "competenze": [
+      {
+        "codice": "apertura_della_lezione",
+        "nome": "Apertura della lezione",
+        "obiettivo": "Si presenta, descrive gli obiettivi della lezione ed enuncia eventuali regole della lezione. Mostra attenzione al setting",
+        "voci": [
+          {
+            "codice": "semaforo.apertura_della_lezione.1",
+            "testo": "Si presenta indicando il proprio nome"
+          },
+          {
+            "codice": "semaforo.apertura_della_lezione.2",
+            "testo": "Enuncia in modo chiaro l'argomento della lezione e definisce gli obiettivi della stessa"
+          },
+          {
+            "codice": "semaforo.apertura_della_lezione.3",
+            "testo": "Mostra attenzione al setting e condivide brevi regole di funzionamento (es. uso dei cellulari, tempi di intervento, modalità di partecipazione)"
+          }
+        ]
+      },
+      {
+        "codice": "comunicazione_visiva_e_gestuale",
+        "nome": "Comunicazione visiva e gestuale",
+        "obiettivo": "Riesce ad avere padronanza dell’aula e degli allievi mantenendo un comportamento da Trainer",
+        "voci": [
+          {
+            "codice": "semaforo.comunicazione_visiva_e_gestuale.1",
+            "testo": "Riesce ad avere un contatto visivo distribuendo lo sguardo su più discenti durante l’intervento"
+          },
+          {
+            "codice": "semaforo.comunicazione_visiva_e_gestuale.2",
+            "testo": "Adotta una postura aperta e orientata verso il gruppo in uno o più momenti dell’esposizione"
+          },
+          {
+            "codice": "semaforo.comunicazione_visiva_e_gestuale.3",
+            "testo": "Non mostra particolari Tic ansiogeni o riesce a controllarli almeno per una parte di tutta l'esposizione"
+          },
+          {
+            "codice": "semaforo.comunicazione_visiva_e_gestuale.4",
+            "testo": "Gestisce appropriatamente lo spazio d’aula durante l’intervento"
+          }
+        ]
+      },
+      {
+        "codice": "paraverbale_efficace",
+        "nome": "Paraverbale efficace",
+        "obiettivo": "Grazie al paraverbale e al non verbale, riesce a sottolineare i punti importanti della lezione e mantenere equilibrio nel discorso",
+        "voci": [
+          {
+            "codice": "semaforo.paraverbale_efficace.1",
+            "testo": "Voce chiara e udibile, indipendentemente dal tono o dal ritmo"
+          },
+          {
+            "codice": "semaforo.paraverbale_efficace.2",
+            "testo": "Mantiene un tono congruo al ruolo del Trainer; non perde il senso del discorso"
+          },
+          {
+            "codice": "semaforo.paraverbale_efficace.3",
+            "testo": "Utilizza cambi di tono per sottolineare concetti o mantenere l’attenzione almeno in una o più occasioni"
+          },
+          {
+            "codice": "semaforo.paraverbale_efficace.4",
+            "testo": "Parla con un ritmo equilibrato, utilizza pause funzionali e favorisce la comprensione; evita pause riempite"
+          }
+        ]
+      },
+      {
+        "codice": "coinvolgimento_dei_discenti",
+        "nome": "Coinvolgimento dei discenti",
+        "obiettivo": "Stimola interazione, propone attività pertinenti, mantiene vivo il rapporto tra trainer e discente",
+        "voci": [
+          {
+            "codice": "semaforo.coinvolgimento_dei_discenti.1",
+            "testo": "Stimola almeno un momento di interazione durante l’intervento. (Es. domanda alla platea, richiesta di alzata di mano, breve sollecitazione.)"
+          },
+          {
+            "codice": "semaforo.coinvolgimento_dei_discenti.2",
+            "testo": "Formula domande o sollecitazioni coerenti con l’argomento trattato. Le richieste di intervento risultano pertinenti e funzionali al contenuto."
+          },
+          {
+            "codice": "semaforo.coinvolgimento_dei_discenti.3",
+            "testo": "Accoglie e integra le risposte del gruppo nella propria esposizione. Dimostra ascolto e collega i contributi ricevuti al contenuto della lezione"
+          },
+          {
+            "codice": "semaforo.coinvolgimento_dei_discenti.4",
+            "testo": "Gestisce il gruppo mantenendo attenzione e partecipazione. Riesce a mantenere il focus e l’interesse senza perdere il controllo della dinamica del gruppo"
+          }
+        ]
+      },
+      {
+        "codice": "gestione_dei_momenti_critici",
+        "nome": "Gestione dei momenti critici",
+        "obiettivo": "Reagisce in modo costruttivo a comportamenti inattesi o domande complesse",
+        "voci": [
+          {
+            "codice": "semaforo.gestione_dei_momenti_critici.1",
+            "testo": "Accoglie l’intervento mantenendo atteggiamento calmo e professionale. Mostra ascolto senza minimizzare la domanda e non assume posture difensive o reattive."
+          },
+          {
+            "codice": "semaforo.gestione_dei_momenti_critici.2",
+            "testo": "Fornisce una risposta pertinente o rimanda la gestione della domanda ad altro momento se non pertinente. Dimostra comprensione dell’intervento ricevuto."
+          },
+          {
+            "codice": "semaforo.gestione_dei_momenti_critici.3",
+            "testo": "Mantiene la guida dell’intervento durante la risposta. Gestisce il tempo e non perde il controllo della dinamica."
+          },
+          {
+            "codice": "semaforo.gestione_dei_momenti_critici.4",
+            "testo": "Riprende il filo dell’esposizione in modo fluido e coerente."
+          }
+        ]
+      },
+      {
+        "codice": "contenuto_aderente_al_mandato",
+        "nome": "Contenuto aderente al mandato",
+        "obiettivo": "Struttura logica, chiarezza, pertinenza delle informazioni, linguaggio accessibile",
+        "voci": [
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.1",
+            "testo": "L’intervento presenta una struttura equilibrata e rispetta una giusta sequenza (apertura, corpo, spazio alle domande, riepilogo, chiusura)"
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.2",
+            "testo": "Argomenti trattati ben collegati tra di loro; seguono un filo logico senza evidenziare uno stacco tra i temi discussi"
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.3",
+            "testo": "L’intervento presenta un’organizzazione chiara; ad ogni argomento trattato viene dato il giusto peso e tempo necessario."
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.4",
+            "testo": "Il Trainer dimostra/sembra di avere padronanza dell’argomento trattato"
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.5",
+            "testo": "Le informazioni proposte risultano pertinenti rispetto all’obiettivo e proporzionate al tempo disponibile"
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.6",
+            "testo": "Il linguaggio utilizzato è coerente con il target scelto e comprensibile rispetto al livello indicato"
+          },
+          {
+            "codice": "semaforo.contenuto_aderente_al_mandato.7",
+            "testo": "L’intervento si conclude entro il tempo previsto, senza sforamenti evidenti o chiusure affrettate per mancanza di gestione del tempo"
+          }
+        ]
+      },
+      {
+        "codice": "chiusura_della_lezione",
+        "nome": "Chiusura della lezione",
+        "obiettivo": "Riesce a chiudere l’intervento favorendo domande e senza lasciare lacune nel mandato",
+        "voci": [
+          {
+            "codice": "semaforo.chiusura_della_lezione.1",
+            "testo": "L’intervento si conclude in modo riconoscibile, evitando interruzioni brusche"
+          },
+          {
+            "codice": "semaforo.chiusura_della_lezione.2",
+            "testo": "Viene dato spazio alle domande, agli interventi o vengono ripresi argomenti lasciati in sospeso e riassunto brevemente quanto detto collegandosi agli obiettivi iniziali"
+          }
+        ]
+      }
+    ]
+  }
+}

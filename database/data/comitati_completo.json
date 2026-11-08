@@ -1,0 +1,3676 @@
+[
+  {
+    "nome": "Comitato Provinciale dell'Alto Adige - ODV",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Bolzano",
+        "sottosedi": [
+          "Bolzano",
+          "Bressanone",
+          "Laives",
+          "Merano",
+          "Valgardena"
+        ]
+      },
+      {
+        "nome": "Comitato di Val Passiria e Val D' Adige",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Oltradige - Bassa Atesina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Val Pusteria e Badia/ Komitee Pustertal und Gadertal",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Val Venosta - Vinschgau",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Provinciale del Trentino - ODV",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Altipiani - ODV",
+        "sottosedi": [
+          "Folgaria Centro",
+          "Lavarone"
+        ]
+      },
+      {
+        "nome": "Comitato di Trento",
+        "sottosedi": [
+          "Bassa Valsugana",
+          "Basso Sarca",
+          "Brentonico",
+          "Canal San Bovo",
+          "Dimaro",
+          "Giudicarie",
+          "Lavis",
+          "Levico",
+          "Mezzocorona",
+          "Pergine",
+          "Rovereto",
+          "Sover",
+          "Trento Centro",
+          "Val Del Chiese",
+          "Val Di Ledro",
+          "Val Di Non",
+          "Valle Dei Laghi"
+        ]
+      },
+      {
+        "nome": "Comitato Val di Fassa e Fiemme - ODV",
+        "sottosedi": [
+          "Cavalese",
+          "Moena",
+          "Vigo di Fassa Centro"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Abruzzo",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Avezzano",
+        "sottosedi": [
+          "Capistrello",
+          "Lecce Nei Marsi",
+          "Ovindoli",
+          "Pescasseroli",
+          "Pescina",
+          "Tagliacozzo",
+          "Villavallelonga - Collelongo"
+        ]
+      },
+      {
+        "nome": "Comitato di Carsoli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cepagatti",
+        "sottosedi": [
+          "Catignano",
+          "Popoli",
+          "Torre De Passeri"
+        ]
+      },
+      {
+        "nome": "Comitato di Chieti",
+        "sottosedi": [
+          "Francavilla Al Mare",
+          "Giuliano Teatino",
+          "Guardiagrele",
+          "Orsogna",
+          "Ortona",
+          "San Giovanni Teatino"
+        ]
+      },
+      {
+        "nome": "Comitato di Giulianova",
+        "sottosedi": [
+          "Alba Adriatica",
+          "Corropoli"
+        ]
+      },
+      {
+        "nome": "Comitato di Lanciano",
+        "sottosedi": [
+          "Palena",
+          "Pietraferrazzana",
+          "Torino Di Sangro"
+        ]
+      },
+      {
+        "nome": "Comitato di L'Aquila",
+        "sottosedi": [
+          "Castel Del Monte",
+          "Rocca Di Mezzo",
+          "San Demetrio"
+        ]
+      },
+      {
+        "nome": "Comitato di Penne",
+        "sottosedi": [
+          "Cappelle Sul Tavo",
+          "Loreto Aprutino",
+          "Montesilvano",
+          "Pianella"
+        ]
+      },
+      {
+        "nome": "Comitato di Pescara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Roseto",
+        "sottosedi": [
+          "Atri",
+          "Silvi",
+          "Valle Del Fino"
+        ]
+      },
+      {
+        "nome": "Comitato di Spoltore",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sulmona",
+        "sottosedi": [
+          "Castel Di Sangro",
+          "Scanno"
+        ]
+      },
+      {
+        "nome": "Comitato di Teramo",
+        "sottosedi": [
+          "Campli",
+          "Val Vomano"
+        ]
+      },
+      {
+        "nome": "Comitato di Vasto",
+        "sottosedi": [
+          "Casalbordino",
+          "Castiglione Messer Marino",
+          "Cupello",
+          "San Salvo"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Basilicata",
+    "comitati_locali": [
+      {
+        "nome": "Comitato della Siritide - ODV",
+        "sottosedi": [
+          "Bernalda",
+          "Montalbano Jonico"
+        ]
+      },
+      {
+        "nome": "Comitato Del Vulture",
+        "sottosedi": [
+          "Atella",
+          "Barile",
+          "Rionero In Vulture",
+          "Ripacandida"
+        ]
+      },
+      {
+        "nome": "Comitato di Lavello",
+        "sottosedi": [
+          "Montemilone"
+        ]
+      },
+      {
+        "nome": "Comitato di Matera",
+        "sottosedi": [
+          "Irsina"
+        ]
+      },
+      {
+        "nome": "Comitato di Melandro ODV",
+        "sottosedi": [
+          "Balvano",
+          "Picerno"
+        ]
+      },
+      {
+        "nome": "Comitato di Melfi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Noce",
+        "sottosedi": [
+          "Chiaromonte-Senise",
+          "Francavilla sul Sinni",
+          "Lagonegro",
+          "Lauria",
+          "Maratea",
+          "Nemoli",
+          "Rivello",
+          "Trecchina",
+          "Viggianello"
+        ]
+      },
+      {
+        "nome": "Comitato di Potenza",
+        "sottosedi": [
+          "Baragiano",
+          "Bella",
+          "Brienza",
+          "Muro Lucano",
+          "Rapone",
+          "San Fele",
+          "Satriano di Lucania"
+        ]
+      },
+      {
+        "nome": "Comitato di Val D'Agri",
+        "sottosedi": [
+          "Castelsaraceno",
+          "Marsico Nuovo",
+          "San Chirico Raparo",
+          "Tramutola",
+          "Val d' Agri"
+        ]
+      },
+      {
+        "nome": "Comitato di Valle del Trono",
+        "sottosedi": [
+          "Acerenza",
+          "Avigliano",
+          "Cancellara",
+          "Filiano",
+          "Forenza",
+          "Genzano-Banzi",
+          "Oppido Lucano",
+          "Pietragalla",
+          "Tolve"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Calabria",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Alto Ionio Cosentino",
+        "sottosedi": [
+          "San Demetrio Corone"
+        ]
+      },
+      {
+        "nome": "Comitato Amantea - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Basso Ionio Catanzarese",
+        "sottosedi": [
+          "Chiaravalle Centrale"
+        ]
+      },
+      {
+        "nome": "Comitato Costa Degli Dei - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato dell' Alto Tirreno Cosentino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato della Vallata Del Gallico",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Acri",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bagnara Calabra - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castrovillari",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Catanzaro",
+        "sottosedi": [
+          "Botricello",
+          "Montepaone",
+          "San Pietro Apostolo",
+          "Sellia Marina",
+          "Sersale",
+          "Squillace",
+          "Zagarise"
+        ]
+      },
+      {
+        "nome": "Comitato di Corigliano-Rossano ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cosenza",
+        "sottosedi": [
+          "Colosimi"
+        ]
+      },
+      {
+        "nome": "Comitato di Cotronei - ODV",
+        "sottosedi": [
+          "Caccuri"
+        ]
+      },
+      {
+        "nome": "Comitato di Crotone",
+        "sottosedi": [
+          "Casabona",
+          "Cirò Marina",
+          "Melissa",
+          "Mesoraca",
+          "Pagliarelle",
+          "Scandale",
+          "Verzino"
+        ]
+      },
+      {
+        "nome": "Comitato di Delianuova",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gioia Tauro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lamezia Terme",
+        "sottosedi": [
+          "Curinga",
+          "Decollatura",
+          "Falerna",
+          "Gizzeria",
+          "Nocera Terinese",
+          "Pianopoli",
+          "San Mango D' Aquino"
+        ]
+      },
+      {
+        "nome": "Comitato di Mirto Crosia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monasterace",
+        "sottosedi": [
+          "Caulonia"
+        ]
+      },
+      {
+        "nome": "Comitato di Palmi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Paola",
+        "sottosedi": [
+          "Guardia Piemontese",
+          "Paola"
+        ]
+      },
+      {
+        "nome": "Comitato di Reggio Calabria",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Riviera Dei Gelsomini",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rosarno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Giovanni in Fiore ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Taurianova",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vibo Valentia",
+        "sottosedi": [
+          "Acquaro - Arena",
+          "Briatico - Drapia - Pizzo - Tropea",
+          "Filadelfia - Francavilla Angitola",
+          "Joppolo - Nicotera",
+          "Mileto - San Costantino Calabro",
+          "Rombiolo - SantÂ'onofrio",
+          "San Nicola Da Crissa Â–serra San Bruno",
+          "Vibo Valentia",
+          "Zungri"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Campania",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Alto Casertano e Matesino",
+        "sottosedi": [
+          "Pietravairano",
+          "Teano"
+        ]
+      },
+      {
+        "nome": "Comitato di Agro",
+        "sottosedi": [
+          "Angri",
+          "Nocera Superiore",
+          "Pagani",
+          "Roccapiemonte"
+        ]
+      },
+      {
+        "nome": "Comitato di Agropoli E Del Cilento",
+        "sottosedi": [
+          "Agropoli",
+          "Castellabate",
+          "Castel San Lorenzo",
+          "Omignano - Salento",
+          "Pollica",
+          "Rutino",
+          "Torchiara",
+          "Vallo della Lucania"
+        ]
+      },
+      {
+        "nome": "Comitato di Ariano Irpino",
+        "sottosedi": [
+          "Villanova Del Battista"
+        ]
+      },
+      {
+        "nome": "Comitato di Aurunco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Avellino",
+        "sottosedi": [
+          "Cervinara",
+          "Guardia Dei Lombardi",
+          "Lauro",
+          "Montefalcione",
+          "Parolise",
+          "Sant'angelo Dei Lombardi",
+          "Taurasi"
+        ]
+      },
+      {
+        "nome": "Comitato di Benevento",
+        "sottosedi": [
+          "Calvi",
+          "Morcone"
+        ]
+      },
+      {
+        "nome": "Comitato di Capaccio Paestum",
+        "sottosedi": [
+          "Roccadaspide"
+        ]
+      },
+      {
+        "nome": "Comitato di Casal di Principe",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Caserta",
+        "sottosedi": [
+          "Aversa",
+          "Capodrise",
+          "Capua",
+          "Casapulla",
+          "Grazzanise",
+          "Marcianise",
+          "Pignataro Maggiore",
+          "Sant'Arpino",
+          "Vitulazio"
+        ]
+      },
+      {
+        "nome": "Comitato di Cava De' Tirreni",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Costa Amalfitana",
+        "sottosedi": [
+          "Maiori",
+          "Positano",
+          "Praiano",
+          "Vietri Sul Mare"
+        ]
+      },
+      {
+        "nome": "Comitato di Ercolano",
+        "sottosedi": [
+          "Torre Annunziata",
+          "Torre Del Greco"
+        ]
+      },
+      {
+        "nome": "Comitato di Frattamaggiore",
+        "sottosedi": [
+          "Cardito",
+          "Frattaminore"
+        ]
+      },
+      {
+        "nome": "Comitato di Giffoni Valle Piana",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Maddaloni",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mondragone ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Napoli",
+        "sottosedi": [
+          "Acerra",
+          "Casalnuovo",
+          "Cercola",
+          "Giugliano",
+          "Ischia",
+          "Marigliano",
+          "Mugnano",
+          "Pollena",
+          "Pomigliano",
+          "Pozzuoli",
+          "San Giorgio A Cremano",
+          "San Sebastiano",
+          "Sant'anastasia",
+          "Somma Vesuviana"
+        ]
+      },
+      {
+        "nome": "Comitato di Napoli Nord",
+        "sottosedi": [
+          "Afragola",
+          "Arzano",
+          "Caivano",
+          "Casandrino",
+          "Casoria",
+          "Volla"
+        ]
+      },
+      {
+        "nome": "Comitato di Napoli Sud",
+        "sottosedi": [
+          "Castellammare Di Stabia",
+          "Sorrento",
+          "Vico Equense"
+        ]
+      },
+      {
+        "nome": "Comitato di Pompei",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Portici",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Salerno",
+        "sottosedi": [
+          "Acerno",
+          "Battipaglia",
+          "Bracigliano",
+          "Castel San Giorgio",
+          "Giffoni Sei Casali",
+          "Mercato San Severino",
+          "Montecorvino Pugliano",
+          "Polla",
+          "Pontecagnano",
+          "Sala Consilina",
+          "San Cipriano Picentino",
+          "Sant Arsenio",
+          "Teggiano"
+        ]
+      },
+      {
+        "nome": "Comitato di San Lorenzello O.D.V.",
+        "sottosedi": [
+          "Faicchio"
+        ]
+      },
+      {
+        "nome": "Comitato di Santa Maria Capua Vetere - Curti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sapri",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sarno",
+        "sottosedi": [
+          "Sarno territoriale"
+        ]
+      },
+      {
+        "nome": "Comitato di Serre",
+        "sottosedi": [
+          "Altavilla Silentina",
+          "Buccino",
+          "Colliano",
+          "Controne",
+          "Contursi Terme",
+          "Eboli",
+          "Laviano",
+          "Palomonte",
+          "Postiglione"
+        ]
+      },
+      {
+        "nome": "Comitato di Telese Terme - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vairano",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Della Valle D' Aosta",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Aosta",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Courmayeur",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Saint-Vincent",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Emilia Romagna",
+    "comitati_locali": [
+      {
+        "nome": "Comitato della Bassa Romagna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bagnolo in Piano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bedonia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bologna",
+        "sottosedi": [
+          "Bologna CM",
+          "Bologna II.VV.",
+          "Bologna Sede Operativa",
+          "Calderara di Reno",
+          "Camugnano",
+          "Casalecchio Di Reno",
+          "Castel D'Aiano",
+          "Castel Di Casio",
+          "Castel San Pietro Terme",
+          "Castiglione Dei Pepoli",
+          "Gaggio Montano",
+          "Lizzano In Belvedere",
+          "Loiano",
+          "Medicina",
+          "Molinella",
+          "Vergato"
+        ]
+      },
+      {
+        "nome": "Comitato di Canossa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Carpi",
+        "sottosedi": [
+          "Campogalliano",
+          "Novi di Modena"
+        ]
+      },
+      {
+        "nome": "Comitato di Carpineti",
+        "sottosedi": [
+          "Baiso",
+          "Cerreto Laghi"
+        ]
+      },
+      {
+        "nome": "Comitato di Casina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castellarano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cattolica - Morciano di Romagna",
+        "sottosedi": [
+          "Morciano di Romagna UT"
+        ]
+      },
+      {
+        "nome": "Comitato di Cavriago",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cento-Bondeno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cervia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cesena",
+        "sottosedi": [
+          "Sogliano al Rubicone"
+        ]
+      },
+      {
+        "nome": "Comitato di Cesenatico",
+        "sottosedi": [
+          "Gatteo"
+        ]
+      },
+      {
+        "nome": "Comitato di Correggio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fabbrico",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Faenza",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ferrara",
+        "sottosedi": [
+          "Argenta",
+          "Codigoro",
+          "Comacchio",
+          "Copparo"
+        ]
+      },
+      {
+        "nome": "Comitato di Fidenza",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Finale Emilia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fontanellato",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Forlì",
+        "sottosedi": [
+          "Castrocaro Terme e Terra Del Sole",
+          "Meldola",
+          "Predappio"
+        ]
+      },
+      {
+        "nome": "Comitato di Forlimpopoli - Bertinoro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Guastalla",
+        "sottosedi": [
+          "Luzzara"
+        ]
+      },
+      {
+        "nome": "Comitato di Imola",
+        "sottosedi": [
+          "Castel Del Rio"
+        ]
+      },
+      {
+        "nome": "Comitato di Medesano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Modena",
+        "sottosedi": [
+          "Ravarino",
+          "Terre Dei Castelli"
+        ]
+      },
+      {
+        "nome": "Comitato di Novellara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Palanzano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Parma",
+        "sottosedi": [
+          "Berceto",
+          "Monchio Delle Corti"
+        ]
+      },
+      {
+        "nome": "Comitato di Piacenza",
+        "sottosedi": [
+          "Agazzano",
+          "Bobbio",
+          "Borgonovo Val Tidone",
+          "Cadeo",
+          "Farini",
+          "Nibbiano",
+          "Ottone",
+          "Piacenza",
+          "Piozzano",
+          "Podenzano",
+          "Rottofreno"
+        ]
+      },
+      {
+        "nome": "Comitato di Ponte Taro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Prignano Sulla Secchia",
+        "sottosedi": [
+          "Pavullo Nel Frignano"
+        ]
+      },
+      {
+        "nome": "Comitato di Quattro Castella",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ravenna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Reggio Emilia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Reggiolo - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Riccione",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rimini",
+        "sottosedi": [
+          "Secchiano Di Novafeltria",
+          "Villa Verucchio"
+        ]
+      },
+      {
+        "nome": "Comitato di Rubiera",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Secondo Parmense",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sassuolo",
+        "sottosedi": [
+          "Formigine",
+          "Maranello"
+        ]
+      },
+      {
+        "nome": "Comitato di Scandiano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Scurano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Soragna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sorbolo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Toano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Tizzano Val Parma",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Friuli - Venezia Giulia",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Alto Friuli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Casarsa della Delizia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gorizia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Maniago",
+        "sottosedi": [
+          "Spilimbergo"
+        ]
+      },
+      {
+        "nome": "Comitato di Monfalcone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Palmanova",
+        "sottosedi": [
+          "Cervignano",
+          "Grado",
+          "Torviscosa"
+        ]
+      },
+      {
+        "nome": "Comitato di Pordenone",
+        "sottosedi": [
+          "Aviano",
+          "Pordenone UT",
+          "Prata Di Pordenone",
+          "Sacile"
+        ]
+      },
+      {
+        "nome": "Comitato di San Vito Al Tagliamento - Azzano Decimo",
+        "sottosedi": [
+          "Azzano Decimo",
+          "San Vito al Tagliamento"
+        ]
+      },
+      {
+        "nome": "Comitato di Trieste",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Udine",
+        "sottosedi": [
+          "Cercivento",
+          "Cividale Del Friuli",
+          "Codroipo",
+          "Gemona Del Friuli",
+          "Latisana",
+          "Moggio Udinese",
+          "Ovaro",
+          "Paularo",
+          "San Daniele Del Friuli",
+          "San Giovanni Al Natisone",
+          "Tarcento",
+          "Tarvisio",
+          "Tolmezzo",
+          "Udine"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Lazio",
+    "comitati_locali": [
+      {
+        "nome": "Comitato della Bassa Sabina",
+        "sottosedi": [
+          "Poggio Mirteto",
+          "Toffia",
+          "Torri In Sabina"
+        ]
+      },
+      {
+        "nome": "Comitato dell'Area Metropolitana di Roma Capitale Coordinamento",
+        "sottosedi": [
+          "Comitato dell'Area Metropolitana di Roma Capitale",
+          "Comitato dei Colli Albani",
+          "Comitato Dei Comuni dell'Appia",
+          "Comitato di Allumiere e Tolfa",
+          "Comitato di Anzio - Nettuno",
+          "Comitato di Ardea",
+          "Comitato di Bellegra",
+          "Genazzano",
+          "Olevano Romano",
+          "San Vito Romano",
+          "Comitato di Ciampino",
+          "Comitato di Civitavecchia",
+          "Comitato di Fiumicino",
+          "Comitato di Formello",
+          "Comitato di Gabio",
+          "Comitato di Guidonia",
+          "Comitato di Monterotondo - ODV",
+          "Comitato di Monti Prenestini",
+          "Comitato di Morlupo",
+          "Mazzano Romano",
+          "Comitato di Nomentum",
+          "Comitato di Pomezia",
+          "Comitato di Sabatino",
+          "Manziana",
+          "Comitato di Sabina Romana",
+          "Monteflavio",
+          "Montelibretti",
+          "Montorio Romano",
+          "Moricone",
+          "Nerola",
+          "Comitato di Santa Severa – Santa Marinella",
+          "Comitato di Valle dell'aniene",
+          "Comitato di Valle Del Sacco",
+          "Comitato di Valle Del Tevere",
+          "Capena",
+          "Nazzano",
+          "Comitato di Valmontone",
+          "Comitato di Velletri",
+          "Comitato Municipio 10 di Roma",
+          "Comitato Municipio 13-14 di Roma",
+          "Comitato Municipio 15 di Roma",
+          "Comitato Municipio 2-3 di Roma",
+          "Comitato Municipio 4 di Roma",
+          "Comitato Municipio 5 di Roma",
+          "Comitato Municipio 6 di Roma",
+          "Comitato Municipio 7 di Roma",
+          "Comitato Municipio 8-11-12 di Roma",
+          "Comitato Municipio 9 di Roma",
+          "Comitato Tusculum",
+          "Frascati",
+          "Grottaferrata",
+          "San Cesareo"
+        ]
+      },
+      {
+        "nome": "Comitato di Acquapendente - ODV",
+        "sottosedi": [
+          "Bolsena",
+          "Gradoli",
+          "Grotte Di Castro",
+          "Onano",
+          "Proceno",
+          "San Lorenzo Nuovo"
+        ]
+      },
+      {
+        "nome": "Comitato di Amatrice - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Aprilia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bagnoregio",
+        "sottosedi": [
+          "Lubriano"
+        ]
+      },
+      {
+        "nome": "Comitato di Canino – ODV",
+        "sottosedi": [
+          "Cellere",
+          "Ischia Di Castro"
+        ]
+      },
+      {
+        "nome": "Comitato di Capranica",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Carbognano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cassino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Civita Castellana",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Civitella D'agliano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Corchiano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fondi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Frosinone",
+        "sottosedi": [
+          "Alatri",
+          "Amaseno",
+          "Anagni",
+          "Aquino",
+          "Atina",
+          "Ferentino",
+          "Pico",
+          "Serrone"
+        ]
+      },
+      {
+        "nome": "Comitato di Itri",
+        "sottosedi": [
+          "Sperlonga"
+        ]
+      },
+      {
+        "nome": "Comitato di Latina",
+        "sottosedi": [
+          "Cisterna Di Latina",
+          "Priverno",
+          "San Felice Circeo",
+          "Terracina"
+        ]
+      },
+      {
+        "nome": "Comitato di Monte Romano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Nepi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Orte",
+        "sottosedi": [
+          "Vasanello"
+        ]
+      },
+      {
+        "nome": "Comitato di Paliano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Piedimonte San Germano - ODV",
+        "sottosedi": [
+          "San Donato Val Comino",
+          "Sant' Elia Fiumerapido"
+        ]
+      },
+      {
+        "nome": "Comitato di Piglio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rieti",
+        "sottosedi": [
+          "Contigliano",
+          "Poggio Moiano",
+          "Valle Del Velino"
+        ]
+      },
+      {
+        "nome": "Comitato di Ronciglione",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sora - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Soriano Nel Cimino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Tarquinia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vignanello",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Viterbo",
+        "sottosedi": [
+          "Blera",
+          "Capodimonte",
+          "Tuscania",
+          "Valentano",
+          "Vetralla"
+        ]
+      },
+      {
+        "nome": "Comitato Sud Pontino",
+        "sottosedi": [
+          "Castelforte",
+          "Formia",
+          "Minturno"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Liguria",
+    "comitati_locali": [
+      {
+        "nome": "Comitato della Spezia",
+        "sottosedi": [
+          "Calice Al Cornoviglio",
+          "Fezzano",
+          "Muggiano",
+          "S. Stefano Magra"
+        ]
+      },
+      {
+        "nome": "Comitato di Alassio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Albenga",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ameglia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Arenzano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bargagli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bordighera",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Campo Ligure",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Campomorone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cengio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ceranesi",
+        "sottosedi": [
+          "Geo",
+          "Pontasso"
+        ]
+      },
+      {
+        "nome": "Comitato di Ceriale",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Chiavari",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cicagna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cogoleto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cogorno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Davagna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Diano Marina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Follo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gattorna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Genova",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Genova Ponente",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Imperia",
+        "sottosedi": [
+          "Villaregia-Santo Stefano al Mare"
+        ]
+      },
+      {
+        "nome": "Comitato di Lavagna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Levanto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Loano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Magliolo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Masone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Millesimo",
+        "sottosedi": [
+          "Osiglia"
+        ]
+      },
+      {
+        "nome": "Comitato di Pieve di Teco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pontedassio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rezzoaglio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ricco' Del Golfo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Riva Trigoso",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rossiglione",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sanremo",
+        "sottosedi": [
+          "Ospedaletti",
+          "Taggia"
+        ]
+      },
+      {
+        "nome": "Comitato di Santa Margherita Ligure",
+        "sottosedi": [
+          "Camogli",
+          "Rapallo"
+        ]
+      },
+      {
+        "nome": "Comitato di Santo Stefano D' Aveto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sassello",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Savona",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Serra Ricco'",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sesta Godano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di S. Olcese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sori",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Stella",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Toirano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Torriglia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Urbe",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Uscio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vado Ligure - Quiliano",
+        "sottosedi": [
+          "Quiliano"
+        ]
+      },
+      {
+        "nome": "Comitato di Vallescrivia",
+        "sottosedi": [
+          "Isola Del Cantone",
+          "Montoggio",
+          "Savignone"
+        ]
+      },
+      {
+        "nome": "Comitato di Varazze",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Varese Ligure",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ventimiglia",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Lombardia",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Area Nord Milanese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato del Comprensorio Lecchese - ODV",
+        "sottosedi": [
+          "Galbiate",
+          "Premana",
+          "Valsassina"
+        ]
+      },
+      {
+        "nome": "Comitato dell'Area Sud Milanese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato delle Alte Groane",
+        "sottosedi": [
+          "Solaro"
+        ]
+      },
+      {
+        "nome": "Comitato delle Groane",
+        "sottosedi": [
+          "Bollate"
+        ]
+      },
+      {
+        "nome": "Comitato dell'Insubria",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato del Medio Verbano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Agrate Brianza",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Asola",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Basso Lario",
+        "sottosedi": [
+          "Maslianico"
+        ]
+      },
+      {
+        "nome": "Comitato di Bergamo",
+        "sottosedi": [
+          "San Pellegrino Terme",
+          "Villa D'Almè"
+        ]
+      },
+      {
+        "nome": "Comitato di Bergamo Hinterland",
+        "sottosedi": [
+          "Alta Val Seriana",
+          "Alzano Lombardo",
+          "Bassa Bergamo Est",
+          "Calcinate",
+          "Capriate San Gervasio",
+          "Dalmine",
+          "Grumello Del Monte",
+          "Romano di Lombardia",
+          "Seriate",
+          "Urgnano",
+          "Val Cavallina",
+          "Valgandino",
+          "Valle di Scalve"
+        ]
+      },
+      {
+        "nome": "Comitato di Bergamo Ovest e Valle Imagna",
+        "sottosedi": [
+          "Ponte San Pietro",
+          "Pontida",
+          "Sant'Omobono Terme"
+        ]
+      },
+      {
+        "nome": "Comitato di Brescia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bresso",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Brugherio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Buccinasco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Busto Arsizio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Calvisano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cantù",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Caravaggio",
+        "sottosedi": [
+          "Mozzanica"
+        ]
+      },
+      {
+        "nome": "Comitato di Casalmaggiore",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Casatenovo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Casorate Primo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Casteggio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castiglione delle Stiviere",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cellatica e Gussago",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cermenate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cinisello Balsamo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Codogno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Colico",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Como - ODV",
+        "sottosedi": [
+          "Como",
+          "Lipomo",
+          "Valsolda"
+        ]
+      },
+      {
+        "nome": "Comitato di Crema",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cremona",
+        "sottosedi": [
+          "Ostiano"
+        ]
+      },
+      {
+        "nome": "Comitato di Desio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gallarate",
+        "sottosedi": [
+          "Somma Lombardo",
+          "Sumirago"
+        ]
+      },
+      {
+        "nome": "Comitato di Gambolò",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gardone Val Trompia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ghedi",
+        "sottosedi": [
+          "Castenedolo"
+        ]
+      },
+      {
+        "nome": "Comitato di Grandate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lainate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lecco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Legnano",
+        "sottosedi": [
+          "Parabiago"
+        ]
+      },
+      {
+        "nome": "Comitato di Lentate sul Seveso",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lodi",
+        "sottosedi": [
+          "Zelo Buon Persico"
+        ]
+      },
+      {
+        "nome": "Comitato di Lomazzo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Luino e Valli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lurate Caccivio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mantova",
+        "sottosedi": [
+          "Rodigo",
+          "Roncoferraro",
+          "Viadana"
+        ]
+      },
+      {
+        "nome": "Comitato di Mede e Valle Lomellina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Menaggio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Merate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Milano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Milano Est",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Montorfano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monza",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Morbegno",
+        "sottosedi": [
+          "Valchiavenna"
+        ]
+      },
+      {
+        "nome": "Comitato di Mortara",
+        "sottosedi": [
+          "Cilavegna"
+        ]
+      },
+      {
+        "nome": "Comitato di Muggiò",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Nova Milanese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ostiglia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Paderno Dugnano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Palazzolo sull'Oglio",
+        "sottosedi": [
+          "Capriolo",
+          "Cologne",
+          "Cortefranca",
+          "Erbusco",
+          "Iseo",
+          "Paratico",
+          "Pontoglio"
+        ]
+      },
+      {
+        "nome": "Comitato di Pavia",
+        "sottosedi": [
+          "Siziano"
+        ]
+      },
+      {
+        "nome": "Comitato di Pieve Emanuele",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pizzighettone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Poggio-Sermide",
+        "sottosedi": [
+          "Poggio Rusco",
+          "Sermide"
+        ]
+      },
+      {
+        "nome": "Comitato di San Donato Milanese",
+        "sottosedi": [
+          "Vizzolo Predabissi"
+        ]
+      },
+      {
+        "nome": "Comitato di San Fermo della Battaglia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Saronno",
+        "sottosedi": [
+          "Cislago"
+        ]
+      },
+      {
+        "nome": "Comitato di Sesto San Giovanni",
+        "sottosedi": [
+          "Cologno Monzese",
+          "Vaprio d' Adda"
+        ]
+      },
+      {
+        "nome": "Comitato di Settimo Milanese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Solferino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sondrio",
+        "sottosedi": [
+          "Alta Valtellina",
+          "Aprica",
+          "Livigno",
+          "Tirano",
+          "Valmalenco"
+        ]
+      },
+      {
+        "nome": "Comitato di Stradella",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Suzzara",
+        "sottosedi": [
+          "Gonzaga"
+        ]
+      },
+      {
+        "nome": "Comitato di Treviglio e Geradadda",
+        "sottosedi": [
+          "Arcene",
+          "Canonica d'Adda",
+          "Fara Gera d'Adda",
+          "Inzago",
+          "Pontirolo Nuovo",
+          "Pozzuolo Martesana"
+        ]
+      },
+      {
+        "nome": "Comitato di Triangolo Lariano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Uggiate Trevano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valceresio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valle Camonica - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valmadrera",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Varedo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Varese",
+        "sottosedi": [
+          "Gazzada Schianno",
+          "Tradate"
+        ]
+      },
+      {
+        "nome": "Comitato di Vigevano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Villasanta",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Voghera",
+        "sottosedi": [
+          "Varzi"
+        ]
+      },
+      {
+        "nome": "Comitato Garda Bresciano",
+        "sottosedi": [
+          "Salò"
+        ]
+      },
+      {
+        "nome": "Comitato Lodigiano Ovest",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Valle Intelvi",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Marche",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Ancona",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ascoli Piceno",
+        "sottosedi": [
+          "Castel di Lama"
+        ]
+      },
+      {
+        "nome": "Comitato di Cagli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Camerino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castelplanio",
+        "sottosedi": [
+          "Montecarotto"
+        ]
+      },
+      {
+        "nome": "Comitato di Castignano - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cingoli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fabriano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fano",
+        "sottosedi": [
+          "Cartoceto"
+        ]
+      },
+      {
+        "nome": "Comitato di Fermignano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fermo",
+        "sottosedi": [
+          "Grottazzolina",
+          "Monterubbiano - Rubbianello"
+        ]
+      },
+      {
+        "nome": "Comitato di Fossombrone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Jesi",
+        "sottosedi": [
+          "Monsano",
+          "Staffolo e San Paolo di Jesi"
+        ]
+      },
+      {
+        "nome": "Comitato di Loreto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Macerata",
+        "sottosedi": [
+          "Petriolo"
+        ]
+      },
+      {
+        "nome": "Comitato di Marotta - Mondolfo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Matelica",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Montelabbate-Vallefoglia - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Osimo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pergola",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pesaro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Porto Potenza Picena",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Benedetto Del Tronto",
+        "sottosedi": [
+          "Centobuchi Di Monteprandone"
+        ]
+      },
+      {
+        "nome": "Comitato di San Severino Marche",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sant'Angelo In Vado",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sarnano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sassoferrato",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Senigallia",
+        "sottosedi": [
+          "Castelleone Di Suasa"
+        ]
+      },
+      {
+        "nome": "Comitato di Sibillini",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Tolentino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Urbino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Visso",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Molise",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Campobasso",
+        "sottosedi": [
+          "Boiano",
+          "Campobasso",
+          "Castelbottaccio",
+          "Cercemaggiore",
+          "Larino",
+          "Montagano",
+          "Sepino",
+          "Trivento",
+          "Ururi",
+          "Vinchiaturo"
+        ]
+      },
+      {
+        "nome": "Comitato di Isernia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Termoli - ODV",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Piemonte",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Acqui Terme",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Agliè",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Airasca",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Alba",
+        "sottosedi": [
+          "Albaretto Della Torre",
+          "Monforte D' Alba",
+          "Montà D' Alba",
+          "Monticello D' Alba",
+          "Neive"
+        ]
+      },
+      {
+        "nome": "Comitato di Alessandria",
+        "sottosedi": [
+          "Fubine",
+          "Piovera",
+          "Predosa",
+          "San Salvatore Monferrato",
+          "Valenza",
+          "Vignale Monferrato"
+        ]
+      },
+      {
+        "nome": "Comitato di Arona",
+        "sottosedi": [
+          "Lesa"
+        ]
+      },
+      {
+        "nome": "Comitato di Asti",
+        "sottosedi": [
+          "Calliano",
+          "Castell'Alfero",
+          "Castello Di Annone",
+          "Costigliole D'Asti",
+          "Monale",
+          "Moncalvo",
+          "Montiglio Monferrato",
+          "Valbormida Astigiana",
+          "Villafranca D'Asti"
+        ]
+      },
+      {
+        "nome": "Comitato di Bardonecchia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Baveno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Beinasco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Biella",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Borgomanero",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Borgo San Dalmazzo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Borgosesia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bra",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Busca",
+        "sottosedi": [
+          "Manta"
+        ]
+      },
+      {
+        "nome": "Comitato di Canelli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cannobio",
+        "sottosedi": [
+          "Cannero Riviera"
+        ]
+      },
+      {
+        "nome": "Comitato di Caraglio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Carignano",
+        "sottosedi": [
+          "Castagnole Piemonte"
+        ]
+      },
+      {
+        "nome": "Comitato di Carmagnola",
+        "sottosedi": [
+          "Pancalieri"
+        ]
+      },
+      {
+        "nome": "Comitato di Casale Monferrato",
+        "sottosedi": [
+          "Cerrina",
+          "Pontestura"
+        ]
+      },
+      {
+        "nome": "Comitato di Cassine",
+        "sottosedi": [
+          "Ricaldone",
+          "Sezzadio"
+        ]
+      },
+      {
+        "nome": "Comitato di Castellamonte",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castelnuovo Don Bosco E Piovà Massaia",
+        "sottosedi": [
+          "Piovà Massaia"
+        ]
+      },
+      {
+        "nome": "Comitato di Cavaglià",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Centallo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Chieri",
+        "sottosedi": [
+          "Pecetto",
+          "Pino Torinese"
+        ]
+      },
+      {
+        "nome": "Comitato di Chivasso",
+        "sottosedi": [
+          "Brandizzo",
+          "Casalborgone",
+          "Foglizzo",
+          "Saluggia"
+        ]
+      },
+      {
+        "nome": "Comitato di Cocconato",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cossato",
+        "sottosedi": [
+          "Trivero"
+        ]
+      },
+      {
+        "nome": "Comitato di Crescentino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cuneo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cuorgnè",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Domodossola",
+        "sottosedi": [
+          "Antrona Schieranco",
+          "Baceno",
+          "Formazza",
+          "Piedimulera"
+        ]
+      },
+      {
+        "nome": "Comitato di Dronero",
+        "sottosedi": [
+          "Acceglio"
+        ]
+      },
+      {
+        "nome": "Comitato di Druento",
+        "sottosedi": [
+          "Val Della Torre"
+        ]
+      },
+      {
+        "nome": "Comitato di Fiano Torinese",
+        "sottosedi": [
+          "La Cassa",
+          "Mathi"
+        ]
+      },
+      {
+        "nome": "Comitato di Galliate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gassino Torinese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gattinara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gavi",
+        "sottosedi": [
+          "Voltaggio"
+        ]
+      },
+      {
+        "nome": "Comitato di Giaveno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Isola D'Asti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ivrea",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lauriano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Leini",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Limone Piemonte",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mappano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Melle",
+        "sottosedi": [
+          "Pontechianale"
+        ]
+      },
+      {
+        "nome": "Comitato di Moncalieri",
+        "sottosedi": [
+          "La Loggia"
+        ]
+      },
+      {
+        "nome": "Comitato di Mondovì",
+        "sottosedi": [
+          "Morozzo",
+          "Niella Tanaro",
+          "San Giacomo Di Roburent",
+          "San Michele Mondovì",
+          "Villanova"
+        ]
+      },
+      {
+        "nome": "Comitato di Monesiglio",
+        "sottosedi": [
+          "Bosia",
+          "Saliceto"
+        ]
+      },
+      {
+        "nome": "Comitato di Montanaro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Montegrosso D'asti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Moretta",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Nichelino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Novara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Novi Ligure",
+        "sottosedi": [
+          "Pozzolo Formigaro"
+        ]
+      },
+      {
+        "nome": "Comitato di Oleggio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Peveragno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Piossasco",
+        "sottosedi": [
+          "Bruino"
+        ]
+      },
+      {
+        "nome": "Comitato di Poirino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pont Canavese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Racconigi",
+        "sottosedi": [
+          "Barge",
+          "Paesana"
+        ]
+      },
+      {
+        "nome": "Comitato di Rivarolo Canavese",
+        "sottosedi": [
+          "Bosconero"
+        ]
+      },
+      {
+        "nome": "Comitato di Rivoli",
+        "sottosedi": [
+          "Grugliasco",
+          "Pianezza"
+        ]
+      },
+      {
+        "nome": "Comitato di Sampeyre",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Damiano D'Asti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Francesco Al Campo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Giorgio Canavese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Santena",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Savigliano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Serravalle Scrivia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Settimo Torinese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Settimo Vittone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sommariva Del Bosco",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Strambino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Stresa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Susa",
+        "sottosedi": [
+          "Bussoleno",
+          "Claviere/Vialattea",
+          "Moncenisio"
+        ]
+      },
+      {
+        "nome": "Comitato di Torino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Torre Pellice",
+        "sottosedi": [
+          "Pinerolo"
+        ]
+      },
+      {
+        "nome": "Comitato di Tortona",
+        "sottosedi": [
+          "Bassa Valle Scrivia",
+          "Valcurone"
+        ]
+      },
+      {
+        "nome": "Comitato di Trecate",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Trofarello",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valle Stura",
+        "sottosedi": [
+          "Demonte"
+        ]
+      },
+      {
+        "nome": "Comitato di Valli di Lanzo",
+        "sottosedi": [
+          "Corio",
+          "Viù"
+        ]
+      },
+      {
+        "nome": "Comitato di Verbania",
+        "sottosedi": [
+          "Gravellona Toce",
+          "Mergozzo",
+          "Premeno",
+          "Premosello Chiovenda"
+        ]
+      },
+      {
+        "nome": "Comitato di Vercelli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vignole Borbera",
+        "sottosedi": [
+          "Cabella Ligure"
+        ]
+      },
+      {
+        "nome": "Comitato di Vigone",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Villanova D'Asti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Villar Dora",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Provincia Granda",
+        "sottosedi": [
+          "Valle Bormida"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "COMITATO REGIONALE PROVA",
+    "comitati_locali": [
+      {
+        "nome": "SEDE PROVA",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Puglia",
+    "comitati_locali": [
+      {
+        "nome": "Comitato della Bassa Murgia",
+        "sottosedi": [
+          "Alberobello",
+          "Castellana Grotte",
+          "Locorotondo",
+          "Noci",
+          "Putignano"
+        ]
+      },
+      {
+        "nome": "Comitato di Acquaviva Delle Fonti - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Andria",
+        "sottosedi": [
+          "Trani",
+          "Trinitapoli"
+        ]
+      },
+      {
+        "nome": "Comitato di Bari",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Barletta",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bitonto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Brindisi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Carovigno",
+        "sottosedi": [
+          "Ceglie Messapica",
+          "San Michele Salentino"
+        ]
+      },
+      {
+        "nome": "Comitato di Casarano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cerignola",
+        "sottosedi": [
+          "Carapelle",
+          "Castelluccio Dei Sauri",
+          "Ordona",
+          "Ortanova",
+          "Stornara",
+          "Stornarella"
+        ]
+      },
+      {
+        "nome": "Comitato di Cisternino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fasano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Foggia",
+        "sottosedi": [
+          "Apricena",
+          "Lucera",
+          "San Marco In Lamis"
+        ]
+      },
+      {
+        "nome": "Comitato di Francavilla Fontana-Oria",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gioia Del Colle",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Grottaglie - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lecce",
+        "sottosedi": [
+          "Racale - Melissano",
+          "Salice Salentino",
+          "Supersano",
+          "Tricase",
+          "Ugento"
+        ]
+      },
+      {
+        "nome": "Comitato di Leverano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Manfredonia",
+        "sottosedi": [
+          "San Giovanni Rotondo",
+          "Vieste"
+        ]
+      },
+      {
+        "nome": "Comitato di Martina Franca",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Molfetta",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monopoli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ostuni",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Nicandro-Garganico",
+        "sottosedi": [
+          "Ischitella",
+          "Vico del Gargano"
+        ]
+      },
+      {
+        "nome": "Comitato di San Severo-Torremaggiore",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Santeramo in Colle - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Taranto",
+        "sottosedi": [
+          "Carosino",
+          "Manduria",
+          "Maruggio",
+          "Massafra",
+          "Monteiasi",
+          "Palagiano",
+          "Sava"
+        ]
+      },
+      {
+        "nome": "Comitato di Valenzano",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Sardegna",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Bosa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Cagliari",
+        "sottosedi": [
+          "Cortoghiana",
+          "Iglesias",
+          "Santadi",
+          "Serrenti",
+          "Soleminis"
+        ]
+      },
+      {
+        "nome": "Comitato di Gallura - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Nuoro",
+        "sottosedi": [
+          "Arzana",
+          "Macomer",
+          "Sadali",
+          "Siniscola"
+        ]
+      },
+      {
+        "nome": "Comitato di Olbia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Oristano",
+        "sottosedi": [
+          "Abbasanta",
+          "Busachi",
+          "Cuglieri",
+          "Marrubiu",
+          "Narbolia",
+          "Riola Sardo"
+        ]
+      },
+      {
+        "nome": "Comitato di Sassari",
+        "sottosedi": [
+          "Alghero",
+          "Porto Torres"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Sicilia",
+    "comitati_locali": [
+      {
+        "nome": "Comitato dei Monti Sicani - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato del Tirreno-Nebrodi",
+        "sottosedi": [
+          "Brolo",
+          "Librizzi",
+          "Patti",
+          "Piraino"
+        ]
+      },
+      {
+        "nome": "Comitato di Acireale",
+        "sottosedi": [
+          "Aci Bonaccorsi",
+          "Aci Castello",
+          "Acicatena",
+          "Aci San Antonio",
+          "Santa Venerina"
+        ]
+      },
+      {
+        "nome": "Comitato di Agrigento",
+        "sottosedi": [
+          "Cammarata San Giovanni",
+          "Canicattì",
+          "Favara",
+          "Licata",
+          "Menfi",
+          "Montallegro",
+          "Ravanusa",
+          "Ribera",
+          "Sambuca Di Sicilia",
+          "Sciacca",
+          "Terre Sicane"
+        ]
+      },
+      {
+        "nome": "Comitato di Alcamo",
+        "sottosedi": [
+          "Calatafimi - Segesta"
+        ]
+      },
+      {
+        "nome": "Comitato di Avola",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Barcellona Pozzo di Gotto",
+        "sottosedi": [
+          "Castroreale"
+        ]
+      },
+      {
+        "nome": "Comitato di Caltagirone",
+        "sottosedi": [
+          "Licodia Eubea",
+          "Vizzini"
+        ]
+      },
+      {
+        "nome": "Comitato di Caltanissetta",
+        "sottosedi": [
+          "Bompensiere e Campofranco",
+          "Milena",
+          "Resuttano",
+          "Santa Caterina Villarmosa",
+          "Serradifalco",
+          "Sommatino"
+        ]
+      },
+      {
+        "nome": "Comitato di Campofelice di Roccella",
+        "sottosedi": [
+          "Castellana Sicula"
+        ]
+      },
+      {
+        "nome": "Comitato di Castelvetrano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Catania",
+        "sottosedi": [
+          "Biancavilla",
+          "Bronte",
+          "Maletto",
+          "Paternò",
+          "Randazzo",
+          "Sant'agata Li Battiati",
+          "Tremestieri Etneo"
+        ]
+      },
+      {
+        "nome": "Comitato di Enna",
+        "sottosedi": [
+          "Aidone",
+          "Barrafranca"
+        ]
+      },
+      {
+        "nome": "Comitato di Fiumefreddo di Sicilia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Francofonte",
+        "sottosedi": [
+          "Lentini"
+        ]
+      },
+      {
+        "nome": "Comitato di Gela",
+        "sottosedi": [
+          "Mazzarino",
+          "Niscemi",
+          "Riesi"
+        ]
+      },
+      {
+        "nome": "Comitato di Lampedusa e Linosa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Marsala",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mascalucia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mazara Del Vallo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Messina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Milazzo - Isole Eolie",
+        "sottosedi": [
+          "Filicudi",
+          "Lipari",
+          "Stromboli",
+          "Vulcano"
+        ]
+      },
+      {
+        "nome": "Comitato di Mussomeli",
+        "sottosedi": [
+          "Acquaviva Platani",
+          "Marianopoli"
+        ]
+      },
+      {
+        "nome": "Comitato di Nicosia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Noto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pachino / Portopalo",
+        "sottosedi": [
+          "Portopalo di Capo Passero"
+        ]
+      },
+      {
+        "nome": "Comitato di Palermo",
+        "sottosedi": [
+          "Bagheria",
+          "Monreale",
+          "Montelepre"
+        ]
+      },
+      {
+        "nome": "Comitato di Pantelleria",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ragusa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Roccalumera e Taormina",
+        "sottosedi": [
+          "Francavilla Di Sicilia",
+          "Roccalumera",
+          "Santa Teresa di Riva",
+          "Taormina"
+        ]
+      },
+      {
+        "nome": "Comitato di San Salvatore di Fitalia",
+        "sottosedi": [
+          "San Salvatore Di Fitalia"
+        ]
+      },
+      {
+        "nome": "Comitato di Scordia",
+        "sottosedi": [
+          "Militello",
+          "Mineo"
+        ]
+      },
+      {
+        "nome": "Comitato di Siracusa",
+        "sottosedi": [
+          "Augusta",
+          "Canicattini Bagni",
+          "Melilli",
+          "Palazzolo Acreide",
+          "Priolo Gargallo",
+          "Rosolini"
+        ]
+      },
+      {
+        "nome": "Comitato di Trapani",
+        "sottosedi": [
+          "Erice"
+        ]
+      },
+      {
+        "nome": "Comitato di Troina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valle dell'Halaesa",
+        "sottosedi": [
+          "Capizzi",
+          "Castel Di Lucio",
+          "Mistretta"
+        ]
+      },
+      {
+        "nome": "Comitato di Viagrande",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Floridia - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Jonico-etneo",
+        "sottosedi": [
+          "Linguaglossa",
+          "Piedimonte Etneo",
+          "Riposto",
+          "Sant'Alfio"
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Toscana",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Alto Casentino - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Costa d' Argento - ODV",
+        "sottosedi": [
+          "Isola del Giglio e di Giannutri"
+        ]
+      },
+      {
+        "nome": "Comitato di Albiano Magra",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Arezzo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bagni di Lucca",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bagno A Ripoli",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bibbiena",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Buggiano/Montecatini Terme",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Capalbio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Casciana Terme",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castelfranco di Sotto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castell'Azzara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castiglione della Pescaia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Castiglion Fiorentino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Certaldo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Chiusi della Verna",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Donoratico",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Empoli - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fauglia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Firenze",
+        "sottosedi": [
+          "Fiesole",
+          "Sesto Fiorentino"
+        ]
+      },
+      {
+        "nome": "Comitato di Foiano della Chiana",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Follonica",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Fucecchio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gavorrano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Greve In Chianti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Grosseto",
+        "sottosedi": [
+          "Alberese",
+          "Braccagni",
+          "Magliano In Toscana",
+          "Montieri",
+          "Roccalbegna",
+          "Roccastrada",
+          "Semproniano",
+          "Sticciano"
+        ]
+      },
+      {
+        "nome": "Comitato di Guardistallo - Casale Marittimo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Incisa Valdarno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Isola D'Elba",
+        "sottosedi": [
+          "Campo Nell'Elba"
+        ]
+      },
+      {
+        "nome": "Comitato di Livorno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Lucca",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Massa Carrara",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monsummano Terme",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Montecatini Val di Cecina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Montepulciano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monterotondo Marittimo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Monte San Savino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pescia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Piombino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pisa",
+        "sottosedi": [
+          "Canneto",
+          "Litorale Pisano",
+          "San Giovanni Alla Vena"
+        ]
+      },
+      {
+        "nome": "Comitato di Pistoia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pistoia-Cireglio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pitigliano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ponte A Egola",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Pontedera ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Prato",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ravi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Ribolla",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rignano Sull' Arno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rosignano Solvay",
+        "sottosedi": [
+          "Cecina"
+        ]
+      },
+      {
+        "nome": "Comitato di San Frediano A Settimo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Giuliano Terme ODV Pontasserchio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Godenzo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Marcello Pistoiese",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Sansepolcro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Santa Luce",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di San Vincenzo",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Scandicci",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Scarlino",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Siena",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Strada In Chianti",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Suvereto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Uliveto Terme",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Venturina",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vernio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Viareggio e Versilia - ODV",
+        "sottosedi": [
+          "Ripa Di Seravezza"
+        ]
+      },
+      {
+        "nome": "Comitato di Volterra",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Piana Pistoiese",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Umbria",
+    "comitati_locali": [
+      {
+        "nome": "Comitato di Assisi",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Avigliano Umbro",
+        "sottosedi": [
+          "Amelia"
+        ]
+      },
+      {
+        "nome": "Comitato di Bastia Umbra",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Citta' di Castello",
+        "sottosedi": [
+          "Pietralunga",
+          "Umbertide"
+        ]
+      },
+      {
+        "nome": "Comitato di Corciano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Deruta Torgiano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Foligno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gualdo Tadino",
+        "sottosedi": [
+          "Nocera Umbra"
+        ]
+      },
+      {
+        "nome": "Comitato di Guardea - Alviano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Gubbio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Massa Martana",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Orvieto",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Perugia",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Spello",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Spoleto",
+        "sottosedi": [
+          "Montefalco"
+        ]
+      },
+      {
+        "nome": "Comitato di Terni",
+        "sottosedi": [
+          "Castel Giorgio",
+          "Narni",
+          "San Gemini"
+        ]
+      },
+      {
+        "nome": "Comitato di Todi",
+        "sottosedi": [
+          "Marsciano"
+        ]
+      },
+      {
+        "nome": "Comitato di Valfabbrica",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valnestore",
+        "sottosedi": []
+      }
+    ]
+  },
+  {
+    "nome": "Comitato Regionale Veneto",
+    "comitati_locali": [
+      {
+        "nome": "Comitato Basso Garda Veronese - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Basso Veronese",
+        "sottosedi": [
+          "Bovolone"
+        ]
+      },
+      {
+        "nome": "Comitato di Bardolino Baldo Garda",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Bassano Del Grappa",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Belluno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Conegliano",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Due Carrare",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Feltre",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Maserà di Padova",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Mogliano Veneto - ODV",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Padova",
+        "sottosedi": [
+          "Cittadella",
+          "Noventa Padovana",
+          "Piove Di Sacco",
+          "Trebaseleghe"
+        ]
+      },
+      {
+        "nome": "Comitato di Padova Sud",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Portogruaro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Rovigo",
+        "sottosedi": [
+          "Fratta Polesine",
+          "Lendinara",
+          "Stienta"
+        ]
+      },
+      {
+        "nome": "Comitato di San Donà di Piave",
+        "sottosedi": [
+          "Torre di Mosto"
+        ]
+      },
+      {
+        "nome": "Comitato di Schio",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Selvazzano Dentro",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Terme Euganee",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Thiene",
+        "sottosedi": [
+          "Altopiano dei Sette Comuni"
+        ]
+      },
+      {
+        "nome": "Comitato di Treviso",
+        "sottosedi": [
+          "Castelfranco Veneto",
+          "Mareno Di Piave",
+          "Nervesa Della Battaglia",
+          "Oderzo",
+          "San Biagio di Callalta",
+          "Spresiano",
+          "Susegana",
+          "Vittorio Veneto",
+          "Volpago del Montello"
+        ]
+      },
+      {
+        "nome": "Comitato di Valdagno",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Valpolicella",
+        "sottosedi": [
+          "Pescantina"
+        ]
+      },
+      {
+        "nome": "Comitato di Venezia",
+        "sottosedi": [
+          "Chioggia",
+          "Mestre",
+          "Mirano - Spinea",
+          "Noale",
+          "Riviera Del Brenta",
+          "Venezia Lido"
+        ]
+      },
+      {
+        "nome": "Comitato di Verona",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato di Vicenza",
+        "sottosedi": [
+          "Arzignano",
+          "Camisano Vicentino",
+          "Costabissara Isola Caldogno"
+        ]
+      },
+      {
+        "nome": "Comitato di Vigodarzere",
+        "sottosedi": []
+      },
+      {
+        "nome": "Comitato Est Veronese",
+        "sottosedi": []
+      }
+    ]
+  }
+]

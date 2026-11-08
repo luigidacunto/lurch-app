@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('eventi', function (Blueprint $table) {
+            $table->timestamp('candidature_staff_apertura_at')->nullable()->after('giorni_evento');
+            $table->timestamp('candidature_staff_chiusura_at')->nullable()->after('candidature_staff_apertura_at');
+            $table->uuid('candidature_staff_uuid')->nullable()->unique()->after('candidature_staff_chiusura_at');
+        });
+
+        DB::table('eventi')->select('id')->orderBy('id')->each(function ($evento) {
+            DB::table('eventi')->where('id', $evento->id)->update([
+                'candidature_staff_uuid' => (string) Str::uuid(),
+            ]);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('eventi', function (Blueprint $table) {
+            $table->dropColumn(['candidature_staff_apertura_at', 'candidature_staff_chiusura_at', 'candidature_staff_uuid']);
+        });
+    }
+};

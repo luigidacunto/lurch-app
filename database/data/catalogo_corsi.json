@@ -1,0 +1,2045 @@
+[
+    {
+        "nome": "Corso Informativo di Base in FacePainting",
+        "nome_visibile": "Corso Informativo di Base in FacePainting",
+        "codice": "FP",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/39/4b/394b86a5-93ea-43ee-994a-22b1f0b92022/fp__corso_informativo_di_base_in_facepainting_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso Informativo sull’Invecchiamento in Buona Salute",
+        "nome_visibile": "Corso Informativo sull’Invecchiamento in Buona Salute",
+        "codice": "INFO-HA",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/41/49/41491db1-6804-4823-9c72-ce3b37fb78b7/info-ha_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sulla Salute Materna e del Neonato",
+        "nome_visibile": "Corso Informativo sulla Salute Materna e del Neonato",
+        "codice": "INFO-MN",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ec/24/ec24b50e-2b5d-42fc-98d4-d31daff8e997/info-mn_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sulle Attività di Promozione alla Donazione di Sangue, Organi e Tessuti",
+        "nome_visibile": "Corso Informativo sulle Attività di Promozione alla Donazione di Sangue, Organi e Tessuti",
+        "codice": "INFO-PDSOT",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/75/94/7594be02-e453-4d4c-ab5d-2eefd8b88212/info-pdsot_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sulle Patologie Non Trasmissibili",
+        "nome_visibile": "Corso Informativo sulle Patologie Non Trasmissibili",
+        "codice": "INFO-PNT",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fa/b7/fab78106-4f34-4063-90de-d7854350584d/info-pnt_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sulla Prevenzione della Violenza in ambito salute",
+        "nome_visibile": "Corso Informativo sulla Prevenzione della Violenza in ambito salute",
+        "codice": "INFO-PREV",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f9/16/f91623a1-127b-488c-9608-61c262b23389/info-prev_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sulle Patologie Trasmissibili",
+        "nome_visibile": "Corso Informativo sulle Patologie Trasmissibili",
+        "codice": "INFO-PT",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/01/1a/011aef00-22d9-443d-b5f9-e50c91b66200/info-pt_del10824.pdf"
+    },
+    {
+        "nome": "Corso di Informazione sulla Salute in Emergenza",
+        "nome_visibile": "Corso di Informazione sulla Salute in Emergenza",
+        "codice": "INFO-SAL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/af/ad/afad3a80-9c00-4919-8a01-2c0733af1da3/info-sal_del10824.pdf"
+    },
+    {
+        "nome": "Corso Informativo sugli Eventi Traumatici",
+        "nome_visibile": "Corso Informativo sugli Eventi Traumatici",
+        "codice": "INFO-TRAUMA",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d8/41/d841aa81-e646-44c6-bea0-c7a24a6646ac/info-trauma_del10824.pdf"
+    },
+    {
+        "nome": "Integrazione al corso di formazione per Volontari CRI Online (CRIOL) sul Primo Soccorso",
+        "nome_visibile": "Integrazione al corso di formazione per Volontari CRI Online (CRIOL) sul Primo Soccorso",
+        "codice": "PS-CRI",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/11/5a/115aede7-656b-4697-bae0-a1af1fa8f7e6/ps-cri_integrazione_corso_criol_sul_primo_soccorso.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento in BLSD Sanitario",
+        "nome_visibile": "Corso di Aggiornamento in BLSD Sanitario",
+        "codice": "ABLSDS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d7/9b/d79bbeee-c6b6-4e01-8eb5-97e23e534dca/ablsds_corso_di_aggiornamento_per_esecutore_blsd_sanitario_adulto_e_pediatrico_del9225.pdf"
+    },
+    {
+        "nome": "CORSO DI AGGIORNAMENTO OPERATORE TRASPORTO SANITARIO",
+        "nome_visibile": "CORSO DI AGGIORNAMENTO OPERATORE TRASPORTO SANITARIO",
+        "codice": "AGGTS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fd/bb/fdbb5c8c-6f1c-4061-8fdb-aad07cb9784d/aggts_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "CORSO DI AGGIORNAMENTO OPERATORE TRASPORTO SANITARIO E SOCCORSO IN AMBULANZA",
+        "nome_visibile": "CORSO DI AGGIORNAMENTO OPERATORE TRASPORTO SANITARIO E SOCCORSO IN AMBULANZA",
+        "codice": "AGGTSSA",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fd/7d/fd7df049-04d7-4ac6-9c06-ab42717ee35c/aggtssa_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "Corso Di Aggiornamento Per Operatore Cri Esperto In Tecniche Di Simulazione",
+        "nome_visibile": "Corso Di Aggiornamento Per Operatore Cri Esperto In Tecniche Di Simulazione",
+        "codice": "ASIM",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b2/50/b25039a9-db1e-408e-8885-5d46fa14bea4/asim_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso di aggiornamento per Operatore CRI esperto in tecniche di trucco",
+        "nome_visibile": "Corso di aggiornamento per Operatore CRI esperto in tecniche di trucco",
+        "codice": "ATRU",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b3/d9/b3d9f43f-68a5-4fd9-8448-a115f8bd6e2b/atru_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso per esecutore BLSD Laico adulto e pediatrico",
+        "nome_visibile": "Corso per esecutore BLSD Laico adulto e pediatrico",
+        "codice": "EBLSDL",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7a/a0/7aa0c03a-07b9-41b1-8922-882f1b1c1a37/eblsdl_corso_per_esecutore_blsd_laico_adulto_e_pediatrico_del9225.pdf"
+    },
+    {
+        "nome": "Corso per Esecutore BLSD sanitario adulto e pediatrico",
+        "nome_visibile": "Corso per Esecutore BLSD sanitario adulto e pediatrico",
+        "codice": "EBLSDS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/87/3e/873eb672-1f56-415f-9f8d-983d54935cc9/eblsds_corso_per_esecutore_blsd_sanitari_adulto_e_pediatrico_del9225.pdf"
+    },
+    {
+        "nome": "Corso per Operatore per la Donazione del Sangue Organi e Tessuti",
+        "nome_visibile": "Corso per Operatore per la Donazione del Sangue Organi e Tessuti",
+        "codice": "ODSOT",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/13/62/136225ce-bf68-48eb-8563-da9fab09a08c/odsot_del_112_260621.pdf"
+    },
+    {
+        "nome": "Corso per operatore esperto in Face Painting",
+        "nome_visibile": "Corso per operatore esperto in Face Painting",
+        "codice": "OFP",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/4c/52/4c529c3d-efcc-4246-b13c-12dd29ca74f8/ofp_corso_per_operatore_cri_esperto_in_face_painting_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Operatori CRI di Educazione alla Salute e Healthy Ageing",
+        "nome_visibile": "Corso di Formazione per Operatori CRI di Educazione alla Salute e Healthy Ageing",
+        "codice": "OP-ESHA",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8c/01/8c0130cc-de2d-4b51-8562-c31fad7eb4a6/op-esha_del10824.pdf"
+    },
+    {
+        "nome": "Corso Operatore Soccorso in Ambulanza",
+        "nome_visibile": "Corso Operatore Soccorso in Ambulanza",
+        "codice": "SA",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/77/7c/777c0ac6-ab30-4400-a26d-3410471f47dd/sa_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI esperto in Tecniche di Simulazione",
+        "nome_visibile": "Corso per Operatore CRI esperto in Tecniche di Simulazione",
+        "codice": "SIM",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/32/d7/32d723b4-5b46-441d-af29-6c16011c7c71/sim_corso_per_operatore_cri_esperto_in_tecniche_di_simulazione__sim_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI esperto in Tecniche di Trucco",
+        "nome_visibile": "Corso per Operatore CRI esperto in Tecniche di Trucco",
+        "codice": "TRU",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f4/02/f402497a-8910-484d-829c-fb10d8112ccb/tru_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso per operatore Trasporto Sanitario",
+        "nome_visibile": "Corso per operatore Trasporto Sanitario",
+        "codice": "TS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/70/76/70760dad-2d68-4959-88cd-61b64009f8aa/ts_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "Corso di formazione Operatore Trasporto Sanitario e Soccorso in Ambulanza -  ciclo unico",
+        "nome_visibile": "Corso di formazione Operatore Trasporto Sanitario e Soccorso in Ambulanza – ciclo unico",
+        "codice": "TSSA",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/30/b3/30b34f86-11b8-4927-892b-99719ae7eeef/tssa_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "CORSO AGGIORNAMENTO PER TRAINER CORSO TSSA",
+        "nome_visibile": "CORSO AGGIORNAMENTO PER TRAINER CORSO TSSA",
+        "codice": "AGGTTSSA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/9c/4f/9c4f1f1c-56a5-48bf-b9e3-5de64b0bbdb7/agg_ttssa_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "Corso Aggiornamento per Trainer Manovre Salvavita",
+        "nome_visibile": "Corso Aggiornamento per Trainer Manovre Salvavita",
+        "codice": "ATMS",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/81/59/815942ee-6223-4ef7-ae64-9945b54fd87b/atms_corso_aggiornamento_trainer_manovre_salvavita.pdf"
+    },
+    {
+        "nome": "Corso Conversione Istruttori BLSD altre società in Trainer Manovre Salva vita CRI",
+        "nome_visibile": "Corso Conversione Istruttori BLSD altre società in Trainer Manovre Salva vita CRI",
+        "codice": "CTMS",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/33/e6/33e60801-2b46-4a5b-893e-906503183dab/ctms_corso_conversione_istruttori_blsd_altre_societa_del_121_del_18-11-22.pdf"
+    },
+    {
+        "nome": "Corso per Monitore CRI di Assistenza al Malato e all’Anziano e per Caregiver",
+        "nome_visibile": "Corso per Monitore CRI di Assistenza al Malato e all’Anziano e per Caregiver",
+        "codice": "MON-AMACG",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b2/5f/b25fc7ab-d206-418d-82c4-5a16b03d1fa4/mon-amacg_corso_per_monitore_cri_ama_-_caregiver_del_2025_24-01-25.pdf"
+    },
+    {
+        "nome": "Corso per Monitore CRI di Primo Soccorso e Prevenzione Infortuni",
+        "nome_visibile": "Corso per Monitore CRI di Primo Soccorso e Prevenzione Infortuni",
+        "codice": "MON-PS",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3f/fc/3ffc6a57-b446-487f-9449-e7f31903b7df/mon-ps_corso_per_monitore_cri_ps_del_2025_24-01-25_4.pdf"
+    },
+    {
+        "nome": "Corso informativo per Responsabili Sanitari CRI",
+        "nome_visibile": "Corso informativo per Responsabili Sanitari CRI",
+        "codice": "RSCRI",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a9/0d/a90ddafe-71bf-452b-bc65-9b0f40127d7e/rscri_corso_informativo_per_responsabili_sanitari_cri_del_83_22-7-22.pdf"
+    },
+    {
+        "nome": "Corso Trainer Manovre Salvavita Adulto e Pediatrico",
+        "nome_visibile": "Corso Trainer Manovre Salvavita Adulto e Pediatrico",
+        "codice": "TMSAP",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7d/f1/7df1f5c6-9cf0-4b45-84bb-aee9b0e9a8fb/tmsap_corso_trainer_manovre_salvavita_adulto_e_pediatrico.pdf"
+    },
+    {
+        "nome": "Corso per Trainer Simulatore",
+        "nome_visibile": "Corso per Trainer Simulatore",
+        "codice": "TSIM",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ca/82/ca821863-fe40-4c00-9ce1-d70f23dc5547/tsim_corso_per_trainer_simulatore__tsim_del_n44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso per Trainer Truccatore",
+        "nome_visibile": "Corso per Trainer Truccatore",
+        "codice": "TTRU",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c4/68/c46899b4-6a8e-401f-a883-8124af53fdd6/ttru_corso_per_trainer_truccatore_del_n_44_del_27_marzo_2025.pdf"
+    },
+    {
+        "nome": "Corso di formazione Trainer Trasporto Sanitario e Soccorso in Ambulanza",
+        "nome_visibile": "Corso di formazione Trainer Trasporto Sanitario e Soccorso in Ambulanza",
+        "codice": "TTSSA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fd/ae/fdaea6fe-050a-49da-9c0f-c549393b0370/ttssa_provv_81_2-4-26.pdf"
+    },
+    {
+        "nome": "Corso Formatore Salute",
+        "nome_visibile": "Corso Formatore Salute",
+        "codice": "FSAL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c6/73/c67352f2-6bc1-4f19-9b1b-9bdc34af6870/fsal_corso_di_formazione_per_formatore_salute_del_109_23-11-2024.pdf"
+    },
+    {
+        "nome": "Aggiornamento formazione in Materia di Salute e Sicurezza per Volontari CRI",
+        "nome_visibile": "Aggiornamento formazione in Materia di Salute e Sicurezza per Volontari CRI",
+        "codice": "AGGSICC",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d6/48/d6483892-dd85-47d0-90b0-935265fd972b/aggsicc_aggiornamento_formazione_in_materia_di_sicurezza_del_4123_17-03-2023.pdf"
+    },
+    {
+        "nome": "Corso di Informazione e Formazione In materia di Salute e Sicurezza per Volontari CRI",
+        "nome_visibile": "Corso di Informazione e Formazione In materia di Salute e Sicurezza per Volontari CRI",
+        "codice": "SICC",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/14/70/14701ae8-80a2-4938-b962-f7a3038a44ac/sicc_del4123_17-03-2023.pdf"
+    },
+    {
+        "nome": "Aggiornamento Formazione Dirigenti",
+        "nome_visibile": "Aggiornamento Formazione Dirigenti",
+        "codice": "AGGSICDIR",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/2b/8c/2b8c0674-f0c2-4683-8cda-55bd8f5b8ee5/aggsicdir_aggiornamento_formazione_dirigenti_del9225.pdf"
+    },
+    {
+        "nome": "Aggiornamento Formazione Preposti",
+        "nome_visibile": "Aggiornamento Formazione Preposti",
+        "codice": "AGGSICPRE",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c1/e5/c1e55dec-40cd-4df0-938c-ad6d6dee9a92/aggsicpre_aggiornamento_formazione_preposti_del9225.pdf"
+    },
+    {
+        "nome": "Corso di formazione per Dirigenti in materia di Salute e Sicurezza",
+        "nome_visibile": "Corso di formazione per Dirigenti in materia di Salute e Sicurezza",
+        "codice": "SICDIR",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e4/45/e445ac39-b1d0-47a3-89bf-d97c36ffa243/sicdir_corso_di_formazione_per_dirigenti_in_materia_di_salute_e_sicurezza_del9225.pdf"
+    },
+    {
+        "nome": "Corso di formazione per Preposti in materia di Salute e Sicurezza",
+        "nome_visibile": "Corso di formazione per Preposti in materia di Salute e Sicurezza",
+        "codice": "SICPRE",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/47/8a/478a069b-313c-4c26-8a53-be351a4623cb/sicpre_corso_di_formazione_per_preposti_in_materia_di_salute_e_sicurezza_del9225.pdf"
+    },
+    {
+        "nome": "Corso di aggiornamento per istruttori in materia di salute e sicurezza per volontari CRI",
+        "nome_visibile": "Corso di aggiornamento per istruttori in materia di salute e sicurezza per volontari CRI",
+        "codice": "AGGISIC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8e/99/8e99a7fe-48c7-4b96-9e50-75ff44e33019/aggsic_aggiornamento_istruttori_salute_e_sicurezza.pdf"
+    },
+    {
+        "nome": "Corso di formazione per istruttore in materia di salute e sicurezza per volontari CRI",
+        "nome_visibile": "Corso di formazione per istruttore in materia di salute e sicurezza per volontari CRI",
+        "codice": "ISIC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/26/8a/268a2ef8-b8b7-4d0e-a906-e01bbbdb22eb/corso_istruttore_in_materia_di_salute_e_sicurezza_per_volontari_cri_isic_del_121_del_18-11-22.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento Formatore CRI in materia di salute e sicurezza",
+        "nome_visibile": "Corso di Aggiornamento Formatore CRI in materia di salute e sicurezza",
+        "codice": "AGGFSIC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/21/f7/21f7d189-dfff-4332-9908-053d22d0fab8/aggfsic_aggiornamento_formatore_cri_in_materia_di_salute_e_sicurezza_del6019_nuovo_format.pdf"
+    },
+    {
+        "nome": "Corso per Formatore CRI in materia di salute e Sicurezza",
+        "nome_visibile": "Corso per Formatore CRI in materia di salute e Sicurezza",
+        "codice": "FSIC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a1/8d/a18dcf89-0ec4-450f-94e2-fe3dd14e5e5f/fsic_formatore_salute_e_sicurezza_provv_pn_n_166__del_15-09-2025.pdf"
+    },
+    {
+        "nome": "Corso di equipollenza per istruttori in materia di salute e sicurezza per volontari CRI",
+        "nome_visibile": "Corso di equipollenza per istruttori in materia di salute e sicurezza per volontari CRI",
+        "codice": "IESIC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b7/e1/b7e1812e-8c8f-4984-b45b-68eb871ff7ad/iesic_corso_di_equipollenza_per_istruttori_in_materia_di_salute_e_sicurezza_per_volontari_cri_del_63_10-03-2"
+    },
+    {
+        "nome": "Corso Informativo di base per lo sviluppo di attività a contrasto delle Solitudini Involontarie",
+        "nome_visibile": "Corso Informativo di base per lo sviluppo di attività a contrasto delle Solitudini Involontarie",
+        "codice": "ACSI",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c6/e0/c6e0c89c-53b2-456b-b716-8e16068a6b6d/acsi_corso_informativo_solitudini_involontarie_prov_138_23.pdf"
+    },
+    {
+        "nome": "Corso informativo di base per Delegati Tecnici Area Sociale",
+        "nome_visibile": "Corso informativo di base per Delegati Tecnici Area Sociale",
+        "codice": "DTAS",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7e/22/7e223154-5fe1-4fcb-98e2-be1eb0e531bd/dtas_corso_informativo_di_base_per_delegati_tecnici_area_sociale_provv_81_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso informativo di base \"I-Care\"",
+        "nome_visibile": "Corso informativo di base \"I-Care\"",
+        "codice": "IC",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8b/2e/8b2e2750-ca9b-4b88-b07d-fc1e7cbbccbd/ic_corso_i_care_del_n_112_del_6_agosto_2025.pdf"
+    },
+    {
+        "nome": "Corso informativo di base per la campagna Meet Test and Treat",
+        "nome_visibile": "Corso informativo di base per la campagna Meet Test and Treat",
+        "codice": "MTT",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/30/8a/308a970c-adca-4b58-89c8-400248dd66ff/mtt_corso_informativo_per_le_attivita_della_campagna_mtt_provv_81_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso informativo di base per Psicologi del Servizio Psicosociale",
+        "nome_visibile": "Corso informativo di base per Psicologi del Servizio Psicosociale",
+        "codice": "PSEP",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b3/ff/b3ff8b97-9838-4097-a3f0-db00abb4ab22/psep_corso_informativo_di_base_per_psicologi_del_servizio_psicosociale_provv_81_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso informativo di base per Tecnici del Servizio Psicosociale",
+        "nome_visibile": "Corso informativo di base per Tecnici del Servizio Psicosociale",
+        "codice": "TSEP",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/53/ba/53ba049b-d00c-4e5d-a5d1-e54cd0876f23/tsep_corso_informativo_di_base_per_tecnici_del_servizio_psicosociale_provv_81_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI specializzato in attività di Clowning con anziani con Demenza – Percorso Rossini",
+        "nome_visibile": "Corso per Operatore CRI specializzato in attività di Clowning con anziani con Demenza – Percorso Rossini",
+        "codice": "OCD",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3b/c1/3bc1b177-3661-468b-bad1-89a822cd9fbd/scheda_ocd_rossini-clown_e_demenza.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Del Sorriso",
+        "nome_visibile": "Corso per Operatore Del Sorriso",
+        "codice": "ODS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/08/62/0862d14e-c688-4d7a-9e15-de924059ea10/ods_operatore_del_sorriso_del_n_112_del_6_agosto_2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI Psicosociale",
+        "nome_visibile": "Corso per Operatore CRI Psicosociale",
+        "codice": "OPS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/4f/50/4f5044d1-c4e9-46df-988e-7c977a410fd2/ops_operatore_cri_psicosociale_del_n_112_del_6_agosto_2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI specializzato in persone Senza Dimora",
+        "nome_visibile": "Corso per Operatore CRI specializzato in persone Senza Dimora",
+        "codice": "OPSD",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/85/bf/85bf5663-7518-4f0d-9a67-41581b4c10c2/opsd_operatore_cri_specializzato_in_persone_senza_dimora_del_n_112_6-8-2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI specializzato in attività di Sportello sociale",
+        "nome_visibile": "Corso per Operatore CRI specializzato in attività di Sportello sociale",
+        "codice": "OPSP",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/2f/da/2fda0883-e42c-4175-982e-d80863bd2f29/opsp_operatore_cri_specializzato_in_attivita_di_sportello_sociale_del_n_112_del_6-8-2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Sociale",
+        "nome_visibile": "Corso per Operatore Sociale",
+        "codice": "OS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ab/27/ab273043-af5c-4119-acc4-f3b2be352eec/os_operatore_sociale_del_n_112_del_6_-8-2025.pdf"
+    },
+    {
+        "nome": "Corso per Operatore sociale CRI specializzato nelle Dipendenze",
+        "nome_visibile": "Corso per Operatore sociale CRI specializzato nelle Dipendenze",
+        "codice": "OSD",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8e/6a/8e6a60c0-6245-4224-8778-1cb5d03ecebd/osd_operatore_sociale_cri_specializzato_nelle_dipendenze_del_n_112_del_6-8-2025.pdf"
+    },
+    {
+        "nome": "OPERATORE SOCIALE CRI – Aggiornamento equipollenza per Infermiere Volontarie della CRI",
+        "nome_visibile": "OPERATORE SOCIALE CRI – Aggiornamento equipollenza per Infermiere Volontarie della CRI",
+        "codice": "OSIV",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/96/a9/96a9ffad-c90a-4311-9460-84f001bba86a/osiv_operatore_sociale___agg_iivv_del_n_112_del_6-8-2025.pdf"
+    },
+    {
+        "nome": "Corso per Coordinatore di Attività di Clownerie",
+        "nome_visibile": "Corso per Coordinatore di Attività di Clownerie",
+        "codice": "CAC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/13/94/1394ef36-1701-441d-b0f1-3e0abf9c5566/cac_corso_coordinatore_cri_attivita_clownerie.pdf"
+    },
+    {
+        "nome": "Corso per Coordinatore delle attività di Sportello sociale",
+        "nome_visibile": "Corso per Coordinatore delle attività di Sportello sociale",
+        "codice": "COSP",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/78/b0/78b0aaf3-2f47-4740-978d-221fc88aed43/cosp_corso_coordinatore_cri_sportello_sociale_provv_81_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso Operatore Specializzato in Inclusione Lavorativa",
+        "nome_visibile": "Corso Operatore Specializzato in Inclusione Lavorativa",
+        "codice": "OSIL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/01/6b/016b33a5-4fa5-4127-bf7e-c7481c2d6537/osil_corso_per_operatore_specializzato_in_inclusione_lavorativa_del_28_del_03-03-26.pdf"
+    },
+    {
+        "nome": "Corso per Trainer di Attività Sociali",
+        "nome_visibile": "Corso per Trainer di Attività Sociali",
+        "codice": "TAS",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/17/0e/170e82e2-1297-4a2b-a2b2-b068ff06794b/tas_trainer_di_attivita_sociali_del_41_del_17_marzo_2023.pdf"
+    },
+    {
+        "nome": "Modulo Certificazione Sicurezza Acquatica",
+        "nome_visibile": "Modulo Certificazione Sicurezza Acquatica",
+        "codice": "CSA",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/28/72/2872d8f7-07fa-4b4e-a32b-4e1975730762/csa_modulo_certificazione_sicurezza_acquatica_17_del_090221.pdf"
+    },
+    {
+        "nome": "Corso per Operatore specializzato per la Riduzione del Rischio da Disastri e Adattamento ai Cambiamenti Climatici",
+        "nome_visibile": "Corso per Operatore specializzato per la Riduzione del Rischio da Disastri e Adattamento ai Cambiamenti Climatici",
+        "codice": "DRRCCA",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7f/d5/7fd50be6-b343-4881-b867-3a94deeb963b/corso_per_operatore_per_la_riduzione_del_rischio_da_disastri_e_adattamento_ai_cambiamenti_climatici.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI di attività di Emergenza",
+        "nome_visibile": "Corso per Operatore CRI di attività di Emergenza",
+        "codice": "OPEM",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/bb/1f/bb1f6afc-8f45-4647-83c9-62856377d799/opem_operatore_cri_si_attivita_in_emergenza_del9225_rev_21_10_2025.pdf"
+    },
+    {
+        "nome": "CORSO DI AGGIORNAMENTO (MANTENIMENTO QUALIFICA) PER OPERATORE CRI DI ATTIVITÀ IN EMERGENZA",
+        "nome_visibile": "CORSO DI AGGIORNAMENTO (MANTENIMENTO QUALIFICA) PER OPERATORE CRI DI ATTIVITÀ IN EMERGENZA",
+        "codice": "OPEM- AGGIORNAMENTO",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c6/c0/c6c0b82f-7a3a-4a95-9552-ad8680bfbfd7/aggiornamento_opem_operatore_cri_attivita_in_emergenza_del10222.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Polivalente Salvataggio in acqua",
+        "nome_visibile": "Corso per Operatore Polivalente Salvataggio in acqua",
+        "codice": "OPSA_BASE",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7f/1f/7f1f61fa-09fe-4c4e-861f-d3ea36bdcdf0/opsa-base__operatore_polivalente_di_salvataggio_in_acqua_del155_del_161021.pdf"
+    },
+    {
+        "nome": "Operatore Telecomunicazioni",
+        "nome_visibile": "Operatore Telecomunicazioni",
+        "codice": "TLC 1",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/69/4a/694a2ff9-fa77-4f42-a7a7-fae354b35b16/tlc-1_operatore_tlc_del_156_del_161021_ok.pdf"
+    },
+    {
+        "nome": "OPERATORE CINOFILO CRI",
+        "nome_visibile": "OPERATORE CINOFILO CRI",
+        "codice": "UC-OC",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a0/f3/a0f3c6ba-807b-4b89-bb5f-569a6832d4e8/ucoc_delibera_133.pdf"
+    },
+    {
+        "nome": "CORSO DI AGGIORNAMENTO PER COORDINATORE CRI DI ATTIVITÀ IN EMERGENZA",
+        "nome_visibile": "CORSO DI AGGIORNAMENTO PER COORDINATORE CRI DI ATTIVITÀ IN EMERGENZA",
+        "codice": "ACAE",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ff/93/ff932dbd-ee7a-49ca-91cd-82ccb90239d3/aggiornamento_cae_corso_coordinatore_cri_attivita_in_emergenza_del10222.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore Polivalente Salvataggio in acqua",
+        "nome_visibile": "Operatività per Operatore Polivalente Salvataggio in acqua",
+        "codice": "AOPSA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/44/9c/449c97ca-3081-4c3f-8811-c9645ccf7934/aopsa_op_pol_di_salvataggio_in_acqua_operativita_opsa-base_del_155_del_161021.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore Polivalente Salvataggio in acqua Conduttore Mezzi Navali",
+        "nome_visibile": "Operatività per Operatore Polivalente Salvataggio in acqua Conduttore Mezzi Navali",
+        "codice": "AOPSACMN",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/cc/15/cc15861b-f3c0-4aa0-a983-0dac2e537bb1/aopsacmn_operatore_polivalente_di_salvataggio_in_acqua_operativita_del155_del_161021.pdf"
+    },
+    {
+        "nome": "Aggiornamento Operatore SMTS BASE – MANTENIMENTO QUALIFICA E OPERATIVITÀ ANNUALE",
+        "nome_visibile": "Aggiornamento Operatore SMTS BASE – MANTENIMENTO QUALIFICA E OPERATIVITÀ ANNUALE",
+        "codice": "ASMTS",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6b/48/6b48592a-34ee-476d-ba55-c8da462aad58/operativita_annuale_per_il_mantenimento_della_qualifica_smts_base_del10222.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione per operatore di supporto ristorazione in emergenza",
+        "nome_visibile": "Corso di specializzazione per operatore di supporto ristorazione in emergenza",
+        "codice": "ASP-C",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/36/07/36070f04-65a8-42b9-8f92-7295d498e975/asp-c_operatore_di_supporto_ristorazione_in_emergenza_1.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale II Livello",
+        "nome_visibile": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale II Livello",
+        "codice": "AUCACASII",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e1/09/e109216e-a11e-4305-8701-d3bc629f10c9/riqualifica_annuale_ucas_ii_-_aucacasii.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale I Livello Manifestazioni",
+        "nome_visibile": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale I Livello Manifestazioni",
+        "codice": "AUCACASIM",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/9c/d6/9cd69cfe-db15-4d50-81ac-2bee9f26f8eb/aucacasim_opcinofilo_riqualifica_annuale_ucas_i_manifestazioni.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale I Livello Manifestazioni ed Esibizioni",
+        "nome_visibile": "Operatività per Operatore CRI Specializzato in Attività Cinofile Assistite per il Sociale I Livello Manifestazioni ed Esibizioni",
+        "codice": "AUCACASIME",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/06/0c/060cf6c6-471a-4714-a8d4-3a27eff47af5/riqualifica_annuale_ucas_i_manifestazioni_ed_esibizioni_-_aucacasime.pdf"
+    },
+    {
+        "nome": "Operatività per Operatore Cinofilo CRI Specializzazione in Ricerca e Soccorso in Superficie e Macerie",
+        "nome_visibile": "Operatività per Operatore Cinofilo CRI Specializzazione in Ricerca e Soccorso in Superficie e Macerie",
+        "codice": "AUCSMSUP",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/15/c1/15c10981-92bc-4a60-bb90-99ba7bf7d210/aucsmsup_op_cinofilo_riqualifica_annuale_uc_smsup_-.pdf"
+    },
+    {
+        "nome": "Corso per Coordinatore delle Attività di Emergenza",
+        "nome_visibile": "Corso per Coordinatore delle Attività di Emergenza",
+        "codice": "CAE",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fa/d9/fad97eac-72e9-40da-bd9c-9902b0ab2bcb/cae_corso_coordinatore_cri_attivita_in_emergenza_del10222.pdf"
+    },
+    {
+        "nome": "Corso per Operatore di sala operativa",
+        "nome_visibile": "Corso per Operatore di sala operativa",
+        "codice": "CSP-A",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6c/ff/6cff3de2-00bc-4763-beea-8e6f95cdafee/csp_a_corso_per_operatore_sala_operativa.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Specializzato CRI in logistica in emergenza",
+        "nome_visibile": "Corso per Operatore Specializzato CRI in logistica in emergenza",
+        "codice": "CSP-D",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a8/00/a8000c7d-fc15-4fd5-9f1b-45b5e3425131/csp-d_corso_per_operatore_specializzato__in_logistica.pdf"
+    },
+    {
+        "nome": "Corso per Istruttore di Protezione Civile",
+        "nome_visibile": "Corso per Istruttore di Protezione Civile",
+        "codice": "IPC01",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/78/b9/78b927e2-55a2-4600-9dbf-b8cba8af3274/ipc01_corso_per_istruttore_di_protezione_civile_rev_003_30082022.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Salvataggio in Acque Vive I livello",
+        "nome_visibile": "Corso per Operatore Salvataggio in Acque Vive I livello",
+        "codice": "OPSAAV1",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/da/e6/dae61e59-3f7f-4e74-ac52-a240e0f8fe38/opsa_av1_corso_operatore_acque_vive_i_livello.pdf"
+    },
+    {
+        "nome": "Corso per Operatore Salvataggio in Acque Vive II livello",
+        "nome_visibile": "Corso per Operatore Salvataggio in Acque Vive II livello",
+        "codice": "OPSAAV2",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8b/c5/8bc5c4e3-f5d5-416d-ac0d-b4a3bc144fe9/opsa_av2_corso_operatore_acque_vive_ii_livello.pdf"
+    },
+    {
+        "nome": "Corso per OPSA Conduttore di Moto d’Acqua",
+        "nome_visibile": "Corso per OPSA Conduttore di Moto d’Acqua",
+        "codice": "OPSACMA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Modulo per Opsa ambiente alluvionale",
+        "nome_visibile": "Modulo per Opsa ambiente alluvionale",
+        "codice": "OPSA MAA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/95/f1/95f1a770-0032-42be-bbcc-99852d925213/opsa_maa_modulo_ambiente_alluvionale.pdf"
+    },
+    {
+        "nome": "Corso per OPSA Operatore di Moto d’Acqua",
+        "nome_visibile": "Corso per OPSA Operatore di Moto d’Acqua",
+        "codice": "OPSAOMA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso per Operatore Sociale CRI in Emergenza",
+        "nome_visibile": "Corso per Operatore Sociale CRI in Emergenza",
+        "codice": "OPSOCEM",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/29/44/2944725a-496b-4d71-9380-3f374e1f785f/opsocem_corso_per_operatore_sociale_cri_specializzato_in_emergenza.pdf"
+    },
+    {
+        "nome": "OPERATORE SMTS BASE",
+        "nome_visibile": "OPERATORE SMTS BASE",
+        "codice": "SMTS_BASE",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d3/de/d3de3a74-39d3-4fd0-bc3d-6b01472bf59e/corso_per_operatore_di_soccorsi_con_mezzi_e_tecniche_speciali_base__smtsbase_del10222.pdf"
+    },
+    {
+        "nome": "UNITÀ CINOFILA SPECIALIZZATA IN ESIBIZIONI",
+        "nome_visibile": "UNITÀ CINOFILA SPECIALIZZATA IN ESIBIZIONI",
+        "codice": "UC-ESI",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a5/51/a551b9e9-82fb-4096-a534-6bcff724cfcd/uc-esi_delibera_133.pdf"
+    },
+    {
+        "nome": "UNITÀ CINOFILA SPECIALIZZATA RICERCA E SOCCORSO SU MACERIE",
+        "nome_visibile": "UNITÀ CINOFILA SPECIALIZZATA RICERCA E SOCCORSO SU MACERIE",
+        "codice": "UC-MAC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/79/cc/79ccc6ff-4fc2-40a9-ba53-6136c29b84f9/uc-mac_delibera_133.pdf"
+    },
+    {
+        "nome": "UNITÀ CINOFILA SPECIALIZZATA IN MANIFESTAZIONI",
+        "nome_visibile": "UNITÀ CINOFILA SPECIALIZZATA IN MANIFESTAZIONI",
+        "codice": "UC-MAN",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/be/75/be75ef34-f70a-4ca8-b68f-974dbb1ceac5/uc-man_delibera_133.pdf"
+    },
+    {
+        "nome": "UNITÀ CINOFILA SPECIALIZZATA RICERCA E SOCCORSO IN SUPERFICIE",
+        "nome_visibile": "UNITÀ CINOFILA SPECIALIZZATA RICERCA E SOCCORSO IN SUPERFICIE",
+        "codice": "UC-SUP",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ba/d8/bad81cc6-cc66-4a18-aa74-5336b8a9c536/uc-sup_delibera_133.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento Alta Specializzazione Operatore CBRN - OPERATIVITÀ BIENNALE",
+        "nome_visibile": "Corso di Aggiornamento Alta Specializzazione Operatore CBRN – OPERATIVITÀ BIENNALE",
+        "codice": "AASCBRN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e8/24/e824fe8f-e14d-470f-a84d-57ca12ebb84d/corso_di_aggiornamento_alta_specializzazione_operatore_cbrn_-_operativita_biennale.pdf"
+    },
+    {
+        "nome": "Aggiornamento Corso di Alta Specializzazione abilitante alla Conduzione di Moto Slitta",
+        "nome_visibile": "Aggiornamento Corso di Alta Specializzazione abilitante alla Conduzione di Moto Slitta",
+        "codice": "Aggiornamento ASCMS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d1/ae/d1ae6579-8022-442a-9085-988ee9a4a46c/aggiornamento_ascms_delibera_133.pdf"
+    },
+    {
+        "nome": "AGGIORNAMENTO Corso di Alta Specializzazione in OPERATORE Soccorso PISTE DA SCI E TERRENO INNEVATO",
+        "nome_visibile": "AGGIORNAMENTO Corso di Alta Specializzazione in OPERATORE Soccorso PISTE DA SCI E TERRENO INNEVATO",
+        "codice": "AGGIORNAMENTO_ASSPS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/cd/d0/cdd0a66f-6980-46e4-baee-4e87b77b4e2a/mod-030-for-schedacorso_aggiornamento_assps_rev_09_12_2024.pdf"
+    },
+    {
+        "nome": "Aggiornamento per Operatori Biocontenimento",
+        "nome_visibile": "Aggiornamento per Operatori Biocontenimento",
+        "codice": "ARSP",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/58/59/585936ad-0dc3-418e-8607-b3f18c928e5c/arsp_aggiornamento_operatori_rsp.pdf"
+    },
+    {
+        "nome": "CORSO DI ALTA SPECIALIZZAZIONE per OPERATORE CBRN CRI",
+        "nome_visibile": "CORSO DI ALTA SPECIALIZZAZIONE per OPERATORE CBRN CRI",
+        "codice": "ASCBRN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e7/1f/e71fb492-5d5a-4771-a938-9e5277d80531/corso_di_alta_specializzazione_per_operatore_cbrn_cri.pdf"
+    },
+    {
+        "nome": "CORSO DI ALTA SPECIALIZZAZIONE per OPERATORE CBRN LOGISTA",
+        "nome_visibile": "CORSO DI ALTA SPECIALIZZAZIONE per OPERATORE CBRN LOGISTA",
+        "codice": "ASCBRNL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b4/42/b442d38f-132e-4721-b122-18868af9444a/corso_di_alta_specializzazione_per_operatore_cbrn_logista.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione abilitante alla Conduzione di Moto Slitta",
+        "nome_visibile": "Corso di Alta Specializzazione abilitante alla Conduzione di Moto Slitta",
+        "codice": "ASCMS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/33/87/33874300-7b19-47d2-ba9d-4808bfb4733e/ascms_delibera_133.pdf"
+    },
+    {
+        "nome": "Corso per Emergency Manager",
+        "nome_visibile": "Corso per Emergency Manager",
+        "codice": "ASEM",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso Operatore CRI Specializzato in soccorso su Terreno Innevato",
+        "nome_visibile": "Corso Operatore CRI Specializzato in soccorso su Terreno Innevato",
+        "codice": "ASOTI",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ea/24/ea249bfe-a8fd-497e-9964-7c34688e4bdb/corso_di_alta_specializzazione_per_operatore_terreno_innevato_asoti_del10222.pdf"
+    },
+    {
+        "nome": "Corso Operatore CRI Specializzato Soccorso su Piste da Sci e Terreno Innevato",
+        "nome_visibile": "Corso Operatore CRI Specializzato Soccorso su Piste da Sci e Terreno Innevato",
+        "codice": "ASSPS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/42/95/4295561e-b816-491c-999a-361b499a61f4/corso_di_alta_specializzazione_per_operatore_soccorso_piste_da_sci_e_terreno_innevato_assps_del10222.pdf"
+    },
+    {
+        "nome": "Corso di alta specializzazione in Trainer Soccorso Piste da Sci e terreno innevato",
+        "nome_visibile": "Corso di alta specializzazione in Trainer Soccorso Piste da Sci e terreno innevato",
+        "codice": "AS_TSPS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7b/39/7b39f560-4064-43cb-a172-98354d63d1a1/as_tsps_delibera_133_2.pdf"
+    },
+    {
+        "nome": "Corso di alta specializzazione per Specialista WASH 1 - pulizia, igiene, disinfezione in emergenza",
+        "nome_visibile": "Corso di alta specializzazione per Specialista WASH 1 – pulizia, igiene, disinfezione in emergenza",
+        "codice": "CASP-I",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/df/4d/df4d725e-abde-44a8-b029-a09f30c75579/casp-i__pulizia_igiene_e_disinfezione_in_emergenza.pdf"
+    },
+    {
+        "nome": "Corso di alta specializzazione per Specialista WASH 2 -  acqua potabile in emergenza",
+        "nome_visibile": "Corso di alta specializzazione per Specialista WASH 2 – acqua potabile in emergenza",
+        "codice": "CASP-M",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/53/f9/53f983ee-5919-4791-8cb2-a377b09ec8d3/casp-m_acqua_potabile_in_emergenza.pdf"
+    },
+    {
+        "nome": "Corso per Camp Management",
+        "nome_visibile": "Corso per Camp Management",
+        "codice": "CASP-O",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso di Alta Specializzazione in Coordinamento CBRN",
+        "nome_visibile": "Corso di Alta Specializzazione in Coordinamento CBRN",
+        "codice": "CBRN_COORD",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/fb/c8/fbc8df0c-6070-4eed-94f7-1fc1a8a1b5be/cbrn_coord_corso_alta_specializzazione_in_coordinamento_cbrn.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione in dispositivi di protezione individuale",
+        "nome_visibile": "Corso di Alta Specializzazione in dispositivi di protezione individuale",
+        "codice": "CBRN_DPI",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5b/a1/5ba1c643-874c-4fa0-81a2-92f644c15295/cbrn_dpi_corso_alta_specializzazione_in_dpi.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione Rischio Radio Nucleare",
+        "nome_visibile": "Corso di Alta Specializzazione Rischio Radio Nucleare",
+        "codice": "CBRN_RN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/96/b8/96b884c8-c6aa-43ae-b721-88c06981725d/cbrn_rn_corso_alta_specializzazione_rischio_radionucleare.pdf"
+    },
+    {
+        "nome": "Corso per Operatori Specializzato CRI in team building",
+        "nome_visibile": "Corso per Operatori Specializzato CRI in team building",
+        "codice": "CSP-J",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/04/ca/04ca2411-8be9-4944-98bb-0514f8760731/csp-j_corso_per_operatore_specializzato_in_team_building_1_1.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione Operatori di Biocontenimento Reparto di Sanità Pubblica",
+        "nome_visibile": "Corso di Alta Specializzazione Operatori di Biocontenimento Reparto di Sanità Pubblica",
+        "codice": "RSP",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d7/74/d7749ce1-7acd-44b0-8d14-96842d4bba76/rsp_corso_alta_specializzazione_biocontenimento.pdf"
+    },
+    {
+        "nome": "Corso Alta Specializzazione per abilitazione al RSP Riservato ad operatori CBRN - Reparto di Sanità Pubblica",
+        "nome_visibile": "Corso Alta Specializzazione per abilitazione al RSP Riservato ad operatori CBRN – Reparto di Sanità Pubblica",
+        "codice": "RSP CBRN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/24/40/2440b55e-f6d3-433d-b9dd-c8504ee6ade4/rsp_cbrn_corso_alta_specializzazione_cbrn_in_rsp.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione in Biocontenimento per Sanitari (medici/infermieri) Reparto di Sanità Pubblica",
+        "nome_visibile": "Corso di Alta Specializzazione in Biocontenimento per Sanitari (medici/infermieri) Reparto di Sanità Pubblica",
+        "codice": "RSP_SAN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/95/af/95afe2f2-530e-4b28-8fcb-2bf1123c1237/rsp_san_corso_alta_specializzazione__rsp_sanitari.pdf"
+    },
+    {
+        "nome": "CORSO di Alta Specializzazione in TRAINER Cinofilo",
+        "nome_visibile": "CORSO di Alta Specializzazione in TRAINER Cinofilo",
+        "codice": "TC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f7/79/f779c35d-ef59-4bf1-8679-2e2f2fab188d/corso_di_alta_specializzazione_in_trainer_cinofilo_tc_del10222.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione in Trainer CBRN",
+        "nome_visibile": "Corso di Alta Specializzazione in Trainer CBRN",
+        "codice": "TCBRN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/9e/c0/9ec0d1c2-2e47-4c97-8734-18cd6d846d25/corso_di_alta_specializzazione_in_trainer_cbrn_tcbrn_del10222.pdf"
+    },
+    {
+        "nome": "Specialista Telecomunicazioni",
+        "nome_visibile": "Specialista Telecomunicazioni",
+        "codice": "TLC 2",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/de/3c/de3c493e-9704-4434-90f5-2f78d80fb64b/tlc-2_specialista_tlc_del_156_del_161021.pdf"
+    },
+    {
+        "nome": "CORSO di Alta Specializzazione per ISTRUTTORE TELECOMUNICAZIONI",
+        "nome_visibile": "CORSO di Alta Specializzazione per ISTRUTTORE TELECOMUNICAZIONI",
+        "codice": "TLC 3",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3d/4e/3d4e713f-1cab-408a-9230-7672aeec38e0/corso_di_alta_specializzazione_in_istruttore_tlc_tlc3_del10222.pdf"
+    },
+    {
+        "nome": "CORSO per TRAINER OPSA",
+        "nome_visibile": "CORSO per TRAINER OPSA",
+        "codice": "TOPSA",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c6/fb/c6fbdf97-f885-49d2-ac5c-72ed207ed6ad/scheda_corso_pertrainer_opsa_v2_7_def_22-04-2026_2.pdf"
+    },
+    {
+        "nome": "CORSO di Alta Specializzazione in TRAINER REPARTO SANITÀ PUBBLICA",
+        "nome_visibile": "CORSO di Alta Specializzazione in TRAINER REPARTO SANITÀ PUBBLICA",
+        "codice": "TRSP",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/70/a7/70a7d9e3-39a4-4d22-9c95-a0ca78115aae/corso_di_alta_specializzazione_in_trainer_rsp_trsp_del10222.pdf"
+    },
+    {
+        "nome": "Corso Alta Specializzazione per abilitazione a Trainer RSP riservato a Trainer/Formatori  CBRN",
+        "nome_visibile": "Corso Alta Specializzazione per abilitazione a Trainer RSP riservato a Trainer/Formatori CBRN",
+        "codice": "TRSP_TCBRN",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/73/e0/73e060c5-3580-4c07-97cc-5d5df459876d/trsp_tcbrn_corso_alta_specializzazionein_trainer_cbrn_in__rsp.pdf"
+    },
+    {
+        "nome": "Corso per Trainer di Soccorso con Mezzi e Tecniche Speciali",
+        "nome_visibile": "Corso per Trainer di Soccorso con Mezzi e Tecniche Speciali",
+        "codice": "TSMTS_BASE",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a9/6e/a96e71ce-0251-4639-a293-93519af20987/corso_di_alta_specializzazione_in_trainer_smts_base_del10222.pdf"
+    },
+    {
+        "nome": "UNITÀ CINOFILA SPECIALIZZATA IN ATTIVITÀ SOCIALI",
+        "nome_visibile": "UNITÀ CINOFILA SPECIALIZZATA IN ATTIVITÀ SOCIALI",
+        "codice": "UC-AS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ad/36/ad3650fa-b2f6-45e5-ae19-044c6caa7129/uc-as_delibera_133.pdf"
+    },
+    {
+        "nome": "Corso informativo di base in Diritto Internazionale Umanitario",
+        "nome_visibile": "Corso informativo di base in Diritto Internazionale Umanitario",
+        "codice": "CIBDIU",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/16/22/16222103-cbbc-4677-9153-6474893dd696/cibdiu_corso_informativo_di_base_in_diritto_internazionale_umanitario.pdf"
+    },
+    {
+        "nome": "Corso informativo di Base in “Protezione dei Beni Culturali in conflitto armato”",
+        "nome_visibile": "Corso informativo di Base in “Protezione dei Beni Culturali in conflitto armato”",
+        "codice": "CIBPBC",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/54/0c/540cb92e-9050-4114-bd1e-2c33da342708/scheda_corso_corso_informativo_di_base_in_pbc.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su protezione dell'Emblema",
+        "nome_visibile": "Corso informativo di base su protezione dell’Emblema",
+        "codice": "EMB",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e4/8e/e48edfef-c48d-4882-9592-950d2eee3b3d/emb_corso_informativo_di_base_su_del143_del_161021.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su \"Health Care in Danger: il personale sanitario in pericolo\"",
+        "nome_visibile": "Corso informativo di base su \"Health Care in Danger: il personale sanitario in pericolo\"",
+        "codice": "HCiD",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5c/2b/5c2ba0be-d1ab-46dd-9c62-3e1d6e797c8f/scheda_corso_informativo_hcid_del_119_del_04-06-2026.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su International Disaster Law",
+        "nome_visibile": "Corso informativo di base su International Disaster Law",
+        "codice": "IDL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/74/7b/747b2e82-b699-42ad-bd06-7edbd226304b/idl_corso_informativo_di_base_in_international_disaster_law.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Principi & Valori",
+        "nome_visibile": "Corso informativo di base su Principi & Valori",
+        "codice": "PV",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5b/29/5b299cce-937b-48eb-a0bc-9a8d6efec651/pv_corso_informativo_di_base_su_principi__valori.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina - Storia della Croce Rossa Italiana",
+        "nome_visibile": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina – Storia della Croce Rossa Italiana",
+        "codice": "ST1",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/89/fa/89fa4a26-ec18-4c4c-9196-69a207f7fdd9/st1_corso_informativo_di_base_in_storia_della_croce_rossa_italiana_storia_della_croce_rossa_italiana.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina - Storia del Movimento",
+        "nome_visibile": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina – Storia del Movimento",
+        "codice": "ST2",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8f/4a/8f4a92f6-b358-4db4-95cc-e917ba090fcf/st2_corso_informativo_di_base_in_storia_della_croce_rossa_italiana_storia_del_movimento.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina - Storia della Medicina",
+        "nome_visibile": "Corso informativo di base su Storia della Croce Rossa del Movimento Internazionale e della Medicina – Storia della Medicina",
+        "codice": "ST3",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/2f/d2/2fd2a5e5-7bde-4f57-b645-972f25d13c9b/st3_corso_informativo_di_base_in_storia_della_croce_rossa_italiana_storia_della_medicina.pdf"
+    },
+    {
+        "nome": "Operatore CRI di EducAzione alla Pace",
+        "nome_visibile": "Operatore CRI di EducAzione alla Pace",
+        "codice": "EAP",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/eb/05/eb05e1a0-a537-4fd8-b801-fe9a5dc3d06b/eap_operatore_cri_di_educazione_alla_pace_del_45_del_19-04-24.pdf"
+    },
+    {
+        "nome": "Corso per operatore CRI del gioco di ruolo Raid Cross",
+        "nome_visibile": "Corso per operatore CRI del gioco di ruolo Raid Cross",
+        "codice": "RC",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3b/25/3b25ed78-30b3-4503-9e5a-e79fc6eb4f83/rc_corso_per_operatore_cri_del_gioco_di_ruolo_raid_cross.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Divulgatori di Storia della Croce Rossa della Medicina e del Movimento Internazionale",
+        "nome_visibile": "Corso di Aggiornamento per Divulgatori di Storia della Croce Rossa della Medicina e del Movimento Internazionale",
+        "codice": "AGGDSTO",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c2/3a/c23a2a78-6d20-446d-b23a-22becf5113b5/aggdsto_aggiornamento_divulgatori_in_storia_della_croce_rossa_del183_del_211221.pdf"
+    },
+    {
+        "nome": "Corso in valorizzazione degli Archivi storici CRI",
+        "nome_visibile": "Corso in valorizzazione degli Archivi storici CRI",
+        "codice": "ARCHI",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/10/5f/105f3452-98e4-430d-831a-3304778af999/archi_corso_di_valorizzazione_archivi_storici_cri_del_86_29_05_21.pdf"
+    },
+    {
+        "nome": "Corso per Divulgatori Storia della Croce Rossa",
+        "nome_visibile": "Corso per Divulgatori Storia della Croce Rossa",
+        "codice": "DSTO",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f9/bb/f9bbdb16-e3ce-4665-8f6b-2de0aec3f360/dsto_corso_divulgatori_in_storia_della_croce_rossa_del_121_del_18-11-22.pdf"
+    },
+    {
+        "nome": "Corso info/formativo specialistico in International Disaster Law",
+        "nome_visibile": "Corso info/formativo specialistico in International Disaster Law",
+        "codice": "IDL2",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f2/30/f230fea1-ef6b-4855-85a9-57911ef3c055/idl2_modulo_info_formativo_specialistico_in_international_disaster_law.pdf"
+    },
+    {
+        "nome": "CORSO DI ALTA SPECIALIZZAZIONE IN ADVOCACY LEGISLATIVA",
+        "nome_visibile": "CORSO DI ALTA SPECIALIZZAZIONE IN ADVOCACY LEGISLATIVA",
+        "codice": "ASAL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ea/78/ea786f8a-bd21-47f1-b7ad-2f4cf7fd8a09/scheda_corso_asal_2025_def.pdf"
+    },
+    {
+        "nome": "CORSO DI ALTA SPECIALIZZAZIONE IN EXPLORING HUMANITARIAN LAW PER ISTRUTTORI DIU",
+        "nome_visibile": "CORSO DI ALTA SPECIALIZZAZIONE IN EXPLORING HUMANITARIAN LAW PER ISTRUTTORI DIU",
+        "codice": "ASEHL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso di specializzazione in Gara DIU per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Gara DIU per Istruttori DIU",
+        "codice": "ASGARADIU",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/12/d1/12d19e9c-0bfb-4c6b-b386-c902714bf4a9/asgaradiu_corso_alta_specializzazione_in_gara_diu_per_istruttori_di_diu.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in Health Care in Danger per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Health Care in Danger per Istruttori DIU",
+        "codice": "ASHCID2",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7a/28/7a28f77f-0fbe-49ed-b130-bdb5a56c3569/scheda_corso_ashcid2_del_119_del_04-06-2026.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in International Disaster Law per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in International Disaster Law per Istruttori DIU",
+        "codice": "ASIDL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/1b/9e/1b9ed70f-e0e1-4f4a-9acc-5de28c1ee638/asidl_corso_alta_specializzazione_in_international_disaster_law_per_istruttori_di_diu.pdf"
+    },
+    {
+        "nome": "Corso di Alta specializzazione in Nuclear Experience per Istruttori di Diritto Internazionale Umanitario",
+        "nome_visibile": "Corso di Alta specializzazione in Nuclear Experience per Istruttori di Diritto Internazionale Umanitario",
+        "codice": "ASNE",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/46/f2/46f293be-188f-48ec-aecd-ebd001deb529/corso_di_alta_specializzazione_in_nuclear_experience_per_istruttori_diu_asne_rev_dm_24-06-25.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in Protezione dei Beni Culturali per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Protezione dei Beni Culturali per Istruttori DIU",
+        "codice": "ASPBC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/bb/ff/bbffae46-6629-493e-b952-baec7edefb8b/aspbc_corso_di_specializzazione_in_protezione_dei_beni_culturali_per_istruttori_di_diu.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in Principi e Valori per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Principi e Valori per Istruttori DIU",
+        "codice": "ASPEV",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/bb/83/bb833096-8aec-4fad-a931-3e1f476e2448/aspev_corso_alta_specializzazione_in_principi_e_valori_per_istruttori_di_diu.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in Raid Cross per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Raid Cross per Istruttori DIU",
+        "codice": "ASRC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/83/9d/839dafb1-b2b6-4b4b-a13a-c62f048d94b3/asrc_corso_alta_specializzazione_in_raid_cross_per_istruttori_di_diu_provv_pn_79_15-06-23.pdf"
+    },
+    {
+        "nome": "Corso di specializzazione in Tutela dell'Emblema per Istruttori DIU",
+        "nome_visibile": "Corso di specializzazione in Tutela dell’Emblema per Istruttori DIU",
+        "codice": "ASTE",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/37/78/37783c8a-3b10-47a6-aa27-b6a9d0472be6/aste_corso_alta_specializzazione_in_tutela_dellemblema_per_istruttori_diu.pdf"
+    },
+    {
+        "nome": "Corso per Facilitatore EducAzione alla Pace",
+        "nome_visibile": "Corso per Facilitatore EducAzione alla Pace",
+        "codice": "FEAP",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/2d/4b/2d4b7164-79c0-4aad-8602-1a96c9308a90/feap_corso_facilitatore_educazione_alla_pace_del_45_del_19-04-2024.pdf"
+    },
+    {
+        "nome": "Corso per Istruttore di Diritto Internazionale Umanitario",
+        "nome_visibile": "Corso per Istruttore di Diritto Internazionale Umanitario",
+        "codice": "IDIU",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Principi e Valori",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/0e/bc/0ebca1b4-f7a8-4e48-a132-05ab1bf299b3/idiu_istruttore_diu_del_45_19-04-24.pdf"
+    },
+    {
+        "nome": "PERCORSO GiovenTù",
+        "nome_visibile": "PERCORSO GiovenTù",
+        "codice": "PG",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/28/57/2857f591-056d-4e6c-b63f-bf7c6b0802a2/pg_percorso_gioventu_def.pdf"
+    },
+    {
+        "nome": "Corso per operatore per la Promozione e lo Sviluppo della Gioventù",
+        "nome_visibile": "Corso per operatore per la Promozione e lo Sviluppo della Gioventù",
+        "codice": "PSG",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/2a/3f/2a3f48e8-3690-4355-8e07-eb040499b60a/psg_corso_operatore_promozione_e_sviluppo_della_gioventu_rev100421.pdf"
+    },
+    {
+        "nome": "CORSO PER TRAINER DEL PERCORSO GIOVENTÙ",
+        "nome_visibile": "CORSO PER TRAINER DEL PERCORSO GIOVENTÙ",
+        "codice": "TGIOVENTU",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/84/91/84916de5-3cfa-4580-b326-2e6955857361/all2_9025_2_tgioventu_def.pdf"
+    },
+    {
+        "nome": "Corso per Trainer per la Promozione e lo Sviluppo della Gioventù",
+        "nome_visibile": "Corso per Trainer per la Promozione e lo Sviluppo della Gioventù",
+        "codice": "TPSG",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e8/9f/e89faf59-b38e-4c0c-901d-bf23da1af116/tpsg__trainer_per_la_promozione_e_sviluppo_della_gioventu_provv_pn_169_23-09-2025.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Analisi dei Bisogni",
+        "nome_visibile": "Corso informativo di base su Analisi dei Bisogni",
+        "codice": "ABIS",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f8/fc/f8fc0cf9-88fb-4752-b73f-6232491b6c94/abis_corso_informativo_di_base_in_analisi_dei_bisogni.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Accountability",
+        "nome_visibile": "Corso informativo di base su Accountability",
+        "codice": "ACC",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso informativo di base in Comunicazione",
+        "nome_visibile": "Corso informativo di base in Comunicazione",
+        "codice": "COM",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/de/d6/ded6990a-8dee-45a6-ad7c-f1c757a92d28/com_corso_informativo_di_base_in_comunicazione.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Volontari della Croce Rossa Italiana",
+        "nome_visibile": "Corso di Formazione per Volontari della Croce Rossa Italiana",
+        "codice": "CRI",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/19/a4/19a44ae7-39ea-48ca-8679-d9a1f3a8f4df/cri_corso_di_formazione_per_volontari_cri_del169_16-12-25.pdf"
+    },
+    {
+        "nome": "CORSO DI FORMAZIONE PER VOLONTARI DELLA CROCE ROSSA ITALIANA DEDICATO AI VOLONTARI TEMPORANEI",
+        "nome_visibile": "CORSO DI FORMAZIONE PER VOLONTARI DELLA CROCE ROSSA ITALIANA DEDICATO AI VOLONTARI TEMPORANEI",
+        "codice": "CRIVT",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso informativo di base in Fundraising",
+        "nome_visibile": "Corso informativo di base in Fundraising",
+        "codice": "FUND",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/af/a9/afa99e1f-862d-4616-84aa-14cbc0888c37/fund_corso_informativo_di_base_in__fundraising.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su GAIA",
+        "nome_visibile": "Corso informativo di base su GAIA",
+        "codice": "GAIA",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/db/da/dbdac837-6551-4a97-8dcd-1772016a4fd4/gaia_corso_informativo_di_base_su_gaia.pdf"
+    },
+    {
+        "nome": "Corso informativo di base su Monitoraggio e Valutazione",
+        "nome_visibile": "Corso informativo di base su Monitoraggio e Valutazione",
+        "codice": "MV",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/9a/77/9a771281-ce4f-4b68-9788-c7eb95615e68/mv_corso_informativo_di_base_su_monitoraggio_e_valutazione.pdf"
+    },
+    {
+        "nome": "Corso informativo di base sulla Riforma del Terzo Settore",
+        "nome_visibile": "Corso informativo di base sulla Riforma del Terzo Settore",
+        "codice": "RTS",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/cc/b7/ccb75a25-03ef-4152-9843-a9c2c953ac5f/rts_corso_informativo_di_base_sulla_riforma_del_terzo_settore.pdf"
+    },
+    {
+        "nome": "Corso informativo di base sulla Strategia CRI 2018-2030",
+        "nome_visibile": "Corso informativo di base sulla Strategia CRI 2018-2030",
+        "codice": "S2030",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/78/7a/787a74e2-1c66-4bd8-8843-3f4d8f11d418/scheda_s2030_2025.pdf"
+    },
+    {
+        "nome": "Corso di formazione sulla Governance Associativa",
+        "nome_visibile": "Corso di formazione sulla Governance Associativa",
+        "codice": "CGOVA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f7/45/f745f8c7-34bf-4843-b36f-e62d9ee9ee6d/cgova_giugno_2026___del_133_02-07-2026.pdf"
+    },
+    {
+        "nome": "Modulo Trasversale Trainer CRI",
+        "nome_visibile": "Modulo Trasversale Trainer CRI",
+        "codice": "TCRI",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/b6/1b/b61b8f98-b1d1-4863-b143-22b49e5aa80f/tcri_modulo_trasversale_per_trainer_cri_del_n_43_del_27_marzo_2025_dm.pdf"
+    },
+    {
+        "nome": "Modulo Trasversale Formatori CRI",
+        "nome_visibile": "Modulo Trasversale Formatori CRI",
+        "codice": "FCRI",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a8/0a/a80a1735-fd9b-4a43-bdbd-e08f0d3cba59/fcri_modulo_trasversale_formatori_cri_provv_13625_17-7-25.pdf"
+    },
+    {
+        "nome": "Corso per operatore CRI di attività rivolte a persone Migranti",
+        "nome_visibile": "Corso per operatore CRI di attività rivolte a persone Migranti",
+        "codice": "MIGR",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/9b/74/9b74e5c2-ce9b-43e5-8427-78de87fed224/migr_corso_per_operatore_cri_di_attivita_rivolte_a_persone_migranti_del_59_del_100421.pdf"
+    },
+    {
+        "nome": "Corso per operatore CRI specializzato in attività nei centri di Accoglienza per persone Migranti",
+        "nome_visibile": "Corso per operatore CRI specializzato in attività nei centri di Accoglienza per persone Migranti",
+        "codice": "MIGRACC",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5c/1f/5c1fe446-750e-42bb-961f-fdd010f05cfd/migracc_corso_migracc_del_78_12-09-24.pdf"
+    },
+    {
+        "nome": "Corso per operatore del servizio Restoring Family Links",
+        "nome_visibile": "Corso per operatore del servizio Restoring Family Links",
+        "codice": "MIGRRFL",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/08/37/0837eaf7-40ba-4206-a29c-7ee2d1426fac/migrrfl_operatore_del_servizio_di_restoring_family_links.pdf"
+    },
+    {
+        "nome": "Corso per operatore CRI specializzato nella prevenzione e protezione da rischio di Tratta degli esseri umani",
+        "nome_visibile": "Corso per operatore CRI specializzato nella prevenzione e protezione da rischio di Tratta degli esseri umani",
+        "codice": "MIGRTRAFF",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/f9/29/f9290249-fd63-4ff0-b6dc-877195dbf4db/migrtraff_operatore_prevenz_e_prot_rischio_tratta.pdf"
+    },
+    {
+        "nome": "Corso per Operatore CRI specializzato nel gioco di ruolo educativo Hold The Line",
+        "nome_visibile": "Corso per Operatore CRI specializzato nel gioco di ruolo educativo Hold The Line",
+        "codice": "OPHTL",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/22/c1/22c142ba-21b3-418f-b4d9-8275453c7c5a/ophtl_operatore_cri_specializzato_nel_gioco_di_ruolo_educativo_hold_the_line_del_45_19-04-24.pdf"
+    },
+    {
+        "nome": "Corso per  Operatore CRI specializzato nel gioco di ruolo educativo Youth On The Run",
+        "nome_visibile": "Corso per Operatore CRI specializzato nel gioco di ruolo educativo Youth On The Run",
+        "codice": "OPYOTR",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c8/c4/c8c49991-8c30-4522-8146-ebd44c8dfa4d/opyotr_operatore_cri_specializzato_nel_gioco_di_ruolo_educativo_youth_on_the_run_del_45_19-04-24.pdf"
+    },
+    {
+        "nome": "Aggiornamento per Trainer di Attività rivolte a Persone Migranti",
+        "nome_visibile": "Aggiornamento per Trainer di Attività rivolte a Persone Migranti",
+        "codice": "ATAPM",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/c1/8e/c18eaaf1-b8f8-4c37-94b2-f186c5a70dd3/atapm_corso_atapm_del_78_12-09-24.pdf"
+    },
+    {
+        "nome": "Corso per Coordinatore di Operatori CRI specializzati nel gioco di ruolo educativo Hold The Line",
+        "nome_visibile": "Corso per Coordinatore di Operatori CRI specializzati nel gioco di ruolo educativo Hold The Line",
+        "codice": "CHTL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/75/d5/75d5688a-9453-44a2-86ac-46280525011e/chtl_del_45_19-04-24.pdf"
+    },
+    {
+        "nome": "Corso per Coordinatore del gioco di ruolo educativo Youth On The Run",
+        "nome_visibile": "Corso per Coordinatore del gioco di ruolo educativo Youth On The Run",
+        "codice": "CYOTR",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/35/1e/351e290c-7c75-4de8-9b6c-2ffdfb951125/cyotr_coordinatore_del_gioco_di_ruolo_educativo_youth_on_the_run_del_45_19-04-24.pdf"
+    },
+    {
+        "nome": "Corso per Trainer di Attività rivolte a Persone Migranti",
+        "nome_visibile": "Corso per Trainer di Attività rivolte a Persone Migranti",
+        "codice": "TAPM",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7f/06/7f06c228-012f-4913-80d7-9a34ad523133/tapm_corso_tapm_del78_12-09-24.pdf"
+    },
+    {
+        "nome": "Corso per Trainer nel servizio Restoring Family Links",
+        "nome_visibile": "Corso per Trainer nel servizio Restoring Family Links",
+        "codice": "TARFL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/12/5a/125ae8a9-f478-430d-ae2f-381020c61e2f/tarfl_corso_trainer_restoring_family_links_area_formazione_del_121_del_18-11-22.pdf"
+    },
+    {
+        "nome": "Corso Abilitazione di Guida TIPO 2b",
+        "nome_visibile": "Corso Abilitazione di Guida TIPO 2b",
+        "codice": "PAT2b",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/01/3e/013ec788-7d32-46b1-b4ae-3fecf3d7ea50/2_corso_di_abilitazione_tipo_2b.pdf"
+    },
+    {
+        "nome": "Corso Pratico di Abilitazione di Guida Patenti TIPO 5",
+        "nome_visibile": "Corso Pratico di Abilitazione di Guida Patenti TIPO 5",
+        "codice": "PPAT5",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/29/21/29217548-a08e-43cf-9a65-22a4a24a040e/tipo5p_corso_pratico_abilitazione_tipo_5.pdf"
+    },
+    {
+        "nome": "Corso Abilitazione Teorico di Guida TIPO 5",
+        "nome_visibile": "Corso Abilitazione Teorico di Guida TIPO 5",
+        "codice": "TPAT5",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/d1/36/d1369aa6-b75b-430c-9273-585efb319092/tipo5t_corso_teorico_abilitazione_tipo_5_revisione_rev.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Coadiutori Motorizzazione CRI",
+        "nome_visibile": "Corso di Formazione per Coadiutori Motorizzazione CRI",
+        "codice": "COAMOT",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/05/ed/05edc2e0-568c-434d-8c32-01f3c13cd40e/coamot_corso_di_formazione_per_coadiutori_motorizzazione_cri_aggiornata_del_184_del_211221.pdf"
+    },
+    {
+        "nome": "Corso per Formatore di Guida Veicoli della Croce Rossa Italiana",
+        "nome_visibile": "Corso per Formatore di Guida Veicoli della Croce Rossa Italiana",
+        "codice": "FGV",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Modulo Trasversale Abilitazione alla Guida per patenti superiori",
+        "nome_visibile": "Modulo Trasversale Abilitazione alla Guida per patenti superiori",
+        "codice": "MTAG",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/49/d4/49d49fc7-8fa7-4d71-ba30-0b28cefd680c/mtag_modulo_trasversale_abilitazione_alla_guida_per_patenti_superiori_mtag_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso Pratico Abilitazione di Guida TIPO 6",
+        "nome_visibile": "Corso Pratico Abilitazione di Guida TIPO 6",
+        "codice": "PPAT6",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/88/06/8806ba53-700a-4717-8c19-9e2268105bd4/tipo6p_corso_pratico_abilitazione_tipo_6_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso Pratico Abilitazione di Guida TIPO 7",
+        "nome_visibile": "Corso Pratico Abilitazione di Guida TIPO 7",
+        "codice": "PPAT7",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6b/fe/6bfe0f50-3396-4f3a-9da5-5ad7dcf96ce2/tipo7p_corso_pratico_abilitazione_tipo_7_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso Pratico di Abilitazione di Guida Patenti TIPO 7b",
+        "nome_visibile": "Corso Pratico di Abilitazione di Guida Patenti TIPO 7b",
+        "codice": "PPAT7b",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/25/3f/253f2254-88e7-4109-8daa-e68baa8dd753/corso_pratico_abilitazione_tipo_7b.pdf"
+    },
+    {
+        "nome": "Corso Pratico Abilitazione di Guida TIPO 8",
+        "nome_visibile": "Corso Pratico Abilitazione di Guida TIPO 8",
+        "codice": "PPAT8",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6c/9d/6c9df5c8-1068-400a-8377-e46c98c2fd2c/tipo8p_corso_pratico_abilitazione_tipo_8_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso di formazione per Trainer Istruttore di Guida CRI",
+        "nome_visibile": "Corso di formazione per Trainer Istruttore di Guida CRI",
+        "codice": "TIG",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ae/c4/aec49b6b-a2fb-4726-b108-ec59ff9e6d6e/tig_corso_trainer_istruttore_di_guida_tig.pdf"
+    },
+    {
+        "nome": "Corso Teorico di Abilitazione di Guida Patenti TIPO 7b",
+        "nome_visibile": "Corso Teorico di Abilitazione di Guida Patenti TIPO 7b",
+        "codice": "TPA7b",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e1/dc/e1dc9a81-4460-43a5-9091-bfa12d12a622/corso_teorico_abilitazione_tipo_7b.pdf"
+    },
+    {
+        "nome": "Corso Teorico Abilitazione di Guida TIPO 6",
+        "nome_visibile": "Corso Teorico Abilitazione di Guida TIPO 6",
+        "codice": "TPAT6",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/af/6e/af6e3068-40f4-4986-b04a-c3246560b751/tipo6t_corso_teorico_abilitazione_tipo_6_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso Teorico Abilitazione di Guida TIPO 7",
+        "nome_visibile": "Corso Teorico Abilitazione di Guida TIPO 7",
+        "codice": "TPAT7",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/0e/cb/0ecb5639-2282-4e82-bd0a-ae4293f46a64/tipo7t_corso_teorico_abilitazione_tipo_7_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso Teorico Abilitazione di Guida TIPO 8",
+        "nome_visibile": "Corso Teorico Abilitazione di Guida TIPO 8",
+        "codice": "TPAT8",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6a/69/6a69de8c-d9a4-4c2e-be05-92b0ab22596c/tipo8t_corso_teorico_abilitazione_tipo_8_del12724_4-12-24.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Trainer Specializzati Guida in Emergenza- Urgenza CRI",
+        "nome_visibile": "Corso di Formazione per Trainer Specializzati Guida in Emergenza- Urgenza CRI",
+        "codice": "TSGEU",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5e/33/5e33a8bb-c09f-4604-87d5-fb7fc4b8b11f/tsgeu_corso_trainer_specializzato_guida_in_emergenza_urgenza.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Trainer Specializzato di Scuola Guida",
+        "nome_visibile": "Corso di Formazione per Trainer Specializzato di Scuola Guida",
+        "codice": "TSSG",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/79/26/792684c7-7a1f-430c-9057-e6c6d34100c3/tssg_corso_trainer_specializzato_di_scuola_guida_tssg.pdf"
+    },
+    {
+        "nome": "Corso Conversione TTSSA in TMSAP",
+        "nome_visibile": "Corso Conversione TTSSA in TMSAP",
+        "codice": "CTMSAP",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6f/e4/6fe40830-05bb-49c0-b1f6-403db09f3f0b/ctmsap_corso_conversione_ttssa_in_tmsap_del_109_del_23_novembre_2024.pdf"
+    },
+    {
+        "nome": "Corso di formazione per Monitore CRI di Educazione alla Salute e Healthy Ageing",
+        "nome_visibile": "Corso di formazione per Monitore CRI di Educazione alla Salute e Healthy Ageing",
+        "codice": "MON-ESHA",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/79/a1/79a12b17-9b63-42e5-b93a-7b17c2344f20/mon_esha_corso_di_formazione_monitore_esha_prot_inf_n_2024-20991-cn-u_del_16-09-2024.pdf"
+    },
+    {
+        "nome": "Corso di Riqualifica per i TAPPSSVS e MON-ES in Monitore di Educazione alla Salute e Healthy Ageing",
+        "nome_visibile": "Corso di Riqualifica per i TAPPSSVS e MON-ES in Monitore di Educazione alla Salute e Healthy Ageing",
+        "codice": "RIQ-ESHAOL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/7f/bd/7fbdc068-0c10-4bcb-b349-abc9e048f5e7/riq-moneshaol_del10824.pdf"
+    },
+    {
+        "nome": "Corso conversione FTSSA in FMS",
+        "nome_visibile": "Corso conversione FTSSA in FMS",
+        "codice": "CFMS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Salute",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5f/f9/5ff91eb3-7a76-4001-a7e0-3c3f27477252/cfms_corso_conversione_ftssa_in_fms_del_75_del_12-09-2024.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Volontari della Croce Rossa Italiana Online",
+        "nome_visibile": "Corso di Formazione per Volontari della Croce Rossa Italiana Online",
+        "codice": "CRIOL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/a1/95/a1956415-6778-451e-b867-9897e9a423aa/criol_corso_di_formazione_per_volontari_della_croce_rossa_italiana_online_del_124_15-09-2025.pdf"
+    },
+    {
+        "nome": "Corso di Formazione per Volontari della Croce Rossa Italiana dedicato ai Volontari SCU",
+        "nome_visibile": "Corso di Formazione per Volontari della Croce Rossa Italiana dedicato ai Volontari SCU",
+        "codice": "CRISCUOL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/89/90/899025df-1885-4760-bd2e-3adfe3cd2f05/criscuol_corso_di_formazione_per_volontari_della_cri_per_vol_scu_prov_101_29-04-26.pdf"
+    },
+    {
+        "nome": "CORSO INFORMATIVO DI BASE IN ENGAGEMENT DEI VOLONTARI",
+        "nome_visibile": "CORSO INFORMATIVO DI BASE IN ENGAGEMENT DEI VOLONTARI",
+        "codice": "ENGVOL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8f/45/8f4560a7-6b3d-4d3a-b481-cd6817e6134b/engvol_corso_informativo_di_base_in_engagement_dei_volontari_del_61_7-7-25_rev_dm.pdf"
+    },
+    {
+        "nome": "Corso Gestione e Sviluppo del Volontariato",
+        "nome_visibile": "Corso Gestione e Sviluppo del Volontariato",
+        "codice": "GSVOL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/62/42/62427e88-c611-42ca-a07c-440a603405cb/gsvol_gestione_e_sviluppo_del_volontariato_del_157_6-12-25_1.pdf"
+    },
+    {
+        "nome": "Modulo Trasversale per Formatori CRI online",
+        "nome_visibile": "Modulo Trasversale per Formatori CRI online",
+        "codice": "FCRIOL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/28/a7/28a76afe-49d8-4d5d-8da5-643c471e0611/fcriol_modulo_trasversale_formatori_cri_online_provv_13625_17-7-25.pdf"
+    },
+    {
+        "nome": "Corso di Alta Specializzazione GESTIONE COMITATI CRI E TERZO SETTORE",
+        "nome_visibile": "Corso di Alta Specializzazione GESTIONE COMITATI CRI E TERZO SETTORE",
+        "codice": "GCTSOL",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6e/9e/6e9ef737-b859-4d79-9388-667a1a07bdc0/gcts_del_157_06-10-2025.pdf"
+    },
+    {
+        "nome": "Trainer attività cooperazione internazionale",
+        "nome_visibile": "Trainer attività cooperazione internazionale",
+        "codice": "TACIOL",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Cooperazione Internazionale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/8a/20/8a20a420-665f-422f-99b9-06236c12b739/taciol_trainer_attivita_cooperazione_internazionale.pdf"
+    },
+    {
+        "nome": "PROVA PROVA - Corso Abilitazione Teorico di Guida TIPO 5",
+        "nome_visibile": "PROVA PROVA – Corso Abilitazione Teorico di Guida TIPO 5",
+        "codice": "QUIZ",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "PROVA ESAME TPAT5",
+        "nome_visibile": "PROVA ESAME TPAT5",
+        "codice": "QUIZ",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione online",
+        "obiettivo": "Motorizzazione",
+        "scheda_pdf": null
+    },
+    {
+        "nome": "Corso di Aggiornamento per Istruttore in materia di Salute e Sicurezza per volontari CRI",
+        "nome_visibile": "Corso di Aggiornamento per Istruttore in materia di Salute e Sicurezza per volontari CRI",
+        "codice": "EAGGISIC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/1f/a9/1fa9314a-13ac-4e2b-8922-002404862332/eaggisic_aggiornamento_istruttori_salute_e_sicurezza.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Formatore in materia di salute e sicurezza per volontari CRI",
+        "nome_visibile": "Corso di Aggiornamento per Formatore in materia di salute e sicurezza per volontari CRI",
+        "codice": "EAGGFSIC",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6a/e9/6ae9f840-bddf-4275-a3b0-5d92a22384d8/eaggfsic_aggiornamento_formatore_cri_in_materia_di_salute_e_sicurezza.pdf"
+    },
+    {
+        "nome": "OPERATORE DEL SORRISO - Aggiornamento",
+        "nome_visibile": "OPERATORE DEL SORRISO – Aggiornamento",
+        "codice": "EODS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3c/51/3c5140e5-ee60-4f44-92d7-77863cfa9d2b/ods_operatore_del_sorriso__aggiornamento_2.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Operatore del Servizio Psicosociale",
+        "nome_visibile": "Corso di Aggiornamento per Operatore del Servizio Psicosociale",
+        "codice": "EOPS",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6a/f9/6af9daa7-2764-4d63-8c51-59bceb7c5f29/eops_operatore_del_servizio_psicosociale-_aggiornamento.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Corso per Operatore CRI Specializzato Persone Senza Dimora",
+        "nome_visibile": "Corso di Aggiornamento per Corso per Operatore CRI Specializzato Persone Senza Dimora",
+        "codice": "EOPSD",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/5d/5c/5d5c5462-cf51-4678-8102-f41dd07e2d50/eopsd_corso_per_operatore_specializzato_persone_senza_dimora_bozza_aggiornamento.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Corso propedeutico attività alle Dipendenze in Operatore sociale CRI specializzato nelle Dipendenze",
+        "nome_visibile": "Corso di Aggiornamento per Corso propedeutico attività alle Dipendenze in Operatore sociale CRI specializzato nelle Dipendenze",
+        "codice": "EOSD",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/3d/a2/3da2cdae-1fe5-4a69-bf96-b7cc72549c11/eosd_corso_per_operatore_sociale_cri_specializzato_nelle_dipendenze_bozza_aggiornamento.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Clown Dottore in Coordinatore di Attività di Clownerie",
+        "nome_visibile": "Corso di Aggiornamento per Clown Dottore in Coordinatore di Attività di Clownerie",
+        "codice": "ECAC",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/48/d4/48d4aeec-5660-4006-8d0f-850716596576/ecac_corso_coordinatore_cri_attivita_clownerie_bozza_aggiornamento.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Formatore di Attività Sociali",
+        "nome_visibile": "Corso di Aggiornamento per Formatore di Attività Sociali",
+        "codice": "EFCRI",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Inclusione Sociale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/ca/cc/cacca61f-4727-4646-9717-c74b75ea73aa/efcri_modulo_trasversale_per_la_formazione_dei_formatoricri-sociale.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Istruttore Giovani in Azione in Direttori del Percorso Gioventù",
+        "nome_visibile": "Corso di Aggiornamento per Istruttore Giovani in Azione in Direttori del Percorso Gioventù",
+        "codice": "EDGIOVENTU",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/50/10/5010a7dc-43b3-495a-b803-4425436ea6d0/edgioventu_corso_direttori_percorso_gioventu.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per  Formatore Giovani in Azione in Formatore del Direttori del Percorso Gioventù",
+        "nome_visibile": "Corso di Aggiornamento per Formatore Giovani in Azione in Formatore del Direttori del Percorso Gioventù",
+        "codice": "EFDGIOVENTU",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Giovani",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/0b/70/0b700cfa-707a-48fe-b1f0-5ead13369971/scheda_corso_formatori_gia_in_formatori_direttori_percorso_gioventu.pdf"
+    },
+    {
+        "nome": "Corso Integrativo di formazione per il personale CRI specializzato nel servizio Restoring Family Links",
+        "nome_visibile": "Corso Integrativo di formazione per il personale CRI specializzato nel servizio Restoring Family Links",
+        "codice": "EMIGRRFL",
+        "livello": "II Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Migrazioni",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/cd/a0/cda01ae7-b9a1-4547-808a-deffd8557b4b/emigrrfl_corso_integrativo_rfl.pdf"
+    },
+    {
+        "nome": "Corso di Aggiornamento per Qualificati in Cooperazione Internazionale in  Trainer di Attività di Cooperazione Internazionale",
+        "nome_visibile": "Corso di Aggiornamento per Qualificati in Cooperazione Internazionale in Trainer di Attività di Cooperazione Internazionale",
+        "codice": "ETACI",
+        "livello": "III Livello",
+        "tipo": "Catalogo corsi formazione equipollenza",
+        "obiettivo": "Cooperazione Internazionale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/64/8e/648e21ae-4be2-42d7-9cb9-3d7a42740130/etaci_corso_per_trainer_in_cooperazione_internazionale.pdf"
+    },
+    {
+        "nome": "Corso di Informazione e Formazione in materia di Salute e Sicurezza per Volontari CRI On Line",
+        "nome_visibile": "Corso di Informazione e Formazione in materia di Salute e Sicurezza per Volontari CRI On Line",
+        "codice": "A-SICCOL",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione asincroni - Training CRI",
+        "obiettivo": "Salute e sicurezza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/98/71/98711a27-e7bc-48c3-9027-ef84eb7009dc/asiccol_del_45_del_19_aprile_2024.pdf"
+    },
+    {
+        "nome": "CORSO DI INFORMAZIONE E FORMAZIONE PER PILOTI UAS CRI ONLINE",
+        "nome_visibile": "CORSO DI INFORMAZIONE E FORMAZIONE PER PILOTI UAS CRI ONLINE",
+        "codice": "A-UAS",
+        "livello": "IV Livello",
+        "tipo": "Catalogo corsi formazione asincroni - Training CRI",
+        "obiettivo": "Emergenza",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/72/c8/72c897c5-c235-4ba7-a539-51745b07e445/scheda_corso_a-uas.pdf"
+    },
+    {
+        "nome": "CORSO INFORMATIVO DI BASE SULLA STRATEGIA CRI 2018-2030 online",
+        "nome_visibile": "CORSO INFORMATIVO DI BASE SULLA STRATEGIA CRI 2018-2030 online",
+        "codice": "A-S2030",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione asincroni - Training CRI",
+        "obiettivo": "Sviluppo Organizzativo",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/e2/3b/e23b2fe2-ccde-4a3a-a8a0-3138b675830a/scheda_a-s2030_2025.pdf"
+    },
+    {
+        "nome": "INTRODUZIONE ALLE ATTIVITÀ DI COOPERAZIONE INTERNAZIONALE ON LINE",
+        "nome_visibile": "INTRODUZIONE ALLE ATTIVITÀ DI COOPERAZIONE INTERNAZIONALE ON LINE",
+        "codice": "A-IACI",
+        "livello": "I Livello",
+        "tipo": "Catalogo corsi formazione asincroni - Training CRI",
+        "obiettivo": "Cooperazione Internazionale",
+        "scheda_pdf": "https://datafiles-gaia.cri.it/media/filer_public/6e/f1/6ef113a3-c855-42c9-9eb3-c860da355701/a-iaci_introduzione_alle_attivita_di_cooperazione_internazionale_online_del_n_45_del_27_marzo_2025.pdf"
+    }
+]
