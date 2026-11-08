@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.22 — 2026-11-08
+
+- feat: proiezione del punteggio per il direttore nella pagina Discenti dell'esame: colonne «Itinere (centesimi)» e «Totale» e finestra «Proiezione» con, per l'itinere, il punteggio d'area fissato o la media proposta dei docenti (con le medie di ciascuno), e per colloquio, prova pratica e test il punteggio fissato o un valore ipotetico; contributi in centesimi e totale ipotetico colorati rispetto al LAP. I valori ipotetici sono temporanei: non si salvano e non entrano nell'esito
+
 ## 1.85.21 — 2026-11-08
 
 - feat: in «I miei tutorati» il tutor legge anche le note dei docenti sui propri discenti (itinere sempre, laboratorio a scheda inviata); la commissione continua a non vederle (solo il direttore). Sotto il campo della nota, il testo su chi la legge cita i tutor

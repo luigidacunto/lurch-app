@@ -39,7 +39,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
         'copiaGruppi', 'importaTest', 'creaLaboratorio', 'modificaLaboratorio', 'eliminaLaboratorio', 'nuovoGruppo', 'modificaGruppo', 'eliminaGruppo', 'invia', 'colloquioFinale', 'decidi', 'configurazione', 'domanda', 'eliminaDomanda', 'avviaTutti',
         'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo', 'nuovoTutoraggio', 'modificaTutoraggio', 'eliminaTutoraggio',
     ];
-    private const AZIONI_SOLA_LETTURA = ['csv', 'modifica'];
+    private const AZIONI_SOLA_LETTURA = ['csv', 'modifica', 'proiezione'];
 
     protected function setUp(): void
     {

@@ -9,6 +9,7 @@ use App\Filament\Resources\EsameResource;
 use App\Models\CatalogoCorso;
 use App\Models\Corso;
 use App\Models\Esame;
+use App\Esami\Calcolo\Frazione;
 use App\Models\Iscrizione;
 use App\Models\Socio;
 use App\Models\TcriItinereDecisione;
@@ -519,5 +520,85 @@ class EsameRiepilogoItinereTest extends TestCase
     {
         $this->pwa('x')->assertNotFound();
         $this->assertFalse(PermessiEsame::per($this->esame->fresh(), $this->s['x']->id)->vedeRiepilogoItinere());
+    }
+
+    // ---- Proiezione del punteggio (pagina Discenti) ----
+
+    public function test_proiezione_dati_di_partenza(): void
+    {
+        $this->scheda('docB', 'y', [4, 3]);                    // prima area di y: proposta 3,5
+        $this->salva('direttore', 'x', '2.5', 'ok');           // prima area di x: fissata
+        $p = \App\Esami\ProiezioneEsame::per($this->esame->fresh());
+
+        $this->assertArrayNotHasKey($this->s['nonAmmesso']->id, $p);
+        $this->assertArrayNotHasKey($this->s['ritirato']->id, $p);
+        $this->assertSame('2.5', $p[$this->s['x']->id]['aree'][0]['finale']);
+        $this->assertSame('3.5', $p[$this->s['y']->id]['aree'][0]['proposta']);
+        $this->assertNull($p[$this->s['y']->id]['aree'][1]['proposta'], 'nessun voto: nessuna proposta (mai il valore forzato)');
+        $this->assertSame('3,5', $p[$this->s['y']->id]['aree'][0]['docenti'][0]['media']);
+        $this->assertNull($p[$this->s['x']->id]['colloquio']);
+    }
+
+    public function test_proiezione_totale_stessa_formula_del_motore(): void
+    {
+        $snap = $this->esame->modello_snapshot;
+        $aree = array_fill_keys(array_column($snap['itinere']['aree'], 'codice'), '4');
+        $massimi = ['colloquio' => Frazione::di(5), 'prova_pratica' => Frazione::di(28), 'test_scritto' => Frazione::di(20)];
+
+        // 30×16/20 + 10×4/5 + 40×21/28 + 20×15/20 = 24 + 8 + 30 + 15 = 77
+        $t = \App\Esami\ProiezioneEsame::totale($snap, '60', ['itinere' => $aree, 'colloquio' => '4', 'prova_pratica' => '21', 'test_scritto' => '15'], $massimi);
+        $this->assertSame('77.0', $t['finale']);
+        $this->assertTrue($t['idoneo']);
+        $this->assertSame('24.00', $t['contributi']['itinere']->tronca(2));
+
+        // Valori con virgola, fuori scala, mancanti.
+        $t = \App\Esami\ProiezioneEsame::totale($snap, '60', ['itinere' => $aree, 'colloquio' => '6', 'prova_pratica' => '10,5', 'test_scritto' => null], $massimi);
+        $this->assertNull($t['finale']);
+        $this->assertArrayHasKey('colloquio', $t['errori']);
+        $this->assertSame('15.00', $t['contributi']['prova_pratica']->tronca(2));
+        $aree[array_key_first($aree)] = '';
+        $this->assertNull(\App\Esami\ProiezioneEsame::totale($snap, '60', ['itinere' => $aree, 'colloquio' => null, 'prova_pratica' => null, 'test_scritto' => null], $massimi)['contributi']['itinere']);
+    }
+
+    public function test_proiezione_nel_pannello_con_valori_ipotetici(): void
+    {
+        $this->scheda('docB', 'x', [4, 3]);
+        $this->pannello('direttore');
+        $iscrizione = Iscrizione::where('partecipante_id', $this->s['x']->id)->first();
+        $codici = array_column($this->esame->modello_snapshot['itinere']['aree'], 'codice');
+
+        $pagina = Livewire::test(EsameResource\Pages\DiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
+            ->assertSuccessful()->assertSee('da completare')
+            ->assertTableActionEnabled('proiezione', $iscrizione)
+            ->mountTableAction('proiezione', $iscrizione);
+        // La finestra è un «partial» di Livewire (non nell'HTML del test): si leggono etichette e stati dei componenti dello
+        // schema montato, il che esercita anche le closure del contenuto.
+        $finestra = fn () => collect($pagina->instance()->getSchema('mountedActionSchema0')->getFlatComponents())
+            ->map(function ($c) {
+                $testo = fn ($v) => $v instanceof \Illuminate\Contracts\Support\Htmlable ? $v->toHtml() : (string) $v;
+                $riga = method_exists($c, 'getLabel') ? $testo($c->getLabel()) : '';
+                $riga .= $c instanceof \Filament\Schemas\Components\Section ? ' '.$testo($c->getHeading()).' '.$testo($c->getDescription()) : '';
+                $riga .= $c instanceof \Filament\Schemas\Components\Text ? ' '.$testo($c->getContent()) : '';
+
+                return $riga.($c instanceof \Filament\Infolists\Components\TextEntry ? ' '.$testo($c->getState()) : '');
+            })->implode("\n");
+
+        $this->assertSame('3,5', $pagina->get('mountedActions.0.data.itinere_'.$codici[0]), 'campo precompilato con la proposta');
+        $this->assertStringContainsString('proposta 3,5', $finestra());
+        $this->assertStringContainsString('proposta –', $finestra());
+
+        $dati = ['colloquio' => '4', 'prova_pratica' => '21', 'test_scritto' => '0'];
+        foreach ($codici as $c) {
+            $dati['itinere_'.$c] = '4';
+        }
+        $pagina->fillForm($dati);
+        $html = $finestra();
+        $this->assertStringContainsString('24,0', $html);                          // itinere: 30 × 16/20
+        $this->assertStringContainsString('completa i valori mancanti', $html);    // test senza domande: massimo 0
+
+        // Il non ammesso non ha proiezione.
+        $na = Iscrizione::where('partecipante_id', $this->s['nonAmmesso']->id)->first();
+        Livewire::test(EsameResource\Pages\DiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
+            ->assertTableActionDisabled('proiezione', $na);
     }
 }
