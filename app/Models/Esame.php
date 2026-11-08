@@ -410,6 +410,11 @@ class Esame extends Model
         return $this->hasMany(EsameLaboratorio::class);
     }
 
+    public function tutoraggi(): HasMany
+    {
+        return $this->hasMany(EsameTutoraggio::class);
+    }
+
     public function schedeItinere(): HasMany
     {
         return $this->hasMany(TcriSchedaItinere::class);

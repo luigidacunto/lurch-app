@@ -276,7 +276,8 @@ Route::prefix('app')->name('app.')->group(function () {
         Route::get('/esami/{esame}',                       [\App\Http\Controllers\App\AppEsamiController::class,      'show'])->name('esame');
         Route::get('/esami/{esame}/itinere',                                           [\App\Http\Controllers\App\AppEsamiItinereController::class,    'elenco'])->name('esame.itinere');
         Route::get('/esami/{esame}/itinere/riepilogo',                                 [\App\Http\Controllers\App\AppEsamiRiepilogoItinereController::class, 'riepilogo'])->name('esame.itinere.riepilogo');
-        Route::get('/esami/{esame}/itinere/discenti/{socio}',                          [\App\Http\Controllers\App\AppEsamiItinereController::class,    'scheda'])->name('esame.itinere.scheda');
+        Route::get('/esami/{esame}/tutorati',                                          [\App\Http\Controllers\App\AppEsamiRiepilogoItinereController::class, 'tutorati'])->name('esame.tutorati');
+        Route::get('/esami/{esame}/itinere/discenti/{socio}',                        [\App\Http\Controllers\App\AppEsamiItinereController::class,    'scheda'])->name('esame.itinere.scheda');
         Route::put('/esami/{esame}/itinere/discenti/{socio}/voti',                     [\App\Http\Controllers\App\AppEsamiItinereController::class,    'salvaVoto'])->name('esame.itinere.voto');
         Route::put('/esami/{esame}/itinere/discenti/{socio}/annotazione',              [\App\Http\Controllers\App\AppEsamiItinereController::class,    'salvaAnnotazione'])->name('esame.itinere.annotazione');
         Route::get('/esami/{esame}/laboratori/{laboratorio}',                          [\App\Http\Controllers\App\AppEsamiLaboratorioController::class, 'laboratorio'])->name('esame.laboratorio');

@@ -260,12 +260,12 @@ class EsamePermessiTest extends TestCase
     {
         $this->attiva();
 
-        $this->withSession(['app_socio_id' => $this->s['docente']->id])->get(route('app.home'))->assertSee('I tuoi esami');
+        $this->withSession(['app_socio_id' => $this->s['docente']->id])->get(route('app.home'))->assertSee('Area docenti')->assertSee('Esami da gestire')->assertDontSee('I tuoi esami');
         $this->withSession(['app_socio_id' => $this->s['docente']->id])->get(route('app.esami'))->assertSee('Docente')->assertSee('Esame');
         $this->withSession(['app_socio_id' => $this->s['docComm']->id])->get(route('app.esami'))->assertSee('Commissione');
 
-        $this->withSession(['app_socio_id' => $this->s['discente']->id])->get(route('app.home'))->assertDontSee('I tuoi esami');
-        $this->withSession(['app_socio_id' => $this->s['estraneo']->id])->get(route('app.home'))->assertDontSee('I tuoi esami');
+        $this->withSession(['app_socio_id' => $this->s['discente']->id])->get(route('app.home'))->assertDontSee('I tuoi esami')->assertDontSee('Area docenti');
+        $this->withSession(['app_socio_id' => $this->s['estraneo']->id])->get(route('app.home'))->assertDontSee('I tuoi esami')->assertDontSee('Area docenti');
         $this->withSession(['app_socio_id' => $this->s['estraneo']->id])->get(route('app.esami'))->assertOk()->assertSee('Non hai esami in corso');
     }
 }

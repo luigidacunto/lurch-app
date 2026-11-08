@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'version' => '1.85.19',
+    'version' => '1.85.20',
 
     // Codice OTP fisso per il login della PWA /app, SOLO fuori produzione (staging con mailer log e tester esterni).
     // Attivo se APP_ENV != production e OTP_FISSO è di 6 cifre; altrimenti null = codice casuale come sempre.

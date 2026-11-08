@@ -25,4 +25,35 @@ class AppEsamiRiepilogoItinereController extends Controller
             'r'     => RiepilogoItinere::per($esame, $permessi->ha(PermessiEsame::DIRETTORE)),
         ]);
     }
+
+    /**
+     * «I miei tutorati»: stesso riepilogo, limitato ai discenti dei gruppi di tutoraggio del docente. Sola lettura;
+     * niente test scritto, prova pratica, colloquio, esito. Chi non è tutor: 404.
+     */
+    public function tutorati(Esame $esame)
+    {
+        $permessi = PermessiEsame::per($esame, SocioCorrente::id());
+        abort_unless($permessi->vedeTutorati() && $esame->modello_snapshot, 404);
+
+        $direttore = $permessi->ha(PermessiEsame::DIRETTORE);
+        $r = RiepilogoItinere::per($esame, $direttore, $permessi->discentiTutorati()->all());
+
+        // Matrice voce × docente di ogni laboratorio con schede inviate, apribile sotto la riga del laboratorio.
+        // ponytail: una query per (discente, laboratorio); va bene per i pochi discenti di un tutor.
+        $dettagliLab = [];
+        foreach ($r['discenti'] as $d) {
+            foreach ($d['laboratori'] as $lab) {
+                if ($lab['media'] !== null) {
+                    $dettagliLab[$d['socio']->id][$lab['id']] = RiepilogoItinere::dettaglioLaboratorio($esame, $d['socio']->id, $lab['id'], $direttore);
+                }
+            }
+        }
+
+        return view('app.esame-riepilogo-itinere', [
+            'esame'       => $esame,
+            'r'           => $r,
+            'tutorati'    => true,
+            'dettagliLab' => $dettagliLab,
+        ]);
+    }
 }

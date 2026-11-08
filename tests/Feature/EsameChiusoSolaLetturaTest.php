@@ -27,6 +27,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
 {
     private const TABELLE = [
         'esami', 'esame_docenti_commissione', 'esame_laboratori', 'esame_gruppi', 'esame_gruppo_discente', 'esame_gruppo_docente',
+        'esame_tutoraggi', 'esame_tutoraggio_discente', 'esame_tutoraggio_docente',
         'tcri_schede_semaforo', 'tcri_schede_semaforo_voci', 'tcri_schede_itinere', 'tcri_schede_itinere_voci', 'tcri_itinere_decisioni',
         'tcri_colloqui', 'tcri_prove_pratiche', 'tcri_prove_pratiche_voci', 'test_domande', 'test_avvii', 'test_consegne',
         'test_risposte', 'esiti', 'iscrizioni',
@@ -36,7 +37,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
     private const AZIONI_SCRIVONO = [
         'segnaNonAmmesso', 'togliNonAmmesso', 'riportaInBozza', 'chiudi', 'riapri', 'attiva', 'provaFinale', 'commissione',
         'copiaGruppi', 'importaTest', 'creaLaboratorio', 'modificaLaboratorio', 'eliminaLaboratorio', 'nuovoGruppo', 'modificaGruppo', 'eliminaGruppo', 'invia', 'colloquioFinale', 'decidi', 'configurazione', 'domanda', 'eliminaDomanda', 'avviaTutti',
-        'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo',
+        'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo', 'nuovoTutoraggio', 'modificaTutoraggio', 'eliminaTutoraggio',
     ];
     private const AZIONI_SOLA_LETTURA = ['csv', 'modifica'];
 
@@ -165,6 +166,8 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
 
     public function test_nessuna_azione_del_pannello_scrive_ad_esame_chiuso(): void
     {
+        $tutoraggio = \App\Models\EsameTutoraggio::create(['esame_id' => $this->esame->id, 'nome' => 'T']);
+        $tutoraggio->discenti()->attach($this->s['x']->id);
         $prima = $this->impronta();
         $lab = $this->esame->laboratori()->first();
         $iscr = \App\Models\Iscrizione::where('corso_id', $this->corso->id)->where('partecipante_id', $this->s['x']->id)->first();
@@ -190,6 +193,11 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
                 'modificaGruppo' => [['laboratorio_id' => $lab->id, 'nome' => 'Rinominato', 'discenti_ids' => [], 'docenti_ids' => []], ['gruppo_id' => $this->esame->gruppi()->first()->id]],
                 'eliminaGruppo' => [[], ['gruppo_id' => $this->esame->gruppi()->first()->id]],
                 'copiaGruppi' => [['da' => $lab->id, 'gruppo' => 'tutti'], ['laboratorio_id' => $lab->id]],
+            ]],
+            [EsameResource\Pages\GestioneTutoraggio::class, 'azione', [
+                'nuovoTutoraggio' => [['nome' => 'Nuovo', 'discenti_ids' => [], 'docenti_ids' => []]],
+                'modificaTutoraggio' => [['nome' => 'Rinominato', 'discenti_ids' => [], 'docenti_ids' => []], ['gruppo_id' => $tutoraggio->id]],
+                'eliminaTutoraggio' => [[], ['gruppo_id' => $tutoraggio->id]],
             ]],
             [EsameResource\Pages\TestScrittoEsame::class, 'azione', [
                 'avviaTutti' => [[]], 'avviaSelezionati' => [[]], 'riportaInBozza' => [[]],

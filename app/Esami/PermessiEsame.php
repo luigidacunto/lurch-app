@@ -29,6 +29,9 @@ class PermessiEsame
     /** @var list<string> */
     private array $ruoli = [];
 
+    /** Cache di discentiTutorati() per questa istanza. */
+    private ?Collection $tutorati = null;
+
     public function __construct(private Esame $esame, private ?int $socioId)
     {
         if (! $socioId) {
@@ -137,10 +140,14 @@ class PermessiEsame
         return $this->vedeEsame() && $this->eCommissario();
     }
 
-    /** Unica regola di LETTURA di una scheda personale: la commissione le vede tutte, un docente solo le proprie. */
+    /**
+     * Unica regola di LETTURA di una scheda personale: la commissione le vede tutte, un docente le proprie e, da tutor,
+     * quelle dei suoi discenti scritte da qualunque docente (di laboratorio solo inviate, come nel confronto tra docenti).
+     */
     public function vedeScheda(TcriSchedaSemaforo|TcriSchedaItinere $scheda): bool
     {
-        return $this->vedeEsame() && $this->delMioEsame($scheda) && ($this->eCommissario() || $this->eAutore($scheda));
+        return $this->vedeEsame() && $this->delMioEsame($scheda)
+            && ($this->eCommissario() || $this->eAutore($scheda) || $this->daTutore($scheda));
     }
 
     /** Solo l'autore e solo a esame in corso: in bozza e dopo la chiusura nessuno. */
@@ -340,6 +347,45 @@ class PermessiEsame
     public function vedeSchedeProvaPersonali(): bool
     {
         return $this->vedeRiepilogoProvaFinale();
+    }
+
+    // ---- Tutoraggio: il tutor legge (mai scrive) l'andamento dei suoi discenti ----
+
+    /**
+     * Id dei discenti dei miei gruppi di tutoraggio, non ritirati. Solo per chi è docente del corso (direttore
+     * compreso): un tutor tolto dai docenti del corso perde l'accesso anche se è ancora nel gruppo.
+     *
+     * @return Collection<int, int>
+     */
+    public function discentiTutorati(): Collection
+    {
+        if (! $this->eDocente()) {
+            return collect();
+        }
+
+        return $this->tutorati ??= \Illuminate\Support\Facades\DB::table('esame_tutoraggio_discente as td')
+            ->join('esame_tutoraggi as t', 't.id', '=', 'td.tutoraggio_id')
+            ->join('esame_tutoraggio_docente as tc', 'tc.tutoraggio_id', '=', 't.id')
+            ->where('t.esame_id', $this->esame->id)
+            ->where('tc.socio_id', $this->socioId)
+            ->pluck('td.socio_id')
+            ->intersect($this->esame->discenti()->pluck('iscrizioni.partecipante_id'))
+            ->unique()->values();
+    }
+
+    /** Pagina «I miei tutorati» (PWA, sola lettura): tutor con almeno un discente. */
+    public function vedeTutorati(): bool
+    {
+        return $this->vedeEsame() && $this->discentiTutorati()->isNotEmpty();
+    }
+
+    private function daTutore(TcriSchedaSemaforo|TcriSchedaItinere $scheda): bool
+    {
+        if ($scheda instanceof TcriSchedaSemaforo && ! $scheda->eInviata()) {
+            return false;
+        }
+
+        return $this->discentiTutorati()->contains($scheda->discente_socio_id);
     }
 
     private function eAutore(TcriSchedaSemaforo|TcriSchedaItinere $scheda): bool

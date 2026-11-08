@@ -1,6 +1,7 @@
 @extends('app.layout')
 
-@section('title', 'Riepilogo itinere')
+@php $tutorati = $tutorati ?? false; @endphp
+@section('title', $tutorati ? 'I miei tutorati' : 'Riepilogo itinere')
 
 @push('styles')
 @include('app.partials.esami-stili')
@@ -32,6 +33,10 @@
     .pillola-lab { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 6px; background: #f3f4f6; color: #374151; }
     .pillola-lab.completo { background: #dcfce7; color: #166534; }
     .disc-lab .scarto-alto { font-size: 11px; }
+    .etichetta-riga { font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .4px; align-self: center; margin-right: 2px; }
+    details.lab-dett { padding: 2px 0; }
+    details.lab-dett > summary { cursor: pointer; color: #1d4ed8; }
+    .legenda-lab { font-size: 12px; color: #6b7280; margin: 0 0 8px; }
     .riga-nota { font-size: 13px; padding: 2px 0; display: flex; align-items: center; gap: 6px; }
     .badge-na { font-size: 11px; background: #fee2e2; color: #991b1b; border-radius: 6px; padding: 1px 6px; margin-left: 6px; }
 </style>
@@ -42,8 +47,13 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
     {{ $esame->titolo }}
 </a>
+@if($tutorati)
+<p class="page-title">I miei tutorati</p>
+<p class="page-sub">Sola lettura. L'andamento dei discenti che segui come tutor: schede di tutti i docenti (laboratori: solo inviate) e punteggio finale d'area.</p>
+@else
 <p class="page-title">Riepilogo itinere</p>
 <p class="page-sub">Sola lettura. Il punteggio finale d'area lo inserisce il direttore dal pannello.</p>
+@endif
 
 <div class="avviso-personale">Schede personali dei docenti: appunti, non entrano nel calcolo.</div>
 <div class="avviso-finale">Scheda finale d'area: deciso dal direttore con la commissione, è l'unico punteggio che entra nel calcolo.</div>
@@ -64,7 +74,24 @@
                 @elseif($d['non_ammesso']) Nessuna scheda finale
                 @else Totale itinere finale: incompleto @endif
             </div>
-            @if($d['stato_lab'])
+            @if($tutorati)
+                {{-- Anteprima del tutor: media dei docenti per area ("–" senza voti: il valore forzato vale solo se il direttore lo conferma) e media di ogni laboratorio, colori rispetto al LAP. --}}
+                <div class="disc-lab">
+                    <span class="etichetta-riga">Itinere</span>
+                    @foreach($r['aree'] as $area)
+                        @php $a = $d['aree'][$area['codice']]; @endphp
+                        <span class="pillola-lab" @if($a['colore_media']) style="background:{{ $a['colore_media'] }}; color:#111827;" @endif>{{ $area['nome'] }} {{ $a['colore_media'] ? $a['media_delle_medie'] : '–' }}</span>
+                    @endforeach
+                </div>
+                @if($d['laboratori'])
+                    <div class="disc-lab">
+                        <span class="etichetta-riga">Laboratori</span>
+                        @foreach($d['laboratori'] as $lab)
+                            <span class="pillola-lab" @if($lab['colore_media']) style="background:{{ $lab['colore_media'] }}; color:#111827;" @endif>Lab {{ $lab['numero'] }} {{ $lab['media'] ?? '–' }}</span>
+                        @endforeach
+                    </div>
+                @endif
+            @elseif($d['stato_lab'])
                 <div class="disc-lab">
                     @foreach($d['stato_lab'] as $sl)
                         <span class="pillola-lab {{ $sl['attesi'] > 0 && $sl['inviate'] >= $sl['attesi'] ? 'completo' : '' }}">Lab {{ $sl['numero'] }} {{ $sl['inviate'] }}/{{ $sl['attesi'] }}</span>
@@ -123,13 +150,20 @@
                     @if($area['specchio_laboratori'] && $d['laboratori'])
                         <div class="etichetta" style="margin-top:10px;">Andamento nei laboratori (schede inviate, media tra docenti)</div>
                         @foreach($d['laboratori'] as $lab)
-                            <div>Lab {{ $lab['numero'] }}:
+                            {{-- Pagina del tutor: la riga si apre sulla matrice voce × docente (schede inviate). --}}
+                            @php $dett = $dettagliLab[$d['socio']->id][$lab['id']] ?? null; @endphp
+                            @if($dett)<details class="lab-dett"><summary>@else<div>@endif
+                            Lab {{ $lab['numero'] }}:
                                 @if($lab['media'] === null) nessuna scheda inviata
                                 @else <span class="pillola" style="background:{{ $lab['colore_media'] }};"><strong>{{ $lab['media'] }}</strong></span> su {{ $lab['massimo_scheda'] }}
-                                    <span @if($lab['scarto_alto']) class="scarto-alto" @endif>(scarto {{ $lab['minimo'] }}–{{ $lab['massimo'] }}, Δ {{ $lab['scarto'] }})</span> —
+                                    {{-- Lo scarto tra docenti interessa al direttore: il tutor legge da sé i totali dei docenti. --}}
+                                    @unless($tutorati)<span @if($lab['scarto_alto']) class="scarto-alto" @endif>(scarto {{ $lab['minimo'] }}–{{ $lab['massimo'] }}, Δ {{ $lab['scarto'] }})</span>@endunless —
                                     @foreach($lab['docenti'] as $ld){{ $ld['docente'] }} <span class="pillola" style="background:{{ $ld['colore'] }};">{{ $ld['totale'] }}</span>@if($ld['nota'])@include('app.partials.esami-nota-dialog', ['docente' => $ld['docente'], 'testo' => $ld['nota'], 'titolo' => 'Laboratorio '.$lab['numero'].' · '.$d['socio']->cognome.' '.$d['socio']->nome])@endif @if(! $loop->last) · @endif @endforeach
                                 @endif
-                            </div>
+                            @if($dett)</summary>
+                                @include('app.partials.esami-matrice-lab', ['m' => $dett, 'titoloNota' => 'Laboratorio '.$lab['numero'].' · '.$d['socio']->cognome.' '.$d['socio']->nome])
+                                <p class="legenda-lab">R rosso · G giallo · V verde. Sfondo giallo: risposte diverse; sfondo rosso: un docente ha dato rosso e un altro verde.</p>
+                            </details>@else</div>@endif
                         @endforeach
                     @endif
                 </div>

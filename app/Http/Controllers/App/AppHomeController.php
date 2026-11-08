@@ -56,9 +56,12 @@ class AppHomeController extends Controller
 
         $eventi = collect($eventi)->sortByDesc('data_inizio')->values();
 
-        // Link "I tuoi esami" solo a chi ha un ruolo in un esame attivo.
-        $haEsami = Esame::query()->visibiliAlSocio($socio->id)->exists();
+        // Link agli esami solo a chi ha un ruolo in un esame attivo. Il personale (docente, commissione) lo trova come
+        // «Area docenti»; il discente con il test avviato come «I tuoi esami».
+        $esami = Esame::query()->visibiliAlSocio($socio->id)->get();
+        $haEsami = $esami->isNotEmpty();
+        $areaDocenti = $esami->contains(fn (Esame $e) => \App\Esami\PermessiEsame::per($e, $socio->id)->vedeEsame());
 
-        return view('app.home', compact('socio', 'eventi', 'haEsami'));
+        return view('app.home', compact('socio', 'eventi', 'haEsami', 'areaDocenti'));
     }
 }

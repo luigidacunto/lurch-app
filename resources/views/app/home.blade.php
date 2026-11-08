@@ -80,7 +80,14 @@
 @section('content')
 <p class="home-greeting">Ciao, <strong>{{ $socio->nome }} {{ $socio->cognome }}</strong></p>
 
-@if($haEsami)
+@if($areaDocenti)
+    <p class="section-title">Area docenti</p>
+    <a href="{{ route('app.esami') }}" class="evento-card">
+        <div class="card-nome">Esami da gestire</div>
+        <div class="card-data">Riservata a docenti e commissione: schede di valutazione e tutorati</div>
+        <span class="card-arrow">›</span>
+    </a>
+@elseif($haEsami)
     <p class="section-title">Esami</p>
     <a href="{{ route('app.esami') }}" class="evento-card">
         <div class="card-nome">I tuoi esami</div>

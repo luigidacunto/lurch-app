@@ -35,17 +35,19 @@ class RiepilogoItinere
     /**
      * $conAnnotazioni: solo per il direttore — le annotazioni libere dei docenti, mai a presidente,
      * commissione o admin: 'annotazioni' (schede itinere) e 'laboratori[].docenti[].nota'. Per gli altri restano vuote.
+     * $soloDiscenti: id dei soci da includere (pagina del tutor); null = tutti.
      *
      * @return array{aree: list<array>, discenti: list<array>, lap: string}
      */
-    public static function per(Esame $esame, bool $conAnnotazioni = false): array
+    public static function per(Esame $esame, bool $conAnnotazioni = false, ?array $soloDiscenti = null): array
     {
         $snapshot = $esame->modello_snapshot;
         $calcolo = CalcoloEsameFactory::tcri();
         $lap = (string) $esame->lap;
+        $maxItinere = Frazione::da((string) $snapshot['itinere']['scala']['max']);
 
         $iscrizioni = $esame->discenti()->with('partecipante')->get()
-            ->filter(fn ($i) => $i->partecipante)
+            ->filter(fn ($i) => $i->partecipante && ($soloDiscenti === null || in_array($i->partecipante_id, $soloDiscenti)))
             ->sortBy(fn ($i) => mb_strtolower($i->partecipante->cognome.' '.$i->partecipante->nome));
 
         $schede = $esame->schedeItinere()->with('voci')->get()->groupBy('discente_socio_id');
@@ -82,6 +84,8 @@ class RiepilogoItinere
                     'voti'               => $votiPerDocente,
                     'medie_docenti'      => array_map(fn ($d) => ['media' => Formato::decimale($d['media']), 'contati' => $d['voti_contati']], $sintesi['docenti']),
                     'media_delle_medie'  => Formato::decimale($sintesi['media_delle_medie']),
+                    // Solo ausilio visivo rispetto al LAP; null senza voti (il valore forzato vale solo se il direttore lo conferma).
+                    'colore_media'       => $sintesi['media_delle_medie'] ? ColoreScala::perValore($sintesi['media_delle_medie'], $maxItinere, $lap) : null,
                     'media_tutti_i_voti' => Formato::decimale($sintesi['media_tutti_i_voti']),
                     'forzato'            => $sintesi['forzato'],
                     'proposta'           => Formato::unDecimale($sintesi['proposta']),

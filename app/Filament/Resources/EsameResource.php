@@ -131,7 +131,7 @@ class EsameResource extends Resource
                     Actions\DeleteAction::make()
                         ->requiresConfirmation()
                         ->modalHeading('Elimina esame')
-                        ->modalDescription('L\'esame è in bozza e senza dati: verranno eliminati anche commissione, laboratori e gruppi configurati.')
+                        ->modalDescription('L\'esame è in bozza e senza dati: verranno eliminati anche commissione, laboratori, gruppi e tutoraggio configurati.')
                         ->visible(fn (Esame $record) => static::canDelete($record)),
                 ])
                     ->label('Altre azioni')
@@ -208,6 +208,7 @@ class EsameResource extends Resource
                 $tab('gestione', 'Panoramica', 'heroicon-o-chart-bar'),
                 $tab('discenti', 'Discenti', 'heroicon-o-users'),
                 $tab('laboratori', 'Laboratori e gruppi', 'heroicon-o-beaker'),
+                $tab('tutoraggio', 'Tutoraggio', 'heroicon-o-academic-cap'),
                 $tab('domande-test', 'Domande test', 'heroicon-o-clipboard-document-check'),
             ];
             if ($puoSvolgimento) {
@@ -242,6 +243,7 @@ class EsameResource extends Resource
             'edit'        => Pages\EditEsame::route('/{record}/edit'),
             'discenti'    => Pages\DiscentiEsame::route('/{record}/gestione/discenti'),
             'laboratori'  => Pages\GestioneLaboratori::route('/{record}/gestione/laboratori'),
+            'tutoraggio'  => Pages\GestioneTutoraggio::route('/{record}/gestione/tutoraggio'),
             'valutazioni' => Pages\ValutazioniEsame::route('/{record}/valutazioni'),
             'itinere'     => Pages\RiepilogoItinereEsame::route('/{record}/valutazioni/itinere'),
             'prova-pratica' => Pages\ProvaPraticaEsame::route('/{record}/valutazioni/prova-pratica'),

@@ -4,6 +4,13 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.20 — 2026-11-08
+
+- feat: gruppi di tutoraggio negli esami: nella sezione Gestione dell'esame la scheda «Tutoraggio» crea gruppi di discenti con uno o più docenti tutor (un discente in un solo gruppo, un docente anche in più gruppi); migrazione solo additiva (tre tabelle nuove)
+- feat: nella PWA il tutor trova «I miei tutorati»: per ogni suo discente, in sola lettura, medie dei docenti per area dell'itinere e medie dei laboratori colorate rispetto al LAP, schede itinere di tutti i docenti, laboratori con la tabella voce per voce (solo schede inviate) e punteggio finale d'area; niente prova pratica, colloquio, test scritto ed esito
+- fix: nella home della PWA docenti e commissione trovano gli esami nella sezione «Area docenti» («Esami da gestire»); il discente con il test avviato continua a vedere «I tuoi esami»
+- refactor: la tabella voce per voce dei laboratori è un componente condiviso tra il confronto tra docenti e la pagina del tutor
+
 ## 1.85.19 — 2026-11-08
 
 - fix: aggiornamento di sicurezza delle dipendenze composer (`composer audit` da 92 avvisi a 0): Filament 5.11.2, Laravel 12.71, Livewire 4.4.8, Symfony, league/commonmark, phpoffice/phpspreadsheet, guzzle, dompdf, medialibrary e altri

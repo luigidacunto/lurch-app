@@ -35,7 +35,13 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
     I miei eventi
 </a>
-<p class="page-title">I tuoi esami</p>
+{{-- Il personale la apre da «Area docenti» in home; il discente con il test avviato da «I tuoi esami». --}}
+@if($esami->contains(fn ($v) => array_intersect($v['ruoli'], ['Commissione', 'Docente'])))
+    <p class="page-title" style="margin-bottom:4px;">Esami da gestire</p>
+    <p style="font-size:13px; color:#6b7280; margin-bottom:20px;">Area docenti: schede di valutazione e tutorati degli esami in cui sei docente o in commissione.</p>
+@else
+    <p class="page-title">I tuoi esami</p>
+@endif
 
 @forelse($esami as $voce)
     @php($esame = $voce['esame'])

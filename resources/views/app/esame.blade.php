@@ -35,7 +35,7 @@
 @section('content')
 <a href="{{ route('app.esami') }}" class="back-btn">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-    I tuoi esami
+    Esami da gestire
 </a>
 <p class="page-title">{{ $esame->titolo }}</p>
 <p class="page-sub">{{ $esame->corso?->nome }}</p>
@@ -43,6 +43,14 @@
     @foreach($ruoli as $ruolo)<span class="card-badge">{{ $ruolo }}</span>@endforeach
     <span class="card-badge stato">{{ $esame->isChiuso() ? 'Chiuso' : 'In corso' }}</span>
 </div>
+
+@if($tutorati)
+<p class="sezione">Tutoraggio</p>
+<a class="lab-card" href="{{ route('app.esame.tutorati', $esame) }}">
+    <div class="lab-nome">I miei tutorati</div>
+    <div class="lab-stato">{{ $tutorati }} {{ $tutorati === 1 ? 'discente' : 'discenti' }} · andamento con le schede di tutti i docenti — sola lettura</div>
+</a>
+@endif
 
 @if($provaFinale)
 @include('app.partials.esame-sezione-prova-finale')

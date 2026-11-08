@@ -63,6 +63,8 @@ class AppEsamiController extends Controller
             'eDocente'    => $permessi->eDocente(),
             'itinere'     => ['discenti' => $discentiItinere->count(), 'iniziate' => $conVoti],
             'riepilogoItinere' => $permessi->vedeRiepilogoItinere(),
+            // Numero di discenti seguiti come tutor (0 = nessuna voce «I miei tutorati»)
+            'tutorati'         => $esame->modello_snapshot ? $permessi->discentiTutorati()->count() : 0,
             // Schede personali di colloquio e prova pratica (compilatori: compilabili a prova aperta, in sola lettura se richiusa) + riepilogo di sola lettura
             'provaFinale'      => $permessi->accedeProvaPersonale(),
             'riepilogoProvaFinale' => $permessi->vedeRiepilogoProvaFinale(),
