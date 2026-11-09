@@ -23,6 +23,8 @@
 <p class="page-title">{{ $socio->cognome }} {{ $socio->nome }}</p>
 <p class="page-sub">Laboratorio {{ $laboratorio->numero }}@if($laboratorio->data) · {{ $laboratorio->data->isoFormat('D MMM YYYY') }}@endif</p>
 
+@include('app.partials.esami-timer')
+
 <div class="avviso-personale">Valutazione personale: sono appunti tuoi, non entrano nel calcolo dell'esame.</div>
 @if(session('errore'))<div class="avviso-errore">{{ session('errore') }}</div>@endif
 @if(! $modificabile)<div class="avviso-sola-lettura">L'esame non è in corso: la scheda si può solo consultare.</div>@endif

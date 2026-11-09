@@ -18,10 +18,10 @@ trait SalvaAnnotazione
     public const ANNOTAZIONE_MAX = 1000;
 
     /** @param class-string<Model> $modello  @param array<string, int> $attributi chiave univoca della scheda */
-    private function salvaAnnotazioneSu(Request $request, string $modello, array $attributi): JsonResponse
+    private function salvaAnnotazioneSu(Request $request, string $modello, array $attributi, int $max = self::ANNOTAZIONE_MAX): JsonResponse
     {
         $dati = $request->validate([
-            'annotazione' => ['present', 'nullable', 'string', 'max:'.self::ANNOTAZIONE_MAX],
+            'annotazione' => ['present', 'nullable', 'string', 'max:'.$max],
         ]);
         $valore = ['annotazione' => Formato::testo($dati['annotazione'])];
 

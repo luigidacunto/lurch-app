@@ -24,6 +24,9 @@ class AppEsamiItinereController extends Controller
 {
     use Concerns\SalvaAnnotazione;
 
+    /** Le note sull'itinere sono più lunghe di quelle di laboratorio (colonna `text`, nessuna migrazione). */
+    public const ANNOTAZIONE_MAX_ITINERE = 3000;
+
     /** I miei discenti con lo stato delle mie schede. */
     public function elenco(Esame $esame)
     {
@@ -69,7 +72,7 @@ class AppEsamiItinereController extends Controller
             'voti'         => $voti,
             'modificabile' => $permessi->puoCompilareItinere($socio->id),
             'annotazione'  => $scheda?->annotazione,
-            'annotazioneMax' => self::ANNOTAZIONE_MAX,
+            'annotazioneMax' => self::ANNOTAZIONE_MAX_ITINERE,
             'riepilogo'    => static::riepilogoFormattato($scheda ?? new TcriSchedaItinere(), $esame),
         ]);
     }
@@ -118,7 +121,7 @@ class AppEsamiItinereController extends Controller
             'esame_id'          => $esame->id,
             'discente_socio_id' => $socio->id,
             'docente_socio_id'  => SocioCorrente::id(),
-        ]);
+        ], self::ANNOTAZIONE_MAX_ITINERE);
     }
 
     private function permessi(Esame $esame): PermessiEsame

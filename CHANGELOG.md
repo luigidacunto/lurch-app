@@ -4,6 +4,12 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.25 — 2026-11-09
+
+- feat: timer a conto alla rovescia (minuti e secondi, Avvia / Stop / Reset) sulle schede di laboratorio e di prova pratica dell'app, fisso sotto l'intestazione mentre si scorre la pagina; a zero la barra lampeggia in rosso, il telefono vibra e suona. Lo stato resta nel browser e sopravvive a ricarica e cambio pagina
+- feat: le note del docente sulla scheda itinere arrivano a 3000 caratteri (quelle di laboratorio restano a 1000)
+- fix: nel pannello il footer sta sotto le finestre di Filament (modali, pannelli laterali, anteprime PDF), che prima ne venivano tagliate in basso
+
 ## 1.85.24 — 2026-11-09
 
 - feat: legenda del LAP in cima a Valutazioni → Discenti e a «I miei tutorati»: per ogni prova il punteggio che corrisponde al LAP in centesimi e in punti, e le fasce dei colori in percentuale del massimo, scritte come intervalli ([20%, 40%[); nel pannello, al passaggio del mouse, la descrizione a parole

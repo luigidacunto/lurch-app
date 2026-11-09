@@ -19,6 +19,8 @@
 <p class="page-title">{{ $socio->cognome }} {{ $socio->nome }}</p>
 <p class="page-sub">Prova pratica · scheda personale</p>
 
+@include('app.partials.esami-timer')
+
 <div class="avviso-personale">Valutazione personale: sono appunti tuoi, non entrano nel calcolo dell'esame.</div>
 @if(session('errore'))<div class="avviso-errore">{{ session('errore') }}</div>@endif
 @if(! $modificabile)<div class="avviso-sola-lettura">La scheda si può solo consultare: l'esame non è in corso oppure la prova finale è chiusa.</div>@endif

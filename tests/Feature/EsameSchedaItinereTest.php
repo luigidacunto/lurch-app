@@ -243,7 +243,7 @@ class EsameSchedaItinereTest extends TestCase
         // Senza voti la scheda nasce dalla nota; testo vuoto torna NULL.
         $this->come('docA')->putJson($url, ['annotazione' => '  Molto attento in aula  '])->assertOk();
         $this->assertSame('Molto attento in aula', TcriSchedaItinere::first()->annotazione);
-        $this->come('docA')->putJson($url, ['annotazione' => str_repeat('a', 1001)])->assertStatus(422);
+        $this->come('docA')->putJson($url, ['annotazione' => str_repeat('a', 3001)])->assertStatus(422);
         $this->come('presidente')->putJson($url, ['annotazione' => 'x'])->assertForbidden();
         // Le note di laboratorio (accanto al docente, schede inviate) sono provate in EsameRiepilogoItinereTest.
         $riepilogo = route('app.esame.itinere.riepilogo', $this->esame);
@@ -251,6 +251,8 @@ class EsameSchedaItinereTest extends TestCase
         $this->come('presidente')->get($riepilogo)->assertOk()->assertDontSee('Molto attento in aula')->assertDontSee('ha inserito una nota');
         $this->come('docA')->get(route('app.esame.itinere.scheda', [$this->esame, $this->s['x']]))->assertSee('Molto attento in aula');
         $this->come('docB')->get(route('app.esame.itinere.scheda', [$this->esame, $this->s['x']]))->assertDontSee('Molto attento in aula');
+        // Il limite delle note itinere è 3000 (1000 in laboratorio).
+        $this->come('docA')->putJson($url, ['annotazione' => str_repeat('a', 3000)])->assertOk();
 
         $this->come('docA')->putJson($url, ['annotazione' => '   '])->assertOk();
         $this->assertNull(TcriSchedaItinere::first()->annotazione);

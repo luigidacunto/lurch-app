@@ -187,7 +187,9 @@ class AdminPanelProvider extends PanelProvider
                             align-items: center;
                             justify-content: space-between;
                             padding: 0 1.5rem;
-                            z-index: 40;
+                            /* 30 come la topbar: le finestre di Filament (modali, pannelli laterali, anteprime) hanno z-index 40
+                               e devono coprire il footer, che sta in fondo al body e a parità di livello vincerebbe. */
+                            z-index: 30;
                             font-size: 0.7rem;
                             color: #9ca3af;
                             gap: 1rem;
