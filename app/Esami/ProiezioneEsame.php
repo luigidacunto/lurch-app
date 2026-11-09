@@ -143,6 +143,86 @@ class ProiezioneEsame
         ];
     }
 
+    /**
+     * Itinere convertito in centesimi per UN discente (riga di per()): per ogni area il punteggio fissato dal direttore,
+     * altrimenti la media proposta dei docenti. `definitivo` = tutte le aree hanno il punteggio del direttore; altrimenti è
+     * «suggerito». `contributo` null se un'area non ha né punteggio né voti (nessuna media da proporre).
+     *
+     * @return array{contributo: ?Frazione, peso: string, definitivo: bool}
+     */
+    public static function itinereCentesimi(Esame $esame, array $riga): array
+    {
+        $snapshot = $esame->modello_snapshot;
+        $t = self::totale($snapshot, (string) $esame->lap, [
+            'itinere'       => collect($riga['aree'])->mapWithKeys(fn ($a) => [$a['codice'] => $a['finale'] ?? $a['proposta']])->all(),
+            'colloquio'     => null, 'prova_pratica' => null, 'test_scritto' => null,
+        ], $riga['massimi']);
+
+        return [
+            'contributo' => $t['contributi']['itinere'],
+            'peso'       => (string) $snapshot['pesi']['itinere'],
+            'definitivo' => ! collect($riga['aree'])->contains(fn ($a) => $a['finale'] === null),
+        ];
+    }
+
+    /**
+     * Legenda del LAP per prova: il valore che corrisponde al LAP in centesimi (peso × LAP ÷ 100) e in punti della prova
+     * (massimo × LAP ÷ 100), più le fasce dei colori (stessa convenzione di ColoreScala::perValore, in % del massimo).
+     * Solo lettura dallo snapshot e dal LAP dell'esame; un massimo 0 (test senza domande) dà valori null.
+     *
+     * @return array{lap: string, totale: string, prove: list<array{nome: string, peso: string, centesimi: string, punti: ?string, massimo: ?string}>, fasce: list<array{colore: string, nome: string, da: string, a: ?string, testo: string, descrizione: string}>}
+     */
+    public static function soglieLap(Esame $esame): array
+    {
+        $snapshot = $esame->modello_snapshot;
+        $calcolo = CalcoloEsameFactory::tcri();
+        $lap = Frazione::da((string) $esame->lap);
+        $cento = Frazione::di(100);
+        $fmt = fn (Frazione $f) => rtrim(rtrim(str_replace('.', ',', $f->tronca(2)), '0'), ',');
+
+        $massimi = [
+            'itinere'       => $calcolo->totaleItinere($snapshot, [])['massimo'],
+            'colloquio'     => Frazione::da((string) $snapshot['colloquio']['scala']['max']),
+            'prova_pratica' => $calcolo->totaleSemaforo($snapshot, [])['massimo'],
+            'test_scritto'  => TestScritto::massimo($esame),
+        ];
+        $nomi = ['itinere' => 'Itinere', 'colloquio' => 'Colloquio', 'prova_pratica' => 'Prova pratica', 'test_scritto' => 'Test scritto'];
+
+        $prove = [];
+        foreach (self::PROVE as $prova) {
+            $peso = Frazione::da((string) $snapshot['pesi'][$prova]);
+            $senzaMassimo = $massimi[$prova]->eZero();
+            $prove[] = [
+                'nome'      => $nomi[$prova],
+                'peso'      => $fmt($peso),
+                'centesimi' => $fmt($peso->per($lap)->diviso($cento)),
+                'punti'     => $senzaMassimo ? null : $fmt($massimi[$prova]->per($lap)->diviso($cento)),
+                'massimo'   => $senzaMassimo ? null : $fmt($massimi[$prova]),
+            ];
+        }
+
+        // Estremi delle fasce in % del massimo (LAP/3, 2·LAP/3, LAP, (LAP+100)/2); il colore è quello del primo valore della fascia.
+        $limiti = [Frazione::di(0), $lap->diviso(Frazione::di(3)), $lap->per(Frazione::di(2))->diviso(Frazione::di(3)), $lap, $lap->somma($cento)->diviso(Frazione::di(2))];
+        $nomiFasce = ['rosso', 'arancione', 'giallo', 'verde', 'azzurro'];
+        $fasce = [];
+        foreach ($limiti as $i => $da) {
+            $fasce[] = [
+                'colore' => ColoreScala::perValore($da, $cento, (string) $esame->lap),
+                'nome'   => $nomiFasce[$i],
+                'da'     => $fmt($da),
+                'a'      => isset($limiti[$i + 1]) ? $fmt($limiti[$i + 1]) : null,
+                // Notazione italiana degli intervalli: [da, a[ = estremo basso incluso, alto escluso (20 è arancione, non rosso);
+                // l'ultima è chiusa [da, 100].
+                'testo'  => isset($limiti[$i + 1]) ? '['.$fmt($da).'%, '.$fmt($limiti[$i + 1]).'%[' : '['.$fmt($da).'%, 100%]',
+                'descrizione' => isset($limiti[$i + 1])
+                    ? 'da '.$fmt($da).'% (incluso) a '.$fmt($limiti[$i + 1]).'% (escluso)'
+                    : 'da '.$fmt($da).'% (incluso) a 100% (incluso)',
+            ];
+        }
+
+        return ['lap' => $fmt($lap), 'totale' => $fmt($lap), 'prove' => $prove, 'fasce' => $fasce];
+    }
+
     /** "3,5" / "3.5" → Frazione; vuoto o non numerico → null. Una Frazione passa così com'è. */
     private static function numero(Frazione|string|null $v): ?Frazione
     {

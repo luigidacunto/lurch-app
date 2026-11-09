@@ -569,6 +569,8 @@ class EsameRiepilogoItinereTest extends TestCase
 
         $pagina = Livewire::test(EsameResource\Pages\RiepilogoDiscentiEsame::class, ['record' => $this->esame->getRouteKey()])
             ->assertSuccessful()->assertDontSee('da completare')
+            // Legenda del LAP in cima alla tabella (pannello): soglie per prova e fasce.
+            ->assertSee('LAP 60% — idoneo da 60 su 100')->assertSee('Itinere: <strong>18</strong> su 30', false)->assertSee('giallo [40%, 60%[')->assertSee('title="da 40% (incluso) a 60% (escluso)"', false)->assertSee('title="da 80% (incluso) a 100% (incluso)"', false)
             // Dati incompleti: totale e stato restano vuoti (nessun idoneo/non idoneo in tabella).
             ->assertTableColumnStateSet('proiezione_totale', '', $iscrizione)
             ->assertTableColumnStateSet('proiezione_stato', '', $iscrizione)

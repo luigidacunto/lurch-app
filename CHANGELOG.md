@@ -4,6 +4,13 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.24 — 2026-11-09
+
+- feat: legenda del LAP in cima a Valutazioni → Discenti e a «I miei tutorati»: per ogni prova il punteggio che corrisponde al LAP in centesimi e in punti, e le fasce dei colori in percentuale del massimo, scritte come intervalli ([20%, 40%[); nel pannello, al passaggio del mouse, la descrizione a parole
+- feat: nell'anteprima dei tutorati la riga dell'itinere mostra il punteggio convertito in centesimi, «medio» (dalle medie dei docenti) o «finale» (aree fissate dal direttore); sotto, su righe a parte, le medie delle aree e i laboratori
+- fix: nelle tabelle dell'itinere dell'app ogni area mostra solo i docenti che l'hanno votata, senza colonne vuote
+- refactor: calcolo dell'itinere in centesimi condiviso tra pannello e app (ProiezioneEsame)
+
 ## 1.85.23 — 2026-11-08
 
 - feat: nuova scheda «Discenti» in fondo alla barra Valutazioni dell'esame: per ogni discente ammesso i contributi in centesimi di itinere, colloquio, prova pratica e test (intestazioni corte con il peso, es. «Itinere /30»), totale e stato idoneo / non idoneo solo quando tutte e quattro le prove sono fissate, e la finestra «Proiezione» (già della 1.85.22, spostata qui). Visibile a chi gestisce l'esame, dopo «Attiva esame»

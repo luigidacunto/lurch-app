@@ -49,11 +49,27 @@ class AppEsamiRiepilogoItinereController extends Controller
             }
         }
 
+        // Itinere in centesimi (definitivo del direttore o suggerito dalle medie), colorato rispetto al LAP.
+        // ponytail: ProiezioneEsame::per() rilegge il riepilogo; va bene per i pochi discenti di un tutor.
+        $itinereCentesimi = [];
+        foreach (\App\Esami\ProiezioneEsame::per($esame, $permessi->discentiTutorati()->all()) as $id => $riga) {
+            $i = \App\Esami\ProiezioneEsame::itinereCentesimi($esame, $riga);
+            $peso = \App\Esami\Calcolo\Frazione::da($i['peso']);
+            $itinereCentesimi[$id] = [
+                'testo'      => $i['contributo'] === null ? '–' : \App\Esami\Formato::decimale($i['contributo']),
+                'peso'       => $i['peso'],
+                'colore'     => $i['contributo'] === null ? null : \App\Esami\ColoreScala::perValore($i['contributo'], $peso, (string) $esame->lap),
+                'definitivo' => $i['definitivo'],
+            ];
+        }
+
         return view('app.esame-riepilogo-itinere', [
             'esame'       => $esame,
             'r'           => $r,
             'tutorati'    => true,
+            'itinereCentesimi' => $itinereCentesimi,
             'dettagliLab' => $dettagliLab,
+            'soglie'      => \App\Esami\ProiezioneEsame::soglieLap($esame),
         ]);
     }
 }

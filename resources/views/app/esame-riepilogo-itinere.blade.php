@@ -55,6 +55,10 @@
 <p class="page-sub">Sola lettura. Il punteggio finale d'area lo inserisce il direttore dal pannello.</p>
 @endif
 
+@if($tutorati)
+    @include('app.partials.esami-legenda-lap', ['soglie' => $soglie])
+@endif
+
 <div class="avviso-personale">Schede personali dei docenti: appunti, non entrano nel calcolo.</div>
 <div class="avviso-finale">Scheda finale d'area: deciso dal direttore con la commissione, è l'unico punteggio che entra nel calcolo.</div>
 
@@ -78,6 +82,14 @@
                 {{-- Anteprima del tutor: media dei docenti per area ("–" senza voti: il valore forzato vale solo se il direttore lo conferma) e media di ogni laboratorio, colori rispetto al LAP. --}}
                 <div class="disc-lab">
                     <span class="etichetta-riga">Itinere</span>
+                    {{-- In centesimi: «finale» (tutte le aree fissate dal direttore) oppure «medio» (medie dei docenti); «–» se manca una media. --}}
+                    @php $ic = $itinereCentesimi[$d['socio']->id] ?? null; @endphp
+                    @if($ic)
+                        <span class="pillola-lab" style="@if($ic['colore'])background:{{ $ic['colore'] }}; color:#111827;@endif font-size:12px;">{{ $ic['testo'] }} su {{ $ic['peso'] }} · {{ $ic['definitivo'] ? 'finale' : 'medio' }}</span>
+                    @endif
+                </div>
+                <div class="disc-lab">
+                    <span class="etichetta-riga">Aree</span>
                     @foreach($r['aree'] as $area)
                         @php $a = $d['aree'][$area['codice']]; @endphp
                         <span class="pillola-lab" @if($a['colore_media']) style="background:{{ $a['colore_media'] }}; color:#111827;" @endif>{{ $area['nome'] }} {{ $a['colore_media'] ? $a['media_delle_medie'] : '–' }}</span>
@@ -112,30 +124,34 @@
         @endif
 
         @foreach($r['aree'] as $area)
-            @php $a = $d['aree'][$area['codice']]; @endphp
+            @php
+                $a = $d['aree'][$area['codice']];
+                // Solo i docenti che in QUEST'area hanno dato almeno un voto: chi ha una scheda ma non ha votato qui non ha colonna.
+                $docentiArea = array_filter($d['docenti'], fn ($docNome, $docId) => collect($area['voci'])->contains(fn ($v) => isset($a['voti'][$docId][$v['codice']])), ARRAY_FILTER_USE_BOTH);
+            @endphp
             <div class="area">
                 <h3>{{ $area['nome'] }}</h3>
 
                 <div class="blocco-personale">
                     <div class="etichetta">Schede personali dei docenti — non entrano nel calcolo</div>
-                    @if($d['docenti'] === [])
-                        Nessun docente ha compilato la scheda.
+                    @if($docentiArea === [])
+                        Nessun docente ha ancora votato quest'area.
                     @else
                         <div class="tabella-scroll">
                             <table>
                                 <thead>
-                                    <tr><th>Voce</th>@foreach($d['docenti'] as $docNome)<th>{{ $docNome }}</th>@endforeach</tr>
+                                    <tr><th>Voce</th>@foreach($docentiArea as $docNome)<th>{{ $docNome }}</th>@endforeach</tr>
                                 </thead>
                                 <tbody>
                                     @foreach($area['voci'] as $voce)
                                         <tr>
                                             <td>{{ $voce['testo'] }}</td>
-                                            @foreach($d['docenti'] as $docId => $docNome)<td>{{ $a['voti'][$docId][$voce['codice']] ?? '—' }}</td>@endforeach
+                                            @foreach($docentiArea as $docId => $docNome)<td>{{ $a['voti'][$docId][$voce['codice']] ?? '—' }}</td>@endforeach
                                         </tr>
                                     @endforeach
                                     <tr style="font-weight:700;">
                                         <td>Media del docente</td>
-                                        @foreach($d['docenti'] as $docId => $docNome)<td>{{ $a['medie_docenti'][$docId]['media'] ?? '—' }}</td>@endforeach
+                                        @foreach($docentiArea as $docId => $docNome)<td>{{ $a['medie_docenti'][$docId]['media'] ?? '—' }}</td>@endforeach
                                     </tr>
                                 </tbody>
                             </table>

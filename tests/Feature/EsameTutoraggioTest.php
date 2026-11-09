@@ -138,6 +138,15 @@ class EsameTutoraggioTest extends TestCase
         $this->pwa('tutor')->assertOk()->assertSee('I miei tutorati')->assertSee('Testx')->assertDontSee('Testy')
             ->assertDontSee('Testritirato')->assertSee('Testaltro')->assertSee('3,5');
         $this->pwa('tutor', 'app.esame')->assertOk()->assertSee('I miei tutorati');
+        // Legenda del LAP (60%) in cima: valore in centesimi e in punti per prova + fasce dei colori.
+        $this->pwa('tutor')->assertSee('LAP 60% — idoneo da 60 su 100')
+            ->assertSee('Itinere: <strong>18</strong> su 30', false)->assertSee('(12 su 20 punti)')
+            ->assertSee('Prova pratica: <strong>24</strong> su 40', false)->assertSee('(16,8 su 28 punti)')
+            ->assertSee('Colloquio: <strong>6</strong> su 10', false)->assertSee('Test scritto: <strong>12</strong> su 20', false)
+            ->assertSee('rosso [0%, 20%[')->assertSee('arancione [20%, 40%[')->assertSee('verde [60%, 80%[')->assertSee('azzurro [80%, 100%]')
+            ->assertDontSee('title="da 20% (incluso)', false);   // nell'app niente suggerimenti
+        // Non c'è sulla pagina della commissione.
+        $this->pwa('presidente', 'app.esame.itinere.riepilogo')->assertDontSee('LAP 60%');
 
         foreach (['altro', 'presidente', 'x'] as $k) {
             $this->pwa($k)->assertNotFound();
@@ -160,6 +169,32 @@ class EsameTutoraggioTest extends TestCase
         $this->pwa('altro', 'app.esame')->assertOk()->assertDontSee('I miei tutorati');
     }
 
+    public function test_anteprima_itinere_in_centesimi_medio_e_poi_finale(): void
+    {
+        $this->gruppo();
+        $aree = $this->esame->modello_snapshot['itinere']['aree'];
+        // «altro» vota 4 su tutte le voci di tutte le aree: media 4 per area → 30 × 16/20 = 24 centesimi, suggerito.
+        $scheda = TcriSchedaItinere::create(['esame_id' => $this->esame->id, 'discente_socio_id' => $this->s['x']->id, 'docente_socio_id' => $this->s['altro']->id]);
+        foreach ($aree as $a) {
+            foreach ($a['voci'] as $v) {
+                $scheda->voci()->create(['voce_codice' => $v['codice'], 'voto' => 4]);
+            }
+        }
+        $this->pwa('tutor')->assertOk()->assertSee('24,0 su 30 · medio');
+
+        // Il direttore fissa le 4 aree a 5 → 30 centesimi, definitivo.
+        foreach ($aree as $a) {
+            DecisioneItinere::salva($this->esame->fresh(), $this->direttore, $this->s['x']->id, $a['codice'], '5.0', 'ok');
+        }
+        $this->pwa('tutor')->assertSee('30,0 su 30 · finale')->assertDontSee('· medio');
+    }
+
+    public function test_anteprima_itinere_senza_voti_resta_vuota(): void
+    {
+        $this->gruppo();   // nessuna scheda: nessuna media da proporre
+        $this->pwa('tutor')->assertOk()->assertSee('– su 30 · medio');
+    }
+
     public function test_il_tutor_legge_le_note_degli_altri_docenti_sui_suoi_discenti(): void
     {
         $this->gruppo();
@@ -178,6 +213,25 @@ class EsameTutoraggioTest extends TestCase
             ->assertDontSee('Nota itinere su y')->assertDontSee('Nota bozza lab');
         // La commissione (non direttore) continua a non leggerle.
         $this->pwa('presidente', 'app.esame.itinere.riepilogo')->assertOk()->assertDontSee('Nota itinere su x')->assertDontSee('Nota lab su x');
+    }
+
+    public function test_itinere_una_colonna_solo_per_i_docenti_che_hanno_votato_quell_area(): void
+    {
+        $this->gruppo();
+        $aree = $this->esame->modello_snapshot['itinere']['aree'];
+        // «altro» vota solo la prima area; «direttore» solo la seconda; «tutor» ha una scheda vuota (nessun voto).
+        $this->schedaItinere('altro', 'x');
+        $d = TcriSchedaItinere::create(['esame_id' => $this->esame->id, 'discente_socio_id' => $this->s['x']->id, 'docente_socio_id' => $this->s['direttore']->id]);
+        $d->voci()->create(['voce_codice' => $aree[1]['voci'][0]['codice'], 'voto' => 3]);
+        TcriSchedaItinere::create(['esame_id' => $this->esame->id, 'discente_socio_id' => $this->s['x']->id, 'docente_socio_id' => $this->s['tutor']->id]);
+
+        $html = $this->pwa('tutor')->assertOk()->getContent();
+
+        // Ognuno compare nell'intestazione di UNA sola tabella (prima: una colonna per area, anche senza voti).
+        $this->assertSame(1, substr_count($html, '<th>Testaltro altroNome</th>'));
+        $this->assertSame(1, substr_count($html, '<th>Testdirettore direttoreNome</th>'));
+        $this->assertSame(0, substr_count($html, '<th>Testtutor tutorNome</th>'));
+        $this->assertStringContainsString("Nessun docente ha ancora votato quest'area.", $html);
     }
 
     public function test_tutor_tolto_dai_docenti_del_corso_perde_l_accesso(): void

@@ -76,6 +76,7 @@ class RiepilogoDiscentiEsame extends ManageRelatedRecords
                     ->modalSubmitAction(false)
                     ->modalCancelActionLabel('Chiudi'),
             ], position: RecordActionsPosition::BeforeColumns)
+            ->header(view('app.partials.esami-legenda-lap', ['soglie' => ProiezioneEsame::soglieLap($this->getRecord()), 'tooltip' => true]))
             ->description('Contributi in centesimi delle singole prove (peso dopo la barra), totale e stato solo a prove tutte fissate. Per simulare i punteggi mancanti usa «Proiezione».')
             ->emptyStateHeading('Nessun discente iscritto al corso');
     }
@@ -116,19 +117,13 @@ class RiepilogoDiscentiEsame extends ManageRelatedRecords
         if (! $p) {
             return '—';
         }
-        $snapshot = $this->getRecord()->modello_snapshot;
-        $t = ProiezioneEsame::totale($snapshot, (string) $this->getRecord()->lap, [
-            'itinere' => $this->valoriItinere($p, fn ($a) => $a['proposta']),
-            'colloquio' => null, 'prova_pratica' => null, 'test_scritto' => null,
-        ], $p['massimi']);
-        $c = $t['contributi']['itinere'];
-        if ($c === null) {
+        $i = ProiezioneEsame::itinereCentesimi($this->getRecord(), $p);
+        if ($i['contributo'] === null) {
             return '–';
         }
-        $stima = collect($p['aree'])->contains(fn ($a) => $a['finale'] === null);
 
-        return $this->pillola($c, Frazione::da((string) $snapshot['pesi']['itinere']), Formato::decimale($c))
-            .($stima ? ' <span style="font-size:12px; color:#6b7280;">stima</span>' : '');
+        return $this->pillola($i['contributo'], Frazione::da($i['peso']), Formato::decimale($i['contributo']))
+            .($i['definitivo'] ? '' : ' <span style="font-size:12px; color:#6b7280;">stima</span>');
     }
 
     /** Contributo in centesimi di UNA prova, solo se il suo punteggio è fissato (le ipotesi stanno nella finestra «Proiezione»). */
