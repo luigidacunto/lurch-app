@@ -123,6 +123,15 @@ class ComitatoRegionaleResource extends Resource
                             ->helperText('Usato nei testi privacy come {responsabile}.'),
                     ]),
 
+                    Forms\Components\Placeholder::make('_anteprima_logo')
+                        ->label('Logo attuale')
+                        ->content(fn (?ComitatoRegionale $record) => new \Illuminate\Support\HtmlString(
+                            '<img src="' . e($record->logoUrl()) . '" alt="' . e($record->nome) . '"'
+                            . ' style="height:80px; width:auto; max-width:320px; object-fit:contain; background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:6px;">'
+                        ))
+                        ->visible(fn (?ComitatoRegionale $record) => filled($record?->logo))
+                        ->columnSpanFull(),
+
                     // Logo ufficiale: solo ridimensionamento proporzionale in visualizzazione, mai ritaglio.
                     Forms\Components\FileUpload::make('logo')
                         ->label('Logo del comitato')

@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.31 — 2026-11-16
+
+- feat: nel comitato regionale, sopra il campo del logo, l'anteprima «Logo attuale» quando un logo è già caricato
+
 ## 1.85.30 — 2026-11-16
 
 - feat: entrando dal dominio di una regione, home, pagine di accesso al pannello, pannello (in alto a sinistra) e intestazione dell'app mostrano logo e nome del comitato regionale; sull'indirizzo generale nulla cambia
