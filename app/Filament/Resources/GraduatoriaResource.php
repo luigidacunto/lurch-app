@@ -421,13 +421,13 @@ class GraduatoriaResource extends Resource
                 Tables\Columns\TextColumn::make('link_iscrizione')
                     ->label('Link iscrizione')
                     ->toggleable()
-                    ->getStateUsing(fn (Graduatoria $record) => route('graduatoria.mostra', $record->codice_pubblico))
+                    ->getStateUsing(fn (Graduatoria $record) => \App\Services\PortaleRegionale::route($record->comitato_regionale_id, 'graduatoria.mostra', $record->codice_pubblico))
                     ->icon('heroicon-o-link')
                     ->copyable()
-                    ->copyableState(fn (Graduatoria $record) => route('graduatoria.mostra', $record->codice_pubblico))
+                    ->copyableState(fn (Graduatoria $record) => \App\Services\PortaleRegionale::route($record->comitato_regionale_id, 'graduatoria.mostra', $record->codice_pubblico))
                     ->copyMessage('Link copiato negli appunti!')
                     ->formatStateUsing(fn () => 'Copia link')
-                    ->tooltip(fn (Graduatoria $record) => route('graduatoria.mostra', $record->codice_pubblico))
+                    ->tooltip(fn (Graduatoria $record) => \App\Services\PortaleRegionale::route($record->comitato_regionale_id, 'graduatoria.mostra', $record->codice_pubblico))
                     ->color('primary'),
 
                 Tables\Columns\TextColumn::make('comitatoRegionale.nome')

@@ -27,7 +27,7 @@ class BadgeCorsistiController extends Controller
 
         $badges = collect();
         foreach ($corso->iscrizioni->where('stato', '!=', 'ritirato')->sortBy('partecipante.cognome') as $iscrizione) {
-            $url = route('badge.portale', ['evento' => $corso->evento_id, 'token' => $iscrizione->badge_token]);
+            $url = \App\Services\PortaleRegionale::route($corso->evento->comitato_regionale_id, 'badge.portale', ['evento' => $corso->evento_id, 'token' => $iscrizione->badge_token]);
 
             $badges->push([
                 'nome'        => $iscrizione->partecipante->nome,

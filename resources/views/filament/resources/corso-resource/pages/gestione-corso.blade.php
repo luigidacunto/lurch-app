@@ -469,7 +469,7 @@
                     $telefono          = trim(($p?->prefisso_telefono ?? '') . ' ' . ($p?->telefono ?? ''));
                     $inviato           = $iscrizione->form_inviato_at;
                     $compilato         = $iscrizione->rispostaPreregistrazione !== null;
-                    $formUrl           = route('form.show', $iscrizione->token);
+                    $formUrl           = \App\Services\PortaleRegionale::route($this->record->evento->comitato_regionale_id, 'form.show', $iscrizione->token);
                     $ricevutaPath      = $iscrizione->rispostaPreregistrazione?->ricevuta_path;
                     $nullaostaPath     = $iscrizione->rispostaPreregistrazione?->nullaosta_path;
                     $nullaostaVerif    = $iscrizione->rispostaPreregistrazione?->nullaosta_verificato ?? false;

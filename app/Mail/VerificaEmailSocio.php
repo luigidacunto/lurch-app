@@ -31,7 +31,7 @@ class VerificaEmailSocio extends Mailable
             with: [
                 'nomeSocio'    => trim($target->nome . ' ' . $target->cognome),
                 'codice'       => $this->codice,
-                'linkVerifica' => route('email.verifica', $this->verifica->token),
+                'linkVerifica' => \App\Services\PortaleRegionale::route($this->verifica->comitatoRegionaleId(), 'email.verifica', $this->verifica->token),
             ],
         );
     }

@@ -4,6 +4,14 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.26 — 2026-11-16
+
+- feat: configurazione per regione nel comitato regionale (solo superadmin): indirizzo del portale, logo, responsabile della protezione dei dati e account SMTP (server, porta, cifratura, utente, password cifrata nel database, mittente), tutti facoltativi; la password salvata non viene mai mostrata e resta invariata se il campo è lasciato vuoto
+- feat: i link inviati o condivisi (mail di preregistrazione di iscritti e staff, verifica dell'email, QR dei badge e della comunicazione evento, pulsanti «apri / copia link» del pannello per form, candidature staff e graduatorie) usano l'indirizzo del portale della regione dell'evento o della graduatoria; senza indirizzo, l'indirizzo generale del portale (`APP_URL`)
+- feat: riconoscimento della regione dal dominio da cui arriva la richiesta, per le pagine non legate a un evento
+- fix: nei form del comitato regionale e degli utenti il browser non compila più i campi password con le credenziali salvate di chi sta operando
+- fix: form del comitato regionale disposto su più colonne
+
 ## 1.85.25 — 2026-11-09
 
 - feat: timer a conto alla rovescia (minuti e secondi, Avvia / Stop / Reset) sulle schede di laboratorio e di prova pratica dell'app, fisso sotto l'intestazione mentre si scorre la pagina; a zero la barra lampeggia in rosso, il telefono vibra e suona. Lo stato resta nel browser e sopravvive a ricarica e cambio pagina

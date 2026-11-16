@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\CorsoResource\RelationManagers;
 
+use App\Services\PortaleRegionale;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -90,7 +91,7 @@ class IscrizioniRelationManager extends RelationManager
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->color('info')
                     ->iconButton()
-                    ->url(fn (Model $record) => route('form.show', $record->token))
+                    ->url(fn (Model $record) => PortaleRegionale::route($this->getOwnerRecord()->evento->comitato_regionale_id, 'form.show', $record->token))
                     ->openUrlInNewTab(),
 
                 // Copia link: nessuna azione server-side reale, il click scrive negli
@@ -103,7 +104,7 @@ class IscrizioniRelationManager extends RelationManager
                     ->color('gray')
                     ->iconButton()
                     ->extraAttributes(fn (Model $record) => [
-                        'onclick' => "navigator.clipboard.writeText('" . route('form.show', $record->token) . "')",
+                        'onclick' => "navigator.clipboard.writeText('" . PortaleRegionale::route($this->getOwnerRecord()->evento->comitato_regionale_id, 'form.show', $record->token) . "')",
                     ])
                     ->action(function () {
                         Notification::make()->title('Link copiato')->success()->send();

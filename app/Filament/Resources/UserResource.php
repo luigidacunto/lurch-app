@@ -143,11 +143,14 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->unique(table: 'users', column: 'email', ignoreRecord: true)
+                    ->autocomplete('off')
                     ->maxLength(255),
 
+                // new-password: il browser non deve compilare qui le credenziali salvate di chi sta operando.
                 Forms\Components\TextInput::make('password')
                     ->label('Password')
                     ->password()
+                    ->autocomplete('new-password')
                     ->minLength(8)
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->dehydrated(fn ($state) => filled($state))

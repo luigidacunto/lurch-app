@@ -745,7 +745,7 @@ class EventoResource extends Resource
                     Forms\Components\Placeholder::make('candidature_staff_link')
                         ->label('Link pubblico candidatura')
                         ->content(fn ($record) => $record?->candidature_staff_uuid
-                            ? new \Illuminate\Support\HtmlString('<span style="font-family:monospace;font-size:12px;">' . e(route('candidatura-staff.mostra', $record->candidature_staff_uuid)) . '</span>')
+                            ? new \Illuminate\Support\HtmlString('<span style="font-family:monospace;font-size:12px;">' . e(\App\Services\PortaleRegionale::route($record->comitato_regionale_id, 'candidatura-staff.mostra', $record->candidature_staff_uuid)) . '</span>')
                             : '—')
                         ->visible(fn ($record) => $record !== null)
                         ->columnSpanFull(),

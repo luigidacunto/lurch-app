@@ -109,7 +109,7 @@ class GestioneCandidatureStaff extends ManageRelatedRecords
                 ->extraAttributes(function () {
                     /** @var Evento $evento */
                     $evento = $this->getRecord();
-                    $url    = route('candidatura-staff.mostra', $evento->candidature_staff_uuid);
+                    $url    = \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'candidatura-staff.mostra', $evento->candidature_staff_uuid);
 
                     return [
                         'x-on:click.prevent.stop' => 'window.navigator.clipboard.writeText(' . \Illuminate\Support\Js::from($url) . ");"

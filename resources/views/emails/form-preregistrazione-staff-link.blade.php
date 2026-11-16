@@ -3,7 +3,7 @@
     $iscrizione   = $iscrizione;
     $partecipante = $iscrizione->partecipante;
     $evento       = $iscrizione->evento;
-    $link         = route('form-staff.show', $iscrizione->token);
+    $link         = \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'form-staff.show', $iscrizione->token);
 @endphp
 
 # Ciao {{ $partecipante->nome }} {{ $partecipante->cognome }},

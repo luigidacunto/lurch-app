@@ -4,7 +4,7 @@
     $partecipante = $iscrizione->partecipante;
     $corso        = $iscrizione->corso;
     $evento       = $corso->evento;
-    $link         = route('form.show', $iscrizione->token);
+    $link         = \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'form.show', $iscrizione->token);
 @endphp
 
 # Ciao {{ $partecipante->nome }} {{ $partecipante->cognome }},

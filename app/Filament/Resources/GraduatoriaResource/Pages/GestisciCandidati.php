@@ -84,7 +84,7 @@ class GestisciCandidati extends ManageRelatedRecords
             ->extraAttributes(function () {
                 /** @var Graduatoria $graduatoria */
                 $graduatoria = $this->getRecord();
-                $url         = route('graduatoria.mostra', $graduatoria->codice_pubblico);
+                $url         = \App\Services\PortaleRegionale::route($graduatoria->comitato_regionale_id, 'graduatoria.mostra', $graduatoria->codice_pubblico);
 
                 return [
                     'x-on:click.prevent.stop' => 'window.navigator.clipboard.writeText(' . \Illuminate\Support\Js::from($url) . ");"

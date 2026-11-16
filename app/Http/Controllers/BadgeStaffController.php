@@ -30,7 +30,7 @@ class BadgeStaffController extends Controller
             ->sortBy('partecipante.cognome');
 
         $badges = $iscrizioniStaff->map(function ($is) use ($evento) {
-            $url = route('badge.portale', ['evento' => $evento->id, 'token' => $is->badge_token]);
+            $url = \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'badge.portale', ['evento' => $evento->id, 'token' => $is->badge_token]);
 
             return [
                 'nome'        => $is->partecipante->nome,

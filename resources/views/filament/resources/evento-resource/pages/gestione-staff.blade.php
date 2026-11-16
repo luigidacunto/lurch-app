@@ -368,7 +368,7 @@
                     $rowSearch = mb_strtolower(trim(implode(' ', array_filter([
                         $p?->cognome, $p?->nome, $p?->codice_fiscale, $p?->email, $p?->comitatoLocale?->nome,
                     ]))));
-                    $linkForm   = route('form-staff.show', $iscrizione->token);
+                    $linkForm   = \App\Services\PortaleRegionale::route($this->record->comitato_regionale_id, 'form-staff.show', $iscrizione->token);
                     $hasLogisticaStaff = collect($iscrizione->rispostaPreregistrazione?->risposte['disponibilita'] ?? [])
                         ->pluck('tipo')->contains('logistica');
                     $nullaostaPathStaff       = $iscrizione->rispostaPreregistrazione?->nullaosta_path;

@@ -13,13 +13,30 @@ class ComitatoRegionale extends Model
 
     protected $table = 'comitati_regionali';
 
-    protected $fillable = ['nome', 'rappresentante_legale', 'indirizzo', 'email', 'codice', 'attivo'];
+    protected $fillable = [
+        'nome', 'rappresentante_legale', 'indirizzo', 'email', 'codice', 'attivo',
+        'url_portale', 'logo', 'privacy_responsabile',
+        'mail_host', 'mail_port', 'mail_scheme', 'mail_username', 'mail_password',
+        'mail_from_address', 'mail_from_name',
+    ];
+
+    protected $hidden = ['mail_password'];
 
     protected function casts(): array
     {
         return [
-            'attivo' => 'boolean',
+            'attivo'        => 'boolean',
+            'mail_port'     => 'integer',
+            'mail_password' => 'encrypted',
         ];
+    }
+
+    /** Account SMTP della regione completo (server, mittente e credenziali). */
+    public function haPostaConfigurata(): bool
+    {
+        return filled($this->mail_host) && filled($this->mail_port)
+            && filled($this->mail_username) && filled($this->mail_password)
+            && filled($this->mail_from_address);
     }
 
     public function scopeAttivo($query)

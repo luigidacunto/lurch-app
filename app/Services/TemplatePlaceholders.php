@@ -22,7 +22,7 @@ use App\Models\GraduatoriaCandidato;
  * {comitato_regionale}  Comitato regionale           ← evento.comitatoRegionale.nome
  * {comitato_locale}     Comitato locale              ← evento.comitatoLocale.nome (vuoto se assente)
  * {quota}               Quota di partecipazione      ← corso.quota_partecipazione → "€ X,XX" (vuoto se assente)
- * {link_form}           Pulsante + URL form          ← route('form.show', token) — reso come HTML
+ * {link_form}           Pulsante + URL form          ← form.show sul portale della regione dell'evento — reso come HTML
  * {scadenza}            Scadenza compilazione        ← data invio + 7 giorni in formato gg/mm/YYYY
  * {istruzioni_pagamento} Testo istruzioni bonifico   ← IstruzionePagamento::risolvi(comitato_regionale_id).testo
  *                                                       I segnaposto sopra funzionano anche dentro questo testo
@@ -44,7 +44,7 @@ class TemplatePlaceholders
     {
         $corso  = $iscrizione->corso;
         $evento = $corso->evento;
-        $link   = route('form.show', $iscrizione->token);
+        $link   = PortaleRegionale::route($evento->comitato_regionale_id, 'form.show', $iscrizione->token);
 
         $base = self::buildBaseValues(
             corso:             $corso,
@@ -69,7 +69,7 @@ class TemplatePlaceholders
         $evento          = $corso->evento;
         $primaIscrizione = $corso->iscrizioni->first();
         $partecipante    = $primaIscrizione?->partecipante;
-        $link            = $primaIscrizione ? route('form.show', $primaIscrizione->token) : '#anteprima';
+        $link            = $primaIscrizione ? PortaleRegionale::route($evento->comitato_regionale_id, 'form.show', $primaIscrizione->token) : '#anteprima';
 
         $base = self::buildBaseValues(
             corso:             $corso,
@@ -92,7 +92,7 @@ class TemplatePlaceholders
     public static function risolviPerStaff(string $testo, IscrizioneStaff $iscrizione, ?string $scadenza = null): string
     {
         $evento = $iscrizione->evento;
-        $link   = route('form-staff.show', $iscrizione->token);
+        $link   = PortaleRegionale::route($evento->comitato_regionale_id, 'form-staff.show', $iscrizione->token);
 
         $values = self::buildStaffValues(
             evento:   $evento,
@@ -113,7 +113,7 @@ class TemplatePlaceholders
     {
         $primoStaff   = $evento->staff->first();
         $partecipante = $primoStaff?->partecipante;
-        $link         = $primoStaff ? route('form-staff.show', $primoStaff->token) : '#anteprima';
+        $link         = $primoStaff ? PortaleRegionale::route($evento->comitato_regionale_id, 'form-staff.show', $primoStaff->token) : '#anteprima';
 
         $values = self::buildStaffValues(
             evento:   $evento,

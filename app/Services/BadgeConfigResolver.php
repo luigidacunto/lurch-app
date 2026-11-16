@@ -57,7 +57,7 @@ class BadgeConfigResolver
      */
     public static function qrCheckinPng(Evento $evento, string $token): string
     {
-        $url = route('badge.portale', ['evento' => $evento->id, 'token' => $token]);
+        $url = PortaleRegionale::route($evento->comitato_regionale_id, 'badge.portale', ['evento' => $evento->id, 'token' => $token]);
 
         // outputType (non outputInterface: quello vale solo con outputType=CUSTOM) —
         // default della lib è MARKUP_SVG, va forzato PNG per l'embed CID nella mail.

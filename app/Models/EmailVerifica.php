@@ -67,6 +67,14 @@ class EmailVerifica extends Model
         return $this->socio ?? $this->candidaturaStaff ?? $this->graduatoriaCandidato;
     }
 
+    /** Regione della verifica: del socio, dell'evento della candidatura staff o della graduatoria. */
+    public function comitatoRegionaleId(): ?int
+    {
+        return $this->socio?->comitato_regionale_id
+            ?? $this->candidaturaStaff?->evento?->comitato_regionale_id
+            ?? $this->graduatoriaCandidato?->graduatoria?->comitato_regionale_id;
+    }
+
     public function isScaduto(): bool
     {
         return $this->expires_at->isPast();
