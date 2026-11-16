@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.34 — 2026-11-16
+
+- fix: una password SMTP non leggibile con la chiave dell'installazione ora si può sovrascrivere dal comitato regionale (prima il salvataggio falliva); finché non viene reinserita gli invii degli eventi della regione restano bloccati con l'avviso
+
 ## 1.85.33 — 2026-11-16
 
 - feat: ogni mail parte dall'account di posta del comitato regionale: quelle di eventi, staff e graduatorie dall'account della regione dell'evento o della graduatoria, codici di accesso e verifiche email dall'account della regione della persona (con ripiego sull'account generale). Senza account della regione gli invii di eventi e staff si bloccano con un avviso e nulla risulta inviato; le conferme dei candidati restano valide anche se la mail non parte

@@ -27,7 +27,7 @@ class ComitatoRegionale extends Model
         return [
             'attivo'        => 'boolean',
             'mail_port'     => 'integer',
-            'mail_password' => 'encrypted',
+            'mail_password' => \App\Casts\CifratoTollerante::class,
         ];
     }
 

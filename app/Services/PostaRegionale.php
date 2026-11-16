@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Exceptions\PostaRegionaleNonDisponibile;
 use App\Models\ComitatoRegionale;
-use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Mail\Mailer as MailerContract;
 use Illuminate\Mail\Mailer;
 use Illuminate\Support\Facades\Log;
@@ -58,9 +57,9 @@ final class PostaRegionale
 
     private static function mailer(ComitatoRegionale $regione): Mailer
     {
-        try {
-            $password = $regione->mail_password;
-        } catch (DecryptException) {
+        // Presente (haPostaConfigurata legge il valore grezzo) ma null dopo la decifratura = cifrata con un'altra chiave.
+        $password = $regione->mail_password;
+        if ($password === null) {
             throw new PostaRegionaleNonDisponibile(
                 "{$regione->nome}: la password SMTP salvata non è leggibile con la chiave di questa installazione. "
                 . 'Va reinserita nella sezione «Posta in uscita» del comitato regionale.'

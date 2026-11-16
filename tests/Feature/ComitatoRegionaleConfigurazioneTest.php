@@ -58,5 +58,20 @@ class ComitatoRegionaleConfigurazioneTest extends TestCase
 
         $this->get(\App\Filament\Resources\ComitatoRegionaleResource::getUrl('edit', ['record' => $cr]))->assertOk();
         $this->assertTrue($cr->refresh()->haPostaConfigurata());
+        $this->assertNull($cr->mail_password, 'Valore illeggibile letto come null');
+
+        // La si può sovrascrivere dal form (prima il salvataggio falliva con «The MAC is invalid»).
+        Livewire::test(EditComitatoRegionale::class, ['record' => $cr->getRouteKey()])
+            ->fillForm(['mail_password' => 'nuova'])
+            ->call('save')
+            ->assertHasNoFormErrors();
+        $this->assertSame('nuova', $cr->refresh()->mail_password);
+
+        // Lasciando vuoto il campo resta la password salvata.
+        Livewire::test(EditComitatoRegionale::class, ['record' => $cr->getRouteKey()])
+            ->fillForm(['mail_from_name' => 'Altro nome'])
+            ->call('save')
+            ->assertHasNoFormErrors();
+        $this->assertSame('nuova', $cr->refresh()->mail_password);
     }
 }
