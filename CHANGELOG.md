@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.27 — 2026-11-16
+
+- feat: nel corso il direttore scelto tra i soci diventa facoltativo anche nei corsi nuovi; senza socio collegato il nome del direttore si scrive a mano ed è obbligatorio. Il socio collegato resta necessario per creare e attivare l'esame del corso
+
 ## 1.85.26 — 2026-11-16
 
 - feat: configurazione per regione nel comitato regionale (solo superadmin): indirizzo del portale, logo, responsabile della protezione dei dati e account SMTP (server, porta, cifratura, utente, password cifrata nel database, mittente), tutti facoltativi; la password salvata non viene mai mostrata e resta invariata se il campo è lasciato vuoto

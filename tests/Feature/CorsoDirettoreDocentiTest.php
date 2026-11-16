@@ -157,17 +157,29 @@ class CorsoDirettoreDocentiTest extends TestCase
         $this->assertSame([$d1->id], $corso->docenti()->pluck('socio_id')->all());
     }
 
-    public function test_direttore_obbligatorio_solo_nella_creazione(): void
+    public function test_direttore_socio_facoltativo_ma_testo_obbligatorio_senza_socio(): void
     {
         $user = \App\Models\User::create(['name' => 'Su', 'email' => 'su@test.local', 'ruolo' => 'superadmin', 'attivo' => true]);
         $this->actingAs($user);
         \Filament\Facades\Filament::setCurrentPanel(\Filament\Facades\Filament::getPanel('admin'));
+        $base = ['evento_id' => $this->evento, 'nome' => 'Nuovo', 'numero_protocollo' => 'X/2026/T/2',
+            'data_inizio' => '2026-11-01', 'data_fine' => '2026-11-02', 'ora_inizio' => '09:00', 'ora_fine' => '18:00'];
 
         \Livewire\Livewire::test(\App\Filament\Resources\CorsoResource\Pages\CreateCorso::class)
-            ->fillForm(['evento_id' => $this->evento, 'nome' => 'Nuovo', 'numero_protocollo' => 'X/2026/T/2',
-                'data_inizio' => '2026-11-01', 'data_fine' => '2026-11-02', 'ora_inizio' => '09:00', 'ora_fine' => '18:00'])
+            ->fillForm($base)
             ->call('create')
-            ->assertHasFormErrors(['direttore_socio_id' => 'required']);
+            ->assertHasFormErrors(['direttore_corso' => 'required'])
+            ->assertHasNoFormErrors(['direttore_socio_id']);
+
+        \Livewire\Livewire::test(\App\Filament\Resources\CorsoResource\Pages\CreateCorso::class)
+            ->fillForm($base + ['direttore_corso' => 'Mario Libero'])
+            ->call('create')
+            ->assertHasNoFormErrors();
+
+        $corso = Corso::where('numero_protocollo', 'X/2026/T/2')->firstOrFail();
+        $this->assertNull($corso->direttore_socio_id);
+        $this->assertSame('Mario Libero', $corso->direttore_corso);
+        $this->assertNotNull(\App\Models\Esame::motivoNonCreabile($corso), 'senza socio collegato l\'esame non si crea');
     }
 
     public function test_corso_con_esame_non_e_cancellabile(): void

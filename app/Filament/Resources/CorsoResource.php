@@ -325,9 +325,10 @@ class CorsoResource extends Resource
                     ->rows(3)
                     ->columnSpanFull(),
 
+                // Il socio collegato serve solo agli esami (creazione e attivazione lo richiedono).
                 Forms\Components\Select::make('direttore_socio_id')
                     ->label('Direttore del corso (cerca tra i soci)')
-                    ->helperText('Scrivi almeno ' . Socio::RICERCA_MIN_CARATTERI . ' caratteri di nome, cognome o codice fiscale.')
+                    ->helperText('Facoltativo, necessario solo per creare l\'esame del corso. Scrivi almeno ' . Socio::RICERCA_MIN_CARATTERI . ' caratteri di nome, cognome o codice fiscale.')
                     ->searchable()
                     ->searchPrompt('Scrivi almeno ' . Socio::RICERCA_MIN_CARATTERI . ' caratteri')
                     ->getSearchResultsUsing(fn (string $search) => Socio::cercaPerSelezione($search))
@@ -335,14 +336,14 @@ class CorsoResource extends Resource
                     ->live()
                     ->afterStateUpdated(fn ($state, Set $set) => $state
                         ? $set('direttore_corso', Socio::find($state)?->nome_completo)
-                        : null)
-                    // Obbligatorio solo nei corsi nuovi: un corso vecchio con il solo testo si salva com'è.
-                    ->required(fn (string $operation) => $operation === 'create'),
+                        : null),
 
-                // Testo storico letto da liste e altre funzioni: non si scrive a mano, lo valorizza il socio scelto.
+                // Testo letto da liste, stampe e mail: con un socio collegato ne prende il nome,
+                // senza socio si scrive a mano ed è obbligatorio (un corso ha sempre un direttore).
                 Forms\Components\TextInput::make('direttore_corso')
                     ->label('Direttore del corso')
-                    ->readOnly()
+                    ->readOnly(fn (Get $get) => filled($get('direttore_socio_id')))
+                    ->required(fn (Get $get) => blank($get('direttore_socio_id')))
                     ->maxLength(255),
 
                 Forms\Components\Select::make('presidente_socio_id')
