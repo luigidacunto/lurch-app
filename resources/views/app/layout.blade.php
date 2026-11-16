@@ -48,6 +48,26 @@
             color: #fff;
         }
         .app-header-title svg { width: 22px; height: 22px; flex-shrink: 0; }
+        .app-header-regione {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 0 8px;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        /* Logo ufficiale: solo ridimensionato in proporzione, mai ritagliato. */
+        .app-header-regione img {
+            height: 22px;
+            width: auto;
+            max-width: 90px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 4px;
+            padding: 2px;
+        }
         .app-header-actions { display: flex; align-items: center; gap: 8px; }
         .btn-install {
             background: rgba(255,255,255,0.18);
@@ -103,6 +123,15 @@
             </form>
         </div>
     </div>
+    @php($regione = \App\Services\PortaleRegionale::daRichiesta())
+    @if($regione)
+        <div class="app-header-regione">
+            @if($regione->logoUrl())
+                <img src="{{ $regione->logoUrl() }}" alt="{{ $regione->nome }}">
+            @endif
+            <span>{{ $regione->nome }}</span>
+        </div>
+    @endif
 </header>
 @endif
 

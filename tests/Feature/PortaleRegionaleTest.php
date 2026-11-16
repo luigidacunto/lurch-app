@@ -46,6 +46,31 @@ class PortaleRegionaleTest extends TestCase
         $this->assertTrue($toscana->is(PortaleRegionale::daRichiesta()));
     }
 
+    public function test_home_e_login_mostrano_la_regione_del_dominio(): void
+    {
+        ComitatoRegionale::create(['nome' => 'Comitato Regionale Prova', 'codice' => 'PRV', 'url_portale' => 'https://prova.lurch.example']);
+
+        $this->get('https://prova.lurch.example/')->assertOk()->assertSee('Comitato Regionale Prova');
+        $this->get('https://prova.lurch.example/admin-login')->assertOk()->assertSee('Croce Rossa Italiana · Comitato Regionale Prova', false);
+
+        // Indirizzo generale: nessuna regione.
+        $this->get('https://lurch.example/')->assertOk()->assertDontSee('Comitato Regionale Prova');
+        $this->get('https://lurch.example/admin-login')->assertOk()->assertDontSee('Comitato Regionale Prova');
+    }
+
+    public function test_responsabile_privacy_dalla_regione_con_ripiego_generale(): void
+    {
+        config(['app.privacy_responsabile' => 'Responsabile generale']);
+        $conDpo   = ComitatoRegionale::create(['nome' => 'A', 'codice' => 'AAA', 'privacy_responsabile' => 'DPO regione A']);
+        $senzaDpo = ComitatoRegionale::create(['nome' => 'B', 'codice' => 'BBB']);
+        $locale   = \App\Models\ComitatoLocale::create(['nome' => 'Locale A', 'comitato_regionale_id' => $conDpo->id]);
+
+        $this->assertSame('DPO regione A', \App\Services\PrivacyPlaceholderResolver::sostituisci('{responsabile}', $conDpo));
+        $this->assertSame('DPO regione A', \App\Services\PrivacyPlaceholderResolver::sostituisci('{responsabile}', null, $locale));
+        $this->assertSame('Responsabile generale', \App\Services\PrivacyPlaceholderResolver::sostituisci('{responsabile}', $senzaDpo));
+        $this->assertSame('Responsabile generale', \App\Services\PrivacyPlaceholderResolver::sostituisci('{responsabile}', null));
+    }
+
     public function test_link_form_nelle_mail_usa_la_regione_dell_evento(): void
     {
         $now = now();

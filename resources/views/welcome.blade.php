@@ -21,6 +21,10 @@
         .hero { text-align: center; margin-bottom: 2.5rem; }
         .logo { width: 100%; max-width: 520px; height: auto; margin: 0 auto 1rem; display: block; }
         .hero p { font-size: 0.95rem; color: #4b5563; line-height: 1.6; margin: 0 auto; }
+        .regione { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.25rem; }
+        /* Logo ufficiale: solo ridimensionato in proporzione, mai ritagliato. */
+        .regione img { height: 64px; width: auto; max-width: 260px; object-fit: contain; }
+        .regione span { font-size: 1rem; font-weight: 700; color: #b91c1c; }
 
         /* Scelta area */
         .options { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
@@ -104,6 +108,15 @@
                 Piattaforma di gestione corsi, preregistrazioni e hospitality
                 per i comitati della <strong>Croce Rossa Italiana</strong>.
             </p>
+            @php($regione = \App\Services\PortaleRegionale::daRichiesta())
+            @if($regione)
+                <div class="regione">
+                    @if($regione->logoUrl())
+                        <img src="{{ $regione->logoUrl() }}" alt="{{ $regione->nome }}">
+                    @endif
+                    <span>{{ $regione->nome }}</span>
+                </div>
+            @endif
         </div>
 
         <div class="options">

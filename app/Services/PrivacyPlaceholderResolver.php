@@ -7,7 +7,7 @@ use App\Models\ComitatoRegionale;
 
 /**
  * Centralizza la sostituzione dei segnaposto {titolare}, {rappresentante_legale},
- * {indirizzo}, {email} (dal comitato) e {responsabile} (da config) nei testi di PrivacyTemplate — prima duplicata in ogni
+ * {indirizzo}, {email} (dal comitato) e {responsabile} (dalla regione, poi da config) nei testi di PrivacyTemplate — prima duplicata in ogni
  * controller dei form pubblici.
  */
 class PrivacyPlaceholderResolver
@@ -15,7 +15,9 @@ class PrivacyPlaceholderResolver
     public static function sostituisci(string $testo, ?ComitatoRegionale $comitatoRegionale, ?ComitatoLocale $comitatoLocale = null): string
     {
         $comitato = $comitatoLocale ?? $comitatoRegionale;
-        $responsabile = config('app.privacy_responsabile') ?: '<informazione mancante>';
+        // Responsabile della protezione dei dati: quello della regione, altrimenti quello generale (.env).
+        $regione      = $comitatoRegionale ?? $comitatoLocale?->comitatoRegionale;
+        $responsabile = $regione?->privacy_responsabile ?: config('app.privacy_responsabile') ?: '<informazione mancante>';
 
         // Nessun comitato di contesto (es. pagina pubblica generale /privacy): non
         // lasciamo il segnaposto vuoto, sostituiamo con una formula che resta

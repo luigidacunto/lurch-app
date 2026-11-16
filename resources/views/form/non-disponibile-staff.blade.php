@@ -18,7 +18,7 @@
             Il form di preregistrazione staff per <strong>{{ $evento->nome }}</strong> non è ancora stato aperto.<br>
             Riprova più tardi o contatta l'organizzazione.
         </p>
-        <p class="text-xs text-gray-300 pt-4">Croce Rossa Italiana · Comitato Regionale Toscana</p>
+        <p class="text-xs text-gray-300 pt-4">Croce Rossa Italiana{{ ($regioneEvento = ($evento ?? $corso?->evento ?? null)?->comitatoRegionale) ? ' · ' . $regioneEvento->nome : '' }}</p>
     </div>
 <x-form-footer />
 </body>

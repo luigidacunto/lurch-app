@@ -31,6 +31,12 @@ class ComitatoRegionale extends Model
         ];
     }
 
+    /** Indirizzo del logo sul dominio della richiesta (disco public), null senza logo. */
+    public function logoUrl(): ?string
+    {
+        return $this->logo ? asset('storage/' . $this->logo) : null;
+    }
+
     /** Account SMTP della regione completo (server, mittente e credenziali). */
     public function haPostaConfigurata(): bool
     {

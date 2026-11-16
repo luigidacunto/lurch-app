@@ -760,7 +760,7 @@
             @endif
 
             <p class="text-center text-xs text-gray-400 pb-4">
-                Croce Rossa Italiana · Comitato Regionale Toscana
+                Croce Rossa Italiana{{ ($regioneEvento = ($evento ?? $corso?->evento ?? null)?->comitatoRegionale) ? ' · ' . $regioneEvento->nome : '' }}
             </p>
         </form>
 

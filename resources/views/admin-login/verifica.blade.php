@@ -10,7 +10,7 @@
 
     <div class="bg-red-700 text-white px-4 py-4 shadow">
         <div class="max-w-lg mx-auto">
-            <p class="text-xs font-medium uppercase tracking-wide opacity-80">Croce Rossa Italiana</p>
+            @include('admin-login._marchio')
             <h1 class="text-lg font-bold leading-tight mt-0.5">Controlla la email</h1>
         </div>
     </div>

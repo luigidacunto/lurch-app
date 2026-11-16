@@ -4,6 +4,12 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.30 — 2026-11-16
+
+- feat: entrando dal dominio di una regione, home, pagine di accesso al pannello, pannello (in alto a sinistra) e intestazione dell'app mostrano logo e nome del comitato regionale; sull'indirizzo generale nulla cambia
+- feat: il footer dei form pubblici riporta il comitato regionale dell'evento al posto di un nome fisso
+- feat: il segnaposto {responsabile} dei testi privacy usa il responsabile della protezione dei dati della regione, se indicato, altrimenti quello generale
+
 ## 1.85.29 — 2026-11-16
 
 - fix: export, PDF e anteprime di eventi e corsi (partecipanti, pasti, badge, quote, discenti, ricevute, nullaosta, documenti) seguono la stessa regola della pagina da cui parte il link: il direttore del corso usa quelli del suo corso, l'operatore assegnato li usa solo se ha il permesso della pagina
