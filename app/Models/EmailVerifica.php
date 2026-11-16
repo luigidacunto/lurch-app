@@ -153,7 +153,7 @@ class EmailVerifica extends Model
             'tentativi_falliti' => 0,
         ]);
 
-        Mail::to($email)->send(new VerificaEmailSocio($codice, $verifica));
+        \App\Services\PostaRegionale::perPersona($verifica->comitatoRegionaleId())->to($email)->send(new VerificaEmailSocio($codice, $verifica));
     }
 
     /**

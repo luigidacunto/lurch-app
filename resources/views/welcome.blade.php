@@ -23,7 +23,7 @@
         .hero p { font-size: 0.95rem; color: #4b5563; line-height: 1.6; margin: 0 auto; }
         .regione { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.25rem; }
         /* Logo ufficiale: solo ridimensionato in proporzione, mai ritagliato. */
-        .regione img { height: 64px; width: auto; max-width: 260px; object-fit: contain; }
+        .regione img { height: 110px; width: auto; max-width: 420px; object-fit: contain; }
         .regione span { font-size: 1rem; font-weight: 700; color: #b91c1c; }
 
         /* Scelta area */
@@ -110,11 +110,13 @@
             </p>
             @php($regione = \App\Services\PortaleRegionale::daRichiesta())
             @if($regione)
+                {{-- Con il logo solo il logo (contiene già il nome del comitato), senza il nome scritto. --}}
                 <div class="regione">
                     @if($regione->logoUrl())
                         <img src="{{ $regione->logoUrl() }}" alt="{{ $regione->nome }}">
+                    @else
+                        <span>{{ $regione->nome }}</span>
                     @endif
-                    <span>{{ $regione->nome }}</span>
                 </div>
             @endif
         </div>

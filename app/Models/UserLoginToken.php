@@ -79,7 +79,7 @@ class UserLoginToken extends Model
             'tentativi_falliti' => 0,
         ]);
 
-        \Illuminate\Support\Facades\Mail::to($user->email)->send(new \App\Mail\MagicLinkLogin($codice, $token));
+        \App\Services\PostaRegionale::perPersona($user->comitato_regionale_id)->to($user->email)->send(new \App\Mail\MagicLinkLogin($codice, $token));
 
         return $token;
     }

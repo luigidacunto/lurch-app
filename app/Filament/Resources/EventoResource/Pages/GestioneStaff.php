@@ -27,15 +27,17 @@ use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Livewire\Attributes\Locked;
+use App\Traits\UsaPostaRegionale;
 
 class GestioneStaff extends Page
 {
+    use UsaPostaRegionale;
+
     protected static string $resource = EventoResource::class;
 
     protected string $view = 'filament.resources.evento-resource.pages.gestione-staff';
@@ -382,6 +384,7 @@ class GestioneStaff extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
                 if (! $this->record->form_staff_aperto_at) {
                     Notification::make()->title('Attiva prima il form staff dall\'evento.')->warning()->send();
                     return;
@@ -395,7 +398,7 @@ class GestioneStaff extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) { $saltati++; continue; }
 
-                    Mail::to($email)->send(new FormPreregistrazioneStaffLink($iscrizione));
+                    $posta->to($email)->send(new FormPreregistrazioneStaffLink($iscrizione));
                     $iscrizione->update(['form_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -438,6 +441,7 @@ class GestioneStaff extends Page
             })
             ->modalSubmitActionLabel('Invia solleciti')
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
                 $inviati = 0;
                 $saltati = 0;
                 $this->record->staff->loadMissing('evento');
@@ -446,7 +450,7 @@ class GestioneStaff extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) { $saltati++; continue; }
 
-                    Mail::to($email)->send(new SollecitoPreregistrazioneStaffLink($iscrizione));
+                    $posta->to($email)->send(new SollecitoPreregistrazioneStaffLink($iscrizione));
                     $iscrizione->update(['sollecito_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -543,6 +547,7 @@ class GestioneStaff extends Page
 
     public function inviaFormSingolo(int $iscrizioneId): void
     {
+        if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
         $iscrizione = $this->record->staff->firstWhere('id', $iscrizioneId);
 
         if (! $iscrizione) return;
@@ -569,7 +574,7 @@ class GestioneStaff extends Page
 
         $iscrizione->loadMissing('evento');
 
-        Mail::to($email)->send(new FormPreregistrazioneStaffLink($iscrizione));
+        $posta->to($email)->send(new FormPreregistrazioneStaffLink($iscrizione));
         $iscrizione->update(['form_inviato_at' => now()]);
 
         $this->record->refresh()->load([
@@ -582,6 +587,7 @@ class GestioneStaff extends Page
 
     public function inviaSollecitoSingolo(int $iscrizioneId): void
     {
+        if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
         $iscrizione = $this->record->staff->firstWhere('id', $iscrizioneId);
         if (! $iscrizione) return;
 
@@ -594,7 +600,7 @@ class GestioneStaff extends Page
 
         $iscrizione->loadMissing('evento');
 
-        Mail::to($email)->send(new SollecitoPreregistrazioneStaffLink($iscrizione));
+        $posta->to($email)->send(new SollecitoPreregistrazioneStaffLink($iscrizione));
         $iscrizione->update(['sollecito_inviato_at' => now()]);
 
         $this->record->refresh()->load([
@@ -630,6 +636,7 @@ class GestioneStaff extends Page
                 return "Verrà inviata una email con le informazioni sull'evento (testo + allegati) a {$count} membri dello staff che non l'hanno ancora ricevuta. Procedere?";
             })
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
                 if (! $this->record->hasComunicazioneValida()) {
                     Notification::make()
                         ->title('Nessun contenuto da inviare')
@@ -645,7 +652,7 @@ class GestioneStaff extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) continue;
 
-                    Mail::to($email)->send(new InfoEventoStaff($iscrizione));
+                    $posta->to($email)->send(new InfoEventoStaff($iscrizione));
                     $iscrizione->update(['info_evento_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -680,6 +687,7 @@ class GestioneStaff extends Page
 
     public function inviaInfoStaffSingolo(int $iscrizioneId): void
     {
+        if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
         if (! $this->record->hasComunicazioneValida()) {
             Notification::make()
                 ->title('Nessun contenuto da inviare')
@@ -699,7 +707,7 @@ class GestioneStaff extends Page
             return;
         }
 
-        Mail::to($email)->send(new InfoEventoStaff($iscrizione));
+        $posta->to($email)->send(new InfoEventoStaff($iscrizione));
         $iscrizione->update(['info_evento_inviato_at' => now()]);
 
         $this->record->refresh()->load([

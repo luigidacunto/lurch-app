@@ -17,12 +17,14 @@ use Filament\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
-use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Livewire\Attributes\Locked;
+use App\Traits\UsaPostaRegionale;
 
 class GestioneEvento extends Page
 {
+    use UsaPostaRegionale;
+
     protected static string $resource = EventoResource::class;
 
     protected string $view = 'filament.resources.evento-resource.pages.gestione-evento';
@@ -622,17 +624,22 @@ class GestioneEvento extends Page
                 ];
             })
             ->action(function (array $data, array $arguments): void {
+                if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
+
+                // Mittente del template se indicato, altrimenti quello dell'account della regione.
                 $template    = EmailTemplate::risolvi($this->record->comitato_regionale_id, 'iscritti');
-                $fromAddress = $template?->from_address ?? config('mail.from.address');
-                $fromName    = $template?->from_name    ?? config('mail.from.name');
+                $fromAddress = $template?->from_address;
+                $fromName    = $template?->from_name ?? config('mail.from.name');
                 $replyTo     = $template?->reply_to;
 
-                Mail::html(
+                $posta->html(
                     $data['corpo'],
                     function ($m) use ($data, $fromAddress, $fromName, $replyTo) {
                         $m->to($data['destinatario'])
-                          ->subject($data['oggetto'])
-                          ->from($fromAddress, $fromName);
+                          ->subject($data['oggetto']);
+                        if ($fromAddress) {
+                            $m->from($fromAddress, $fromName);
+                        }
                         if ($replyTo) {
                             $m->replyTo($replyTo);
                         }
@@ -690,6 +697,7 @@ HTML;
 
     public function inviaInfoCorsisti(int $corsoId): void
     {
+        if (! $posta = $this->postaRegionale($this->record->comitato_regionale_id)) return;
         if (! $this->hasComunicazione()) {
             Notification::make()
                 ->title('Nessun contenuto da inviare')
@@ -711,7 +719,7 @@ HTML;
             $email = $iscrizione->partecipante?->email;
             if (! $email) continue;
 
-            Mail::to($email)->send(new InfoEventoIscritto($iscrizione));
+            $posta->to($email)->send(new InfoEventoIscritto($iscrizione));
             $iscrizione->update(['info_evento_inviato_at' => now()]);
             $inviati++;
         }

@@ -60,9 +60,9 @@
         }
         /* Logo ufficiale: solo ridimensionato in proporzione, mai ritagliato. */
         .app-header-regione img {
-            height: 22px;
+            height: 30px;
             width: auto;
-            max-width: 90px;
+            max-width: 160px;
             object-fit: contain;
             background: #fff;
             border-radius: 4px;
@@ -126,10 +126,12 @@
     @php($regione = \App\Services\PortaleRegionale::daRichiesta())
     @if($regione)
         <div class="app-header-regione">
+            {{-- Con il logo solo il logo (contiene già il nome del comitato). --}}
             @if($regione->logoUrl())
                 <img src="{{ $regione->logoUrl() }}" alt="{{ $regione->nome }}">
+            @else
+                <span>{{ $regione->nome }}</span>
             @endif
-            <span>{{ $regione->nome }}</span>
         </div>
     @endif
 </header>

@@ -27,15 +27,17 @@ use Filament\Actions\ActionGroup;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Livewire\Attributes\Locked;
+use App\Traits\UsaPostaRegionale;
 
 class GestioneCorso extends Page
 {
+    use UsaPostaRegionale;
+
     protected static string $resource = CorsoResource::class;
 
     protected string $view = 'filament.resources.corso-resource.pages.gestione-corso';
@@ -600,6 +602,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 $inviati = 0;
                 $saltati = 0;
                 $this->record->iscrizioni->loadMissing('corso.evento');
@@ -608,7 +611,7 @@ class GestioneCorso extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) { $saltati++; continue; }
 
-                    Mail::to($email)->send(new FormPreregistrazioneLink($iscrizione));
+                    $posta->to($email)->send(new FormPreregistrazioneLink($iscrizione));
                     $iscrizione->update(['form_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -653,6 +656,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia solleciti')
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 $inviati = 0;
                 $saltati = 0;
                 $this->record->iscrizioni->loadMissing('corso.evento');
@@ -661,7 +665,7 @@ class GestioneCorso extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) { $saltati++; continue; }
 
-                    Mail::to($email)->send(new SollecitoPreregistrazioneLink($iscrizione));
+                    $posta->to($email)->send(new SollecitoPreregistrazioneLink($iscrizione));
                     $iscrizione->update(['sollecito_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -709,6 +713,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function () {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 if (! $this->record->evento->hasComunicazioneValida()) {
                     Notification::make()
                         ->title('Nessun contenuto da inviare')
@@ -726,7 +731,7 @@ class GestioneCorso extends Page
                     $email = $iscrizione->partecipante?->email;
                     if (! $email) { $saltati++; continue; }
 
-                    Mail::to($email)->send(new InfoEventoIscritto($iscrizione));
+                    $posta->to($email)->send(new InfoEventoIscritto($iscrizione));
                     $iscrizione->update(['info_evento_inviato_at' => now()]);
                     $inviati++;
                 }
@@ -1003,6 +1008,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function (array $arguments): void {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 $iscrizione = $this->record->iscrizioni->firstWhere('id', $arguments['iscrizione_id'] ?? null);
                 if (! $iscrizione) return;
 
@@ -1019,7 +1025,7 @@ class GestioneCorso extends Page
 
                 $iscrizione->loadMissing('corso.evento');
 
-                Mail::to($email)->send(new FormPreregistrazioneLink($iscrizione));
+                $posta->to($email)->send(new FormPreregistrazioneLink($iscrizione));
                 $iscrizione->update(['form_inviato_at' => now()]);
 
                 $this->record->refresh()->load([
@@ -1055,6 +1061,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function (array $arguments): void {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 $iscrizione = $this->record->iscrizioni->firstWhere('id', $arguments['iscrizione_id'] ?? null);
                 if (! $iscrizione) return;
 
@@ -1066,7 +1073,7 @@ class GestioneCorso extends Page
 
                 $iscrizione->loadMissing('corso.evento');
 
-                Mail::to($email)->send(new SollecitoPreregistrazioneLink($iscrizione));
+                $posta->to($email)->send(new SollecitoPreregistrazioneLink($iscrizione));
                 $iscrizione->update(['sollecito_inviato_at' => now()]);
 
                 $this->record->refresh()->load([
@@ -1097,6 +1104,7 @@ class GestioneCorso extends Page
             })
             ->modalSubmitActionLabel('Invia')
             ->action(function (array $arguments): void {
+                if (! $posta = $this->postaRegionale($this->record->evento->comitato_regionale_id)) return;
                 $iscrizione = $this->record->iscrizioni->firstWhere('id', $arguments['iscrizione_id'] ?? null);
                 if (! $iscrizione) return;
 
@@ -1119,7 +1127,7 @@ class GestioneCorso extends Page
 
                 $iscrizione->loadMissing('corso.evento');
 
-                Mail::to($email)->send(new InfoEventoIscritto($iscrizione));
+                $posta->to($email)->send(new InfoEventoIscritto($iscrizione));
                 $iscrizione->update(['info_evento_inviato_at' => now()]);
 
                 $this->record->refresh()->load([

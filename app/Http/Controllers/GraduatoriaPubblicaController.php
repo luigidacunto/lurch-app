@@ -231,7 +231,14 @@ class GraduatoriaPubblicaController extends Controller
 
             $socio->update($datiSocio);
 
-            Mail::to($candidato->email)->send(new GraduatoriaCandidaturaConfermata($candidato));
+            // Account della regione della graduatoria; senza account la candidatura resta valida, la mail non parte.
+            try {
+                \App\Services\PostaRegionale::perEvento($graduatoria->comitato_regionale_id)
+                    ->to($candidato->email)
+                    ->send(new GraduatoriaCandidaturaConfermata($candidato));
+            } catch (\App\Exceptions\PostaRegionaleNonDisponibile $e) {
+                \Illuminate\Support\Facades\Log::warning('Conferma candidatura non inviata: ' . $e->getMessage(), ['candidato_id' => $candidato->id]);
+            }
             EmailVerifica::inviaSeNecessario($socio, $emailCambiata ? $emailFinale : null);
 
             if (! $socio->fresh()->email_verificata_at || $emailCambiata) {

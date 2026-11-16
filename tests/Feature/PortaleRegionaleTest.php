@@ -53,6 +53,15 @@ class PortaleRegionaleTest extends TestCase
         $this->get('https://prova.lurch.example/')->assertOk()->assertSee('Comitato Regionale Prova');
         $this->get('https://prova.lurch.example/admin-login')->assertOk()->assertSee('Croce Rossa Italiana · Comitato Regionale Prova', false);
 
+        // Con il logo: solo il logo (il nome resta nel testo alternativo), niente nome ripetuto.
+        ComitatoRegionale::where('codice', 'PRV')->update(['logo' => 'comitati-regionali/prova.svg']);
+        \Illuminate\Support\Once::flush(); // la regione è memorizzata per richiesta: qui le richieste sono nello stesso test
+        $this->get('https://prova.lurch.example/')->assertOk()
+            ->assertSee('alt="Comitato Regionale Prova"', false)
+            ->assertDontSee('<span>Comitato Regionale Prova</span>', false);
+        $this->get('https://prova.lurch.example/admin-login')->assertOk()
+            ->assertDontSee('Croce Rossa Italiana · Comitato Regionale Prova', false);
+
         // Indirizzo generale: nessuna regione.
         $this->get('https://lurch.example/')->assertOk()->assertDontSee('Comitato Regionale Prova');
         $this->get('https://lurch.example/admin-login')->assertOk()->assertDontSee('Comitato Regionale Prova');

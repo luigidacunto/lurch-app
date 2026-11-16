@@ -66,7 +66,7 @@ class AppLoginController extends Controller
             'ip_address'       => $ip,
         ]);
 
-        Mail::to($socio->email)->send(new OtpLoginCode($codice, $socio));
+        \App\Services\PostaRegionale::perPersona($socio->comitato_regionale_id)->to($socio->email)->send(new OtpLoginCode($codice, $socio));
 
         $request->session()->put('otp_pending_socio_id', $socio->id);
         $request->session()->put('otp_pending_email', $socio->email);

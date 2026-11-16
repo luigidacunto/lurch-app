@@ -4,6 +4,13 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.33 — 2026-11-16
+
+- feat: ogni mail parte dall'account di posta del comitato regionale: quelle di eventi, staff e graduatorie dall'account della regione dell'evento o della graduatoria, codici di accesso e verifiche email dall'account della regione della persona (con ripiego sull'account generale). Senza account della regione gli invii di eventi e staff si bloccano con un avviso e nulla risulta inviato; le conferme dei candidati restano valide anche se la mail non parte
+- feat: con il mailer di prova (log) la mail riporta il mittente della regione e nel log compare l'account che verrebbe usato, senza collegarsi al server
+- fix: la mail di segnalazione delle sovrapposizioni non forza più il mittente generale
+- feat: dove la regione ha un logo si vede solo il logo (contiene già il nome del comitato), più grande; senza logo il nome scritto
+
 ## 1.85.32 — 2026-11-16
 
 - fix: la pagina del comitato regionale non va più in errore se la password SMTP salvata non è leggibile con la chiave dell'installazione (per esempio database condiviso o chiave cambiata): la presenza della password si controlla senza decifrarla; basta reinserirla

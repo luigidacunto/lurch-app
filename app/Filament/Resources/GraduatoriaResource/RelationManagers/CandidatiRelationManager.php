@@ -314,7 +314,7 @@ class CandidatiRelationManager extends RelationManager
                     })
                     ->after(function (GraduatoriaCandidato $record) {
                         static::sincronizzaSocio($record);
-                        Mail::to($record->email)->send(new GraduatoriaCandidaturaConfermata($record));
+                        static::inviaConfermaCandidatura($record);
                     }),
             ])
             ->actions([
@@ -383,7 +383,7 @@ class CandidatiRelationManager extends RelationManager
                                             'confermato_da_id' => auth()->id(),
                                         ]));
                                         static::sincronizzaSocio($record);
-                                        Mail::to($record->email)->send(new GraduatoriaCandidaturaConfermata($record));
+                                        static::inviaConfermaCandidatura($record);
 
                                         Notification::make()->title('Candidatura confermata')->success()->send();
                                     }),
@@ -492,7 +492,7 @@ class CandidatiRelationManager extends RelationManager
                                         ]);
 
                                         static::sincronizzaSocio($record);
-                                        Mail::to($record->email)->send(new GraduatoriaCandidaturaConfermata($record));
+                                        static::inviaConfermaCandidatura($record);
 
                                         $avvisi = $graduatoria->avvisiRequisiti($socio);
 
@@ -1064,6 +1064,21 @@ class CandidatiRelationManager extends RelationManager
                 ->options(ComitatoLocale::orderBy('nome')->pluck('nome', 'id'))
                 ->searchable(),
         ];
+    }
+
+    /**
+     * Mail di conferma con l'account della regione della graduatoria. Senza account la conferma
+     * resta valida: si avvisa l'operatore che la mail non è partita.
+     */
+    protected static function inviaConfermaCandidatura(GraduatoriaCandidato $record): void
+    {
+        try {
+            \App\Services\PostaRegionale::perEvento($record->graduatoria?->comitato_regionale_id)
+                ->to($record->email)
+                ->send(new GraduatoriaCandidaturaConfermata($record));
+        } catch (\App\Exceptions\PostaRegionaleNonDisponibile $e) {
+            Notification::make()->title('Mail di conferma non inviata')->body($e->getMessage())->warning()->persistent()->send();
+        }
     }
 
     /**
