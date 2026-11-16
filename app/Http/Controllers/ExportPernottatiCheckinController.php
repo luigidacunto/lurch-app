@@ -16,8 +16,10 @@ class ExportPernottatiCheckinController extends Controller
     public function __invoke(Evento $evento): BinaryFileResponse
     {
         abort_unless(auth()->check(), 403);
+        // Stessa regola della pagina Report evento da cui parte il link.
+        abort_unless(\App\Filament\Resources\EventoResource::canEdit($evento), 403);
 
-        $righe    = self::buildRighe($evento);
+        $righe   = self::buildRighe($evento);
         $filename = 'pernottanti_checkin_' . Str::slug($evento->nome) . '_' . now()->format('Ymd') . '.xlsx';
 
         return Excel::download(new PernottatiCheckinExport($righe), $filename);

@@ -33,6 +33,7 @@ class GestioneQuote extends Page
 
     public function mount(Corso $record): void
     {
+        abort_unless(\App\Filament\Resources\CorsoResource::puoGestireCorso($record), 403);
         abort_unless($record->pagamento_previsto, 404);
 
         $this->record = $record->load([

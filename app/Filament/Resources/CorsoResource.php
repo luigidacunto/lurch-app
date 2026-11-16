@@ -87,18 +87,14 @@ class CorsoResource extends Resource
     }
 
     /**
-     * Accesso alle pagine Gestione del corso (pagine custom: nessuno scope automatico).
-     * Chi aveva accesso prima lo conserva identico; il solo caso nuovo (direttore senza permessi
-     * sui corsi) è limitato ai corsi che dirige.
+     * Accesso alle pagine Gestione e Gestione quote del corso (pagine custom: il modello arriva
+     * dal binding di Laravel, senza lo scope della risorsa). Regola unica: il corso deve essere
+     * tra quelli dell'elenco dell'utente (getEloquentQuery: territorio del ruolo, eventi assegnati
+     * all'operatore, corsi diretti).
      */
     public static function puoGestireCorso(Corso $corso): bool
     {
-        $user = auth()->user();
-        if ($user?->isSuperadmin() || $user?->isAdmin() || $user?->isAdminLocale() || $user?->can('corsi.view')) {
-            return true;
-        }
-
-        return static::eDirettoreDelCorso($user, $corso);
+        return static::getEloquentQuery()->whereKey($corso->getKey())->exists();
     }
 
     public static function canCreate(): bool

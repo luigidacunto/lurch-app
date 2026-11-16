@@ -11,6 +11,8 @@ class ExportPernottatiController extends Controller
     public function __invoke(Evento $evento): StreamedResponse
     {
         abort_unless(auth()->check(), 403);
+        // Stessa regola della pagina Gestione evento da cui parte il link.
+        abort_unless(\App\Filament\Resources\EventoResource::canEdit($evento), 403);
 
         $pernottati = Presenza::where('evento_id', $evento->id)
             ->where('tipo', 'pernotto')

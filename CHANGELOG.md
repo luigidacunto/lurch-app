@@ -4,6 +4,12 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.28 — 2026-11-16
+
+- fix: le pagine Gestione corso e Gestione quote si aprono solo per i corsi del proprio elenco (territorio del ruolo, eventi assegnati all'operatore, corsi diretti); prima un admin o un operatore di un'altra regione poteva aprirle con il link diretto
+- fix: gli export dei pernottamenti (Gestione evento e Report evento) seguono la stessa regola delle pagine dell'evento; prima bastava aver fatto l'accesso
+- test: verifica degli accessi per territorio su tutte le pagine e gli export che aprono un evento, un corso, una graduatoria o un esame
+
 ## 1.85.27 — 2026-11-16
 
 - feat: nel corso il direttore scelto tra i soci diventa facoltativo anche nei corsi nuovi; senza socio collegato il nome del direttore si scrive a mano ed è obbligatorio. Il socio collegato resta necessario per creare e attivare l'esame del corso
