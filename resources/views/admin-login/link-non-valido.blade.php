@@ -16,6 +16,8 @@
     </div>
 
     <div class="max-w-lg mx-auto px-4 py-6">
+
+        @include('admin-login._logo-regione')
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 px-5 py-6 text-center">
             <p class="text-base font-semibold text-gray-900">Link non valido o scaduto</p>
             <p class="text-sm text-gray-600 mt-1">

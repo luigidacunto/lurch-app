@@ -60,6 +60,7 @@ class PortaleRegionaleTest extends TestCase
             ->assertSee('alt="Comitato Regionale Prova"', false)
             ->assertDontSee('<span>Comitato Regionale Prova</span>', false);
         $this->get('https://prova.lurch.example/admin-login')->assertOk()
+            ->assertSee('alt="Comitato Regionale Prova"', false)
             ->assertDontSee('Croce Rossa Italiana · Comitato Regionale Prova', false);
 
         // Indirizzo generale: nessuna regione.

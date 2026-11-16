@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.35 — 2026-11-16
+
+- fix: nelle pagine di accesso al pannello il logo della regione sta nella parte bianca, centrato sopra il riquadro di accesso e più grande; la fascia rossa resta solo testo
+
 ## 1.85.34 — 2026-11-16
 
 - fix: una password SMTP non leggibile con la chiave dell'installazione ora si può sovrascrivere dal comitato regionale (prima il salvataggio falliva); finché non viene reinserita gli invii degli eventi della regione restano bloccati con l'avviso

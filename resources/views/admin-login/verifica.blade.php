@@ -17,6 +17,8 @@
 
     <div class="max-w-lg mx-auto px-4 py-6 space-y-6">
 
+        @include('admin-login._logo-regione')
+
         @if($errors->any())
             <div class="bg-red-50 border border-red-300 rounded-xl px-4 py-3 text-sm text-red-800">
                 @foreach($errors->all() as $error)
