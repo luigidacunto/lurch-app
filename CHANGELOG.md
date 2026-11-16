@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.36 — 2026-11-16
+
+- fix: nel pannello il logo della regione sta nella barra in alto, al centro accanto al marchio L.U.R.C.H. su pagina larga e al posto del marchio su pagina stretta, abbastanza grande da leggersi; un clic porta alla dashboard
+
 ## 1.85.35 — 2026-11-16
 
 - fix: nelle pagine di accesso al pannello il logo della regione sta nella parte bianca, centrato sopra il riquadro di accesso e più grande; la fascia rossa resta solo testo

@@ -63,6 +63,14 @@ class PortaleRegionaleTest extends TestCase
             ->assertSee('alt="Comitato Regionale Prova"', false)
             ->assertDontSee('Croce Rossa Italiana · Comitato Regionale Prova', false);
 
+        // Pannello: logo della regione nella barra in alto, accanto al marchio L.U.R.C.H.
+        $this->actingAs(\App\Models\User::create(['name' => 's', 'email' => 's@t.it', 'password' => 'x', 'ruolo' => 'superadmin', 'attivo' => true]));
+        $this->get('https://prova.lurch.example/admin')->assertOk()
+            ->assertSee('class="lurch-logo-regione"', false)
+            ->assertSee('lurch-marchio--con-logo-regione', false);
+        $this->get('https://lurch.example/admin')->assertOk()->assertDontSee('class="lurch-logo-regione"', false);
+        auth()->logout();
+
         // Indirizzo generale: nessuna regione.
         $this->get('https://lurch.example/')->assertOk()->assertDontSee('Comitato Regionale Prova');
         $this->get('https://lurch.example/admin-login')->assertOk()->assertDontSee('Comitato Regionale Prova');
