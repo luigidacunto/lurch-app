@@ -48,4 +48,15 @@ class ComitatoRegionaleConfigurazioneTest extends TestCase
 
         $this->assertSame('segreta', $cr->refresh()->mail_password);
     }
+
+    public function test_password_cifrata_con_un_altra_chiave_non_blocca_la_pagina(): void
+    {
+        $cr = ComitatoRegionale::create(['nome' => 'CR Test', 'codice' => 'TST', 'mail_host' => 'smtp.example', 'mail_port' => 587, 'mail_username' => 'u', 'mail_from_address' => 'a@b.example']);
+        // Valore illeggibile con la chiave corrente (es. salvato da un'altra installazione sullo stesso DB).
+        DB::table('comitati_regionali')->where('id', $cr->id)->update(['mail_password' => 'cifrata-altrove']);
+        $this->actingAs(User::create(['name' => 's', 'email' => 's@t.it', 'password' => 'x', 'ruolo' => 'superadmin', 'attivo' => true]));
+
+        $this->get(\App\Filament\Resources\ComitatoRegionaleResource::getUrl('edit', ['record' => $cr]))->assertOk();
+        $this->assertTrue($cr->refresh()->haPostaConfigurata());
+    }
 }

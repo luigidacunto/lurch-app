@@ -183,7 +183,7 @@ class ComitatoRegionaleResource extends Resource
                             ->maxLength(500)
                             ->formatStateUsing(fn () => null)
                             ->dehydrated(fn ($state) => filled($state))
-                            ->placeholder(fn (?ComitatoRegionale $record) => filled($record?->mail_password) ? '•••••••• (salvata, lascia vuoto per non cambiarla)' : null),
+                            ->placeholder(fn (?ComitatoRegionale $record) => $record?->haPasswordSmtp() ? '•••••••• (salvata, lascia vuoto per non cambiarla)' : null),
                     ]),
 
                     Group::make()->columns(2)->schema([

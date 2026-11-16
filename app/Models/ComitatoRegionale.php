@@ -41,8 +41,17 @@ class ComitatoRegionale extends Model
     public function haPostaConfigurata(): bool
     {
         return filled($this->mail_host) && filled($this->mail_port)
-            && filled($this->mail_username) && filled($this->mail_password)
+            && filled($this->mail_username) && $this->haPasswordSmtp()
             && filled($this->mail_from_address);
+    }
+
+    /**
+     * Password SMTP presente, senza decifrarla: una password cifrata con un'altra APP_KEY
+     * (DB condiviso tra due installazioni, chiave cambiata) non deve bloccare le pagine.
+     */
+    public function haPasswordSmtp(): bool
+    {
+        return filled($this->getRawOriginal('mail_password'));
     }
 
     public function scopeAttivo($query)

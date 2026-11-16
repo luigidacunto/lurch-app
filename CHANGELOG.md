@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.32 — 2026-11-16
+
+- fix: la pagina del comitato regionale non va più in errore se la password SMTP salvata non è leggibile con la chiave dell'installazione (per esempio database condiviso o chiave cambiata): la presenza della password si controlla senza decifrarla; basta reinserirla
+
 ## 1.85.31 — 2026-11-16
 
 - feat: nel comitato regionale, sopra il campo del logo, l'anteprima «Logo attuale» quando un logo è già caricato
