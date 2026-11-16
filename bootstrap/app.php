@@ -14,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'app.auth' => \App\Http\Middleware\AppSocioAuth::class,
         ]);
+        // Globale: vale anche per il pannello Filament e gli aggiornamenti Livewire (non usano il gruppo web).
+        $middleware->append(\App\Http\Middleware\UrlFilePubbliciSulDominio::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

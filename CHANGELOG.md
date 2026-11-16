@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.37 — 2026-11-16
+
+- fix: lavorando da un dominio regionale, l'anteprima del logo nel comitato regionale restava su «In attesa della dimensione»: gli indirizzi dei file pubblici ora usano il dominio da cui si naviga invece dell'indirizzo generale, così il browser non blocca la lettura (vale anche per i link ai PDF delle informative)
+
 ## 1.85.36 — 2026-11-16
 
 - fix: nel pannello il logo della regione sta nella barra in alto, al centro accanto al marchio L.U.R.C.H. su pagina larga e al posto del marchio su pagina stretta, abbastanza grande da leggersi; un clic porta alla dashboard

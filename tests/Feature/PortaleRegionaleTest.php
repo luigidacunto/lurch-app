@@ -76,6 +76,17 @@ class PortaleRegionaleTest extends TestCase
         $this->get('https://lurch.example/admin-login')->assertOk()->assertDontSee('Comitato Regionale Prova');
     }
 
+    public function test_file_pubblici_sul_dominio_della_richiesta(): void
+    {
+        config(['app.url' => 'https://lurch.generale.example']);
+
+        $this->get('https://toscana.lurch.example/');
+        $this->assertSame('https://toscana.lurch.example/storage/comitati-regionali/logo.svg', \Illuminate\Support\Facades\Storage::disk('public')->url('comitati-regionali/logo.svg'));
+
+        $this->get('https://lurch.generale.example/');
+        $this->assertSame('https://lurch.generale.example/storage/comitati-regionali/logo.svg', \Illuminate\Support\Facades\Storage::disk('public')->url('comitati-regionali/logo.svg'));
+    }
+
     public function test_responsabile_privacy_dalla_regione_con_ripiego_generale(): void
     {
         config(['app.privacy_responsabile' => 'Responsabile generale']);
