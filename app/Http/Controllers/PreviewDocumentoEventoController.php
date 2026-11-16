@@ -20,14 +20,8 @@ class PreviewDocumentoEventoController extends Controller
             404
         );
 
-        $user = auth()->user();
-
-        $hasAccess = $user->isSuperadmin()
-            || ($user->isAdmin()       && $evento->comitato_regionale_id === $user->comitato_regionale_id)
-            || ($user->isAdminLocale() && $evento->comitato_locale_id    === $user->comitato_locale_id)
-            || ($user->isOperatore()   && $evento->operatori->contains($user->id));
-
-        abort_unless($hasAccess, 403);
+        // Stessa regola della pagina Gestione evento da cui parte il link.
+        abort_unless(\App\Filament\Resources\EventoResource::canEdit($evento), 403);
 
         $path = $media->getPath();
         abort_unless(file_exists($path), 404);

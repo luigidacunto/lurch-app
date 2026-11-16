@@ -11,14 +11,8 @@ class DettaglioPastiPdfController extends Controller
     public function __invoke(Evento $evento, GrigliaPastiBuilder $builder)
     {
         abort_unless(auth()->check(), 403);
-
-        $user = auth()->user();
-        $hasAccess = $user->isSuperadmin()
-            || ($user->isAdmin()       && $evento->comitato_regionale_id === $user->comitato_regionale_id)
-            || ($user->isAdminLocale() && $evento->comitato_locale_id    === $user->comitato_locale_id)
-            || ($user->isOperatore()   && $evento->operatori->contains($user->id));
-
-        abort_unless($hasAccess, 403);
+        // Stessa regola della pagina Gestione evento da cui parte il link.
+        abort_unless(\App\Filament\Resources\EventoResource::canEdit($evento), 403);
 
         $evento->load(['comitatoRegionale', 'comitatoLocale', 'corsi.iscrizioni.rispostaPreregistrazione', 'staff.rispostaPreregistrazione']);
 

@@ -64,7 +64,7 @@ class AccessoTerritorialeTest extends TestCase
             ]);
 
             $this->dati[$r] = [
-                'cr' => $cr, 'evento' => $evento, 'corso' => $corso, 'graduatoria' => $graduatoria,
+                'cr' => $cr, 'evento' => $evento, 'corso' => $corso, 'graduatoria' => $graduatoria, 'direttore' => $direttore,
                 'esame' => Esame::creaPerCorso($corso, "Esame {$r}", 60),
             ];
         }
@@ -209,5 +209,41 @@ class AccessoTerritorialeTest extends TestCase
 
         $aperti = array_filter($this->stati($this->operatoreA, 'B'), fn ($s) => ! in_array($s, [403, 404], true));
         $this->assertSame([], $aperti, 'Indirizzi della regione B aperti dall\'operatore della regione A');
+    }
+
+    /** Stato HTTP degli export della regione A per l'utente (un 500 riporta il messaggio). */
+    private function statiExport(User $utente): array
+    {
+        $this->actingAs($utente);
+        $stati = [];
+        foreach ($this->indirizzi('A')[1] as $nome => $url) {
+            $risposta = $this->get($url);
+            $stati[$nome] = $risposta->getStatusCode() === 500 ? 500 . ' ' . $risposta->exception?->getMessage() : $risposta->getStatusCode();
+        }
+
+        return $stati;
+    }
+
+    public function test_gli_export_seguono_la_regola_della_pagina_da_cui_partono(): void
+    {
+        // Operatore assegnato con i permessi: come le pagine, apre tutti gli export.
+        // L'elenco pasti Excel risponde 404 «nessun pasto con persone previste» dopo il controllo d'accesso: evento di prova senza iscritti.
+        $bloccati = array_filter($this->statiExport($this->operatoreA), fn ($s, $nome) => $s !== 200 && ! ($nome === 'eventi.pasti-elenco-excel' && $s === 404), ARRAY_FILTER_USE_BOTH);
+        $this->assertSame([], $bloccati, 'Export negati all\'operatore assegnato con i permessi');
+
+        // Operatore assegnato ma senza permessi: non apre le pagine, quindi nemmeno gli export.
+        $senzaPermessi = $this->utente('operatore', ['comitato_regionale_id' => $this->dati['A']['cr']]);
+        DB::table('evento_operatore')->insert(['evento_id' => $this->dati['A']['evento'], 'user_id' => $senzaPermessi->id]);
+        DB::table('graduatoria_operatore')->insert(['graduatoria_id' => $this->dati['A']['graduatoria']->id, 'user_id' => $senzaPermessi->id]);
+        $aperti = array_filter($this->statiExport($senzaPermessi), fn ($s) => $s !== 403);
+        $this->assertSame([], $aperti, 'Export aperti all\'operatore senza permessi');
+
+        // Direttore del corso (senza altri ruoli): gli export del suo corso sì, quelli dell'evento no.
+        $direttore = $this->utente('operatore', ['socio_id' => $this->dati['A']['direttore']->id]);
+        $stati = $this->statiExport($direttore);
+        $corso  = array_filter($stati, fn ($s, $nome) => str_starts_with($nome, 'corsi.') && $s !== 200, ARRAY_FILTER_USE_BOTH);
+        $altri  = array_filter($stati, fn ($s, $nome) => ! str_starts_with($nome, 'corsi.') && $s !== 403, ARRAY_FILTER_USE_BOTH);
+        $this->assertSame([], $corso, 'Export del corso negati al direttore');
+        $this->assertSame([], $altri, 'Export dell\'evento o della graduatoria aperti al direttore');
     }
 }

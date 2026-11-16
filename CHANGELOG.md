@@ -4,6 +4,11 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.29 — 2026-11-16
+
+- fix: export, PDF e anteprime di eventi e corsi (partecipanti, pasti, badge, quote, discenti, ricevute, nullaosta, documenti) seguono la stessa regola della pagina da cui parte il link: il direttore del corso usa quelli del suo corso, l'operatore assegnato li usa solo se ha il permesso della pagina
+- test: export verificati per operatore con e senza permessi e per il direttore del corso
+
 ## 1.85.28 — 2026-11-16
 
 - fix: le pagine Gestione corso e Gestione quote si aprono solo per i corsi del proprio elenco (territorio del ruolo, eventi assegnati all'operatore, corsi diretti); prima un admin o un operatore di un'altra regione poteva aprirle con il link diretto

@@ -20,18 +20,10 @@ class PreviewRicevutaController extends Controller
     {
         abort_unless(auth()->check(), 403);
 
-        $user = auth()->user();
-
-        // Verifica accesso: superadmin, admin regionale, admin locale, operatore assegnato
         $corso  = $iscrizione->corso;
-        $evento = $corso?->evento;
 
-        $hasAccess = $user->isSuperadmin()
-            || ($user->isAdmin() && $evento?->comitato_regionale_id === $user->comitato_regionale_id)
-            || ($user->isAdminLocale() && $evento?->comitato_locale_id === $user->comitato_locale_id)
-            || ($user->isOperatore() && $evento?->operatori->contains($user->id));
-
-        abort_unless($hasAccess, 403);
+        // Stessa regola della pagina Gestione corso da cui parte il link.
+        abort_unless($corso && \App\Filament\Resources\CorsoResource::puoGestireCorso($corso), 403);
 
         $path = $iscrizione->rispostaPreregistrazione?->ricevuta_path;
         abort_if(! $path, 404);

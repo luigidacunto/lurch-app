@@ -18,16 +18,10 @@ class PreviewNullaostaStaffController extends Controller
     public function __invoke(Request $request, IscrizioneStaff $iscrizioneStaff): Response|View
     {
         abort_unless(auth()->check(), 403);
-
-        $user   = auth()->user();
         $evento = $iscrizioneStaff->evento;
 
-        $hasAccess = $user->isSuperadmin()
-            || ($user->isAdmin() && $evento?->comitato_regionale_id === $user->comitato_regionale_id)
-            || ($user->isAdminLocale() && $evento?->comitato_locale_id === $user->comitato_locale_id)
-            || ($user->isOperatore() && $evento?->operatori->contains($user->id));
-
-        abort_unless($hasAccess, 403);
+        // Stessa regola della pagina Gestione staff da cui parte il link.
+        abort_unless($evento && \App\Filament\Resources\EventoResource::canEdit($evento), 403);
 
         $path = $iscrizioneStaff->rispostaPreregistrazione?->nullaosta_path;
         abort_if(! $path, 404);
