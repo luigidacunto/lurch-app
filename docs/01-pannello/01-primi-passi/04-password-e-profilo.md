@@ -12,6 +12,9 @@ Nel pannello si entra con l'email (vedi [Accesso al pannello](01-accesso.md)): d
 
 Finché hai quella password, nel menu personale compare **Modifica password**: inserisci la password attuale e la nuova due volte (almeno 8 caratteri, diversa dalla precedente), poi premi **Aggiorna password**.
 
+<!-- screenshot: route=/admin/modifica-password · v1.85.38-dev · 2026-11-17 -->
+![Pagina Modifica password](../../immagini/password/modifica-password.png)
+
 Appena le email tornano a funzionare e rientri con il link o il codice, la password si disattiva da sola e la voce **Modifica password** sparisce dal menu.
 
 ## Aspetto chiaro o scuro

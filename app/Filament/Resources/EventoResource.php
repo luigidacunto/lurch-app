@@ -878,13 +878,6 @@ class EventoResource extends Resource
                     ->visible(fn () => static::canCreate()),
             ])
             ->columns([
-                Tables\Columns\TextColumn::make('_gestione')
-                    ->label('')
-                    ->getStateUsing(fn () => 'Gestione')
-                    ->badge()
-                    ->color('gray')
-                    ->icon('heroicon-o-chart-bar'),
-
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable()
                     ->sortable()

@@ -264,10 +264,11 @@ class UserResource extends Resource
                         ->label('Permessi abilitati')
                         ->options(array_map(fn (array $p) => $p[0], $permessi))
                         ->descriptions(array_map(fn (array $p) => $p[1], $permessi))
-                        ->columns(2)
+                        ->columns(3)
                         ->bulkToggleable(),
                 ])
-                ->visible(fn (Get $get) => $get('ruolo') === 'operatore'),
+                ->visible(fn (Get $get) => $get('ruolo') === 'operatore')
+                ->columnSpanFull(),
         ]);
     }
 

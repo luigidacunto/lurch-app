@@ -14,6 +14,7 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - fix: l'icona dell'app dei soci (schermata Home del telefono) è il logo L.U.R.C.H. al posto della croce provvisoria
 - fix: tolta la casella «Ricerca» dalla barra in alto del pannello, che trovava solo gli esami; ogni sezione ha la propria ricerca
 - fix: nella scheda di un operatore i permessi hanno nomi in italiano con una riga di spiegazione; non compaiono più quelli che non avevano alcun effetto (restano assegnati se già lo erano)
+- fix: nell'elenco Eventi tolta la colonna «Gestione», che ripeteva l'apertura della riga
 - fix: «Importa Iscritti» nella gestione del corso è disponibile anche all'admin locale, per i corsi degli eventi del suo comitato
 - fix: in alcuni moduli (istruzioni di importazione di soci, qualifiche, iscritti e staff, spiegazione del badge, pasti dello staff) compariva un'etichetta tecnica sopra il testo; ora non c'è più
 - fix: «Modifica password» compare solo a chi ha una password temporanea e serve a cambiarla; tolto l'invito a impostarne una, che il primo accesso via email avrebbe comunque cancellato
