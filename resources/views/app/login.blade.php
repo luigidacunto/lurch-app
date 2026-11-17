@@ -93,6 +93,8 @@
     </form>
 
     <p class="helper-text">Riceverai un codice via email all'indirizzo con cui sei registrato nei sistemi CRI.</p>
-    <p class="helper-text"><a href="{{ route('guide.index') }}" style="color:#C8102E;">Guide all'uso del portale</a></p>
+    @if (config('app.guida_url'))
+        <p class="helper-text"><a href="{{ rtrim(config('app.guida_url'), '/') }}/02-app-soci/01-installazione-e-accesso.md" style="color:#C8102E;" target="_blank" rel="noopener">Guida all'app</a></p>
+    @endif
 </div>
 @endsection

@@ -72,7 +72,7 @@ Da eseguire quando il server è irrecuperabile e bisogna ripartire da zero.
 
 ### Fase 1 — Setup server
 
-Seguire la sezione **"Setup iniziale server"** di [deploy.md](deploy.md) fino al punto 3 incluso
+Seguire la sezione **"Setup iniziale server"** di [Deploy](02-deploy.md) fino al punto 3 incluso
 (PHP, Nginx, PostgreSQL, Supervisor installati e configurati).
 
 Creare utente e database **vuoto**:

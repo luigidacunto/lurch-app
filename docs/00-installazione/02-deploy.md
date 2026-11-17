@@ -6,8 +6,8 @@ HestiaCP** — Nginx, PHP-FPM, SSL e PostgreSQL sono creati/gestiti dal pannello
 ambienti (dominio, utente di sistema, modalità di inizializzazione del DB) sono segnalate dove
 rilevanti.
 
-Per il setup in sviluppo locale vedi [setup-dev.md](setup-dev.md).
-Per backup e disaster recovery vedi [backup-restore.md](backup-restore.md).
+Per il setup in sviluppo locale vedi [Requisiti e sviluppo locale](01-requisiti-e-sviluppo-locale.md).
+Per backup e disaster recovery vedi [Backup e ripristino](03-backup-e-ripristino.md).
 
 ---
 
@@ -208,7 +208,7 @@ Produzione e dev girano entrambi su Hestia con lo stesso schema descritto sopra.
 | Dominio | dominio pubblico | dominio interno di sviluppo |
 | Utente di sistema | utente Hestia del sito | `webmaster` |
 | Deploy key SSH | `~/.ssh/deploy_lurch` | `~/.ssh/deploy_lurch_dev` (registrata separatamente come Read Only) |
-| Inizializzazione DB | `migrate --force` + `db:seed` da zero | PostgreSQL creato vuoto dal pannello, poi ripristinato da un dump `.gz` di produzione (vedi [backup-restore.md](backup-restore.md)); dopo il restore va comunque eseguito `php artisan migrate --force` (idempotente) e il singolo `php artisan db:seed --class="Database\Seeders\PrivacyTemplateSeeder" --force` (mai `db:seed` completo su un DB già popolato dal dump) |
+| Inizializzazione DB | `migrate --force` + `db:seed` da zero | PostgreSQL creato vuoto dal pannello, poi ripristinato da un dump `.gz` di produzione (vedi [Backup e ripristino](03-backup-e-ripristino.md)); dopo il restore va comunque eseguito `php artisan migrate --force` (idempotente) e il singolo `php artisan db:seed --class="Database\Seeders\PrivacyTemplateSeeder" --force` (mai `db:seed` completo su un DB già popolato dal dump) |
 | Deploy successivi | `bash scripts/deploy.sh` | `bash scripts/deploy.sh --dev` (mantiene i pacchetti di sviluppo e riavvia il worker da solo) |
 
 Resta valido su entrambi il fix noto sui `pcntl_*` disabilitati nel php.ini CLI (sezione sopra).

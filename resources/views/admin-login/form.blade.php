@@ -55,9 +55,11 @@
             Problemi a ricevere l'email? <a href="{{ url('/admin/login?password=1') }}" class="underline">Accedi con la password</a>
         </p>
 
-        <p class="text-xs text-gray-500 text-center">
-            Primo accesso? <a href="{{ route('guide.index') }}" class="underline">Guide all'uso del portale</a>
-        </p>
+        @if (config('app.guida_url'))
+            <p class="text-xs text-gray-500 text-center">
+                Primo accesso? <a href="{{ rtrim(config('app.guida_url'), '/') }}/01-pannello/01-primi-passi/01-accesso.md" class="underline" target="_blank" rel="noopener">Guida all'accesso</a>
+            </p>
+        @endif
     </div>
 
 <x-form-footer />

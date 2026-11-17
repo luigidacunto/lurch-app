@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'app.auth' => \App\Http\Middleware\AppSocioAuth::class,
         ]);
+        // Rotte ['web', 'auth'] di web.php (download e anteprime del pannello): chi non è entrato va
+        // all'accesso via email. Il pannello Filament usa il proprio middleware; le richieste JSON ricevono 401.
+        $middleware->redirectGuestsTo(fn () => route('admin-login.form'));
         // Globale: vale anche per il pannello Filament e gli aggiornamenti Livewire (non usano il gruppo web).
         $middleware->append(\App\Http\Middleware\UrlFilePubbliciSulDominio::class);
     })

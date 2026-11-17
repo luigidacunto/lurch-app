@@ -2,7 +2,15 @@
 
 Una voce per ogni versione rilasciata, dalla più recente.
 
-Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
+Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
+
+## In sviluppo
+
+- feat: menu «Guida» nel pannello con tre sezioni (Pannello di gestione, App dei soci, Moduli pubblici) lette dai file di `docs/`, gli stessi pubblicati sul repository: indice a sinistra con i paragrafi della pagina aperta, immagini a tutto schermo con un clic, «Scarica PDF» della sezione intera
+- docs: guida riorganizzata in `docs/` per sezioni numerate come il menu del pannello, con le pagine ancora da scrivere segnate «In preparazione»; installazione, deploy e backup spostati in `docs/00-installazione/`
+- fix: tolta la vecchia pagina pubblica `/guide`; il suo testo, aggiornato, è confluito in «Accesso al pannello». Le pagine di accesso del pannello e dell'app rimandano alla guida pubblicata (indirizzo nella nuova variabile `GUIDA_URL`; vuota = nessun link)
+- fix: chi apre un download o un'anteprima del pannello (PDF, Excel, documenti) senza aver fatto l'accesso viene mandato alla pagina di accesso invece di ricevere un errore
+- fix: nei footer di home, app e pannello gli anni di copyright partono dal 2026 e arrivano da soli all'anno corrente
 
 ## 1.85.38 — 2026-11-17
 

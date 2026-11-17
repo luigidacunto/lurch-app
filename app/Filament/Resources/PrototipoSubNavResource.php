@@ -13,18 +13,23 @@ use Filament\Tables;
 use Filament\Tables\Table;
 
 /**
- * Prototipo temporaneo — dimostra il meccanismo NATIVO di Filament per pagine
+ * Pagina di riferimento interna — dimostra il meccanismo NATIVO di Filament per pagine
  * correlate allo stesso record (getRecordSubNavigation), come alternativa ai
  * pulsanti di navigazione infilati tra le azioni header (vedi discussione
- * pulsanti header troppo numerosi). Nascosto dal menu, dati reali (Eventi) in
- * sola lettura — da cancellare o tenere per confronti futuri, non tocca nulla
- * di esistente.
+ * pulsanti header troppo numerosi), più la vetrina dei componenti standard.
+ * Nascosto dal menu, riservato al superadmin, dati reali (Eventi) in sola lettura.
  */
 class PrototipoSubNavResource extends Resource
 {
     protected static ?string $model = Evento::class;
 
     protected static bool $shouldRegisterNavigation = false;
+
+    // Senza policy Filament consentirebbe l'accesso a chiunque sia nel pannello.
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->isSuperadmin() ?? false;
+    }
 
     protected static ?string $slug = 'prototipo-subnav';
 

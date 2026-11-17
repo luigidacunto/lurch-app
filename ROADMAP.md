@@ -38,7 +38,7 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 - Pulsante «Elimina» spostato dalla tabella alla pagina di modifica.
 - Traduzione italiana completa dei messaggi di validazione di Laravel.
 - Questionari (struttura del database già presente).
-- Guide d'uso per gli operatori: completamento delle fasi previste.
+- Guida completa: scrittura dei capitoli con gli screenshot, guida dedicata agli esami, sezione pubblica nell'app con le parti per volontari e moduli pubblici.
 
 ### Tecnico
 - Passaggio a PHP 8.4 in locale e in produzione.

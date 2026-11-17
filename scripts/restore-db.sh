@@ -4,7 +4,7 @@
 #
 # ⚠️ DISTRUTTIVO: cancella e ricrea il database configurato in .env (DB_DATABASE)
 # con i dati del dump indicato. Pensato per il server di SVILUPPO — su produzione
-# usare solo in un vero disaster recovery (vedi docs/backup-restore.md).
+# usare solo in un vero disaster recovery (vedi docs/00-installazione/03-backup-e-ripristino.md).
 #
 # Uso:
 #   bash /percorso/del/deploy/scripts/restore-db.sh --file /percorso/assoluto/db.sql.gz
@@ -52,13 +52,13 @@ APP_ENV=$(_env APP_ENV); APP_ENV=${APP_ENV:-unknown}
 
 # ── Blocco duro su produzione ────────────────────────────────────────────────
 # Questo script è pensato per il server di sviluppo. Su produzione un restore va
-# fatto solo a mano seguendo docs/backup-restore.md (disaster recovery reale),
+# fatto solo a mano seguendo docs/00-installazione/03-backup-e-ripristino.md (disaster recovery reale),
 # mai lanciando questo script per errore — niente conferma, si esce e basta.
 if grep -qE '^APP_ENV=production$' "$ENV_FILE" 2>/dev/null; then
     echo ""
     echo "ERRORE: questo è l'ambiente di PRODUZIONE (APP_ENV=production in $ENV_FILE)."
     echo "Questo script non è utilizzabile qui. Per un vero disaster recovery in produzione"
-    echo "seguire la procedura manuale in docs/backup-restore.md."
+    echo "seguire la procedura manuale in docs/00-installazione/03-backup-e-ripristino.md."
     echo ""
     exit 1
 fi

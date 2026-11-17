@@ -141,6 +141,7 @@
     @yield('content')
 
     <p style="text-align:center; margin-top:24px; font-size:12px; color:#9ca3af;">
+        &copy; {{ \App\Support\Copyright::anni() }} Luigi D&apos;Acunto &middot;
         <a href="{{ route('privacy.show') }}" style="color:inherit; text-decoration:underline;">Informativa privacy</a>
     </p>
 </main>

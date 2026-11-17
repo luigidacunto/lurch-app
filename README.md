@@ -9,7 +9,7 @@ Applicazione web per la gestione completa di eventi formativi e campi scuola (ca
 
 ## Documentazione tecnica
 
-- [docs/README.md](docs/README.md) — guide operative (setup, deploy, backup) e guide per gli operatori
+- [docs/README.md](docs/README.md) — guida completa: installazione, pannello di gestione, app dei soci, moduli pubblici
 - [CHANGELOG.md](CHANGELOG.md) — modifiche per versione
 - [ROADMAP.md](ROADMAP.md) — sviluppi previsti
 - [CONTRIBUTING.md](CONTRIBUTING.md) — come contribuire · [SECURITY.md](SECURITY.md) — segnalare una vulnerabilità · [LICENSE](LICENSE) — AGPL-3.0
@@ -392,7 +392,7 @@ Accessibili tramite link univoco senza autenticazione (form preregistrazione e q
 
 ## Installazione
 
-Per le istruzioni complete di installazione su Windows e Linux (sviluppo e produzione) vedi **[docs/setup-dev.md](docs/setup-dev.md)**.
+Per le istruzioni complete di installazione su Windows e Linux (sviluppo e produzione) vedi **[docs/00-installazione/01-requisiti-e-sviluppo-locale.md](docs/00-installazione/01-requisiti-e-sviluppo-locale.md)**.
 
 ### Prerequisiti minimi
 
@@ -417,7 +417,7 @@ php artisan queue:work   # terminale 2
 # → http://127.0.0.1:8000/admin  (admin@lurch.local / password)
 ```
 
-Per le istruzioni complete (estensioni PHP, setup PostgreSQL) vedi **[docs/setup-dev.md](docs/setup-dev.md)**; per il deploy in produzione vedi **[docs/deploy.md](docs/deploy.md)**.
+Per le istruzioni complete (estensioni PHP, setup PostgreSQL) vedi **[docs/00-installazione/01-requisiti-e-sviluppo-locale.md](docs/00-installazione/01-requisiti-e-sviluppo-locale.md)**; per il deploy in produzione vedi **[docs/00-installazione/02-deploy.md](docs/00-installazione/02-deploy.md)**.
 
 ---
 

@@ -169,7 +169,7 @@
     </div>
 
     <p class="footer-note">
-        Software libero e gratuito, sviluppato e mantenuto da Luigi D'Acunto, volontario CRI, per l'attività
+        &copy; {{ \App\Support\Copyright::anni() }} &middot; Software libero e gratuito, sviluppato e mantenuto da Luigi D'Acunto, volontario CRI, per l'attività
         della Croce Rossa Italiana — nessun fine commerciale.<br>
         @if (config('app.contatto_email'))
         Per assistenza sull'accesso, contatta <a href="#" id="contact-email" rel="nofollow">il gestore del portale</a>.

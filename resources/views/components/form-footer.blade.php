@@ -19,7 +19,7 @@
         L.U.R.C.H. &mdash; v{{ config('app.version', '1.0.0') }}
     </span>
     <span style="flex: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-        &copy; {{ date('Y') }} Luigi D&apos;Acunto. Software sviluppato e mantenuto autonomamente. Uso interno per attività della Croce Rossa Italiana.
+        &copy; {{ \App\Support\Copyright::anni() }} Luigi D&apos;Acunto. Software sviluppato e mantenuto autonomamente. Uso interno per attività della Croce Rossa Italiana.
         &nbsp;&middot;&nbsp;<a href="{{ route('privacy.show') }}" style="color: inherit; text-decoration: underline;">Privacy</a>
     </span>
     <span style="white-space: nowrap; flex-shrink: 0;">

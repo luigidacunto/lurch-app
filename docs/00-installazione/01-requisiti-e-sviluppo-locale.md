@@ -2,8 +2,8 @@
 
 Guida per configurare l'ambiente locale su **Windows** o **Linux (Ubuntu/Debian)**.
 
-Per il deploy su server di produzione vedi [deploy.md](deploy.md).
-Per backup e disaster recovery vedi [backup-restore.md](backup-restore.md).
+Per il deploy su server di produzione vedi [Deploy](02-deploy.md).
+Per backup e disaster recovery vedi [Backup e ripristino](03-backup-e-ripristino.md).
 
 ---
 
@@ -144,7 +144,7 @@ Restart-Service postgresql-x64-18
 
 Da questo momento `psql -U postgres` e `psql -U lurch_user` funzionano senza
 chiedere password su `127.0.0.1`/`localhost` — utile per gli script di questa
-guida e per il restore in [backup-restore.md](backup-restore.md).
+guida e per il restore in [Backup e ripristino](03-backup-e-ripristino.md).
 
 > `\q` esce da psql e torna a PowerShell.
 
@@ -176,7 +176,7 @@ Get-Content "$env:USERPROFILE\.ssh\lurch_windows.pub"
 
 Copia l'intera riga stampata (inizia con `ssh-ed25519 ...`) e registrala tra le chiavi SSH del
 tuo utente sull'host git (GitHub: **Settings** → **SSH and GPG keys**; Forgejo: **Impostazioni** →
-**Chiavi SSH / GPG**). A differenza della deploy key usata sui server (vedi `deploy.md`, sola lettura e
+**Chiavi SSH / GPG**). A differenza della deploy key usata sui server (vedi `02-deploy.md`, sola lettura e
 legata a un solo repo), questa va registrata come **chiave dell'utente**, non come deploy key
 di un singolo repo: è la tua chiave personale per lavorare su tutti i repo a cui hai accesso da
 questo PC, con gli stessi permessi del tuo account (push incluso).
@@ -278,7 +278,7 @@ php artisan db:seed
 
 **Opzione B — ripristino da dump sviluppo** (se hai un `db.sql.gz` con dati reali anonimizzati):
 
-Vedi la sezione **"Import dump in sviluppo locale"** in [backup-restore.md](backup-restore.md).
+Vedi la sezione **"Import dump in sviluppo locale"** in [Backup e ripristino](03-backup-e-ripristino.md).
 
 **Dopo aver ripristinato un dump con dati reali** su un DB di sviluppo (PC, portatile o VM), anonimizzalo subito:
 
@@ -486,7 +486,7 @@ Chiede di riscrivere il nome del database per conferma, poi sostituisce **solo i
 
 ## Test PHPUnit
 
-`phpunit.xml` punta a un **secondo database dedicato**, `lurch_test` (Postgres, non SQLite in-memory) — creato al passo 3/5 sopra. Motivo: alcune funzioni Postgres usate nel progetto (es. `gen_random_uuid()`) non esistono su SQLite, quindi la suite non gira affidabilmente lì. `lurch_test` è pensato per essere rotto/svuotato/ricreato liberamente — ogni test usa `RefreshDatabase` (migrazioni + transazione per test, rollback automatico), non tocca mai `lurch` (il database di sviluppo, tenuto allineato ai dati reali per un test finale delle migrazioni prima del deploy — vedi [backup-restore.md](backup-restore.md)).
+`phpunit.xml` punta a un **secondo database dedicato**, `lurch_test` (Postgres, non SQLite in-memory) — creato al passo 3/5 sopra. Motivo: alcune funzioni Postgres usate nel progetto (es. `gen_random_uuid()`) non esistono su SQLite, quindi la suite non gira affidabilmente lì. `lurch_test` è pensato per essere rotto/svuotato/ricreato liberamente — ogni test usa `RefreshDatabase` (migrazioni + transazione per test, rollback automatico), non tocca mai `lurch` (il database di sviluppo, tenuto allineato ai dati reali per un test finale delle migrazioni prima del deploy — vedi [Backup e ripristino](03-backup-e-ripristino.md)).
 
 ```bash
 php artisan test

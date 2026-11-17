@@ -17,6 +17,13 @@ return [
 
     'version' => '1.85.38',
 
+    // Anno di nascita del software: i footer mostrano «© anno_inizio–anno corrente» (App\Support\Copyright).
+    'anno_inizio' => 2026,
+
+    // Indirizzo della cartella docs/ pubblicata (es. su GitHub): link «Guida» delle pagine di accesso e
+    // link della guida nel pannello verso le parti non mostrate nel pannello. Vuoto = link nascosti.
+    'guida_url' => env('GUIDA_URL'),
+
     // Codice OTP fisso per il login della PWA /app, SOLO fuori produzione (staging con mailer log e tester esterni).
     // Attivo se APP_ENV != production e OTP_FISSO è di 6 cifre; altrimenti null = codice casuale come sempre.
     // Dati di questa installazione mostrati agli utenti: email di contatto della pagina iniziale e

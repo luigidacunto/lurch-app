@@ -15,12 +15,12 @@ Route::get('/privacy', [\App\Http\Controllers\PrivacyPubblicaController::class, 
 Route::get('/modelli/presa-visione-staff', \App\Http\Controllers\ModelloNullaostaStaffController::class)
     ->name('modelli.presa-visione-staff');
 
-// Guide pubbliche all'uso del portale — sorgente Markdown in docs/guide-operatori/,
-// nessun auth (l'accesso al portale è esso stesso una delle guide).
-Route::prefix('guide')->name('guide.')->group(function () {
-    Route::get('/',            [\App\Http\Controllers\GuidaController::class, 'index'])->name('index');
-    Route::get('/{slug}/pdf',  [\App\Http\Controllers\GuidaController::class, 'pdf'])->name('pdf');
-    Route::get('/{slug}',      [\App\Http\Controllers\GuidaController::class, 'show'])->name('show');
+// File delle pagine «Guida» del pannello: immagini di docs/immagini/ (percorso validato da
+// App\Support\Guida::fileImmagine()) e PDF di una sezione intera.
+Route::middleware(['web', 'auth'])->prefix('admin/guida-file')->name('guida.')->group(function () {
+    Route::get('/immagini/{percorso}', [\App\Http\Controllers\GuidaFileController::class, 'immagine'])
+        ->where('percorso', '.*')->name('immagine');
+    Route::get('/pdf/{sezione}', [\App\Http\Controllers\GuidaFileController::class, 'pdf'])->name('pdf');
 });
 
 Route::get('/admin/iscrizioni/{iscrizione}/ricevuta', \App\Http\Controllers\PreviewRicevutaController::class)

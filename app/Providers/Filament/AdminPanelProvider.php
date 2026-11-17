@@ -8,7 +8,6 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Navigation\NavigationGroup;
-use Filament\Navigation\NavigationItem;
 use Filament\Navigation\MenuItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
@@ -57,15 +56,7 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make('Impostazioni'),
                 NavigationGroup::make('Guida'),
             ])
-            ->navigationItems([
-                // Guide pubbliche all'uso del portale (rotta /guide, blade non-Filament) —
-                // voce a sé, visibile a ogni ruolo, si apre in una scheda nuova.
-                NavigationItem::make('Guide all\'uso del portale')
-                    ->url('/guide', shouldOpenInNewTab: true)
-                    ->icon('heroicon-o-question-mark-circle')
-                    ->group('Guida')
-                    ->sort(99),
-            ])
+            // Gruppo «Guida»: le sezioni di docs/ tranne 00-installazione (App\Filament\Pages\Guida\*), visibili a tutti.
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Modifica password')
@@ -104,7 +95,7 @@ class AdminPanelProvider extends PanelProvider
                             L.U.R.C.H. &mdash; v{$this->appVersion()}
                         </span>
                         <span class="lurch-footer-center">
-                            &copy; {$this->currentYear()} Luigi D&apos;Acunto. Software sviluppato e mantenuto autonomamente. Uso interno per attività della Croce Rossa Italiana.
+                            &copy; {$this->anniCopyright()} Luigi D&apos;Acunto. Software sviluppato e mantenuto autonomamente. Uso interno per attività della Croce Rossa Italiana.
                             &nbsp;&middot;&nbsp;<a href="{$this->privacyUrl()}" style="color: inherit; text-decoration: underline;">Privacy e cookie</a>
                         </span>
                         <span class="lurch-footer-right">
@@ -254,7 +245,7 @@ class AdminPanelProvider extends PanelProvider
     }
 
     private function appVersion(): string { return config('app.version', '1.0.0'); }
-    private function currentYear(): string { return date('Y'); }
+    private function anniCopyright(): string { return \App\Support\Copyright::anni(); }
     private function phpVersion(): string { return PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION; }
     private function laravelVersion(): string { return app()->version(); }
     private function appEnv(): string { return config('app.env', 'production'); }
