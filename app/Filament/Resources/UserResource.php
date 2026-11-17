@@ -40,6 +40,31 @@ class UserResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Utenti';
 
+    /**
+     * Permessi granulari assegnabili agli operatori: solo quelli che il codice controlla davvero,
+     * con nome e spiegazione in italiano. Gli altri permessi presenti nel database (senza effetto)
+     * non compaiono nella scheda ma, se già assegnati, restano: vedi EditUser::afterSave().
+     */
+    public const PERMESSI_OPERATORE = [
+        'eventi.view'                   => ['Vede gli eventi', 'La sezione Eventi, con i soli eventi regionali a cui è assegnato.'],
+        'eventi.create'                 => ['Crea eventi', 'Pulsante «Nuovo» nella sezione Eventi.'],
+        'eventi.edit'                   => ['Gestisce gli eventi', 'Apre e modifica gli eventi a cui è assegnato: staff, partecipanti, presenze, report.'],
+        'corsi.view'                    => ['Vede e gestisce i corsi', 'I corsi degli eventi a cui è assegnato: iscritti, moduli, comunicazioni.'],
+        'corsi.create'                  => ['Crea corsi', 'Pulsante «Nuovo» nella sezione Corsi.'],
+        'corsi.edit'                    => ['Modifica i corsi', 'I dati dei corsi degli eventi a cui è assegnato.'],
+        'iscritti.import'               => ['Importa iscritti', 'Importazione degli iscritti di un corso da file.'],
+        'checkin.manage'                => ['Fa il check-in', 'Entrate e uscite dal badge, negli eventi a cui è assegnato.'],
+        'graduatorie.manage'            => ['Gestisce le graduatorie', 'Le graduatorie in cui è tra gli operatori abilitati.'],
+        'qualifiche.view'               => ['Cerca le qualifiche', 'Ricerca dei soci per qualifica ed export, nel suo territorio.'],
+        'qualifiche.manage'             => ['Gestisce le qualifiche', 'Come sopra, e aggiunge o modifica le qualifiche dei soci.'],
+        'qualifiche.validita_regionale' => ['Validità regionali', 'Scadenze regionali dei corsi nel Catalogo corsi.'],
+        'soci.view'                     => ['Vede i soci', 'La sezione Soci del suo territorio.'],
+        'soci.create'                   => ['Crea soci', 'Inserimento a mano di un nuovo socio.'],
+        'soci.edit'                     => ['Modifica i soci', 'Anagrafica dei soci della sua regione.'],
+        'soci.import'                   => ['Importa i soci', 'Importazione dei soci da GAIA.'],
+        'soci.view_sensitive'           => ['Vede i dati sanitari', 'Allergie, diete e note alimentari dei soci.'],
+    ];
+
     public static function canViewAny(): bool
     {
         $user = auth()->user();
@@ -132,10 +157,11 @@ class UserResource extends Resource
         $localiOptions = $localiQuery->pluck('nome', 'id');
 
         // Lista permessi granulari
-        $permessiOptions = Permission::where('guard_name', 'web')
-            ->orderBy('name')
-            ->pluck('name', 'name')
-            ->toArray();
+        // Solo i permessi che esistono nel database (altrimenti syncPermissions() fallirebbe).
+        $permessi = array_intersect_key(
+            static::PERMESSI_OPERATORE,
+            array_flip(Permission::where('guard_name', 'web')->pluck('name')->all())
+        );
 
         return $form->schema([
             Section::make('Anagrafica')->schema([
@@ -236,8 +262,9 @@ class UserResource extends Resource
                 ->schema([
                     Forms\Components\CheckboxList::make('permissions')
                         ->label('Permessi abilitati')
-                        ->options($permessiOptions)
-                        ->columns(3)
+                        ->options(array_map(fn (array $p) => $p[0], $permessi))
+                        ->descriptions(array_map(fn (array $p) => $p[1], $permessi))
+                        ->columns(2)
                         ->bulkToggleable(),
                 ])
                 ->visible(fn (Get $get) => $get('ruolo') === 'operatore'),

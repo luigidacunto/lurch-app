@@ -274,12 +274,15 @@ class GestioneCorso extends Page
             ->label('Importa Iscritti')
             ->icon('heroicon-o-arrow-up-tray')
             ->color('success')
+            // La competenza sul corso la decide già l'accesso alla pagina (puoGestireCorso): l'admin
+            // locale arriva solo ai corsi degli eventi del suo comitato, mai a quelli regionali.
             ->visible(fn () => auth()->user()?->isSuperadmin()
                 || auth()->user()?->isAdmin()
+                || auth()->user()?->isAdminLocale()
                 || auth()->user()?->can('iscritti.import'))
             ->form([
                 Forms\Components\Placeholder::make('istruzioni')
-                    ->label('')
+                    ->hiddenLabel()
                     ->content('Carica un file XLSX dal sistema GAIA. Colonne usate: Cognome · Nome · Codice Fiscale · Data di Nascita · Email · Numeri di telefono · Comitato · Sede regionale.'),
                 Forms\Components\FileUpload::make('file_xlsx')
                     ->label('File XLSX')

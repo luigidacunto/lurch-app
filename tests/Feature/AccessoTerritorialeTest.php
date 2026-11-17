@@ -246,4 +246,26 @@ class AccessoTerritorialeTest extends TestCase
         $this->assertSame([], $corso, 'Export del corso negati al direttore');
         $this->assertSame([], $altri, 'Export dell\'evento o della graduatoria aperti al direttore');
     }
+
+    /** Importa iscritti: l'admin locale lo usa sui corsi del suo comitato; i corsi regionali non li apre proprio. */
+    public function test_admin_locale_importa_iscritti_solo_nei_corsi_del_suo_comitato(): void
+    {
+        $cr     = $this->dati['A']['cr'];
+        $locale = \App\Models\ComitatoLocale::create(['comitato_regionale_id' => $cr, 'nome' => 'Loc A', 'codice' => 'LA', 'attivo' => true]);
+        $evento = DB::table('eventi')->insertGetId([
+            'comitato_regionale_id' => $cr, 'comitato_locale_id' => $locale->id, 'nome' => 'Evento locale', 'sede' => 's', 'indirizzo' => 'i',
+            'data_inizio' => '2026-11-01', 'data_fine' => '2026-11-02', 'giorni_evento' => '["2026-11-01","2026-11-02"]',
+            'candidature_staff_uuid' => (string) \Illuminate\Support\Str::uuid(), 'created_at' => now(), 'updated_at' => now(),
+        ]);
+        $corsoLocale = Corso::create([
+            'evento_id' => $evento, 'nome' => 'Corso locale', 'numero_protocollo' => 'X/2026/L/1',
+            'data_inizio' => '2026-11-01', 'ora_inizio' => '09:00', 'data_fine' => '2026-11-02', 'ora_fine' => '18:00',
+        ]);
+        $adminLocale = $this->utente('admin_locale', ['comitato_regionale_id' => $cr, 'comitato_locale_id' => $locale->id]);
+
+        $this->actingAs($adminLocale);
+        $this->assertContains($this->get(CorsoResource::getUrl('gestione', ['record' => $this->dati['A']['corso']]))->getStatusCode(), [403, 404]);
+        \Livewire\Livewire::test(CorsoResource\Pages\GestioneCorso::class, ['record' => $corsoLocale])
+            ->assertActionVisible('importaIscritti');
+    }
 }

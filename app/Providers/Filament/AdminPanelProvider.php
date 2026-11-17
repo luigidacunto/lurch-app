@@ -43,6 +43,8 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('')
             ->favicon(asset('images/logo_lurch.png'))
             ->sidebarCollapsibleOnDesktop()
+            // Niente casella di ricerca globale: ogni sezione ha la propria ricerca (scelta 2026-11-17).
+            ->globalSearch(false)
             ->maxContentWidth(Width::Full)
             ->colors([
                 'primary'    => Color::Red,
@@ -61,7 +63,8 @@ class AdminPanelProvider extends PanelProvider
                 MenuItem::make()
                     ->label('Modifica password')
                     ->icon('heroicon-o-key')
-                    ->url(fn () => url('/admin/modifica-password')),
+                    ->url(fn () => url('/admin/modifica-password'))
+                    ->visible(fn () => \App\Filament\Pages\ModificaPassword::canAccess()),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

@@ -10,6 +10,11 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
+/**
+ * Cambio della password temporanea. Si accede via email (link o codice); la password esiste solo
+ * come soluzione d'emergenza impostata da un superadmin e si disattiva al primo accesso via email
+ * (User::completaLoginEmail()): la pagina serve quindi solo a chi una password ce l'ha.
+ */
 class ModificaPassword extends Page
 {
     use InteractsWithForms;
@@ -26,6 +31,11 @@ class ModificaPassword extends Page
 
     public ?array $data = [];
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->password !== null;
+    }
+
     public function mount(): void
     {
         $this->form->fill();
@@ -35,17 +45,11 @@ class ModificaPassword extends Page
     {
         return $form
             ->schema([
-                \Filament\Forms\Components\Placeholder::make('info_no_password')
-                    ->label('')
-                    ->content('Il tuo account non ha una password: accedi tramite email. Puoi impostarne una qui sotto per tornare al login classico.')
-                    ->visible(fn () => auth()->user()?->password === null),
-
                 TextInput::make('password_attuale')
                     ->label('Password attuale')
                     ->password()
                     ->required()
-                    ->revealable()
-                    ->visible(fn () => auth()->user()?->password !== null),
+                    ->revealable(),
 
                 TextInput::make('password')
                     ->label('Nuova password')
@@ -53,7 +57,8 @@ class ModificaPassword extends Page
                     ->required()
                     ->revealable()
                     ->rule(Password::min(8))
-                    ->different('password_attuale'),
+                    ->different('password_attuale')
+                    ->helperText('La password è una soluzione temporanea: si disattiva da sola al prossimo accesso via email.'),
 
                 TextInput::make('password_confirmation')
                     ->label('Conferma nuova password')
@@ -71,7 +76,7 @@ class ModificaPassword extends Page
 
         $user = auth()->user();
 
-        if ($user->password !== null && ! Hash::check($data['password_attuale'], $user->password)) {
+        if (! Hash::check($data['password_attuale'], $user->password)) {
             $this->addError('data.password_attuale', 'La password attuale non è corretta.');
             return;
         }

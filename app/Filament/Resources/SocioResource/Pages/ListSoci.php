@@ -430,7 +430,7 @@ class ListSoci extends Page implements HasTable
                 })
                 ->form([
                     Placeholder::make('istruzioni')
-                        ->label('')
+                        ->hiddenLabel()
                         ->content(
                             'Formato atteso: export GAIA (CRI). '
                             . 'Colonne rilevanti: Cognome · Nome · Codice Fiscale · Data di Nascita · '

@@ -23,6 +23,8 @@ class EditUser extends EditRecord
         $data['permissions'] = $this->record
             ->getDirectPermissions()
             ->pluck('name')
+            ->intersect(array_keys(UserResource::PERMESSI_OPERATORE))
+            ->values()
             ->toArray();
 
         return $data;
@@ -45,8 +47,11 @@ class EditUser extends EditRecord
     protected function afterSave(): void
     {
         if ($this->record->isOperatore()) {
+            // I permessi non mostrati nella scheda (senza effetto) restano come erano.
+            $nascosti = $this->record->getDirectPermissions()->pluck('name')
+                ->diff(array_keys(UserResource::PERMESSI_OPERATORE));
             $this->record->syncPermissions(
-                $this->data['permissions'] ?? []
+                $nascosti->merge($this->data['permissions'] ?? [])->unique()->values()->all()
             );
         } else {
             // Ruolo non più operatore: rimuove tutti i permessi diretti

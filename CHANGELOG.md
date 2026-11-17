@@ -11,6 +11,12 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - fix: tolta la vecchia pagina pubblica `/guide`; il suo testo, aggiornato, è confluito in «Accesso al pannello». Le pagine di accesso del pannello e dell'app rimandano alla guida pubblicata (indirizzo nella nuova variabile `GUIDA_URL`; vuota = nessun link)
 - fix: chi apre un download o un'anteprima del pannello (PDF, Excel, documenti) senza aver fatto l'accesso viene mandato alla pagina di accesso invece di ricevere un errore
 - fix: nei footer di home, app e pannello gli anni di copyright partono dal 2026 e arrivano da soli all'anno corrente
+- fix: l'icona dell'app dei soci (schermata Home del telefono) è il logo L.U.R.C.H. al posto della croce provvisoria
+- fix: tolta la casella «Ricerca» dalla barra in alto del pannello, che trovava solo gli esami; ogni sezione ha la propria ricerca
+- fix: nella scheda di un operatore i permessi hanno nomi in italiano con una riga di spiegazione; non compaiono più quelli che non avevano alcun effetto (restano assegnati se già lo erano)
+- fix: «Importa Iscritti» nella gestione del corso è disponibile anche all'admin locale, per i corsi degli eventi del suo comitato
+- fix: in alcuni moduli (istruzioni di importazione di soci, qualifiche, iscritti e staff, spiegazione del badge, pasti dello staff) compariva un'etichetta tecnica sopra il testo; ora non c'è più
+- fix: «Modifica password» compare solo a chi ha una password temporanea e serve a cambiarla; tolto l'invito a impostarne una, che il primo accesso via email avrebbe comunque cancellato
 
 ## 1.85.38 — 2026-11-17
 

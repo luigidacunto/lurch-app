@@ -8,7 +8,7 @@ Per entrare nel pannello non serve una password. Ogni volta che accedi ricevi un
 
 Vai all'indirizzo del pannello che ti è stato comunicato: si apre la pagina **Accedi via email** (indirizzo `/admin-login`).
 
-<!-- screenshot: route=/admin-login · v1.68.4 · 2026-09-01 -->
+<!-- screenshot: route=/admin-login · v1.85.38-dev · 2026-11-17 -->
 ![Pagina di accesso via email](../../immagini/accesso/pagina-login.png)
 
 ## 2. Inserisci la tua email
@@ -24,16 +24,16 @@ Ricevi un messaggio con due modi per entrare:
 - **pulsante «Accedi al pannello»**: se apri l'email sullo stesso dispositivo e browser da cui hai chiesto l'accesso, entri direttamente;
 - **codice a 6 cifre**: usalo se leggi l'email su un altro telefono o computer. Torna alla pagina **Controlla la email** e scrivilo nel campo **Codice**: all'ultima cifra la pagina procede da sola.
 
-<!-- screenshot: route=/admin-login/verifica · v1.68.4 · 2026-09-01 -->
+<!-- screenshot: route=/admin-login/verifica · v1.85.38-dev · 2026-11-17 -->
 ![Inserimento del codice a 6 cifre](../../immagini/accesso/inserimento-codice.png)
 
 Link e codice **valgono 15 minuti** e si possono usare una sola volta. Se scadono, ripeti dal punto 2.
 
 ## 4. Sei dentro
 
-Dopo la verifica arrivi alla **Dashboard**. Nel menu a sinistra vedi solo le sezioni per cui hai un permesso: se ti aspetti una voce che non c'è, è una questione di permessi, parlane con il tuo amministratore.
+Dopo la verifica arrivi alla **Dashboard**. Nel menu a sinistra vedi solo le sezioni per cui hai un permesso: se ti aspetti una voce che non c'è, è una questione di permessi (vedi [Ruoli e permessi](03-ruoli-e-permessi.md)), parlane con il tuo amministratore. Com'è fatto il pannello è spiegato in [Menu e dashboard](02-menu-e-dashboard.md).
 
-<!-- screenshot: route=/admin · v1.68.4 · 2026-09-01 -->
+<!-- screenshot: route=/admin · v1.85.38-dev · 2026-11-17 -->
 ![Dashboard dopo l'accesso](../../immagini/accesso/dashboard.png)
 
 ## Problemi frequenti

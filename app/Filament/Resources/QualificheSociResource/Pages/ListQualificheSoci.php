@@ -500,7 +500,7 @@ class ListQualificheSoci extends Page implements HasTable
                     ->visible(fn () => $this->canImport())
                     ->form([
                         Forms\Components\Placeholder::make('istruzioni')
-                            ->label('')
+                            ->hiddenLabel()
                             ->content(
                                 'Formato atteso: export GAIA per singolo corso. '
                                 . 'Colonne rilevanti: Cognome · Nome · Codice Fiscale · '

@@ -130,7 +130,7 @@ class GestioneStaff extends Page
             ->color('brand_pink')
             ->form([
                 Forms\Components\Placeholder::make('istruzioni')
-                    ->label('')
+                    ->hiddenLabel()
                     ->content('Carica un file Excel (formato GAIA). Colonne usate: cognome, nome, codice_fiscale, data_di_nascita, email, numeri_di_telefono, comitato, sede_regionale. Colonna opzionale: ruolo (logistica / docenza).'),
                 Forms\Components\FileUpload::make('file_xlsx')
                     ->label('File Excel (.xlsx / .xls)')
@@ -868,7 +868,7 @@ class GestioneStaff extends Page
                     FormSection::make('Pasti e pernotti')
                         ->schema([
                             Forms\Components\CheckboxList::make('presenze_pasti')
-                                ->label('')
+                                ->hiddenLabel()
                                 ->options($pastiOpts)
                                 ->columns(2),
                         ]),

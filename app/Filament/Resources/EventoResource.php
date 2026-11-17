@@ -803,7 +803,7 @@ class EventoResource extends Resource
                         ->columnSpanFull(),
 
                     Forms\Components\Placeholder::make('badge_config_spiegazione')
-                        ->label('')
+                        ->hiddenLabel()
                         ->content(new \Illuminate\Support\HtmlString(
                             '<div style="font-size:12.5px; color:#6b7280; line-height:1.5;">'
                             . '<strong>Titolo evento / Nome-Cognome / Protocollo</strong> — il testo è centrato: <strong>X</strong> è il margine dal bordo sinistro <em>e</em> dal bordo destro (aumentandolo il testo diventa più stretto e va più facilmente a capo, occupando più <strong>altezza</strong> verso il basso); <strong>Y</strong> è la distanza dal bordo superiore a cui inizia il testo — se il testo va a capo, l\'altezza occupata cresce a partire da lì, verso il basso.<br>'
