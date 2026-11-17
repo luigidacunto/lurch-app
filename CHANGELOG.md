@@ -4,6 +4,15 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit.
 
+## 1.85.38 — 2026-11-17
+
+- fix: nella lista Utenti la colonna «Ultima attività» e nella lista Soci «Ultima attività app» (da attivare dal selettore colonne): data dell'ultimo caricamento di pagina nel pannello o nell'app, aggiornata al massimo ogni 5 minuti, «Mai» se assente
+- fix: azione «Reset sessioni» sugli utenti e «Reset sessioni app» sui soci, per chi ha la competenza territoriale: scollega da tutti i dispositivi; per i soci invalida anche il «ricordami» dell'app, che richiede un nuovo codice
+- fix: l'admin regionale vede, crea, modifica, attiva o disattiva, elimina e scollega anche gli altri admin regionali della propria regione (mai sé stesso)
+- fix: i messaggi anonimi lasciati dal badge accettano solo testo con grassetto, corsivo, sottolineato ed elenchi; script, stili, link e immagini vengono tolti al salvataggio e alla visualizzazione nell'app
+- fix: l'editor dei messaggi del badge non viene più caricato da un CDN esterno ma dal pacchetto npm compilato con il resto del sito
+- docs: nell'informativa `/privacy` la sezione «Cookie e dati di navigazione» (solo cookie tecnici, nessun dato a terzi); link «Privacy e cookie» nel footer del pannello
+
 ## 1.85.37 — 2026-11-16
 
 - fix: lavorando da un dominio regionale, l'anteprima del logo nel comitato regionale restava su «In attesa della dimensione»: gli indirizzi dei file pubblici ora usano il dominio da cui si naviga invece dell'indirizzo generale, così il browser non blocca la lettura (vale anche per i link ai PDF delle informative)

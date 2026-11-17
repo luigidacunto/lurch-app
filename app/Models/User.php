@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\RegistraUltimaAttivita;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, HasRoles, Notifiable;
+    use HasFactory, HasRoles, Notifiable, RegistraUltimaAttivita;
+
+    public const COLONNA_ULTIMA_ATTIVITA = 'last_activity_at';
 
     protected $fillable = [
         'name',
@@ -37,6 +40,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'password' => 'hashed',
             'attivo'   => 'boolean',
+            'last_activity_at' => 'datetime',
         ];
     }
 
@@ -146,4 +150,5 @@ class User extends Authenticatable implements FilamentUser
             ->when($eccettoSessionId, fn ($q) => $q->where('id', '!=', $eccettoSessionId))
             ->delete();
     }
+
 }

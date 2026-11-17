@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lascia un messaggio — {{ config('app.name') }}</title>
-    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -136,32 +135,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
-    <script>
-        const quill = new Quill('#editor', {
-            theme: 'snow',
-            placeholder: 'Scrivi qui il tuo messaggio…',
-            modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline'],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ['clean']
-                ]
-            }
-        });
-
-        document.getElementById('form-messaggio').addEventListener('submit', function (e) {
-            const testo = quill.getText().trim();
-            if (!testo) {
-                e.preventDefault();
-                document.getElementById('error-vuoto').style.display = 'block';
-                return;
-            }
-            document.getElementById('error-vuoto').style.display = 'none';
-            document.getElementById('corpo-hidden').value = quill.root.innerHTML;
-            document.getElementById('btn-invia').disabled = true;
-            document.getElementById('btn-invia').textContent = 'Invio in corso…';
-        });
-    </script>
+    @vite('resources/js/badge-messaggio.js')
 </body>
 </html>

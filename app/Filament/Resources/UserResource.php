@@ -56,10 +56,12 @@ class UserResource extends Resource
     {
         $user = auth()->user();
         if ($user?->isSuperadmin()) return true;
-        // Admin può modificare admin_locale e operatori della propria regione
+        // Admin regionale autonomo sulla propria regione: gestisce admin regionali, admin_locale
+        // e operatori della regione (non sé stesso, per non disattivarsi o declassarsi da solo).
         if ($user?->isAdmin()) {
-            return in_array($record->ruolo, ['admin_locale', 'operatore'])
-                && $record->comitato_regionale_id === $user->comitato_regionale_id;
+            return in_array($record->ruolo, ['admin', 'admin_locale', 'operatore'])
+                && $record->comitato_regionale_id === $user->comitato_regionale_id
+                && $record->getKey() !== $user->getKey();
         }
         // Admin locale può modificare solo gli operatori del proprio comitato locale
         if ($user?->isAdminLocale()) {
@@ -73,16 +75,20 @@ class UserResource extends Resource
     {
         $user = auth()->user();
         if ($user?->isSuperadmin()) return ! $record->isSuperadmin();
-        if ($user?->isAdmin()) {
-            return in_array($record->ruolo, ['admin_locale', 'operatore'])
-                && $record->comitato_regionale_id === $user->comitato_regionale_id;
-        }
+        // Admin regionale: stessa competenza della modifica. Admin locale: nessuna eliminazione.
+        if ($user?->isAdmin()) return static::canEdit($record);
         return false;
     }
 
+    /** Reset sessioni: stessa competenza della modifica, mai su sé stessi. */
+    public static function canResetSessioni(Model $record): bool
+    {
+        return $record->getKey() !== auth()->id() && static::canEdit($record);
+    }
+
     /**
-     * Scope: superadmin vede tutto, admin vede admin_locale e operatori della propria regione,
-     * admin_locale vede solo gli operatori del proprio comitato locale.
+     * Scope: superadmin vede tutto, admin vede admin regionali, admin_locale e operatori della
+     * propria regione, admin_locale vede solo gli operatori del proprio comitato locale.
      */
     public static function getEloquentQuery(): Builder
     {
@@ -91,7 +97,7 @@ class UserResource extends Resource
 
         if ($user?->isAdmin()) {
             $query->where('comitato_regionale_id', $user->comitato_regionale_id)
-                  ->whereIn('ruolo', ['admin_locale', 'operatore']);
+                  ->whereIn('ruolo', ['admin', 'admin_locale', 'operatore']);
         } elseif ($user?->isAdminLocale()) {
             $query->where('comitato_locale_id', $user->comitato_locale_id)
                   ->where('ruolo', 'operatore');
@@ -109,7 +115,7 @@ class UserResource extends Resource
             ? ['admin' => 'Admin Regionale', 'admin_locale' => 'Admin Locale', 'operatore' => 'Operatore']
             : ($authUser?->isAdminLocale()
                 ? ['operatore' => 'Operatore']
-                : ['admin_locale' => 'Admin Locale', 'operatore' => 'Operatore']);
+                : ['admin' => 'Admin Regionale', 'admin_locale' => 'Admin Locale', 'operatore' => 'Operatore']);
 
         // Regioni selezionabili
         $regioniOptions = $authUser?->isSuperadmin()
@@ -307,6 +313,15 @@ class UserResource extends Resource
                     ->boolean()
                     ->sortable(),
 
+                // Aggiornata al massimo ogni 5 minuti (RegistraAttivitaPannello).
+                Tables\Columns\TextColumn::make('last_activity_at')
+                    ->label('Ultima attività')
+                    ->since()
+                    ->dateTimeTooltip('d/m/Y H:i')
+                    ->placeholder('Mai')
+                    ->sortable()
+                    ->toggleable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d/m/Y')
                     ->label('Creato il')
@@ -359,6 +374,27 @@ class UserResource extends Resource
                     ->tooltip('Modifica')
                     ->visible(fn (Model $record) => static::canEdit($record)),
                 ActionGroup::make([
+                    \Filament\Actions\Action::make('resetSessioni')
+                        ->label('Reset sessioni')
+                        ->icon('heroicon-o-arrow-right-start-on-rectangle')
+                        ->color('danger')
+                        ->visible(fn (User $record) => static::canResetSessioni($record))
+                        ->requiresConfirmation()
+                        ->modalHeading('Reset sessioni')
+                        ->modalDescription('Disconnette l\'utente da tutti i dispositivi. Il metodo di accesso (email o password) resta valido: in caso di account compromesso, cambia anche la password o disattiva l\'utente.')
+                        ->modalSubmitActionLabel('Sì, disconnetti')
+                        ->action(function (User $record) {
+                            // Nessun "ricordami" nel pannello (AdminLogin): basta chiudere le sessioni.
+                            $record->invalidaSessioni();
+                            \Illuminate\Support\Facades\Log::info('Reset sessioni utente pannello', [
+                                'utente_id' => $record->id,
+                                'eseguito_da' => auth()->id(),
+                            ]);
+                            \Filament\Notifications\Notification::make()
+                                ->title('Sessioni chiuse per ' . $record->name)
+                                ->success()
+                                ->send();
+                        }),
                     DeleteAction::make()
                         ->visible(fn (Model $record) => static::canDelete($record)),
                 ])

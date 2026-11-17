@@ -94,6 +94,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\RegistraAttivitaPannello::class,
             ])
             ->renderHook(
                 PanelsRenderHook::BODY_END,
@@ -104,6 +105,7 @@ class AdminPanelProvider extends PanelProvider
                         </span>
                         <span class="lurch-footer-center">
                             &copy; {$this->currentYear()} Luigi D&apos;Acunto. Software sviluppato e mantenuto autonomamente. Uso interno per attività della Croce Rossa Italiana.
+                            &nbsp;&middot;&nbsp;<a href="{$this->privacyUrl()}" style="color: inherit; text-decoration: underline;">Privacy e cookie</a>
                         </span>
                         <span class="lurch-footer-right">
                             PHP {$this->phpVersion()} &nbsp;|&nbsp; Laravel {$this->laravelVersion()} &nbsp;|&nbsp; Ambiente: {$this->appEnv()}
@@ -256,4 +258,5 @@ class AdminPanelProvider extends PanelProvider
     private function phpVersion(): string { return PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION; }
     private function laravelVersion(): string { return app()->version(); }
     private function appEnv(): string { return config('app.env', 'production'); }
+    private function privacyUrl(): string { return route('privacy.show'); }
 }

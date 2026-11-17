@@ -72,7 +72,7 @@
         @foreach($messaggi as $msg)
             @php
                 $letto = $msg->letto_at !== null;
-                $preview = strip_tags($msg->corpo);
+                $preview = html_entity_decode(strip_tags($msg->corpo), ENT_QUOTES | ENT_HTML5);
                 $preview = mb_strlen($preview) > 80 ? mb_substr($preview, 0, 80) . '…' : $preview;
             @endphp
             <a href="{{ route('app.evento.messaggi.show', [$evento, $msg]) }}" class="msg-card">

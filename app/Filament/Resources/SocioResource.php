@@ -123,6 +123,15 @@ class SocioResource extends Resource
         return false;
     }
 
+    /**
+     * Reset sessioni PWA: solo ruoli admin, con la stessa competenza territoriale
+     * dell'eliminazione (superadmin tutti, admin la regione, admin_locale il comitato).
+     */
+    public static function canResetSessioni(Model $record): bool
+    {
+        return ! $record->trashed() && static::canDelete($record);
+    }
+
     /** Dati sensibili (allergie/diete/note salute): visibili solo a chi ha il permesso esplicito o è admin. */
     public static function canViewSalute(): bool
     {
@@ -628,6 +637,15 @@ class SocioResource extends Resource
                     ->dateTime('d/m/Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                // Attività nella PWA /app, aggiornata al massimo ogni 5 minuti (AppSocioAuth).
+                Tables\Columns\TextColumn::make('ultima_attivita_app')
+                    ->label('Ultima attività app')
+                    ->since()
+                    ->dateTimeTooltip('d/m/Y H:i')
+                    ->placeholder('Mai')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             // I filtri vivono ora nel form di ricerca dedicato di ListSoci (stesso schema di
             // ListQualificheSoci) invece che come filtri Filament inline sulla tabella — vedi
@@ -642,6 +660,26 @@ class SocioResource extends Resource
                     ->tooltip('Modifica')
                     ->visible(fn (Model $record) => static::canEdit($record)),
                 ActionGroup::make([
+                    \Filament\Actions\Action::make('resetSessioni')
+                        ->label('Reset sessioni app')
+                        ->icon('heroicon-o-arrow-right-start-on-rectangle')
+                        ->color('danger')
+                        ->visible(fn (Socio $record) => static::canResetSessioni($record))
+                        ->requiresConfirmation()
+                        ->modalHeading('Reset sessioni app')
+                        ->modalDescription('Disconnette il socio dall\'app (/app) su tutti i dispositivi, anche dove aveva il "ricordami". Per rientrare dovrà richiedere un nuovo codice via email.')
+                        ->modalSubmitActionLabel('Sì, disconnetti')
+                        ->action(function (Socio $record) {
+                            $record->resetSessioni();
+                            \Illuminate\Support\Facades\Log::info('Reset sessioni app socio', [
+                                'socio_id' => $record->id,
+                                'eseguito_da' => auth()->id(),
+                            ]);
+                            Notification::make()
+                                ->title('Sessioni app chiuse per ' . $record->nome_completo)
+                                ->success()
+                                ->send();
+                        }),
                     RestoreAction::make(),
                     DeleteAction::make()
                         ->visible(fn (Model $record) => static::canDelete($record))

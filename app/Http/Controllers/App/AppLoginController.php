@@ -148,16 +148,20 @@ class AppLoginController extends Controller
         $otp->update(['used_at' => now()]);
 
         $request->session()->forget(['otp_pending_socio_id', 'otp_pending_email']);
+        // Istante di emissione su sessione e cookie: un reset sessioni dal pannello
+        // invalida tutto ciò che è stato emesso prima (vedi Socio::sessioneValida()).
+        $emessaIl = now()->getTimestamp();
         $request->session()->put('app_socio_id', $socioId);
+        $request->session()->put('app_login_at', $emessaIl);
 
-        // Cookie remember: 90 giorni, cifrato da Laravel (APP_KEY)
+        // Cookie remember "id.timestamp": 90 giorni, cifrato da Laravel (APP_KEY)
         return redirect()->route('app.home')
-            ->withCookie(cookie('app_remember', (string) $socioId, 60 * 24 * 90));
+            ->withCookie(cookie('app_remember', $socioId . '.' . $emessaIl, 60 * 24 * 90));
     }
 
     public function logout(Request $request)
     {
-        $request->session()->forget('app_socio_id');
+        $request->session()->forget(['app_socio_id', 'app_login_at']);
         return redirect()->route('app.login')
             ->withCookie(cookie()->forget('app_remember'));
     }

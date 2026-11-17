@@ -44,6 +44,8 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 - Passaggio a PHP 8.4 in locale e in produzione.
 - Compattazione delle migrazioni in uno schema di prima installazione.
 - Verifica generale del pannello su una copia recente dei dati di produzione.
+- Editor dei messaggi del badge su Quill 2 (la 1.3.7 ha un avviso di sicurezza, oggi neutralizzato dal filtro lato server; la 2 cambia l'HTML degli elenchi).
+- pdf.js da pacchetto npm compilato con Vite al posto dei file in `public/vendor/pdfjs` (versione tracciata e controllata da `npm audit`; il worker richiede una configurazione dedicata).
 
 ## Non previsto
 - Blocco delle altre operazioni sui soci durante un import massivo: per ora non previsto, da riconsiderare solo se le operazioni in parallelo diventano un problema reale.

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\RegistraUltimaAttivita;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +13,9 @@ use Illuminate\Notifications\Notifiable;
 
 class Socio extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, RegistraUltimaAttivita, SoftDeletes;
+
+    public const COLONNA_ULTIMA_ATTIVITA = 'ultima_attivita_app';
 
     protected $table = 'soci';
 
@@ -63,7 +66,37 @@ class Socio extends Authenticatable
             'allergeni'          => 'array',
             'diete'              => 'array',
             'email_verificata_at' => 'datetime',
+            'ultima_attivita_app' => 'datetime',
+            'sessioni_valide_dal' => 'datetime',
         ];
+    }
+
+    // --- Sessioni PWA (/app) ---
+
+    /**
+     * Reset di sicurezza: le sessioni e i cookie "ricordami" della PWA emessi prima di
+     * adesso non sono più validi (il socio rientra con un nuovo codice OTP).
+     */
+    public function resetSessioni(): void
+    {
+        $this->sessioni_valide_dal = now();
+
+        \Illuminate\Support\Facades\DB::table('soci')
+            ->where('id', $this->id)
+            ->update(['sessioni_valide_dal' => $this->sessioni_valide_dal]);
+    }
+
+    /**
+     * $emessaIl = timestamp Unix del login che ha creato la sessione/cookie; null per quelli
+     * emessi prima dell'introduzione del reset, validi finché non viene eseguito un reset.
+     */
+    public function sessioneValida(?int $emessaIl): bool
+    {
+        if ($this->sessioni_valide_dal === null) {
+            return true;
+        }
+
+        return $emessaIl !== null && $emessaIl > $this->sessioni_valide_dal->getTimestamp();
     }
 
     protected static function booted(): void
