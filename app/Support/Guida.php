@@ -19,8 +19,11 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
  */
 class Guida
 {
-    /** Percorso di una pagina dentro la sezione, senza .md: «NN-nome» o «NN-gruppo/NN-nome». */
-    public const PERCORSO = '#^(\d{2}-[a-z0-9-]+/)?\d{2}-[a-z0-9-]+$#';
+    /**
+     * Percorso di una pagina dentro la sezione, senza .md: «NN-nome», «NN-gruppo/NN-nome» oppure, per una voce
+     * con più pagine, «NN-gruppo/NN-voce/NN-nome»; la panoramica della voce è «NN-gruppo/NN-voce/README».
+     */
+    public const PERCORSO = '#^((\d{2}-[a-z0-9-]+/){0,2}\d{2}-[a-z0-9-]+|(\d{2}-[a-z0-9-]+/){1,2}README)$#';
 
     /** Percorso di un'immagine dentro docs/. */
     public const IMMAGINE = '#^immagini/[a-z0-9-]+(/[a-z0-9-]+)*\.(png|jpe?g|webp)$#';
@@ -45,13 +48,14 @@ class Guida
     /**
      * Indice della sezione: [['titolo' => ?string, 'pagine' => [['percorso' => ..., 'titolo' => ...]]]].
      * Le pagine sciolte della sezione formano un blocco senza titolo, prima dei gruppi.
+     * Una voce con più pagine (sottocartella del gruppo) ha in più 'figli' e come pagina la sua README.
      */
     public static function indice(string $sezione): array
     {
         $cartella = static::cartella($sezione);
         $blocchi  = [];
 
-        $sciolte = static::pagineIn($cartella, '');
+        $sciolte = static::pagineIn($cartella, '', false);
         if ($sciolte) {
             $blocchi[] = ['titolo' => null, 'pagine' => $sciolte];
         }
@@ -109,9 +113,7 @@ class Guida
     {
         $percorsi = [null];
         foreach (static::indice($sezione) as $blocco) {
-            foreach ($blocco['pagine'] as $voce) {
-                $percorsi[] = $voce['percorso'];
-            }
+            static::percorsiDi($blocco['pagine'], $percorsi);
         }
 
         return array_values(array_filter(array_map(fn (?string $p) => static::pagina($sezione, $p, true), $percorsi)));
@@ -129,12 +131,40 @@ class Guida
         return ($file && $base && str_starts_with($file, $base . DIRECTORY_SEPARATOR) && is_file($file)) ? $file : null;
     }
 
-    private static function pagineIn(string $cartella, string $prefisso): array
+    /** $conCartelle: le sottocartelle sono voci con figli (false al livello della sezione, dove sono i gruppi). */
+    private static function pagineIn(string $cartella, string $prefisso, bool $conCartelle = true): array
     {
-        return array_map(fn (string $file) => [
-            'percorso' => $prefisso . basename($file, '.md'),
-            'titolo'   => static::titolo(file_get_contents($file), $file),
-        ], glob($cartella . '/[0-9][0-9]-*.md') ?: []);
+        $voci = [];
+        foreach (glob($cartella . '/[0-9][0-9]-*') ?: [] as $elemento) {
+            $nome = basename($elemento);
+            if (is_dir($elemento)) {
+                if (! $conCartelle) {
+                    continue;
+                }
+                $readme = $elemento . '/README.md';
+                $voci[] = [
+                    'percorso' => $prefisso . $nome . '/README',
+                    'titolo'   => is_file($readme) ? static::titolo(file_get_contents($readme), $readme) : Str::ucfirst(str_replace('-', ' ', substr($nome, 3))),
+                    'figli'    => static::pagineIn($elemento, $prefisso . $nome . '/'),
+                ];
+            } elseif (str_ends_with($nome, '.md')) {
+                $voci[] = [
+                    'percorso' => $prefisso . basename($nome, '.md'),
+                    'titolo'   => static::titolo(file_get_contents($elemento), $elemento),
+                ];
+            }
+        }
+
+        return $voci;
+    }
+
+    /** Percorsi delle voci in ordine di lettura: la voce con figli prima di loro. */
+    private static function percorsiDi(array $voci, array &$percorsi): void
+    {
+        foreach ($voci as $voce) {
+            $percorsi[] = $voce['percorso'];
+            static::percorsiDi($voce['figli'] ?? [], $percorsi);
+        }
     }
 
     private static function titolo(string $markdown, string $file): string
@@ -172,7 +202,7 @@ class Guida
             return null;
         }
 
-        return $perPdf ? $file : route('guida.immagine', ['percorso' => Str::after($percorso, 'immagini/')]);
+        return $perPdf ? $file : route('guida.immagine', ['percorso' => Str::after($percorso, 'immagini/'), 'v' => filemtime($file)]); // v = data del file: l'immagine cambia indirizzo quando cambia, la cache del browser (24 ore) non la nasconde
     }
 
     /** Pagina del pannello per un .md di una sezione mostrata nel pannello; altrimenti la copia su GitHub. */

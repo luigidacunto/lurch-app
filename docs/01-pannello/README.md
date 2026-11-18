@@ -13,7 +13,7 @@ Le sezioni del pannello, nello stesso ordine del menu. L'app usata dai volontari
 
 ## Gestione operativa
 
-- [Eventi](02-gestione-operativa/01-eventi.md)
+- [Eventi](02-gestione-operativa/01-eventi/README.md)
 - [Corsi](02-gestione-operativa/02-corsi.md)
 - [Esami](02-gestione-operativa/03-esami.md)
 - [Graduatorie](02-gestione-operativa/04-graduatorie.md)

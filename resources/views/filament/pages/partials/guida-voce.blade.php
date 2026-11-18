@@ -8,3 +8,10 @@
         @endforeach
     </div>
 @endif
+@if (! empty($voce['figli']))
+    <div class="figli">
+        @foreach ($voce['figli'] as $figlio)
+            @include('filament.pages.partials.guida-voce', ['voce' => $figlio])
+        @endforeach
+    </div>
+@endif

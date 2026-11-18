@@ -51,7 +51,7 @@ class GuidaPannelloTest extends TestCase
         $this->assertStringContainsString('href="https://example.invalid/docs/00-installazione/README.md"', $indice);
 
         $accesso = Guida::pagina('01-pannello', '01-primi-passi/01-accesso');
-        $this->assertStringContainsString('src="' . route('guida.immagine', ['percorso' => 'accesso/pagina-login.png']) . '"', $accesso['html']);
+        $this->assertStringContainsString('src="' . route('guida.immagine', ['percorso' => 'accesso/pagina-login.png', 'v' => filemtime(Guida::radice() . '/immagini/accesso/pagina-login.png')]) . '"', $accesso['html']);
         $this->assertStringContainsString('<h2 id="problemi-frequenti">', $accesso['html']);
         $this->assertContains('Problemi frequenti', array_column($accesso['paragrafi'], 'testo'));
     }
@@ -85,8 +85,10 @@ class GuidaPannelloTest extends TestCase
         $operatore = $this->operatore();
 
         $this->actingAs($operatore)->get(GuidaPannello::getUrl())->assertOk()->assertSee('Primi passi')->assertSee('Scarica PDF');
-        $this->actingAs($operatore)->get(GuidaPannello::getUrl(['p' => '02-gestione-operativa/01-eventi']))
-            ->assertOk()->assertSee('Contenuti previsti');
+        $this->actingAs($operatore)->get(GuidaPannello::getUrl(['p' => '02-gestione-operativa/01-eventi/03-staff']))
+            ->assertOk()->assertSee('Reset form');
+        $this->actingAs($operatore)->get(GuidaPannello::getUrl(['p' => '02-gestione-operativa/01-eventi/README']))
+            ->assertOk()->assertSee('Presenze live');
         $this->actingAs($operatore)->get(GuidaPannello::getUrl(['p' => '../segreto']))->assertNotFound();
 
         $this->actingAs($operatore)->get(route('guida.immagine', ['percorso' => 'accesso/pagina-login.png']))->assertOk();

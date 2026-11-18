@@ -15,6 +15,9 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - fix: tolta la casella «Ricerca» dalla barra in alto del pannello, che trovava solo gli esami; ogni sezione ha la propria ricerca
 - fix: nella scheda di un operatore i permessi hanno nomi in italiano con una riga di spiegazione; non compaiono più quelli che non avevano alcun effetto (restano assegnati se già lo erano)
 - fix: nell'elenco Eventi tolta la colonna «Gestione», che ripeteva l'apertura della riga
+- fix: le immagini della guida nel pannello si aggiornano subito quando vengono sostituite (prima il browser le teneva in memoria fino a 24 ore)
+- docs: la guida accetta, per le voci del menu fatte di più pagine (come Eventi), una cartella con una pagina per ognuna, annidata nell'indice; capitolo Eventi scritto, in 9 pagine con le schermate
+- fix: nell'elenco Eventi la colonna «Regione» mostra la sigla (nome intero al passaggio del mouse) e «Comitato Locale» è nascosta di default; i nomi lunghi (evento e comitato locale) sono accorciati, con il nome intero al passaggio del mouse; le colonne «Tipo» e «Sede» sono nascoste di default e si attivano dal selettore colonne
 - fix: «Importa Iscritti» nella gestione del corso è disponibile anche all'admin locale, per i corsi degli eventi del suo comitato
 - fix: in alcuni moduli (istruzioni di importazione di soci, qualifiche, iscritti e staff, spiegazione del badge, pasti dello staff) compariva un'etichetta tecnica sopra il testo; ora non c'è più
 - fix: «Modifica password» compare solo a chi ha una password temporanea e serve a cambiarla; tolto l'invito a impostarne una, che il primo accesso via email avrebbe comunque cancellato

@@ -881,6 +881,7 @@ class EventoResource extends Resource
                 Tables\Columns\TextColumn::make('nome')
                     ->searchable()
                     ->sortable()
+                    ->limit(40)
                     ->weight('bold'),
 
                 Tables\Columns\TextColumn::make('tipo_evento')
@@ -888,10 +889,12 @@ class EventoResource extends Resource
                     ->getStateUsing(fn ($record) => $record->comitato_locale_id ? 'Locale' : 'Regionale')
                     ->badge()
                     ->color(fn (string $state) => $state === 'Locale' ? 'info' : 'gray')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->visible(fn () => ! auth()->user()?->isAdminLocale()),
 
-                Tables\Columns\TextColumn::make('comitatoRegionale.nome')
+                Tables\Columns\TextColumn::make('comitatoRegionale.codice')
                     ->label('Regione')
+                    ->tooltip(fn ($record) => $record->comitatoRegionale?->nome)
                     ->searchable()
                     ->sortable()
                     ->visible(fn () => ! auth()->user()?->isAdminLocale()),
@@ -901,6 +904,8 @@ class EventoResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->default('—')
+                    ->limit(28)
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->visible(fn () => auth()->user()?->isSuperadmin() || auth()->user()?->isAdmin()),
 
                 Tables\Columns\TextColumn::make('data_inizio')
@@ -915,7 +920,8 @@ class EventoResource extends Resource
 
                 Tables\Columns\TextColumn::make('sede')
                     ->searchable()
-                    ->limit(30),
+                    ->limit(30)
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('corsi_count')
                     ->counts('corsi')

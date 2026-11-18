@@ -12,6 +12,8 @@
         .guida-indice summary { cursor: pointer; padding: .4rem .6rem; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--gray-500); }
         .guida-indice details { margin-top: .25rem; }
         .guida-indice details > div { padding-left: .5rem; }
+        .guida-indice .figli { margin: .1rem 0 .3rem .6rem; padding-left: .5rem; border-left: 1px solid var(--gray-200); }
+        .dark .guida-indice .figli { border-color: var(--gray-700); }
         .guida-indice .paragrafi { margin: .1rem 0 .3rem .6rem; padding-left: .5rem; border-left: 1px solid var(--gray-200); }
         .guida-indice .paragrafi a { font-size: .8rem; padding: .15rem .5rem; color: var(--gray-500); }
         .dark .guida-indice .paragrafi { border-color: var(--gray-700); }
