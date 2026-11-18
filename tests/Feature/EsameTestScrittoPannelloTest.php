@@ -185,6 +185,31 @@ class EsameTestScrittoPannelloTest extends EsameTestScrittoBase
         $this->get($url('x'))->assertNotFound();
     }
 
+    public function test_pdf_correttore_solo_gestori_e_con_domande(): void
+    {
+        $this->domande();
+        $url = route('esami.test-correttore-pdf', $this->esame);
+
+        foreach (['direttore', 'super', 'adminReg', 'adminLoc'] as $chi) {
+            $r = $this->actingAs($this->u[$chi])->get($url);
+            $r->assertOk();
+            $this->assertStringContainsString('application/pdf', $r->headers->get('Content-Type'), $chi);
+        }
+        foreach (['docente', 'x', 'presidente', 'docComm'] as $chi) {
+            $this->actingAs($this->u[$chi])->get($url)->assertForbidden();
+        }
+
+        // la vista evidenzia la risposta corretta salvata
+        $html = view('pdf.test-correttore', [
+            'esame' => $this->esame->fresh()->load('corso'), 'domande' => TestScritto::domandeComplete($this->esame->fresh()),
+            'regola' => '', 'massimo' => '1',
+        ])->render();
+        $this->assertStringContainsString('✓', $html);
+
+        TestDomanda::query()->delete();
+        $this->actingAs($this->u['direttore'])->get($url)->assertNotFound();
+    }
+
     public function test_gestione_riepilogo_e_completezza_vedono_il_test(): void
     {
         $this->domande();

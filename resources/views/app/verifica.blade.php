@@ -105,10 +105,20 @@
         el.textContent = m + ':' + s;
     }, 1000);
 
+    // Un solo invio: la prima richiesta rigenera la sessione, una seconda arriverebbe con il token CSRF scaduto.
+    // requestSubmit() (non submit()) fa passare anche l'invio automatico dal listener, come per il clic sul pulsante.
+    const form = document.getElementById('codice').closest('form');
+    let inviato = false;
+    form.addEventListener('submit', function (e) {
+        if (inviato) { e.preventDefault(); return; }
+        inviato = true;
+        form.querySelector('button[type="submit"]').disabled = true;
+    });
+
     // Auto-submit al 6° carattere
     document.getElementById('codice').addEventListener('input', function () {
         this.value = this.value.replace(/\D/g, '').slice(0, 6);
-        if (this.value.length === 6) this.closest('form').submit();
+        if (this.value.length === 6 && !inviato) form.requestSubmit();
     });
 </script>
 @endpush

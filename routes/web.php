@@ -123,6 +123,11 @@ Route::get('/admin/esami/{esame}/valutazioni/test-scritto/{discente}/cartaceo-pd
     ->middleware(['web', 'auth'])
     ->name('esami.test-cartaceo-pdf');
 
+// Correttore del test scritto (domande con la risposta corretta), solo per chi gestisce l'esame.
+Route::get('/admin/esami/{esame}/test-scritto/correttore-pdf', \App\Http\Controllers\EsameCorrettoreTestPdfController::class)
+    ->middleware(['web', 'auth'])
+    ->name('esami.test-correttore-pdf');
+
 // Esito dell'esame. PDF per discente e CSV di tutto l'esame (provvisori finché l'esame non è chiuso).
 Route::get('/admin/esami/{esame}/valutazioni/esito/{discente}/pdf', \App\Http\Controllers\EsameEsitoPdfController::class)
     ->middleware(['web', 'auth'])

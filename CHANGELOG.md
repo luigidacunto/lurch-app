@@ -6,6 +6,8 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 
 ## In sviluppo
 
+- fix: login dell'app (PWA), pagina del codice: se il codice si invia da solo al sesto carattere e si tocca subito «Accedi», partiva una seconda richiesta che rispondeva «token scaduto»; ora l'invio avviene una sola volta (come già nell'accesso al pannello)
+- feat: esami TCRI, pagina «Domande del test»: pulsante «Scarica il correttore (PDF)» con tutte le domande e la risposta corretta salvata, per verificare il caricamento; visibile a direttore, admin di competenza e superadmin quando c'è almeno una domanda
 - feat: menu «Guida» nel pannello con tre sezioni (Pannello di gestione, App dei soci, Moduli pubblici) lette dai file di `docs/`, gli stessi pubblicati sul repository: indice a sinistra con i paragrafi della pagina aperta, immagini a tutto schermo con un clic, «Scarica PDF» della sezione intera
 - docs: guida riorganizzata in `docs/` per sezioni numerate come il menu del pannello, con le pagine ancora da scrivere segnate «In preparazione»; installazione, deploy e backup spostati in `docs/00-installazione/`
 - fix: tolta la vecchia pagina pubblica `/guide`; il suo testo, aggiornato, è confluito in «Accesso al pannello». Le pagine di accesso del pannello e dell'app rimandano alla guida pubblicata (indirizzo nella nuova variabile `GUIDA_URL`; vuota = nessun link)

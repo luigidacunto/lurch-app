@@ -67,6 +67,11 @@
                 <x-filament::button size="sm" color="info" type="button" wire:click="mountAction('importaTest')">Importa il test da JSON</x-filament::button>
             </div>
         @endif
+        @if(count($d['domande']) > 0 && $esame->puoScaricareCorrettoreTest(auth()->user()))
+            <div style="margin-bottom:10px;">
+                <x-filament::button size="sm" color="gray" tag="a" target="_blank" :href="route('esami.test-correttore-pdf', $esame)">Scarica il correttore (PDF)</x-filament::button>
+            </div>
+        @endif
         @forelse($d['domande'] as $i => $q)
             <div style="border:1px solid {{ $bordo }}; border-radius:8px; padding:10px 12px; margin-bottom:8px;">
                 <div style="display:flex; flex-wrap:wrap; gap:6px 12px; justify-content:space-between; align-items:flex-start;">

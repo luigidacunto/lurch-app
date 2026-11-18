@@ -537,6 +537,12 @@ class Esame extends Model
         return $this->eGestore($user);
     }
 
+    /** Il PDF «correttore» (domande con la risposta corretta) lo scarica chi gestisce l'esame, in qualsiasi stato. */
+    public function puoScaricareCorrettoreTest(?User $user): bool
+    {
+        return $this->eGestore($user);
+    }
+
     /** Lettura del test scritto (domande con le corrette, risultati): la stessa dell'Itinere. */
     public function puoVedereTestScritto(?User $user): bool
     {
