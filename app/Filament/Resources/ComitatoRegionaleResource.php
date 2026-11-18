@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ComitatoRegionaleResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = ComitatoRegionale::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-map';

@@ -4,7 +4,7 @@
 
 È la pagina che si apre con un clic su una riga dell'[elenco eventi](01-elenco-e-creazione.md) ed è il quadro d'insieme della **logistica**: quante persone partecipano, quanti pasti e pernottamenti servono, a quali corsi e a quali iscritti è già stata inviata la comunicazione. Sopra c'è la barra con le altre pagine dell'evento (Gestione, Partecipanti, Report, Staff, Presenze), descritte nelle pagine successive di questo capitolo; a destra il pulsante **Azioni**.
 
-Per le cose che riguardano il singolo corso (iscritti, quote, moduli) si passa dalla gestione del corso: da qui ci si arriva con i collegamenti del «Riepilogo per corso» (vedi [Corsi](../02-corsi.md)).
+Per le cose che riguardano il singolo corso (iscritti, quote, moduli) si passa dalla gestione del corso: da qui ci si arriva con i collegamenti del «Riepilogo per corso» (vedi [Corsi](../02-corsi/README.md)).
 
 <!-- screenshot: route=/admin/eventi/{id}/gestione · v1.85.38-dev · 2026-11-18 -->
 ![Gestione evento, parte alta](../../../immagini/eventi/gestione-1.png)

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\RateLimiter;
 
 class AppLoginController extends Controller
 {
+    /** Dati in sessione tra la richiesta del codice e l'accesso. */
+    private const CHIAVI_IN_ATTESA = ['otp_pending_socio_id', 'otp_pending_email', 'otp_pending_scade', 'otp_pending_errori'];
+
     public function showLogin(Request $request)
     {
         if ($request->session()->has('app_socio_id')) {
@@ -42,11 +45,15 @@ class AppLoginController extends Controller
 
         $socio = Socio::where('email', $email)->first();
 
-        // Messaggio generico per non rivelare se l'email è nel sistema
+        // Email registrata o no, si passa alla stessa pagina del codice: la risposta non rivela chi è tra i soci.
+        // ponytail: l'invio sincrono della mail allunga la risposta solo per le email registrate; il limite
+        // di 3 richieste ogni 10 minuti per IP rende la differenza poco sfruttabile. Mail in coda se servisse di più.
+        $request->session()->forget(['otp_pending_socio_id', 'otp_pending_errori']);
+        $request->session()->put('otp_pending_email', $email);
+        $request->session()->put('otp_pending_scade', now()->addMinutes(15)->getTimestamp());
+
         if (! $socio) {
-            return back()->withErrors([
-                'email' => 'Indirizzo email non trovato nel sistema.',
-            ])->withInput(['email' => $request->email]);
+            return redirect()->route('app.verifica');
         }
 
         // Cancella OTP precedenti non ancora usati per questo socio
@@ -69,33 +76,33 @@ class AppLoginController extends Controller
         \App\Services\PostaRegionale::perPersona($socio->comitato_regionale_id)->to($socio->email)->send(new OtpLoginCode($codice, $socio));
 
         $request->session()->put('otp_pending_socio_id', $socio->id);
-        $request->session()->put('otp_pending_email', $socio->email);
 
         return redirect()->route('app.verifica');
     }
 
     public function showVerifica(Request $request)
     {
-        if (! $request->session()->has('otp_pending_socio_id')) {
+        if (! $request->session()->has('otp_pending_email')) {
             return redirect()->route('app.login');
         }
 
         $socioId = $request->session()->get('otp_pending_socio_id');
         $email   = $request->session()->get('otp_pending_email', '');
+        $scade   = (int) $request->session()->get('otp_pending_scade', 0);
 
-        $otp = OtpCode::where('partecipante_id', $socioId)
+        $otp = $socioId ? OtpCode::where('partecipante_id', $socioId)
             ->whereNull('used_at')
             ->latest('created_at')
-            ->first();
+            ->first() : null;
 
-        if (! $otp || $otp->isScaduto()) {
-            $request->session()->forget(['otp_pending_socio_id', 'otp_pending_email']);
+        if (($socioId && (! $otp || $otp->isScaduto())) || now()->getTimestamp() >= $scade) {
+            $request->session()->forget(self::CHIAVI_IN_ATTESA);
             return redirect()->route('app.login')->withErrors([
                 'email' => 'Il codice è scaduto. Inserisci di nuovo la tua email per richiederne uno nuovo.',
             ]);
         }
 
-        $secondiRimasti = max(0, $otp->expires_at->timestamp - now()->timestamp);
+        $secondiRimasti = max(0, $scade - now()->getTimestamp());
 
         return view('app.verifica', compact('email', 'secondiRimasti'));
     }
@@ -106,10 +113,18 @@ class AppLoginController extends Controller
             'codice' => ['required', 'string', 'size:6'],
         ]);
 
+        if (! $request->session()->has('otp_pending_email')) {
+            return redirect()->route('app.login');
+        }
+
         $socioId = $request->session()->get('otp_pending_socio_id');
 
+        // Email non registrata: stesse risposte di un codice sbagliato, contate in sessione.
         if (! $socioId) {
-            return redirect()->route('app.login');
+            $errori = $request->session()->increment('otp_pending_errori');
+            return back()->withErrors(['codice' => $errori >= 5
+                ? 'Troppi tentativi errati. Attendi 30 minuti.'
+                : 'Codice errato. Ti rimangono ' . (5 - $errori) . ' tentativi.']);
         }
 
         $otp = OtpCode::where('partecipante_id', $socioId)
@@ -147,7 +162,7 @@ class AppLoginController extends Controller
 
         $otp->update(['used_at' => now()]);
 
-        $request->session()->forget(['otp_pending_socio_id', 'otp_pending_email']);
+        $request->session()->forget(self::CHIAVI_IN_ATTESA);
         // Istante di emissione su sessione e cookie: un reset sessioni dal pannello
         // invalida tutto ciò che è stato emesso prima (vedi Socio::sessioneValida()).
         $emessaIl = now()->getTimestamp();

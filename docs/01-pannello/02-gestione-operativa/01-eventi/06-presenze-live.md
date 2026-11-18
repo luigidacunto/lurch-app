@@ -4,7 +4,25 @@
 
 Durante l'evento questa pagina dice **chi è dentro in questo momento** e conserva lo storico di tutti gli ingressi e le uscite. Si apre dalla scheda **Presenze → Presenze live** della barra dell'evento.
 
-Gli ingressi e le uscite si registrano scansionando il **codice QR del badge** con il telefono (vedi [Badge e check-in](../../../03-moduli-pubblici/06-badge-e-check-in.md) e, per i badge, [Partecipanti e badge](05-partecipanti-e-badge.md)). Al primo ingresso la persona compila o conferma i propri dati (pasti, pernottamenti, allergeni): sono le [risposte al check-in](07-risposte-checkin.md). Questa pagina non registra gli ingressi: li mostra, e permette di correggere o chiudere quelli sbagliati.
+Gli ingressi e le uscite si registrano scansionando il **codice QR del badge** con il telefono, come spiegato qui sotto ([Partecipanti e badge](05-partecipanti-e-badge.md) per la stampa dei badge). Questa pagina non registra gli ingressi: li mostra, e permette di correggere o chiudere quelli sbagliati.
+
+## Registrare ingressi e uscite
+
+All'ingresso un operatore inquadra il badge della persona con il proprio telefono. La scheda di check-in si apre **solo se** sul telefono c'è un accesso attivo al pannello e l'utente può gestire il check-in di quell'evento: superadmin, amministratori del territorio, operatori assegnati all'evento con il permesso di check-in. Chi non è collegato, o non è abilitato, vede invece la [pagina pubblica per lasciare un messaggio](../../../03-moduli-pubblici/06-badge-e-messaggi.md). Prima di aprire i varchi conviene quindi entrare nel pannello dal browser del telefono che si userà.
+
+La scheda **Check-in / Check-out** mostra nome, codice fiscale, ruolo (corsista, staff o entrambi) e l'ultimo accesso registrato. La grafica è quella, semplice, dell'app, pensata per il telefono.
+
+<!-- screenshot: route=/badge/{evento}/{token} · v1.85.38-dev · 2026-11-19 · operatore collegato, comitati di esempio -->
+![La scheda di check-in vista dall'operatore](../../../immagini/eventi/checkin-alto.png)
+
+- **Entrata o uscita** si decide da sola: se la persona è fuori si registra l'entrata, se è dentro l'uscita. Data e ora sono quelle del momento; **Ora** le riporta all'istante attuale.
+- Al **primo ingresso** la scheda chiede di confermare i dati: comitato, contatti, alimentazione, pasti e pernottamenti, consensi. Arrivano già compilati da tutti i form di preregistrazione della persona per quell'evento (corsi e staff insieme): si controllano con lei e si correggono se è cambiato qualcosa. Da quel momento valgono questi dati, non quelli dei form: sono le [risposte al check-in](07-risposte-checkin.md).
+- **Conferma ENTRATA** (o **Conferma USCITA**) registra il passaggio, con il nome dell'operatore.
+
+<!-- screenshot: route=/badge/{evento}/{token} · v1.85.38-dev · 2026-11-19 · operatore collegato -->
+![Pasti, consensi e conferma dell'entrata](../../../immagini/eventi/checkin-basso.png)
+
+**← Ricerca** apre la ricerca per codice fiscale (la stessa di **Cerca per CF**, più sotto), per chi ha dimenticato il badge e per registrare un ospite non iscritto. Il check-in si registra solo nei giorni dell'evento e nel giorno prima e dopo ogni blocco di giorni (per un evento su più fine settimana, non nei giorni in mezzo): fuori da questi giorni la conferma risponde «Il check-in non è disponibile al di fuori dei giorni dell'evento».
 
 ## Chi è in campo
 

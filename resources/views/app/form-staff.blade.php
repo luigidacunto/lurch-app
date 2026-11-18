@@ -700,6 +700,7 @@
     const comitatiLocali = @json(json_decode($comitatiLocaliJson, true));
     const selReg   = document.getElementById('sel-regionale');
     const selLoc   = document.getElementById('sel-locale');
+    if (! selReg) return; // riepilogo del form inviato: niente campi
     const preselectLocale = {{ old('comitato_locale_id', $socio->comitato_locale_id ?? 'null') }};
 
     function aggiornaLocali(regionaleId) {

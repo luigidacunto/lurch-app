@@ -14,14 +14,14 @@ Le sezioni del pannello, nello stesso ordine del menu. L'app usata dai volontari
 ## Gestione operativa
 
 - [Eventi](02-gestione-operativa/01-eventi/README.md)
-- [Corsi](02-gestione-operativa/02-corsi.md)
+- [Corsi](02-gestione-operativa/02-corsi/README.md)
 - [Esami](02-gestione-operativa/03-esami.md)
-- [Graduatorie](02-gestione-operativa/04-graduatorie.md)
-- [Qualifiche](02-gestione-operativa/05-qualifiche.md)
+- [Graduatorie](02-gestione-operativa/04-graduatorie/README.md)
+- [Qualifiche](02-gestione-operativa/05-qualifiche/README.md)
 
 ## Archivi
 
-- [Soci](03-archivi/01-soci.md)
+- [Soci](03-archivi/01-soci/README.md)
 - [Comitati regionali](03-archivi/02-comitati-regionali.md)
 - [Comitati locali](03-archivi/03-comitati-locali.md)
 - [Catalogo corsi](03-archivi/04-catalogo-corsi.md)
@@ -37,4 +37,4 @@ Le sezioni del pannello, nello stesso ordine del menu. L'app usata dai volontari
 
 ## Strumenti
 
-- [Userscript bridge GAIA](05-strumenti/01-userscript-bridge-gaia.md)
+- [Userscript bridge GAIA](05-strumenti/01-userscript-bridge-gaia/README.md)

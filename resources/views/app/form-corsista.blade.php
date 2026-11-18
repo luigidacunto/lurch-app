@@ -224,19 +224,6 @@
         @endif
     </div>
 
-    {{-- Documento aggiuntivo richiesto dal corso (dicitura libera dell'admin) --}}
-    @if($corso->richiede_documento_aggiuntivo)
-    <div class="section-card">
-        <h2>Documento aggiuntivo</h2>
-        <p style="font-size:13px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;margin-bottom:8px;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere;">{{ $corso->dicitura_documento_aggiuntivo }}</p>
-        <div class="form-group">
-            <label for="documento_aggiuntivo-input">File richiesto (solo PDF, max 10 MB) <span class="check-required">*</span></label>
-            <input type="file" name="documento_aggiuntivo" id="documento_aggiuntivo-input" accept=".pdf">
-            <p class="campo-hint" id="documento_aggiuntivo-nome-file" style="display:none;"></p>
-        </div>
-    </div>
-    @endif
-
     {{-- Pasti e pernotti --}}
     <div class="section-card">
         <h2>Pasti e pernotti</h2>
@@ -518,6 +505,19 @@
     </div>
     @endif
 
+    {{-- Documento aggiuntivo richiesto dal corso (dicitura libera dell'admin) --}}
+    @if($corso->richiede_documento_aggiuntivo)
+    <div class="section-card">
+        <h2>Documento aggiuntivo</h2>
+        <p style="font-size:13px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;margin-bottom:8px;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere;">{{ \App\Support\TestoConLink::html($corso->dicitura_documento_aggiuntivo) }}</p>
+        <div class="form-group">
+            <label for="documento_aggiuntivo-input">File richiesto (solo PDF, max 10 MB) <span class="check-required">*</span></label>
+            <input type="file" name="documento_aggiuntivo" id="documento_aggiuntivo-input" accept=".pdf">
+            <p class="campo-hint" id="documento_aggiuntivo-nome-file" style="display:none;"></p>
+        </div>
+    </div>
+    @endif
+
     {{-- Pasti e pernotti --}}
     @if($sezioni->isNotEmpty())
     <div class="section-card">
@@ -686,6 +686,7 @@
     const comitatiLocali = @json(json_decode($comitatiLocaliJson, true));
     const selReg   = document.getElementById('sel-regionale');
     const selLoc   = document.getElementById('sel-locale');
+    if (! selReg) return; // riepilogo del form inviato: niente campi
     const preselectLocale = {{ old('comitato_locale_id', $socio->comitato_locale_id ?? 'null') }};
 
     function aggiornaLocali(regionaleId) {

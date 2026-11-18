@@ -341,7 +341,8 @@ class ListQualificheSoci extends Page implements HasTable
                 Tables\Columns\TextColumn::make('data_nascita')
                     ->label('Nascita')
                     ->date('d/m/Y')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('eta_attuale')
                     ->label('Età')
@@ -351,11 +352,14 @@ class ListQualificheSoci extends Page implements HasTable
                 Tables\Columns\TextColumn::make('volontario_da')
                     ->label('Ingresso')
                     ->date('d/m/Y')
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('comitato_display')
                     ->label('Comitato / Sottosede')
                     ->state(fn (Socio $record) => $record->comitato_display)
+                    ->limit(28)
+                    ->tooltip(fn (Socio $record) => mb_strlen((string) $record->comitato_display) > 28 ? $record->comitato_display : null)
                     ->searchable(query: fn (Builder $query, string $search) => $query->where(function ($q) use ($search) {
                         $q->whereHas('comitatoLocale', fn ($q) => $q->where('nome', 'ilike', "%{$search}%"))
                           ->orWhereHas('sottosedeAppartenenza', fn ($q) => $q->where('nome', 'ilike', "%{$search}%"));

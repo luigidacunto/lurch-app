@@ -305,6 +305,19 @@ class PreregistrazioneParitaTest extends TestCase
             ->assertSessionHasErrors('documento_aggiuntivo');
     }
 
+    public function test_pwa_form_da_compilare_mostra_il_campo_documento_aggiuntivo(): void
+    {
+        $s = $this->scenario();
+        $url = route('app.evento.form.corsista', [$s['evento'], $s['iscrizione']]);
+
+        $this->withSession(['app_socio_id' => $s['socio']->id])->get($url)
+            ->assertOk()->assertDontSee('name="documento_aggiuntivo"', false);
+
+        $this->richiediDocumento($s);
+        $this->withSession(['app_socio_id' => $s['socio']->id])->get($url)
+            ->assertOk()->assertSee('name="documento_aggiuntivo"', false)->assertSee('Titolo di studio');
+    }
+
     public function test_documento_aggiuntivo_solo_pdf(): void
     {
         $s = $this->scenario();

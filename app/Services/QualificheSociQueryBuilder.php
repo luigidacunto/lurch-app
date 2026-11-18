@@ -11,6 +11,35 @@ class QualificheSociQueryBuilder
 {
     private array $idsCache = [];
 
+    /**
+     * Soci su cui l'utente può lavorare nelle qualifiche: regola unica per la ricerca e per
+     * la pagina "Gestisci qualifiche" (QualificheSociResource::getEloquentQuery()).
+     * L'operatore è limitato al comitato locale se il suo account ne ha uno (impostato
+     * dall'admin locale che lo crea), altrimenti alla regione — stesso criterio di
+     * UserResource::form(). Con $includiEstensioni valgono anche i soci in estensione al
+     * comitato o alla regione: un admin_locale gestisce le qualifiche dei soci in estensione
+     * al proprio comitato (coerente con l'import GAIA che li scrive, canEditQualifiche()).
+     * Il superadmin non ha limiti.
+     */
+    public static function limitaAlTerritorio(Builder $query, User $user, bool $includiEstensioni): void
+    {
+        if ($user->isAdminLocale() || ($user->isOperatore() && $user->comitato_locale_id)) {
+            $query->where(fn ($q) => $q
+                ->where('comitato_locale_id', $user->comitato_locale_id)
+                ->orWhere('comitato_locale_dipendente_id', $user->comitato_locale_id)
+                ->when($includiEstensioni, fn ($q) => $q
+                    ->orWhere('comitato_locale_estensione_id', $user->comitato_locale_id))
+            );
+        } elseif ($user->isAdmin() || $user->isOperatore()) {
+            $query->where(fn ($q) => $q
+                ->where('comitato_regionale_id', $user->comitato_regionale_id)
+                ->orWhere('comitato_regionale_dipendente_id', $user->comitato_regionale_id)
+                ->when($includiEstensioni, fn ($q) => $q
+                    ->orWhere('comitato_regionale_estensione_id', $user->comitato_regionale_id))
+            );
+        }
+    }
+
     public function build(
         User $user,
         array $qualificheRichieste = [],
@@ -34,27 +63,7 @@ class QualificheSociQueryBuilder
         // Excel/PDF che passano di qui). Nessun toggle — scelta esplicita.
         $query->whereNull('soci.dimesso_il');
 
-        // L'operatore è scoped a livello locale se il suo account ha un comitato locale
-        // assegnato (impostato dall'admin locale che lo crea), altrimenti a livello regionale
-        // (impostato dall'admin regionale) — stesso criterio di UserResource::form().
-        // Il toggle "Includi soci in estensione" allarga anche lo scope di permesso, non solo
-        // il filtro comitato: un admin_locale può gestire le qualifiche dei soci in estensione
-        // al proprio comitato (coerente con l'import GAIA che li scrive, canEditQualifiche()).
-        if ($user->isAdminLocale() || ($user->isOperatore() && $user->comitato_locale_id)) {
-            $query->where(fn ($q) => $q
-                ->where('comitato_locale_id', $user->comitato_locale_id)
-                ->orWhere('comitato_locale_dipendente_id', $user->comitato_locale_id)
-                ->when($includiEstensioni, fn ($q) => $q
-                    ->orWhere('comitato_locale_estensione_id', $user->comitato_locale_id))
-            );
-        } elseif ($user->isAdmin() || $user->isOperatore()) {
-            $query->where(fn ($q) => $q
-                ->where('comitato_regionale_id', $user->comitato_regionale_id)
-                ->orWhere('comitato_regionale_dipendente_id', $user->comitato_regionale_id)
-                ->when($includiEstensioni, fn ($q) => $q
-                    ->orWhere('comitato_regionale_estensione_id', $user->comitato_regionale_id))
-            );
-        }
+        static::limitaAlTerritorio($query, $user, $includiEstensioni);
 
         if ($filtroRegione) {
             $r = $filtroRegione;

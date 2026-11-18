@@ -23,7 +23,7 @@
             @else
                 <p class="text-base font-semibold text-gray-900">Email verificata con successo!</p>
                 <p class="text-sm text-gray-600 mt-1">
-                    Grazie {{ $nome }}, il tuo indirizzo email è confermato e potrà essere usato per le comunicazioni relative alla tua candidatura.
+                    Grazie {{ $nome }}, il tuo indirizzo email è confermato e potrà essere usato per le comunicazioni su corsi, eventi e candidature.
                 </p>
             @endif
         </div>

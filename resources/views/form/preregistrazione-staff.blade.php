@@ -255,7 +255,7 @@
                             <input type="tel" id="telefono" name="telefono"
                                 value="{{ $telefonoSalvato }}"
                                 {{ $telefonoSbloccato ? '' : 'readonly' }}
-                                class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 @error('telefono') border-red-400 @enderror {{ $telefonoSbloccato ? '' : 'bg-gray-50 text-gray-500' }}"
+                                class="flex-1 min-w-0 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-red-500 @error('telefono') border-red-400 @enderror {{ $telefonoSbloccato ? '' : 'bg-gray-50 text-gray-500' }}"
                                 placeholder="3xx xxxxxxx">
                             <button type="button" id="telefono-modifica" onclick="sbloccaCampoTesto('telefono')"
                                     class="shrink-0 text-xs font-medium text-red-700 hover:text-red-800 whitespace-nowrap px-2"

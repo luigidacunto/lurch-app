@@ -145,6 +145,8 @@ class QualificheRelationManager extends RelationManager
 
                 Tables\Columns\TextColumn::make('catalogoCorso.nome')
                     ->label('Qualifica')
+                    ->limit(40)
+                    ->tooltip(fn (QualificaSocio $record) => mb_strlen((string) $record->catalogoCorso?->nome) > 40 ? $record->catalogoCorso->nome : null)
                     ->searchable()
                     ->sortable(),
 
@@ -200,7 +202,7 @@ class QualificheRelationManager extends RelationManager
                         'calcolato'               => 'purple',
                         default                   => 'gray',
                     })
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('fonte')
@@ -216,6 +218,7 @@ class QualificheRelationManager extends RelationManager
             ->headerActions([
                 CreateAction::make()
                     ->label('Aggiungi qualifica')
+                    ->modalHeading('Aggiungi qualifica')
                     ->color('success')
                     ->after(fn (QualificaSocio $record) => $record->aggiornaScadenzaCalcolata()),
 

@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OpzioneAlimentareResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = OpzioneAlimentare::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-clipboard-document-list';

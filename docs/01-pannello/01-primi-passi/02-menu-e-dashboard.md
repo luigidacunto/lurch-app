@@ -23,11 +23,11 @@ Le voci sono divise in gruppi; ogni gruppo si chiude e si riapre con la freccia 
 | Gruppo | Voce | A cosa serve |
 |---|---|---|
 | Gestione operativa | [Eventi](../02-gestione-operativa/01-eventi/README.md) | Eventi e campi: staff, partecipanti, badge, check-in, presenze, pasti e pernottamenti |
-| | [Corsi](../02-gestione-operativa/02-corsi.md) | Corsi dentro gli eventi: iscritti, moduli di preregistrazione, comunicazioni, quote |
+| | [Corsi](../02-gestione-operativa/02-corsi/README.md) | Corsi dentro gli eventi: iscritti, moduli di preregistrazione, comunicazioni, quote |
 | | [Esami](../02-gestione-operativa/03-esami.md) | Esami di fine corso, per i corsi che li prevedono |
-| | [Graduatorie](../02-gestione-operativa/04-graduatorie.md) | Selezioni con candidatura pubblica e classifica |
-| | [Qualifiche](../02-gestione-operativa/05-qualifiche.md) | Ricerca dei soci per qualifica ed export |
-| Archivi | [Soci](../03-archivi/01-soci.md) | Anagrafica dei volontari, importata da GAIA |
+| | [Graduatorie](../02-gestione-operativa/04-graduatorie/README.md) | Selezioni con candidatura pubblica e classifica |
+| | [Qualifiche](../02-gestione-operativa/05-qualifiche/README.md) | Ricerca dei soci per qualifica ed export |
+| Archivi | [Soci](../03-archivi/01-soci/README.md) | Anagrafica dei volontari, importata da GAIA |
 | | [Comitati Regionali](../03-archivi/02-comitati-regionali.md) | Solo superadmin: dati, dominio, logo e posta di ogni regione |
 | | [Comitati Locali](../03-archivi/03-comitati-locali.md) | Comitati e sedi della regione |
 | | [Catalogo Corsi](../03-archivi/04-catalogo-corsi.md) | Elenco dei tipi di corso e delle loro scadenze |

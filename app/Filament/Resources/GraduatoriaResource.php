@@ -25,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class GraduatoriaResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Graduatoria::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-queue-list';
@@ -430,17 +432,20 @@ class GraduatoriaResource extends Resource
                     ->tooltip(fn (Graduatoria $record) => \App\Services\PortaleRegionale::route($record->comitato_regionale_id, 'graduatoria.mostra', $record->codice_pubblico))
                     ->color('primary'),
 
-                Tables\Columns\TextColumn::make('comitatoRegionale.nome')
+                Tables\Columns\TextColumn::make('comitatoRegionale.codice')
                     ->label('Regione')
+                    ->tooltip(fn (Graduatoria $record) => $record->comitatoRegionale?->nome)
                     ->toggleable()
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->visible(fn () => ! auth()->user()?->isAdminLocale()),
 
                 Tables\Columns\TextColumn::make('comitatoLocale.nome')
                     ->label('Comitato Locale')
-                    ->toggleable()
                     ->default('—')
-                    ->searchable(),
+                    ->limit(28)
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('stato_finestra')
                     ->label('Stato')
@@ -465,7 +470,7 @@ class GraduatoriaResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Creata il')
                     ->dateTime('d/m/Y H:i')
-                    ->toggleable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('data_chiusura')

@@ -33,6 +33,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventoResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Evento::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';

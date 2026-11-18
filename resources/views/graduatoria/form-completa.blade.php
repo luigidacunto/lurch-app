@@ -301,7 +301,7 @@
                     </div>
                     <div class="px-5 py-4 space-y-2">
                         <p class="text-xs text-gray-600">
-                            {{ $graduatoria->dicitura_autocertificazione }} <span class="text-red-500">*</span>
+                            {{ \App\Support\TestoConLink::html($graduatoria->dicitura_autocertificazione) }} <span class="text-red-500">*</span>
                         </p>
                         <input type="file" name="autocertificazione" accept="application/pdf" required
                                class="w-full text-sm text-gray-700 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-red-700 hover:file:bg-red-100 @error('autocertificazione') border border-red-400 rounded-lg @enderror">

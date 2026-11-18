@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrivacyTemplateResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = PrivacyTemplate::class;
 
     protected static ?string $slug = 'template-privacy';
@@ -53,6 +55,24 @@ class PrivacyTemplateResource extends Resource
                 && $record->comitato_regionale_id === $user->comitato_regionale_id;
         }
         return false;
+    }
+
+    /**
+     * Elenco limitato al territorio: l'admin regionale vede il default globale e i testi della
+     * propria regione, non quelli delle altre regioni (il superadmin vede tutto).
+     */
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        $query = parent::getEloquentQuery();
+        $user  = auth()->user();
+
+        if ($user && ! $user->isSuperadmin()) {
+            $query->where(fn ($q) => $q
+                ->whereNull('comitato_regionale_id')
+                ->orWhere('comitato_regionale_id', $user->comitato_regionale_id));
+        }
+
+        return $query;
     }
 
     public static function canDelete(Model $record): bool

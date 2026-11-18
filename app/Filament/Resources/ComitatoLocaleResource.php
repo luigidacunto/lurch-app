@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ComitatoLocaleResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = ComitatoLocale::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-office-2';
@@ -170,8 +172,9 @@ class ComitatoLocaleResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('comitatoRegionale.nome')
-                    ->label('Regionale')
+                Tables\Columns\TextColumn::make('comitatoRegionale.codice')
+                    ->label('Regione')
+                    ->tooltip(fn ($record) => $record->comitatoRegionale?->nome)
                     ->searchable()
                     ->sortable(),
 

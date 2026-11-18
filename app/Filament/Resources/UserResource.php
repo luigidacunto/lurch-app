@@ -26,6 +26,8 @@ use Spatie\Permission\Models\Permission;
 
 class UserResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = User::class;
 
     protected static ?string $slug = 'utenti';
@@ -307,16 +309,20 @@ class UserResource extends Resource
                     })
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('comitatoRegionale.nome')
+                Tables\Columns\TextColumn::make('comitatoRegionale.codice')
                     ->label('Regione')
+                    ->tooltip(fn ($record) => $record->comitatoRegionale?->nome)
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->visible(fn () => auth()->user()?->isSuperadmin()),
 
                 Tables\Columns\TextColumn::make('comitatoLocale.nome')
                     ->label('Comitato Locale')
                     ->searchable()
                     ->sortable()
                     ->default('—')
+                    ->limit(28)
+                    ->tooltip(fn ($record) => mb_strlen((string) $record->comitatoLocale?->nome) > 28 ? $record->comitatoLocale->nome : null)
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('socio.nome_completo')

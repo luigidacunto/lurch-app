@@ -20,9 +20,35 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - fix: le immagini della guida nel pannello si aggiornano subito quando vengono sostituite (prima il browser le teneva in memoria fino a 24 ore)
 - docs: la guida accetta, per le voci del menu fatte di più pagine (come Eventi), una cartella con una pagina per ognuna, annidata nell'indice; capitolo Eventi scritto, in 9 pagine con le schermate
 - fix: nell'elenco Eventi la colonna «Regione» mostra la sigla (nome intero al passaggio del mouse) e «Comitato Locale» è nascosta di default; i nomi lunghi (evento e comitato locale) sono accorciati, con il nome intero al passaggio del mouse; le colonne «Tipo» e «Sede» sono nascoste di default e si attivano dal selettore colonne
+- docs: capitolo Corsi della guida scritto, in 7 pagine con le schermate (elenco, modulo del corso, gestione, iscritti, form e comunicazioni, documenti da verificare, quote e pagamenti)
+- fix: sicurezza — le pagine Nuovo, Modifica e Visualizza del pannello rispettano i permessi di ogni sezione anche con l'indirizzo diretto; prima, scrivendo l'indirizzo, un amministratore regionale apriva e poteva salvare pagine riservate al superadmin (template email e template privacy nazionali, catalogo corsi), e un operatore poteva aprire la modifica di un socio o la creazione di una graduatoria senza averne il permesso
+- fix: gli elenchi Template email, Template privacy e Istruzioni di pagamento mostrano all'amministratore regionale solo i testi generali e quelli della sua regione (prima vedeva anche quelli delle altre regioni, senza poterli modificare)
+- docs: capitolo Impostazioni della guida scritto (Utenti, Template privacy, Istruzioni di pagamento, Template email, Opzioni alimentari), con le schermate; aggiunta la schermata dei permessi di un operatore in «Ruoli e permessi»
+- fix: nell'elenco Utenti la regione è mostrata con la sigla e solo al superadmin; il comitato locale è accorciato, con il nome intero al passaggio del mouse
+- docs: capitolo Archivi della guida scritto (Soci in 3 pagine, Comitati regionali, Comitati locali, Catalogo corsi, Patenti CRI), con le schermate
+- fix: nell'archivio Soci i comitati sono accorciati (nome intero al passaggio del mouse) e le colonne «Estensione», «Data di nascita» e «Volontario dal» sono nascoste di default; nei Comitati locali la regione è mostrata con la sigla; negli override regionali del catalogo le azioni di riga sono icone, con «Elimina» nel menu dei tre puntini
+- fix: sicurezza — la pagina «Gestisci qualifiche» di un socio si apre solo per i soci del proprio territorio (stessa regola della ricerca qualifiche, estensioni comprese); prima, con l'indirizzo diretto, si aprivano e modificavano le qualifiche di soci di qualsiasi regione
+- docs: capitolo Qualifiche della guida scritto, in 3 pagine con le schermate (ricerca ed export, importare da GAIA, qualifiche del socio)
+- fix: nella ricerca qualifiche il comitato è accorciato (nome intero al passaggio del mouse) e le colonne «Nascita» e «Ingresso» sono nascoste di default; nelle qualifiche del socio il nome del corso è accorciato, «Fonte» è nascosta di default e la finestra di inserimento si intitola «Aggiungi qualifica»
+- docs: capitolo Graduatorie della guida scritto, in 4 pagine con le schermate (elenco e creazione, criteri di selezione, candidati, classifica ed esclusi)
+- fix: nell'elenco Graduatorie la colonna «Regione» mostra la sigla (nome intero al passaggio del mouse); «Comitato Locale» e «Creata il» sono nascoste di default
+- fix: nella gestione di una graduatoria le colonne «Ruolo», «Anagrafica», «Iscritto il» ed «Email» della tabella Candidati sono nascoste di default e si attivano dal selettore colonne
+- fix: il collegamento a GAIA nelle righe delle tabelle (Corsi, Catalogo corsi, Candidati e Candidati esclusi delle graduatorie) è un'icona con il suggerimento «Apri su GAIA», come le altre azioni di riga; nel Catalogo corsi resta al suo posto, spento, quando la scheda GAIA manca
+- fix: nell'elenco Corsi i nomi lunghi (corso e evento) sono accorciati, con il nome intero al passaggio del mouse; le colonne «Residenziale», «Pagamento» e «Form» sono nascoste di default e si attivano dal selettore colonne, così la tabella entra in una finestra di larghezza media
 - fix: «Importa Iscritti» nella gestione del corso è disponibile anche all'admin locale, per i corsi degli eventi del suo comitato
 - fix: in alcuni moduli (istruzioni di importazione di soci, qualifiche, iscritti e staff, spiegazione del badge, pasti dello staff) compariva un'etichetta tecnica sopra il testo; ora non c'è più
 - fix: «Modifica password» compare solo a chi ha una password temporanea e serve a cambiarla; tolto l'invito a impostarne una, che il primo accesso via email avrebbe comunque cancellato
+- docs: capitolo Strumenti della guida scritto (userscript bridge GAIA: installazione e aggiornamento, uso, anteprima e importazione), con le schermate; «Incolla da GAIA» rimanda a GAIA Swissknife
+- docs: capitolo App dei soci della guida scritto (installazione e accesso, i miei eventi, moduli dall'app, messaggi), con le schermate a larghezza di telefono; la pagina Esami resta in preparazione
+- fix: nel form del corsista dell'app mancava il campo per allegare il documento aggiuntivo richiesto dal corso, e l'invio si fermava con «Devi allegare il documento richiesto»; ora c'è, come nel modulo pubblico
+- fix: sicurezza — il login dell'app non rivela più se un'email è tra quelle dei soci: la pagina del codice compare sempre e un'email non registrata riceve le stesse risposte di un codice sbagliato
+- fix: nell'app, sul telefono, l'elenco dei messaggi usciva dallo schermo con i testi lunghi; ora l'anteprima si accorcia con i puntini
+- fix: nell'app, il riepilogo di un form già inviato non genera più un errore JavaScript nella console del browser
+- docs: capitolo Moduli pubblici della guida scritto (preregistrazione del corsista e dello staff, candidatura a una graduatoria e allo staff, verifica dell'email, badge e messaggi, privacy e cookie), con le schermate a larghezza di telefono; la registrazione degli ingressi con il QR del badge, riservata agli operatori collegati, è spiegata in Eventi → Presenze live
+- fix: sicurezza — il piè di pagina delle pagine pubbliche non mostra più in produzione le versioni di PHP e Laravel né l'ambiente; sul telefono le righe vanno a capo invece di sparire
+- fix: nei form di preregistrazione pubblici, sul telefono, il campo del numero di telefono usciva dal riquadro; ora entra, con la tendina del prefisso più stretta
+- feat: negli indirizzi web scritti dagli organizzatori nelle diciture (autocertificazione delle graduatorie, documento aggiuntivo dei corsi) compare il link «Apri il link (dominio)» con il pulsante «Copia indirizzo», al posto dell'indirizzo intero non cliccabile
+- fix: la pagina di verifica dell'email parlava sempre di «candidatura», anche dopo una preregistrazione; ora il testo vale per corsi, eventi e candidature
 
 ## 1.85.38 — 2026-11-17
 

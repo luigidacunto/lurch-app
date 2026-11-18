@@ -17,7 +17,8 @@
     .page-sub {
         font-size: 13px; color: #6b7280; margin-bottom: 20px;
     }
-    .msg-list { display: grid; gap: 10px; }
+    /* minmax(0, 1fr): senza, la scheda si allarga quanto l'anteprima e l'ellissi non scatta. */
+    .msg-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .msg-card {
         background: #fff; border-radius: 12px;
         box-shadow: 0 1px 4px rgba(0,0,0,0.07);

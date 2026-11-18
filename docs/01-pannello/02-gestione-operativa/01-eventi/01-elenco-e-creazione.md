@@ -11,7 +11,7 @@ In L.U.R.C.H. **ogni corso appartiene a un evento**, e le due cose servono a sco
 - il **corso** è la parte didattica e amministrativa: iscritti, moduli di preregistrazione, quote di iscrizione, comunicazioni ai corsisti;
 - l'**evento** è la parte logistica: date e luogo, staff, pasti e pernottamenti, badge, check-in e presenze.
 
-Un evento può ospitare un solo corso oppure molti, che condividono luogo, giorni e organizzazione (per esempio un weekend con una decina di corsi). Per questo un corso non si può creare senza un evento: lo si sceglie, o lo si crea al volo, nel modulo del corso (vedi [Corsi](../02-corsi.md)).
+Un evento può ospitare un solo corso oppure molti, che condividono luogo, giorni e organizzazione (per esempio un weekend con una decina di corsi). Per questo un corso non si può creare senza un evento: lo si sceglie, o lo si crea al volo, nel modulo del corso (vedi [Corsi](../02-corsi/README.md)).
 
 Il **nome dell'evento è libero**. Qualche abitudine utile:
 
@@ -53,14 +53,14 @@ Altre colonne si possono mostrare con l'icona a colonne accanto ai filtri: **Tip
 
 ## Creare un evento
 
-L'evento si può creare in due modi: dal pulsante **Nuovo** di questa pagina, descritto qui sotto, oppure **in modo rapido dal modulo di creazione di un corso** con l'azione **Crea evento singolo per questo corso** (vedi [Corsi](../02-corsi.md)). Il modo rapido chiede solo i giorni, usa il protocollo del corso come nome e lascia sede e indirizzo su «Da definire», da completare poi da questa pagina: è comodo per i corsi autonomi, con un solo corso nell'evento.
+L'evento si può creare in due modi: dal pulsante **Nuovo** di questa pagina, descritto qui sotto, oppure **in modo rapido dal modulo di creazione di un corso** con l'azione **Crea evento singolo per questo corso** (vedi [Corsi](../02-corsi/README.md)). Il modo rapido chiede solo i giorni, usa il protocollo del corso come nome e lascia sede e indirizzo su «Da definire», da completare poi da questa pagina: è comodo per i corsi autonomi, con un solo corso nell'evento.
 
 Il pulsante verde **Nuovo**, in alto sopra la tabella, apre il modulo. La prima sezione, «Informazioni generali», è sempre aperta e contiene tutti i campi obbligatori (contrassegnati da un asterisco rosso).
 
 <!-- screenshot: route=/admin/eventi/create · v1.85.38-dev · 2026-11-18 -->
 ![Modulo Nuovo evento, parte alta](../../../immagini/eventi/nuovo-1.png)
 
-- **Nome evento**: libero; vedi le abitudini descritte all'inizio. Un evento nuovo non ha ancora corsi: si aggiungono poi dalla pagina [Corsi](../02-corsi.md), scegliendo questo evento.
+- **Nome evento**: libero; vedi le abitudini descritte all'inizio. Un evento nuovo non ha ancora corsi: si aggiungono poi dalla pagina [Corsi](../02-corsi/README.md), scegliendo questo evento.
 - **Comitato Regionale**: già impostato sulla tua regione; l'amministratore regionale e quello locale non lo possono cambiare.
 - **Comitato Locale**: lascialo vuoto per un evento regionale. Se lo scegli, l'evento è locale e lo vede solo l'amministratore di quel comitato.
 - **Descrizione**: testo libero, facoltativo.

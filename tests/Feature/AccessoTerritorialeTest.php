@@ -63,8 +63,10 @@ class AccessoTerritorialeTest extends TestCase
                 'comitato_regionale_id' => $cr, 'data_apertura' => now()->subDays(10), 'data_chiusura' => now()->addDays(10),
             ]);
 
+            $socio = Socio::create(['nome' => 'Socio', 'cognome' => $r, 'codice_fiscale' => "SCXXXX80A01H50{$r}X", 'comitato_regionale_id' => $cr]);
+
             $this->dati[$r] = [
-                'cr' => $cr, 'evento' => $evento, 'corso' => $corso, 'graduatoria' => $graduatoria, 'direttore' => $direttore,
+                'cr' => $cr, 'evento' => $evento, 'corso' => $corso, 'graduatoria' => $graduatoria, 'direttore' => $direttore, 'socio' => $socio,
                 'esame' => Esame::creaPerCorso($corso, "Esame {$r}", 60),
             ];
         }
@@ -127,6 +129,7 @@ class AccessoTerritorialeTest extends TestCase
         foreach (['gestione', 'edit', 'discenti', 'laboratori', 'tutoraggio', 'domande-test'] as $p) {
             $pagine["esame.{$p}"] = EsameResource::getUrl($p, ['record' => $x]);
         }
+        $pagine['qualifiche.gestisci'] = \App\Filament\Resources\QualificheSociResource::getUrl('gestisci', ['record' => $d['socio']]);
 
         $export = [
             'eventi.pernotti-export'             => route('eventi.pernotti-export', $e),

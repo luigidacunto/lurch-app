@@ -97,10 +97,18 @@ class ValiditaRegionaliRelationManager extends RelationManager
             ])
             ->actions([
                 EditAction::make()
+                    ->iconButton()
+                    ->tooltip('Modifica')
                     ->visible(fn (Model $record) => $this->canEditRecord($record)),
-                DeleteAction::make()
-                    ->visible(fn (Model $record) => $this->canEditRecord($record)),
-            ]);
+                \Filament\Actions\ActionGroup::make([
+                    DeleteAction::make()
+                        ->visible(fn (Model $record) => $this->canEditRecord($record)),
+                ])
+                    ->label('Altre azioni')
+                    ->icon('heroicon-o-ellipsis-vertical')
+                    ->color('danger')
+                    ->iconButton(),
+            ], position: Tables\Enums\RecordActionsPosition::BeforeColumns);
     }
 
     public function form(Schema $form): Schema

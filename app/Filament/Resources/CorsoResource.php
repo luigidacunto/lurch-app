@@ -41,6 +41,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CorsoResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Corso::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-book-open';
@@ -677,7 +679,7 @@ class CorsoResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->weight('bold')
-                    ->limit(50)
+                    ->limit(40)
                     ->extraAttributes(fn ($record) => [
                         'data-row-tooltip' => $record->nome . ($record->numero_protocollo ? ' — ' . $record->numero_protocollo : ''),
                     ]),
@@ -700,6 +702,7 @@ class CorsoResource extends Resource
                     ->label('Evento')
                     ->searchable()
                     ->sortable()
+                    ->limit(28)
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('data_inizio')
@@ -720,12 +723,12 @@ class CorsoResource extends Resource
                 Tables\Columns\IconColumn::make('residenziale')
                     ->boolean()
                     ->label('Residenziale')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\IconColumn::make('pagamento_previsto')
                     ->boolean()
                     ->label('Pagamento')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('iscrizioni_attive_count')
                     ->counts('iscrizioniAttive')
@@ -738,7 +741,8 @@ class CorsoResource extends Resource
                     ->state(fn (Corso $record) => $record->form_sections && count($record->form_sections) > 0
                         ? 'Generato'
                         : 'Non generato')
-                    ->color(fn (string $state) => $state === 'Generato' ? 'success' : 'gray'),
+                    ->color(fn (string $state) => $state === 'Generato' ? 'success' : 'gray')
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('iscrizioni_attive_con_risposta_count')
                     ->counts('iscrizioniAttiveConRisposta')
@@ -795,8 +799,9 @@ class CorsoResource extends Resource
                 FilamentAction::make('gaia')
                     ->label('GAIA')
                     ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->iconButton()
                     ->color(fn (Corso $record) => filled($record->link_gaia) ? 'info' : 'gray')
-                    ->tooltip(fn (Corso $record) => filled($record->link_gaia) ? null : 'Nessun link GAIA collegato')
+                    ->tooltip(fn (Corso $record) => filled($record->link_gaia) ? 'Apri su GAIA' : 'Nessun link GAIA collegato')
                     ->url(fn (Corso $record) => $record->link_gaia ?: null)
                     ->openUrlInNewTab()
                     ->disabled(fn (Corso $record) => blank($record->link_gaia)),

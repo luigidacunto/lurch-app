@@ -267,7 +267,7 @@
                         <div class="flex gap-2">
                             <select name="prefisso_telefono"
                                     {{ $readonly ? 'disabled' : '' }}
-                                    class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 shrink-0 w-44 disabled:bg-gray-50 disabled:text-gray-500">
+                                    class="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 shrink-0 w-28 sm:w-44 disabled:bg-gray-50 disabled:text-gray-500">
                                 @foreach($prefissi as $codice => $etichetta)
                                     <option value="{{ $codice }}" {{ $prefissoSalvato === $codice ? 'selected' : '' }}>{{ $etichetta }}</option>
                                 @endforeach
@@ -281,7 +281,7 @@
                                    placeholder="es. 3801234567"
                                    {{ $readonly ? 'disabled' : '' }}
                                    {{ (! $readonly && ! $telefonoSbloccato) ? 'readonly' : '' }}
-                                   class="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-50 disabled:text-gray-500 {{ (! $readonly && ! $telefonoSbloccato) ? 'bg-gray-50 text-gray-500' : '' }}">
+                                   class="flex-1 min-w-0 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-gray-50 disabled:text-gray-500 {{ (! $readonly && ! $telefonoSbloccato) ? 'bg-gray-50 text-gray-500' : '' }}">
                             @if(! $readonly)
                                 <button type="button" id="telefono-input-modifica" onclick="sbloccaCampoTesto('telefono-input')"
                                         class="shrink-0 text-xs font-medium text-red-700 hover:text-red-800 whitespace-nowrap px-2"
@@ -442,7 +442,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-amber-200 px-5 py-4 space-y-3">
                     <div>
                         <p class="text-sm font-semibold text-gray-700">Documento aggiuntivo</p>
-                        <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1.5 leading-snug whitespace-pre-line break-words">{{ $corso->dicitura_documento_aggiuntivo }}</p>
+                        <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-1.5 leading-snug whitespace-pre-line break-words">{{ \App\Support\TestoConLink::html($corso->dicitura_documento_aggiuntivo) }}</p>
                     </div>
                     <div>
                         @if($risposta?->documento_aggiuntivo_path)

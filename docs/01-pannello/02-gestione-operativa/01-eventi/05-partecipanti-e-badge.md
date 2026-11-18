@@ -34,7 +34,7 @@ Il badge è il cartellino con il **codice QR personale** che si scansiona all'in
 
 I PDF sono in formato A6 verticale, quattro per ogni foglio A4, e si aprono in una nuova scheda:
 
-- **Corsisti**: dal [riepilogo per corso](02-gestione-evento.md) di Gestione dell'evento, con il collegamento **Badge** di ciascun corso (vedi anche [Corsi](../02-corsi.md)).
+- **Corsisti**: dal [riepilogo per corso](02-gestione-evento.md) di Gestione dell'evento, con il collegamento **Badge** di ciascun corso (vedi anche [Corsi](../02-corsi/README.md)).
 - **Staff**: dal menu **Azioni** di Gestione dell'evento, voce **Badge Staff**.
 - **Badge vuoti**: dallo stesso menu, voce **Badge vuoti**: lo sfondo dell'evento senza nomi, per chi si presenta senza essere in elenco.
 

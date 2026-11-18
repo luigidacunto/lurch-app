@@ -403,9 +403,10 @@ class CandidatiEsclusiRelationManager extends RelationManager
                 Action::make('apriCurriculumGaia')
                     ->label('Apri su GAIA')
                     ->tooltip(fn (GraduatoriaCandidato $record) => filled($record->socio?->gaia_persona_id)
-                        ? null
+                        ? 'Apri su GAIA'
                         : 'Nessun ID GAIA collegato a questo socio')
                     ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->iconButton()
                     ->color('info')
                     ->disabled(fn (GraduatoriaCandidato $record) => blank($record->socio?->gaia_persona_id))
                     ->url(fn (GraduatoriaCandidato $record) => filled($record->socio?->gaia_persona_id)

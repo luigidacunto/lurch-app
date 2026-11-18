@@ -9,7 +9,7 @@ Ogni utente del pannello ha un **ruolo** e un **territorio** (una regione, a vol
 | Ruolo | Territorio | Cosa vede e cosa fa |
 |---|---|---|
 | **Superadmin** | tutte le regioni | Tutto. Solo il superadmin gestisce Comitati Regionali, Patenti CRI, Opzioni Alimentari, crea e modifica i corsi del Catalogo e genera una password temporanea per un utente. |
-| **Admin regionale** | la sua regione | Tutto ciò che riguarda la sua regione: eventi, corsi, esami, graduatorie, qualifiche, soci (dati sanitari compresi), comitati locali, utenti (altri admin regionali, admin locali e operatori della regione), testi di privacy, email e istruzioni di pagamento della regione. Il Catalogo corsi è in sola lettura, tranne le scadenze regionali. |
+| **Admin regionale** | la sua regione | Tutto ciò che riguarda la sua regione: eventi, corsi, esami, graduatorie, qualifiche, soci (dati sanitari compresi), comitati locali, utenti (altri admin regionali, admin locali e operatori della regione), testi di privacy, email e istruzioni di pagamento della regione. Il Catalogo corsi è in sola lettura. |
 | **Admin locale** | il suo comitato locale | Eventi, corsi, esami, graduatorie, qualifiche e soci del suo comitato (senza i dati sanitari). Crea e modifica gli operatori del suo comitato, ma non li elimina. Il Catalogo corsi è in sola lettura. Non vede comitati e impostazioni dei testi. |
 | **Operatore** | la sua regione, o il suo comitato | Di partenza solo Dashboard e Guida: vede una sezione solo se ha il permesso relativo (vedi sotto). Per eventi, corsi, check-in e graduatorie serve anche essere **assegnato** a quell'evento o a quella graduatoria. |
 
@@ -28,6 +28,9 @@ Per questo serve che il loro account sia collegato alla loro scheda socio (campo
 
 L'admin che crea o modifica un operatore sceglie i permessi nella sezione **Permessi granulari** della sua scheda (vedi [Utenti](../04-impostazioni/01-utenti.md)). Ogni permesso ha una breve spiegazione accanto.
 
+<!-- screenshot: route=/admin/utenti/{id}/edit · v1.85.38-dev · 2026-11-18 · permessi di un operatore -->
+![Permessi granulari nella scheda di un operatore](../../immagini/ruoli/permessi-operatore.png)
+
 | Permesso | Cosa consente |
 |---|---|
 | Vede gli eventi | La sezione Eventi, con i soli eventi regionali a cui è assegnato |
@@ -41,7 +44,7 @@ L'admin che crea o modifica un operatore sceglie i permessi nella sezione **Perm
 | Gestisce le graduatorie | Le graduatorie in cui è tra gli «Operatori abilitati» |
 | Cerca le qualifiche | La ricerca dei soci per qualifica e l'export, nel suo territorio |
 | Gestisce le qualifiche | Come sopra, e aggiungere o modificare le qualifiche dei soci |
-| Validità regionali | Le scadenze regionali dei corsi nel Catalogo corsi |
+| Validità regionali | Le scadenze regionali dei corsi nel Catalogo corsi (oggi la tabella è nella pagina di modifica del catalogo, riservata al superadmin) |
 | Vede i soci | La sezione Soci del suo territorio |
 | Crea soci | L'inserimento a mano di un nuovo socio |
 | Modifica i soci | L'anagrafica dei soci della sua regione |

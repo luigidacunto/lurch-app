@@ -26,7 +26,7 @@
         </div>
 
         @if($dicitura)
-            <p style="font-size:12px; color:#374151; margin-top:6px; white-space:pre-line; overflow-wrap:anywhere;">{{ $dicitura }}</p>
+            <p style="font-size:12px; color:#374151; margin-top:6px; white-space:pre-line; overflow-wrap:anywhere;">{{ \App\Support\TestoConLink::html($dicitura) }}</p>
         @endif
 
         @if($verificato)

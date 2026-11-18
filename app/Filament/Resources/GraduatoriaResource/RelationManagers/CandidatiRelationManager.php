@@ -91,7 +91,8 @@ class CandidatiRelationManager extends RelationManager
                         'Volontario' => 'gray',
                         'Dipendente' => 'info',
                         default      => 'danger',
-                    }),
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\IconColumn::make('socio_id')
                     ->label('Anagrafica')
@@ -100,7 +101,8 @@ class CandidatiRelationManager extends RelationManager
                     ->falseIcon('heroicon-o-x-circle')
                     ->tooltip(fn (GraduatoriaCandidato $record) => $record->socio_id
                         ? 'Socio trovato in archivio'
-                        : 'Socio non trovato — verificare CF/dati'),
+                        : 'Socio non trovato — verificare CF/dati')
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\IconColumn::make('prerequisiti')
                     ->label('Prerequisiti')
@@ -178,7 +180,8 @@ class CandidatiRelationManager extends RelationManager
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->badge()
-                    ->color(fn (GraduatoriaCandidato $record) => $record->fuori_termine ? 'warning' : 'gray'),
+                    ->color(fn (GraduatoriaCandidato $record) => $record->fuori_termine ? 'warning' : 'gray')
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('email_verificata')
                     ->label('Email')
@@ -188,7 +191,8 @@ class CandidatiRelationManager extends RelationManager
                         'Verificata'    => 'success',
                         'Da verificare' => 'warning',
                         default         => 'gray',
-                    }),
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('note')
                     ->label('Note')
@@ -741,9 +745,10 @@ class CandidatiRelationManager extends RelationManager
                 Action::make('apriCurriculumGaia')
                     ->label('Apri su GAIA')
                     ->tooltip(fn (GraduatoriaCandidato $record) => filled($record->socio?->gaia_persona_id)
-                        ? null
+                        ? 'Apri su GAIA'
                         : 'Nessun ID GAIA collegato a questo socio')
                     ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->iconButton()
                     ->color('info')
                     ->disabled(fn (GraduatoriaCandidato $record) => blank($record->socio?->gaia_persona_id))
                     ->url(fn (GraduatoriaCandidato $record) => filled($record->socio?->gaia_persona_id)

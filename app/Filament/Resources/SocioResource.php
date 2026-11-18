@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SocioResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Socio::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
@@ -559,6 +561,8 @@ class SocioResource extends Resource
                 Tables\Columns\TextColumn::make('comitato_display')
                     ->label('Comitato Locale')
                     ->getStateUsing(fn ($record) => $record->comitato_display ?? '—')
+                    ->limit(28)
+                    ->tooltip(fn ($record) => mb_strlen((string) $record->comitato_display) > 28 ? $record->comitato_display : null)
                     ->searchable(query: fn (Builder $query, string $search) => $query->where(function ($q) use ($search) {
                         $q->whereHas('comitatoLocale', fn ($q) => $q->where('nome', 'ilike', "%{$search}%"))
                           ->orWhereHas('sottosedeAppartenenza', fn ($q) => $q->where('nome', 'ilike', "%{$search}%"));
@@ -577,7 +581,9 @@ class SocioResource extends Resource
                 Tables\Columns\TextColumn::make('comitatoLocaleEstensione.nome')
                     ->label('Estensione')
                     ->default('—')
-                    ->toggleable(),
+                    ->limit(28)
+                    ->tooltip(fn ($record) => mb_strlen((string) $record->comitatoLocaleEstensione?->nome) > 28 ? $record->comitatoLocaleEstensione->nome : null)
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('comitato_lavoro')
                     ->label('Comitato Lavoro')
@@ -590,7 +596,7 @@ class SocioResource extends Resource
                     ->label('Data di nascita')
                     ->date('d/m/Y')
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('eta_attuale')
                     ->label('Età')
@@ -622,7 +628,7 @@ class SocioResource extends Resource
                     ->label('Volontario dal')
                     ->date('d/m/Y')
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('dimesso_il')
                     ->label('Dimesso il')

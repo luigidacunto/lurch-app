@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CatalogoCorsiResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = CatalogoCorso::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -414,10 +416,12 @@ class CatalogoCorsiResource extends Resource
                 \Filament\Actions\Action::make('scheda_gaia')
                     ->label('GAIA')
                     ->icon('heroicon-o-arrow-top-right-on-square')
-                    ->color('info')
-                    ->url(fn (Model $record) => $record->scheda_pdf)
+                    ->iconButton()
+                    ->color(fn (Model $record) => $record->scheda_pdf ? 'info' : 'gray')
+                    ->tooltip(fn (Model $record) => $record->scheda_pdf ? 'Apri la scheda su GAIA' : 'Nessuna scheda GAIA collegata')
+                    ->url(fn (Model $record) => $record->scheda_pdf ?: null)
                     ->openUrlInNewTab()
-                    ->visible(fn (Model $record) => (bool) $record->scheda_pdf),
+                    ->disabled(fn (Model $record) => ! $record->scheda_pdf),
                 ActionGroup::make([
                     RestoreAction::make(),
                     DeleteAction::make()

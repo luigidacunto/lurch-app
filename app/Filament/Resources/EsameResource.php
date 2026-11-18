@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class EsameResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Esame::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';

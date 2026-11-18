@@ -10,6 +10,8 @@ use Filament\Tables\Table;
 
 class QualificheSociResource extends Resource
 {
+    use \App\Filament\Concerns\RispettaPermessiDellaRisorsa;
+
     protected static ?string $model = Socio::class;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-trophy';
@@ -37,6 +39,22 @@ class QualificheSociResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }
+
+    /**
+     * La pagina "Gestisci qualifiche" apre un socio per numero: deve accettare solo i soci
+     * del territorio dell'utente (altrimenti 404), con la stessa regola della ricerca,
+     * estensioni comprese.
+     */
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        $query = parent::getEloquentQuery();
+
+        if ($user = auth()->user()) {
+            \App\Services\QualificheSociQueryBuilder::limitaAlTerritorio($query, $user, includiEstensioni: true);
+        }
+
+        return $query;
     }
 
     public static function form(Schema $form): Schema

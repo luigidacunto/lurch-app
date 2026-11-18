@@ -63,7 +63,7 @@
 <div class="verifica-card">
     <div class="verifica-icon">✉️</div>
     <h1>Controlla la email</h1>
-    <p>Abbiamo inviato un codice di 6 cifre a<br><strong>{{ $email }}</strong></p>
+    <p>Se <strong>{{ $email }}</strong> è registrato tra i soci, ti abbiamo inviato un codice di 6 cifre.</p>
 
     @if ($errors->any())
         <div style="background:#b91c1c;color:#fff;border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:14px;font-weight:600;line-height:1.4;">
@@ -88,6 +88,7 @@
     </form>
 
     <p class="timer">Il codice scade tra <span id="countdown">15:00</span></p>
+    <p class="timer">Non arriva? Controlla lo spam, oppure torna al login e usa l'email con cui sei registrato.</p>
     <a href="{{ route('app.login') }}" class="back-link">← Torna al login</a>
 </div>
 @endsection
