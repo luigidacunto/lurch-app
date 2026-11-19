@@ -6,8 +6,8 @@ Il **test scritto** è a risposta multipla: ogni domanda ha 4 risposte e una sol
 
 Prepara il test chi gestisce l'esame (direttore, amministratori del territorio, superadmin), anche **prima di attivare l'esame**. Domande e punteggio si cambiano liberamente finché il test non è stato avviato a nessun discente.
 
-<!-- screenshot: route=/admin/esami/1/gestione/domande-test · v1.86.2 · 2026-11-19 · test già avviato; domande sostituite a video con domande d'esempio -->
-![Domande del test](../../immagini/esami/domande.png)
+<!-- screenshot: route=/admin/esami/1/gestione/domande-test · v1.86.2 · 2026-11-19 · stato «in bozza» ricostruito a video dal codice della pagina, riquadro dell'import aperto; domande d'esempio -->
+![Domande del test in preparazione](../../immagini/esami/domande-bozza.png)
 
 ## Punteggio e ordine
 
@@ -28,7 +28,7 @@ Il riquadro **Domande** elenca le domande con le 4 risposte; quella corretta è 
 
 ## Importare le domande da un file Word o PDF
 
-Se il test esiste già in un documento, non serve ricopiarlo a mano. Il riquadro **Importare le domande da un file Word o PDF** contiene un **prompt** da dare a un assistente di intelligenza artificiale insieme al file (domande, risposte e correttore); **Copia il prompt** lo copia negli appunti. L'assistente restituisce un testo in formato JSON.
+Se il test esiste già in un documento, non serve ricopiarlo a mano. Il riquadro **Importare le domande da un file Word o PDF**, chiuso all'apertura della pagina (si apre cliccando sul titolo), contiene un **prompt** da dare a un assistente di intelligenza artificiale insieme al file (domande, risposte e correttore); **Copia il prompt** lo copia negli appunti. L'assistente restituisce un testo in formato JSON.
 
 **Importa il test da JSON** carica quel testo, come file `.json` oppure incollato nella finestra:
 
@@ -39,4 +39,7 @@ Prima di avviare il test, controlla le domande importate con il correttore in ve
 
 ## Dopo l'avvio
 
-Appena il test viene avviato anche a un solo discente, domande e punteggio sono **congelati**: la pagina lo dice in alto e su ogni domanda resta solo **Correggi refusi**, che corregge il testo di domande e risposte ma non la risposta corretta. Import, aggiunta ed eliminazione non sono più possibili.
+Appena il test viene avviato anche a un solo discente, domande e punteggio sono **congelati**: la pagina lo dice in alto e su ogni domanda resta solo **Correggi refusi**, che corregge il testo di domande e risposte ma non la risposta corretta. Import, aggiunta ed eliminazione non sono più possibili e il riquadro dell'import sparisce.
+
+<!-- screenshot: route=/admin/esami/1/gestione/domande-test · v1.86.2 · 2026-11-19 · test già avviato; domande sostituite a video con domande d'esempio -->
+![Domande del test dopo l'avvio](../../immagini/esami/domande.png)
