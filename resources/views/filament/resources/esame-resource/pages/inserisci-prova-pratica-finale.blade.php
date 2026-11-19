@@ -72,7 +72,8 @@
                                         @foreach($s['scala'] as $chiave => $livello)
                                             <button type="button" title="{{ $livello['nome'] }}"
                                                     @click="v['{{ $voce['codice'] }}'] = '{{ $chiave }}'"
-                                                    :style="v['{{ $voce['codice'] }}'] === '{{ $chiave }}' ? 'background:{{ $colori[$chiave] }}; border-color:rgba(128,128,128,.8);' : ''"
+                                                    {{-- Sintassi a oggetto: una stringa in :style sostituirebbe lo stile fisso del pulsante --}}
+                                                    :style="v['{{ $voce['codice'] }}'] === '{{ $chiave }}' ? { background: '{{ $colori[$chiave] }}', borderColor: 'rgba(128,128,128,.8)' } : {}"
                                                     style="min-width:34px; padding:5px 8px; border:2px solid {{ $bordo }}; border-radius:8px; font-weight:800; cursor:pointer; background:transparent; color:inherit;">{{ $lettere[$chiave] ?? strtoupper(substr($chiave, 0, 1)) }}</button>
                                         @endforeach
                                     </td>

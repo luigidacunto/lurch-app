@@ -9,6 +9,7 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - docs: guida, avviso in apertura dell'indice e di ogni sezione — scritta con un agente di intelligenza artificiale (Claude Code di Anthropic, modello Claude Opus 5.5) sulle indicazioni dello sviluppatore e sull'analisi del codice, in attesa di revisione umana; le pagine revisionate lo indicano in apertura
 - fix: esami, Laboratori e gruppi — la voce «Copia i gruppi» del menu del laboratorio non esce più troncata
 - fix: esami, pagina Esito — il conteggio dei «non idonei» non include più i discenti incompleti e i non ammessi
+- fix: esami, scheda finale della prova pratica — i pulsanti R G V della colonna «Finale» mantengono bordo e dimensione
 
 ## 1.86.2 — 2026-11-19
 
