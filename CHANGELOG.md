@@ -8,6 +8,8 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 
 - docs: guida, nuova sezione «Esami» (anche nel pannello, menu Guida → Esami), divisa in parti comuni a ogni esame e un capitolo per ogni modello di valutazione (oggi TCRI); scritti «Come funziona» e «Preparazione» con le schermate. Le voci «Esami» di Pannello e App dei soci rimandano alla nuova sezione
 - feat: guida nel pannello, il titolo di un gruppo di pagine si può prendere dal README del gruppo (per le sigle maiuscole, come «Modello TCRI»)
+- docs: guida, avviso in apertura dell'indice e di ogni sezione — scritta con un agente di intelligenza artificiale (Claude Code di Anthropic, modello Claude Opus 5.5) sulle indicazioni dello sviluppatore e sull'analisi del codice, in attesa di revisione umana; le pagine revisionate lo indicano in apertura
+- fix: esami, Laboratori e gruppi — la voce «Copia i gruppi» del menu del laboratorio non esce più troncata
 
 ## 1.86.2 — 2026-11-19
 

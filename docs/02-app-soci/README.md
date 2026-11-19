@@ -2,6 +2,8 @@
 
 > **A chi serve:** volontari iscritti a un corso o in staff a un evento; agli organizzatori, per sapere cosa vedono i soci.
 
+> **Come è stata scritta.** Questa guida è stata scritta interamente con l'ausilio di un agente di intelligenza artificiale, Claude Code di Anthropic con il modello Claude Opus 5.5, in base alle indicazioni dello sviluppatore e all'analisi diretta del codice. Il contenuto è verificato sul funzionamento reale del programma, ma finché non sarà revisionato da una persona alcuni passaggi potrebbero mancare e le motivazioni di alcune scelte potrebbero non essere spiegate con precisione. Le pagine già revisionate lo indicano in apertura con la riga «Pagina revisionata» e la data.
+
 L'app dei soci è la parte di L.U.R.C.H. pensata per il telefono. Si apre dal browser all'indirizzo del sito seguito da `/app` e si può installare come un'app vera e propria. Non serve una password: si entra con un codice che arriva per email.
 
 Nell'app ogni socio trova **solo ciò che lo riguarda**: gli eventi a cui è iscritto come corsista o in cui è nello staff, con le informazioni pubblicate dagli organizzatori, i propri form di preregistrazione e i messaggi lasciati sul suo badge. Tutto ciò che compare nell'app viene dal pannello: le informazioni e i documenti dalla scheda dell'evento, i form dalle iscrizioni ai corsi e allo staff.

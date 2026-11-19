@@ -27,7 +27,7 @@
                             </x-slot>
                             <x-filament::dropdown.list>
                                 <x-filament::dropdown.list.item icon="heroicon-o-document-duplicate" color="info" tag="button" type="button"
-                                    wire:click="mountAction('copiaGruppi', { laboratorio_id: {{ $lab->id }} })">Copia i gruppi da un altro laboratorio</x-filament::dropdown.list.item>
+                                    wire:click="mountAction('copiaGruppi', { laboratorio_id: {{ $lab->id }} })">Copia i gruppi</x-filament::dropdown.list.item>
                                 <x-filament::dropdown.list.item icon="heroicon-o-trash" color="danger" tag="button" type="button"
                                     :disabled="$motivo !== null" :tooltip="$motivo"
                                     wire:click="mountAction('eliminaLaboratorio', { laboratorio_id: {{ $lab->id }} })">Elimina laboratorio</x-filament::dropdown.list.item>
