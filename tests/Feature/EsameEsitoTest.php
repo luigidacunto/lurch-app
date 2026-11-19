@@ -122,6 +122,15 @@ class EsameEsitoTest extends EsameChiusuraBase
             ->assertDontSee('PROVVISORIO');
     }
 
+    public function test_conteggio_non_idonei_esclude_gli_incompleti(): void
+    {
+        $this->discenteCompleto('x');   // idoneo
+        $this->finali('y');             // senza test: incompleto, idoneo = null
+        $dati = $this->pagina(EsameResource\Pages\EsitoEsame::class, 'direttore')->instance()->dati();
+
+        $this->assertSame([1, 0, 1], [$dati['idonei'], $dati['nonIdonei'], $dati['incompleti']]);
+    }
+
     // ---- chiusura e riapertura dal pannello ------------------------------------------------------
 
     public function test_il_direttore_chiude_dal_pannello_ma_il_superadmin_no(): void

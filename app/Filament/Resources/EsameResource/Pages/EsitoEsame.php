@@ -71,8 +71,9 @@ class EsitoEsame extends Page
         return [
             'righe' => $righe,
             'chiuso' => $esame->isChiuso(),
-            'idonei' => collect($righe)->where('idoneo', true)->count(),
-            'nonIdonei' => collect($righe)->where('idoneo', false)->count(),
+            // Confronto stretto: idoneo = null (incompleto, non ammesso) non conta come non idoneo
+            'idonei' => collect($righe)->whereStrict('idoneo', true)->count(),
+            'nonIdonei' => collect($righe)->whereStrict('idoneo', false)->count(),
             'incompleti' => collect($righe)->where('stato', 'incompleto')->count(),
             'nonAmmessi' => collect($righe)->where('stato', 'non_ammesso')->count(),
             'vedeChiudi' => $esame->stato === Esame::STATO_IN_CORSO && EsameResource::canEdit($esame),
