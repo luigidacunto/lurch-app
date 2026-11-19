@@ -37,6 +37,7 @@ Nella proposta del direttore contano solo le schede **inviate**.
 - Le voci sono **già scelte secondo la proposta**; accanto, le risposte di ogni commissario. Senza schede inviate si scelgono tutte a mano.
 - Si cambia una voce toccando **R**, **G** o **V** nella colonna **Finale**. **Ripristina la proposta** riporta tutte le voci alla proposta.
 - **Salva scheda finale** si attiva con tutte le 28 voci scelte: una scheda finale a metà non si salva. Non serve una motivazione.
+- Una scheda personale si invia solo completa, quindi con almeno una scheda inviata la proposta copre già tutte le 28 voci: per accettarla basta controllarla e premere **Salva scheda finale**.
 - Si modifica fino alla chiusura con **Modifica prova pratica finale**; **Annulla** torna alla pagina senza salvare.
 
 ## Il riepilogo nell'app
