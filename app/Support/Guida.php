@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use App\Filament\Pages\Guida\GuidaAppSoci;
+use App\Filament\Pages\Guida\GuidaEsami;
 use App\Filament\Pages\Guida\GuidaModuliPubblici;
 use App\Filament\Pages\Guida\GuidaPannello;
 use Illuminate\Support\Str;
@@ -33,6 +34,7 @@ class Guida
         '01-pannello'        => GuidaPannello::class,
         '02-app-soci'        => GuidaAppSoci::class,
         '03-moduli-pubblici' => GuidaModuliPubblici::class,
+        '04-esami'           => GuidaEsami::class,
     ];
 
     public static function radice(): string
@@ -61,9 +63,11 @@ class Guida
         }
 
         foreach (glob($cartella . '/[0-9][0-9]-*', GLOB_ONLYDIR) ?: [] as $gruppo) {
-            $nome = basename($gruppo);
+            $nome   = basename($gruppo);
+            $readme = $gruppo . '/README.md';
             $blocchi[] = [
-                'titolo' => Str::ucfirst(str_replace('-', ' ', substr($nome, 3))),
+                // README del gruppo, se c'è, per titoli che il nome della cartella non può scrivere (sigle maiuscole)
+                'titolo' => is_file($readme) ? static::titolo(file_get_contents($readme), $readme) : Str::ucfirst(str_replace('-', ' ', substr($nome, 3))),
                 'pagine' => static::pagineIn($gruppo, $nome . '/'),
             ];
         }

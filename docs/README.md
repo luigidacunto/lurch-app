@@ -1,6 +1,6 @@
 # Guida di LURCH
 
-Guida completa all'uso di LURCH, divisa per chi la legge. Le sezioni Pannello di gestione, App dei soci e Moduli pubblici si leggono anche nel pannello, alla voce di menu **Guida**; Installazione solo qui.
+Guida completa all'uso di LURCH, divisa per chi la legge. Le sezioni Pannello di gestione, App dei soci, Moduli pubblici ed Esami si leggono anche nel pannello, alla voce di menu **Guida**; Installazione solo qui.
 
 > 🚧 La guida è in fase di scrittura: le pagine segnate «In preparazione» arriveranno nelle prossime versioni.
 
@@ -21,3 +21,7 @@ Per i volontari che usano l'app `/app`: accesso con codice, eventi, moduli, mess
 ## [Moduli pubblici](03-moduli-pubblici/README.md)
 
 Per chi si iscrive, si candida o arriva a un evento: preregistrazioni, candidature, verifica email, badge e check-in, privacy.
+
+## [Esami](04-esami/README.md)
+
+Per direttori dei corsi, commissioni, docenti e discenti: come funziona un esame, preparazione, svolgimento e chiusura, tra pannello e app; un capitolo per ogni modello d'esame (oggi TCRI).

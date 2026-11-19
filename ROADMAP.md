@@ -25,6 +25,7 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 - Avvisi non bloccanti per i discenti non assegnati a nessun gruppo.
 - Statistiche dell'esame per il direttore.
 - Esami per altri corsi oltre al TCRI: per ogni tipo di corso il proprio metodo (quali prove, come si calcola), con versioni che possono cambiare anche la struttura; prove comuni a più corsi riusate (per esempio il test scritto, già indipendente dal TCRI) e un archivio di domande condiviso tra esami dello stesso corso.
+- Varianti regionali del modello d'esame: la struttura di base resta nazionale (prove e pesi uguali per tutti), mentre ogni regione può avere le proprie versioni di voci, metriche, valori minimi e massimi e modalità. Alla creazione dell'esame si propone l'ultima versione della regione del corso, oppure il modello nazionale se la regione non ne ha uno proprio.
 - Consultazione in sola lettura dei dati già scritti per i discenti poi non ammessi.
 - Blocco delle modifiche lato corso (iscrizioni, ritiri, import GAIA, docenti) a esame chiuso.
 

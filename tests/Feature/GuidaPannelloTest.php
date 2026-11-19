@@ -29,6 +29,9 @@ class GuidaPannelloTest extends TestCase
         $this->assertSame('Primi passi', $indice[0]['titolo']);
         $this->assertSame('01-primi-passi/01-accesso', $indice[0]['pagine'][0]['percorso']);
         $this->assertSame('Gestione operativa', $indice[1]['titolo']);
+
+        // titolo del gruppo dal suo README, se c'è (sigle maiuscole)
+        $this->assertSame('Modello TCRI', collect(Guida::indice('04-esami'))->last()['titolo']);
     }
 
     public function test_percorsi_non_validi_non_escono_dalla_cartella(): void
