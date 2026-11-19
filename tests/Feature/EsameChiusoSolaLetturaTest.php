@@ -40,6 +40,8 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
         'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo', 'nuovoTutoraggio', 'modificaTutoraggio', 'eliminaTutoraggio',
     ];
     private const AZIONI_SOLA_LETTURA = ['csv', 'modifica', 'proiezione'];
+    /** Scrivono solo la visibilità dei risultati del test (test_pubblicazioni, fuori da TABELLE): permesse anche a esame chiuso. */
+    private const AZIONI_VISIBILITA = ['pubblicaTutti', 'pubblicaSelezionati', 'pubblicaUno', 'ritiraUno', 'ritiraTutti'];
 
     protected function setUp(): void
     {
@@ -243,7 +245,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
     /** Ogni Action definita nelle pagine dell'esame deve essere classificata: una nuova obbliga a decidere se scrive. */
     public function test_copertura_ogni_azione_delle_pagine_e_classificata(): void
     {
-        $noti = array_merge(self::AZIONI_SCRIVONO, self::AZIONI_SOLA_LETTURA);
+        $noti = array_merge(self::AZIONI_SCRIVONO, self::AZIONI_SOLA_LETTURA, self::AZIONI_VISIBILITA);
         $trovate = [];
         foreach (glob(base_path('app/Filament/Resources/EsameResource/Pages/*.php')) as $file) {
             preg_match_all("/Action::make\('([A-Za-z]+)'\)/", file_get_contents($file), $m);
@@ -255,6 +257,17 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
         foreach ($trovate as $nome => $file) {
             $this->assertContains($nome, $noti, "Action '{$nome}' (".implode(', ', $file).") non classificata nel tripwire: aggiungila a AZIONI_SCRIVONO (e provala) o AZIONI_SOLA_LETTURA");
         }
+    }
+
+    /** A esame chiuso il direttore pubblica e ritira i risultati dello scritto senza toccare nessuna tabella delle valutazioni. */
+    public function test_la_pubblicazione_dei_risultati_funziona_ad_esame_chiuso_senza_toccare_le_valutazioni(): void
+    {
+        $prima = $this->impronta();
+        $this->assertSame(2, \App\Esami\PubblicazioneTest::pubblica($this->esame, $this->u['direttore']));
+        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Risultato del test scritto');
+        $this->assertSame(2, \App\Esami\PubblicazioneTest::ritira($this->esame, $this->u['direttore']));
+        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertDontSee('Risultato del test scritto');
+        $this->uguale($prima, 'pubblicazione');
     }
 
     // ---- 4. la lettura resta possibile -----------------------------------------------------------

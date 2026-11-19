@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\EsameResource\Pages;
 
 use App\Esami\AvvioTest;
+use App\Esami\PubblicazioneTest;
 use App\Esami\TestScritto;
 use App\Filament\Resources\EsameResource;
 use App\Filament\Resources\EsameResource\Concerns\EseguiAzioneTest;
@@ -32,6 +33,9 @@ class TestScrittoEsame extends Page
 
     /** Discenti spuntati per «Avvia per i selezionati». */
     public array $selezionati = [];
+
+    /** Discenti (con test inviato) spuntati per «Pubblica per i selezionati». */
+    public array $selezionatiPubblica = [];
 
     /** Risposte di un test inviato aperte con «Vedi risposte» (discente => [domanda => opzione]), lette solo al clic. */
     public array $dettagli = [];
@@ -84,6 +88,7 @@ class TestScrittoEsame extends Page
             'motivoAvvio'    => $this->motivoAvvio(),
             'motivoGestione' => $this->motivoGestione(),
             'motivoBozza'    => AvvioTest::motivoNonRiportabileInBozza($esame, $utente),
+            'motivoPubblica' => PubblicazioneTest::motivoNonPubblicabile($esame, $utente),
         ];
     }
 
@@ -214,6 +219,98 @@ class TestScrittoEsame extends Page
             ->closeModalByEscaping(false)
             ->action(function (Action $action) {
                 $this->esegui($action, fn () => AvvioTest::riportaInBozza($this->record, auth()->user()), 'Test riportato in bozza.');
+            });
+    }
+
+    // ---- Pubblicazione dei risultati ai discenti (solo il direttore, anche a esame chiuso) ----
+
+    private const AVVISO_PUBBLICA = 'Il discente vedrà nella app il punteggio, le domande sbagliate e le risposte corrette. Attenzione: chi vede le correzioni può passarle a chi deve ancora svolgere il test. Puoi ritirare la pubblicazione in qualsiasi momento.';
+
+    public function pubblicaTuttiAction(): Action
+    {
+        return Action::make('pubblicaTutti')
+            ->label('Pubblica per tutti')
+            ->color('success')
+            ->requiresConfirmation()
+            ->modalHeading('Pubblica i risultati a tutti i discenti che hanno inviato')
+            ->modalDescription(self::AVVISO_PUBBLICA)
+            ->modalSubmitActionLabel('Pubblica')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (Action $action) {
+                $this->esegui($action, fn () => PubblicazioneTest::pubblica($this->record, auth()->user()), 'Risultati pubblicati.');
+            });
+    }
+
+    public function pubblicaSelezionatiAction(): Action
+    {
+        return Action::make('pubblicaSelezionati')
+            ->label('Pubblica per i selezionati')
+            ->color('success')
+            ->requiresConfirmation()
+            ->modalHeading('Pubblica i risultati ai discenti selezionati')
+            ->modalDescription(self::AVVISO_PUBBLICA)
+            ->modalSubmitActionLabel('Pubblica')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (Action $action) {
+                $ids = array_map('intval', $this->selezionatiPubblica);
+                if ($ids === []) {
+                    Notification::make()->title('Seleziona almeno un discente.')->warning()->send();
+                    $action->halt();
+
+                    return;
+                }
+                $this->esegui($action, fn () => PubblicazioneTest::pubblica($this->record, auth()->user(), $ids), 'Risultati pubblicati ai discenti selezionati.');
+                $this->selezionatiPubblica = [];
+            });
+    }
+
+    public function pubblicaUnoAction(): Action
+    {
+        return Action::make('pubblicaUno')
+            ->label('Pubblica')
+            ->color('success')
+            ->requiresConfirmation()
+            ->modalHeading(fn (array $arguments) => 'Pubblica i risultati — ' . ($arguments['discente_nome'] ?? ''))
+            ->modalDescription(self::AVVISO_PUBBLICA)
+            ->modalSubmitActionLabel('Pubblica')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (array $arguments, Action $action) {
+                $this->esegui($action, fn () => PubblicazioneTest::pubblica($this->record, auth()->user(), [(int) $arguments['discente_id']]), 'Risultati pubblicati.');
+            });
+    }
+
+    public function ritiraUnoAction(): Action
+    {
+        return Action::make('ritiraUno')
+            ->label('Ritira')
+            ->color('danger')
+            ->requiresConfirmation()
+            ->modalHeading(fn (array $arguments) => 'Ritira i risultati — ' . ($arguments['discente_nome'] ?? ''))
+            ->modalDescription('Il discente torna a vedere solo le proprie risposte, senza punteggio né correzioni.')
+            ->modalSubmitActionLabel('Ritira')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (array $arguments, Action $action) {
+                $this->esegui($action, fn () => PubblicazioneTest::ritira($this->record, auth()->user(), [(int) $arguments['discente_id']]), 'Pubblicazione ritirata.');
+            });
+    }
+
+    public function ritiraTuttiAction(): Action
+    {
+        return Action::make('ritiraTutti')
+            ->label('Ritira per tutti')
+            ->color('danger')
+            ->requiresConfirmation()
+            ->modalHeading('Ritira i risultati a tutti i discenti')
+            ->modalDescription('Tutti i discenti tornano a vedere solo le proprie risposte, senza punteggio né correzioni.')
+            ->modalSubmitActionLabel('Ritira per tutti')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (Action $action) {
+                $this->esegui($action, fn () => PubblicazioneTest::ritira($this->record, auth()->user()), 'Pubblicazione ritirata per tutti.');
             });
     }
 

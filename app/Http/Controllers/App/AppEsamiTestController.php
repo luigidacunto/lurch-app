@@ -15,26 +15,38 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * Test scritto in PWA, lato DISCENTE. Si entra solo col test avviato online per quel discente
- * (PermessiEsame::vedeTestComeDiscente): in tutti gli altri casi 404, non 403.
+ * Test scritto in PWA, lato DISCENTE. Si compila solo col test avviato online per quel discente
+ * (PermessiEsame::vedeTestComeDiscente); dopo l'invio (anche cartaceo inserito dal direttore) lo si rivede in sola
+ * lettura (vedeTestInviatoComeDiscente). In tutti gli altri casi 404, non 403.
  *
  * ⚠️ Al client arrivano SOLO id, testo e opzioni delle domande (TestScritto::domandePerDiscente), le risposte che il
- * discente ha già scelto e un contatore «date su totale». Mai la risposta corretta, mai il punteggio, nemmeno dopo l'invio.
+ * discente ha scelto e un contatore «date su totale». Mai la risposta corretta né il punteggio, finché il direttore
+ * non gli pubblica i risultati (vedeRisultatiTest → TestScritto::correzionePerDiscente, solo nella sola lettura).
  * Salvataggio a ogni tocco, invio finale; token dell'attivazione su ogni richiesta (409 se nel frattempo il
  * direttore ha disattivato/riattivato). Pagine con Cache-Control: no-store.
  */
 class AppEsamiTestController extends Controller
 {
-    /** Il modulo, oppure «Test inviato» se ha già inviato. */
+    /** Il modulo, oppure il test inviato in sola lettura (con le correzioni solo se pubblicate). */
     public function mostra(Esame $esame)
     {
-        $permessi = $this->permessi($esame);
         $socioId = SocioCorrente::id();
-        $consegna = TestScritto::consegna($esame, $socioId);
+        $permessi = PermessiEsame::per($esame, $socioId);
+        $consegna = $socioId ? TestScritto::consegna($esame, $socioId) : null;
 
         if ($consegna?->eInviata()) {
-            return $this->senzaCache(response()->view('app.esame-test-inviato', ['esame' => $esame]));
+            abort_unless($permessi->vedeTestInviatoComeDiscente(), 404);
+
+            return $this->senzaCache(response()->view('app.esame-test-inviato', [
+                'esame'      => $esame,
+                'domande'    => TestScritto::domandePerDiscente($esame),
+                'scelte'     => TestScritto::risposteDi($esame, $consegna),
+                'cartaceo'   => $consegna->origine === TestConsegna::ORIGINE_CARTACEO,
+                'correzione' => $permessi->vedeRisultatiTest() ? TestScritto::correzionePerDiscente($esame, $consegna) : null,
+            ]));
         }
+
+        $permessi = $this->permessi($esame);
 
         $config = TestScritto::configurazione($esame);
         $domande = TestScritto::domandePerDiscente($esame, $config['mescola']);

@@ -220,7 +220,10 @@ class Esame extends Model
                     ->orWhereHas('docenti', fn ($d) => $d->where('soci.id', $socioId)))
                     ->orWhereHas('docentiCommissione', fn ($d) => $d->where('socio_id', $socioId))
                     ->orWhere(fn (Builder $d) => $d
-                        ->whereHas('testAvvii', fn ($a) => $a->where('discente_socio_id', $socioId)->whereNotNull('avviato_il')->where('modalita', TestAvvio::ONLINE))
+                        ->where(fn (Builder $t) => $t
+                            ->whereHas('testAvvii', fn ($a) => $a->where('discente_socio_id', $socioId)->whereNotNull('avviato_il')->where('modalita', TestAvvio::ONLINE))
+                            // test inviato (anche cartaceo): il discente lo rivede in sola lettura
+                            ->orWhereHas('testConsegne', fn ($c) => $c->where('discente_socio_id', $socioId)->whereNotNull('consegnato_il')))
                         ->whereHas('discentiAmmessi', fn ($i) => $i->where('iscrizioni.partecipante_id', $socioId)));
             });
     }
@@ -241,6 +244,7 @@ class Esame extends Model
             || $this->testDomande()->exists()
             || $this->testAvvii()->exists()
             || $this->testConsegne()->exists()
+            || $this->testPubblicazioni()->exists()
             || $this->esiti()->exists();
     }
 
@@ -448,6 +452,11 @@ class Esame extends Model
     public function testAvvii(): HasMany
     {
         return $this->hasMany(TestAvvio::class);
+    }
+
+    public function testPubblicazioni(): HasMany
+    {
+        return $this->hasMany(TestPubblicazione::class);
     }
 
     // ---- Test scritto: stato derivato e regole del pannello ----

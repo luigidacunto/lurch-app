@@ -2,8 +2,33 @@
 
 @section('title', 'Test inviato')
 
+@php
+    $lettere = ['A', 'B', 'C', 'D'];
+    $corrette = $correzione['corrette'] ?? null;
+@endphp
+
 @push('styles')
 @include('app.partials.esami-stili')
+<style>
+    .box { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .risultato { font-size: 22px; font-weight: 800; color: #111827; }
+    .nota { font-size: 13px; color: #6b7280; line-height: 1.4; }
+    .domanda { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+    .domanda-num { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .esito-ok { color: #15803d; }
+    .esito-no { color: #b91c1c; }
+    .domanda-testo { font-size: 16px; font-weight: 600; color: #111827; line-height: 1.4; overflow-wrap: anywhere; white-space: pre-wrap; margin-bottom: 10px; }
+    .opzione { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; margin-bottom: 8px; border-radius: 10px; border: 2px solid #e5e7eb; background: #fff; font-size: 15px; color: #1f2937; }
+    .opzione .lettera { flex: none; width: 26px; height: 26px; border-radius: 50%; background: #f3f4f6; color: #4b5563; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .opzione .testo { overflow-wrap: anywhere; white-space: pre-wrap; line-height: 1.35; padding-top: 3px; flex: 1; }
+    .opzione .tag { flex: none; font-size: 11px; font-weight: 700; padding-top: 5px; }
+    .opzione.data { border-color: #1d4ed8; background: #eff6ff; }
+    .opzione.data .lettera { background: #1d4ed8; color: #fff; }
+    .opzione.giusta { border-color: #15803d; background: #dcfce7; }
+    .opzione.giusta .lettera { background: #15803d; color: #fff; }
+    .opzione.sbagliata { border-color: #b91c1c; background: #fef2f2; }
+    .opzione.sbagliata .lettera { background: #b91c1c; color: #fff; }
+</style>
 @endpush
 
 @section('content')
@@ -12,6 +37,53 @@
     I tuoi esami
 </a>
 <p class="page-title">Test inviato</p>
-<p class="page-sub">{{ $esame->titolo }}</p>
-<div class="vuoto">Hai concluso il test scritto. Le tue risposte sono state registrate e non si possono più modificare.</div>
+<p class="page-sub">{{ $esame->titolo }} · sola lettura</p>
+
+@if($correzione)
+    <div class="box">
+        <div class="nota">Risultato del test scritto</div>
+        <div class="risultato">{{ $correzione['punteggio'] }}</div>
+        <div class="nota">Risposte giuste: {{ $correzione['giuste'] }} su {{ $correzione['totale'] }}. In verde la risposta corretta, in rosso la tua se era sbagliata.</div>
+    </div>
+@else
+    <div class="vuoto">Hai concluso il test scritto: le tue risposte sono registrate e non si possono più modificare. Le correzioni compariranno qui quando il direttore del corso pubblicherà i risultati.</div>
+@endif
+
+@if($cartaceo)
+    <div class="avviso-personale">Test svolto su carta: le risposte sono quelle inserite dal direttore. Se noti un errore di trascrizione, segnalalo al direttore del corso.</div>
+@endif
+
+@foreach($domande as $i => $d)
+    @php
+        $data = $scelte[$d['id']] ?? null;
+        $giusta = $corrette[$d['id']] ?? null;
+    @endphp
+    <div class="domanda">
+        <div class="domanda-num">
+            <span>Domanda {{ $i + 1 }} di {{ count($domande) }}</span>
+            @if($corrette !== null)
+                @if($data === null)<span class="esito-no">Non data</span>
+                @elseif($data === $giusta)<span class="esito-ok">✓ Giusta</span>
+                @else<span class="esito-no">✗ Sbagliata</span>@endif
+            @elseif($data === null)
+                <span>Non data</span>
+            @endif
+        </div>
+        <div class="domanda-testo">{{ $d['testo'] }}</div>
+        @foreach($d['opzioni'] as $k => $testo)
+            @php
+                $classe = match (true) {
+                    $corrette !== null && $k === $giusta => 'giusta',
+                    $corrette !== null && $k === $data => 'sbagliata',
+                    $k === $data => 'data',
+                    default => '',
+                };
+            @endphp
+            <div class="opzione {{ $classe }}">
+                <span class="lettera">{{ $lettere[$k] ?? $k + 1 }}</span><span class="testo">{{ $testo }}</span>
+                @if($k === $data)<span class="tag">La tua</span>@endif
+            </div>
+        @endforeach
+    </div>
+@endforeach
 @endsection

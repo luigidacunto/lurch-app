@@ -93,12 +93,17 @@ class EsameTestScrittoLeakTest extends EsameTestScrittoBase
         $dopo = $this->normalizza($this->come('x')->get(route('app.esame.test', $this->esame))->getContent(), $token('x'));
         $this->assertSame($prima, $dopo);
 
-        // test inviato con risposte diverse → stessa pagina (nessun punteggio, nessun conteggio di giuste)
+        // test inviato e risultati NON pubblicati: la sola lettura mostra le proprie risposte ma non dipende dalle corrette
+        // (nessun punteggio, nessun segno di giusta/sbagliata). Pubblicazione: EsameTestScrittoPubblicazioneTest.
         $this->compilaTutto('x', [0, 0, 0, 0, 0]);
         $this->compilaTutto('y', [1, 0, 3, 2, 1]);
-        $a = $this->come('x')->get(route('app.esame.test', $this->esame))->getContent();
-        $b = $this->come('y')->get(route('app.esame.test', $this->esame))->getContent();
-        $this->assertSame($this->normalizza($a, 'x'), $this->normalizza($b, 'x'));
+        foreach (['x', 'y'] as $k) {
+            $prima = $this->normalizza($this->come($k)->get(route('app.esame.test', $this->esame))->getContent(), 'x');
+            TestDomanda::query()->update(['corretta' => 0]);
+            $dopo = $this->normalizza($this->come($k)->get(route('app.esame.test', $this->esame))->getContent(), 'x');
+            TestDomanda::query()->update(['corretta' => 2]);
+            $this->assertSame($prima, $dopo, "test inviato di {$k}: la pagina dipende dalle corrette");
+        }
     }
 
     private function compilaTutto(string $k, array $opzioni): void

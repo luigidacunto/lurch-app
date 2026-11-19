@@ -9,6 +9,7 @@
         $etichettaStato = ['bozza' => 'In bozza', 'avviato' => 'Avviato', 'con_consegne' => 'Con test inviati'][$d['stato']];
         $nAttivi = collect($d['righe'])->whereIn('stato', ['avviato', 'in_compilazione', 'inviato'])->count();
         $nInviati = collect($d['righe'])->where('stato', 'inviato')->count();
+        $nPubblicati = collect($d['righe'])->filter(fn ($r) => $r['pubblicato'] !== null)->count();
         $statoRiga = ['non_avviato' => 'Non avviato', 'disattivato' => 'Disattivato', 'avviato' => 'Avviato', 'in_compilazione' => 'In compilazione', 'inviato' => 'Inviato'];
     @endphp
 
@@ -49,8 +50,26 @@
                     Avvia per i selezionati ({{ count($selezionati) }})
                 </x-filament::button>
             </div>
+            @if($nInviati > 0)
+                {{-- Pubblicazione dei risultati: per discente, come l'avvio; anche a esame chiuso --}}
+                <div style="border:1px solid {{ $bordo }}; border-radius:8px; padding:8px 12px; margin-bottom:10px; font-size:13px;">
+                    <strong>Risultati ai discenti</strong> · pubblicati a {{ $nPubblicati }} su {{ $nInviati }} che hanno inviato.
+                    Chi riceve la pubblicazione vede nella app punteggio, domande sbagliate e risposte corrette; chi le vede può passarle a chi deve ancora svolgere il test.
+                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+                        <x-filament::button size="sm" color="success" type="button" :disabled="$d['motivoPubblica'] !== null || $nPubblicati === $nInviati"
+                            :tooltip="$d['motivoPubblica'] ?? ($nPubblicati === $nInviati ? 'Già pubblicati a tutti quelli che hanno inviato.' : null)" wire:click="mountAction('pubblicaTutti')">Pubblica per tutti</x-filament::button>
+                        <x-filament::button size="sm" color="success" type="button" :disabled="$d['motivoPubblica'] !== null || count($selezionatiPubblica) === 0"
+                            :tooltip="$d['motivoPubblica'] ?? (count($selezionatiPubblica) === 0 ? 'Spunta almeno un discente con il test inviato.' : null)" wire:click="mountAction('pubblicaSelezionati')">
+                            Pubblica per i selezionati ({{ count($selezionatiPubblica) }})
+                        </x-filament::button>
+                        @if($nPubblicati > 0)
+                            <x-filament::button size="sm" color="danger" type="button" :disabled="$d['motivoPubblica'] !== null" :tooltip="$d['motivoPubblica']" wire:click="mountAction('ritiraTutti')">Ritira per tutti</x-filament::button>
+                        @endif
+                    </div>
+                </div>
+            @endif
         @else
-            <p style="margin:0 0 10px; font-size:13px;">Solo il direttore del corso avvia il test; tu lo leggi in sola lettura.</p>
+            <p style="margin:0 0 10px; font-size:13px;">Solo il direttore del corso avvia il test e ne pubblica i risultati; tu lo leggi in sola lettura.</p>
         @endif
 
         @forelse($d['righe'] as $r)
@@ -65,6 +84,8 @@
                     <div style="display:flex; gap:8px; align-items:center; flex:1 1 220px;">
                         @if($d['eDirettore'] && $avviabile)
                             <input type="checkbox" value="{{ $r['socio']->id }}" wire:model.live="selezionati" aria-label="Seleziona {{ $nome }}">
+                        @elseif($d['eDirettore'] && $st === 'inviato' && $r['pubblicato'] === null && $d['motivoPubblica'] === null)
+                            <input type="checkbox" value="{{ $r['socio']->id }}" wire:model.live="selezionatiPubblica" aria-label="Seleziona {{ $nome }} per la pubblicazione">
                         @endif
                         <span style="font-weight:600; overflow-wrap:anywhere;">{{ $nome }}</span>
                     </div>
@@ -73,6 +94,7 @@
                         @if($r['modalita'] === 'cartaceo') · <strong>cartaceo</strong>@endif
                         @if($st === 'in_compilazione' || ($st === 'disattivato' && $r['date'] > 0)) · {{ $r['date'] }} su {{ $r['totale'] }} risposte salvate @endif
                         @if($r['punteggio']) · <strong style="font-size:15px;">{{ $r['punteggio'] }}</strong> @endif
+                        @if($r['pubblicato']) · <span title="Pubblicati il {{ $r['pubblicato']->format('d/m/Y H:i') }}">risultati pubblicati</span> @endif
                     </div>
                 </div>
                 @if($r['modalita'] === 'cartaceo' && $r['motivo'])
@@ -98,6 +120,13 @@
                     @endif
                     @if($st === 'inviato')
                         <x-filament::button size="xs" color="info" type="button" wire:click="apriDettaglio({{ $r['socio']->id }})">{{ isset($dettagli[$r['socio']->id]) ? 'Nascondi risposte' : 'Vedi risposte' }}</x-filament::button>
+                        @if($d['eDirettore'])
+                            @if($r['pubblicato'] === null)
+                                <x-filament::button size="xs" color="success" type="button" :disabled="$d['motivoPubblica'] !== null" :tooltip="$d['motivoPubblica']" wire:click="mountAction('pubblicaUno', {{ $argomenti }})">Pubblica i risultati</x-filament::button>
+                            @else
+                                <x-filament::button size="xs" color="danger" type="button" :disabled="$d['motivoPubblica'] !== null" :tooltip="$d['motivoPubblica']" wire:click="mountAction('ritiraUno', {{ $argomenti }})">Ritira i risultati</x-filament::button>
+                            @endif
+                        @endif
                     @endif
                 </div>
 

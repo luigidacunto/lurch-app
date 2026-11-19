@@ -23,7 +23,8 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 
 ### Esami
 - Avvisi non bloccanti per i discenti non assegnati a nessun gruppo.
-- Esiti visibili ai discenti dopo la chiusura dell'esame e statistiche per il direttore.
+- Esito finale dell'esame visibile ai discenti dopo la chiusura (il risultato del test scritto c'è già, quando il direttore lo pubblica) e statistiche per il direttore.
+- Esami per altri corsi oltre al TCRI: per ogni tipo di corso il proprio metodo (quali prove, come si calcola), con versioni che possono cambiare anche la struttura; prove comuni a più corsi riusate (per esempio il test scritto, già indipendente dal TCRI) e un archivio di domande condiviso tra esami dello stesso corso.
 - Consultazione in sola lettura dei dati già scritti per i discenti poi non ammessi.
 - Blocco delle modifiche lato corso (iscrizioni, ritiri, import GAIA, docenti) a esame chiuso.
 

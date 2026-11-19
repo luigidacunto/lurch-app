@@ -36,8 +36,8 @@ class AppEsamiController extends Controller
         $socioId = SocioCorrente::id();
         $permessi = PermessiEsame::per($esame, $socioId);
         if (! $permessi->vedeEsame()) {
-            // Il discente con il test avviato ha solo la pagina del test: mai le schede.
-            abort_unless($permessi->vedeTestComeDiscente(), 404);
+            // Il discente con il test avviato o inviato ha solo la pagina del test: mai le schede.
+            abort_unless($permessi->vedeTestComeDiscente() || $permessi->vedeTestInviatoComeDiscente(), 404);
 
             return redirect()->route('app.esame.test', $esame);
         }

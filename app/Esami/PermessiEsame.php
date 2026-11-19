@@ -128,10 +128,33 @@ class PermessiEsame
             && $this->avvioAttivo() !== null;
     }
 
-    /** L'esame compare nella PWA: il personale (vedeEsame) oppure il discente avviato. Gemello SQL: Esame::scopeVisibiliAlSocio. */
+    /**
+     * Discente AMMESSO che ha INVIATO il test (online, o cartaceo inserito dal direttore), a esame non in bozza: rivede le
+     * proprie risposte in sola lettura. Le corrette e il punteggio solo con vedeRisultatiTest().
+     */
+    public function vedeTestInviatoComeDiscente(): bool
+    {
+        return $this->socioId !== null
+            && ! $this->esame->isBozza()
+            && $this->eDiscente()
+            && $this->esame->discentiAmmessi()->where('iscrizioni.partecipante_id', $this->socioId)->exists()
+            && $this->esame->testConsegne()->where('discente_socio_id', $this->socioId)->whereNotNull('consegnato_il')->exists();
+    }
+
+    /** Il direttore ha pubblicato i risultati a questo discente: punteggio e correzioni nella app. */
+    public function vedeRisultatiTest(): bool
+    {
+        return $this->vedeTestInviatoComeDiscente()
+            && $this->esame->testPubblicazioni()->where('discente_socio_id', $this->socioId)->whereNotNull('pubblicato_il')->exists();
+    }
+
+    /**
+     * L'esame compare nella PWA: il personale (vedeEsame), il discente avviato o quello che ha inviato il test.
+     * Gemello SQL: Esame::scopeVisibiliAlSocio.
+     */
     public function vedeEsameInPwa(): bool
     {
-        return $this->vedeEsame() || $this->vedeTestComeDiscente();
+        return $this->vedeEsame() || $this->vedeTestComeDiscente() || $this->vedeTestInviatoComeDiscente();
     }
 
     /** Domande con le risposte corrette e risultati del test scritto, in PWA: solo la commissione. Docenti non in commissione: no. */

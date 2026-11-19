@@ -16,7 +16,8 @@ use App\Models\TestRisposta;
  * (puro, esatto); qui si costruisce il suo input dalla configurazione dell'esame (3 valori uguali per tutte le domande)
  * e dalle consegne. Nessun punteggio è salvato: si ricalcola (domande e configurazione sono congelate dal primo avvio).
  *
- * ⚠️ Verso il discente passa SOLO domandePerDiscente(): niente `corretta`, niente punteggio, mai.
+ * ⚠️ Verso il discente passa SOLO domandePerDiscente(): niente `corretta`, niente punteggio. Unica eccezione:
+ * correzionePerDiscente(), per il suo test inviato e solo dopo che il direttore gli ha pubblicato i risultati.
  * Indice delle opzioni in base 0 (posizione nell'array), N_OPZIONI = 4.
  */
 class TestScritto
@@ -207,6 +208,26 @@ class TestScritto
         return ['domande' => self::domandePerCalcolo($esame), 'risposte' => self::risposteDi($esame, $consegna)];
     }
 
+    /**
+     * Correzione di un test INVIATO per il discente stesso, SOLO dopo la pubblicazione (PermessiEsame::vedeRisultatiTest):
+     * è l'unico punto in cui le corrette vanno verso un discente.
+     *
+     * @return array{punteggio: ?string, giuste: int, totale: int, corrette: array<int, int>}
+     */
+    public static function correzionePerDiscente(Esame $esame, TestConsegna $consegna): array
+    {
+        $corrette = array_map(fn (array $d) => $d['corretta'], self::domandePerCalcolo($esame));
+        $risposte = self::risposteDi($esame, $consegna);
+        $giuste = count(array_filter($risposte, fn ($r, $id) => $r !== null && $r === ($corrette[$id] ?? null), ARRAY_FILTER_USE_BOTH));
+
+        return [
+            'punteggio' => self::mostraPunteggio(self::punteggio($esame, $consegna)),
+            'giuste'    => $giuste,
+            'totale'    => count($corrette),
+            'corrette'  => $corrette,
+        ];
+    }
+
     /** "x su Tmax" con una virgola. */
     public static function mostraPunteggio(array $punteggio): ?string
     {
@@ -228,12 +249,13 @@ class TestScritto
         $ammessi = $esame->discentiAmmessi()->pluck('iscrizioni.partecipante_id');
         $soci = Socio::query()->whereIn('id', $ammessi)->orderBy('cognome')->orderBy('nome')->get();
         $avvii = $esame->testAvvii()->get()->keyBy('discente_socio_id');
+        $pubblicazioni = $esame->testPubblicazioni()->whereNotNull('pubblicato_il')->get()->keyBy('discente_socio_id');
         $consegne = $esame->testConsegne()->with('inseritoDa')->get()->keyBy('discente_socio_id');
         $date = TestRisposta::query()->whereIn('consegna_id', $consegne->pluck('id'))->whereNotNull('opzione')
             ->selectRaw('consegna_id, count(*) as n')->groupBy('consegna_id')->pluck('n', 'consegna_id');
         $totale = self::numeroDomande($esame);
 
-        return $soci->map(function (Socio $s) use ($esame, $avvii, $consegne, $date, $totale) {
+        return $soci->map(function (Socio $s) use ($esame, $avvii, $consegne, $date, $totale, $pubblicazioni) {
             $avvio = $avvii->get($s->id);
             $consegna = $consegne->get($s->id);
             $nDate = $consegna ? (int) ($date[$consegna->id] ?? 0) : 0;
@@ -255,6 +277,8 @@ class TestScritto
                 'totale'     => $totale,
                 'consegna'   => $consegna,
                 'punteggio'  => $consegna?->eInviata() ? self::mostraPunteggio(self::punteggio($esame, $consegna)) : null,
+                // risultati pubblicati al discente (solo con test inviato): data della pubblicazione, altrimenti null
+                'pubblicato' => $consegna?->eInviata() ? $pubblicazioni->get($s->id)?->pubblicato_il : null,
             ];
         })->all();
     }
