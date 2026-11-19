@@ -4,6 +4,11 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## In sviluppo
+
+- docs: guida, nuova sezione «Esami» (anche nel pannello, menu Guida → Esami), divisa in parti comuni a ogni esame e un capitolo per ogni modello di valutazione (oggi TCRI); scritti «Come funziona» e «Preparazione» con le schermate. Le voci «Esami» di Pannello e App dei soci rimandano alla nuova sezione
+- feat: guida nel pannello, il titolo di un gruppo di pagine si può prendere dal README del gruppo (per le sigle maiuscole, come «Modello TCRI»)
+
 ## 1.86.2 — 2026-11-19
 
 - feat: esami, test scritto — dopo l'invio il discente rivede nella app il proprio test in sola lettura (anche se svolto su carta e inserito dal direttore), senza risposte corrette né punteggio; il direttore pubblica i risultati discente per discente o a tutti («Pubblica», «Pubblica per i selezionati», «Pubblica per tutti», anche a esame chiuso) e da quel momento il discente vede punteggio, domande sbagliate e risposte corrette; la pubblicazione si ritira in qualsiasi momento. Pubblicano e ritirano il direttore, gli amministratori del territorio e il superadmin

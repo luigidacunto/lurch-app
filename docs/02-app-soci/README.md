@@ -14,4 +14,4 @@ Chi organizza **non deve abilitare nulla**: un socio vede un evento appena risul
 - [I miei eventi](02-i-miei-eventi.md): l'elenco degli eventi, la pagina di un evento, le informazioni e i documenti.
 - [Moduli dall'app](03-moduli-dall-app.md): compilare la preregistrazione dal telefono, rivederla dopo l'invio, sostituire un documento.
 - [Messaggi](04-messaggi.md): i messaggi lasciati da chi inquadra il badge.
-- [Esami](05-esami.md): l'area per docenti e commissione e il test scritto (in preparazione).
+- [Esami](05-esami.md): dove docenti, commissione e discenti trovano l'esame; il dettaglio è nella sezione [Esami](../04-esami/README.md).
