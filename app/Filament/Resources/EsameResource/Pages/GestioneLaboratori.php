@@ -282,7 +282,7 @@ class GestioneLaboratori extends Page
     public function copiaGruppiAction(): Action
     {
         return Action::make('copiaGruppi')
-            ->label('Copia i gruppi da un altro laboratorio')
+            ->label('Copia i gruppi')
             ->color('success')
             ->authorize(fn () => $this->puoConfigurare())
             ->modalHeading('Copia i gruppi')
