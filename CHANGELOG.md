@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## 1.86.1 — 2026-11-19
+
+- fix: sicurezza — nel piè di pagina del pannello le versioni di PHP e Laravel e l'ambiente sono visibili solo al superadmin
+
 ## 1.86.0 — 2026-11-19
 
 - fix: login dell'app (PWA), pagina del codice: se il codice si invia da solo al sesto carattere e si tocca subito «Accedi», partiva una seconda richiesta che rispondeva «token scaduto»; ora l'invio avviene una sola volta (come già nell'accesso al pannello)
