@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\App;
 
 use App\Esami\PermessiEsame;
+use App\Esami\Formato;
+use App\Esami\PubblicazioneEsito;
+use App\Esami\RisultatiEsame;
+use App\Models\Esito;
 use App\Esami\SvolgimentoTest;
 use App\Esami\TestException;
 use App\Esami\TestScritto;
@@ -127,6 +131,51 @@ class AppEsamiTestController extends Controller
         abort_unless($eraAvviato, 404);
 
         throw new TestException('Il test è stato aggiornato o non è più disponibile: ricarica la pagina.', 409);
+    }
+
+    /** Esito finale del discente: 404 finché chi gestisce l'esame non glielo pubblica (o se non è più calcolato). */
+    public function esito(Esame $esame)
+    {
+        $socioId = SocioCorrente::id();
+        $permessi = PermessiEsame::per($esame, $socioId);
+        abort_unless($permessi->vedeEsitoComeDiscente(), 404);
+        $esito = $this->esitoPerDiscente($esame, $socioId);
+        abort_unless($esito !== null, 404);
+
+        return $this->senzaCache(response()->view('app.esame-esito', ['esame' => $esame, 'esito' => $esito]));
+    }
+
+    /**
+     * Esito finale per il discente (solo se pubblicato): totale, idoneità e contributo di ogni prova con il suo peso, dai
+     * valori attuali di RisultatiEsame (a esame chiuso: quelli salvati). Null se l'esito non è (più) calcolato.
+     *
+     * Per ogni prova: punti ottenuti sul massimo della prova e conversione in centesimi sul suo peso; poi LAP, totale, esito.
+     *
+     * @return array{finale: string, idoneo: bool, lap: string, prove: list<array{nome: string, punti: ?string, massimo: ?string, contributo: ?string, peso: string}>}|null
+     */
+    private function esitoPerDiscente(Esame $esame, int $socioId): ?array
+    {
+        $riga = PubblicazioneEsito::riga($esame, $socioId);
+        if (! $riga || $riga['stato'] !== Esito::STATO_CALCOLATO || $riga['finale'] === null) {
+            return null;
+        }
+        $pesi = $esame->modello_snapshot['pesi'] ?? [];
+        $nomi = ['itinere' => 'Itinere', 'colloquio' => 'Colloquio', 'prova_pratica' => 'Prova pratica', 'test_scritto' => 'Test scritto'];
+        $virgola = fn (?string $v) => $v === null ? null : str_replace('.', ',', $v);
+        $numero = fn (?string $nd) => Formato::decimale(RisultatiEsame::daFrazione($nd));
+
+        return [
+            'finale' => $virgola((string) $riga['finale']),
+            'idoneo' => (bool) $riga['idoneo'],
+            'lap'    => $virgola(rtrim(rtrim((string) ($riga['lap'] ?? $esame->lap), '0'), '.')),
+            'prove'  => collect($nomi)->map(fn (string $nome, string $prova) => [
+                'nome'       => $nome,
+                'punti'      => $numero($riga['prove'][$prova]['punti'] ?? null),
+                'massimo'    => $numero($riga['prove'][$prova]['massimo'] ?? null),
+                'contributo' => $virgola($riga['prove'][$prova]['contributo'] ?? null),
+                'peso'       => (string) ($pesi[$prova] ?? ''),
+            ])->values()->all(),
+        ];
     }
 
     private function senzaCache($response)

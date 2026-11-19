@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Pubblicazione dei risultati del test scritto ai discenti: da quel momento il discente vede nella app punteggio,
- * domande sbagliate e risposte corrette (PermessiEsame::vedeRisultatiTest). Solo il direttore; solo per chi ha INVIATO
+ * domande sbagliate e risposte corrette (PermessiEsame::vedeRisultatiTest). Chi gestisce l'esame (direttore, admin
+ * dell'ambito, superadmin: Esame::puoPubblicareRisultati); solo per chi ha INVIATO
  * (online o cartaceo inserito); a esame in corso e anche a esame chiuso: cambia cosa vede il discente, non le valutazioni
  * (tabella a parte, le tabelle delle valutazioni restano bloccate). Nessun blocco rispetto agli avvii: chi ha già i
  * risultati può passarli a chi deve ancora svolgere il test, il pannello lo ricorda (scelta del proprietario).
@@ -64,14 +65,14 @@ class PubblicazioneTest
         return $q->update(['pubblicato_il' => null, 'updated_at' => now()]);
     }
 
-    /** Motivo per cui i pulsanti di pubblicazione sono spenti (tooltip), null se accesi. */
+    /** Motivo per cui i pulsanti di pubblicazione sono spenti (tooltip), null se accesi. Stessa regola per test ed esito. */
     public static function motivoNonPubblicabile(Esame $esame, ?User $utente): ?string
     {
-        if (! $esame->isDirettore($utente)) {
-            return 'Solo il direttore del corso pubblica i risultati.';
-        }
         if ($esame->isBozza()) {
             return "L'esame non è ancora attivo.";
+        }
+        if (! $esame->puoPubblicareRisultati($utente)) {
+            return "Solo chi gestisce l'esame (direttore, amministratore, superadmin) pubblica i risultati.";
         }
 
         return null;

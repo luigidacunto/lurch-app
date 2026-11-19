@@ -50,7 +50,10 @@
                     Avvia per i selezionati ({{ count($selezionati) }})
                 </x-filament::button>
             </div>
-            @if($nInviati > 0)
+        @else
+            <p style="margin:0 0 10px; font-size:13px;">Solo il direttore del corso avvia il test.</p>
+        @endif
+        @if($d['motivoPubblica'] === null && $nInviati > 0)
                 {{-- Pubblicazione dei risultati: per discente, come l'avvio; anche a esame chiuso --}}
                 <div style="border:1px solid {{ $bordo }}; border-radius:8px; padding:8px 12px; margin-bottom:10px; font-size:13px;">
                     <strong>Risultati ai discenti</strong> · pubblicati a {{ $nPubblicati }} su {{ $nInviati }} che hanno inviato.
@@ -67,9 +70,6 @@
                         @endif
                     </div>
                 </div>
-            @endif
-        @else
-            <p style="margin:0 0 10px; font-size:13px;">Solo il direttore del corso avvia il test e ne pubblica i risultati; tu lo leggi in sola lettura.</p>
         @endif
 
         @forelse($d['righe'] as $r)
@@ -84,7 +84,7 @@
                     <div style="display:flex; gap:8px; align-items:center; flex:1 1 220px;">
                         @if($d['eDirettore'] && $avviabile)
                             <input type="checkbox" value="{{ $r['socio']->id }}" wire:model.live="selezionati" aria-label="Seleziona {{ $nome }}">
-                        @elseif($d['eDirettore'] && $st === 'inviato' && $r['pubblicato'] === null && $d['motivoPubblica'] === null)
+                        @elseif($st === 'inviato' && $r['pubblicato'] === null && $d['motivoPubblica'] === null)
                             <input type="checkbox" value="{{ $r['socio']->id }}" wire:model.live="selezionatiPubblica" aria-label="Seleziona {{ $nome }} per la pubblicazione">
                         @endif
                         <span style="font-weight:600; overflow-wrap:anywhere;">{{ $nome }}</span>
@@ -120,7 +120,7 @@
                     @endif
                     @if($st === 'inviato')
                         <x-filament::button size="xs" color="info" type="button" wire:click="apriDettaglio({{ $r['socio']->id }})">{{ isset($dettagli[$r['socio']->id]) ? 'Nascondi risposte' : 'Vedi risposte' }}</x-filament::button>
-                        @if($d['eDirettore'])
+                        @if($d['motivoPubblica'] === null)
                             @if($r['pubblicato'] === null)
                                 <x-filament::button size="xs" color="success" type="button" :disabled="$d['motivoPubblica'] !== null" :tooltip="$d['motivoPubblica']" wire:click="mountAction('pubblicaUno', {{ $argomenti }})">Pubblica i risultati</x-filament::button>
                             @else

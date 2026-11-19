@@ -304,6 +304,7 @@ Route::prefix('app')->name('app.')->group(function () {
         Route::get('/esami/{esame}/test',                                              [\App\Http\Controllers\App\AppEsamiTestController::class, 'mostra'])->name('esame.test');
         Route::put('/esami/{esame}/test/risposte',                                     [\App\Http\Controllers\App\AppEsamiTestController::class, 'salvaRisposta'])->name('esame.test.risposta');
         Route::post('/esami/{esame}/test/invia',                                       [\App\Http\Controllers\App\AppEsamiTestController::class, 'invia'])->name('esame.test.invia');
+        Route::get('/esami/{esame}/esito',                                             [\App\Http\Controllers\App\AppEsamiTestController::class, 'esito'])->name('esame.esito');
         Route::get('/esami/{esame}/test/anteprima',                                    [\App\Http\Controllers\App\AppEsamiRiepilogoTestController::class, 'anteprima'])->name('esame.test.anteprima');
         Route::get('/evento/{evento}',                    [\App\Http\Controllers\App\AppEventoController::class,     'show'])->name('evento');
         Route::get('/evento/{evento}/info',               [\App\Http\Controllers\App\AppInfoEventoController::class, 'show'])->name('evento.info');

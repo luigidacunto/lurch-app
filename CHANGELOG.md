@@ -6,7 +6,9 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 
 ## 1.86.2 — 2026-11-19
 
-- feat: esami, test scritto — dopo l'invio il discente rivede nella app il proprio test in sola lettura (anche se svolto su carta e inserito dal direttore), senza risposte corrette né punteggio; il direttore pubblica i risultati discente per discente o a tutti («Pubblica», «Pubblica per i selezionati», «Pubblica per tutti», anche a esame chiuso) e da quel momento il discente vede punteggio, domande sbagliate e risposte corrette; la pubblicazione si ritira in qualsiasi momento
+- feat: esami, test scritto — dopo l'invio il discente rivede nella app il proprio test in sola lettura (anche se svolto su carta e inserito dal direttore), senza risposte corrette né punteggio; il direttore pubblica i risultati discente per discente o a tutti («Pubblica», «Pubblica per i selezionati», «Pubblica per tutti», anche a esame chiuso) e da quel momento il discente vede punteggio, domande sbagliate e risposte corrette; la pubblicazione si ritira in qualsiasi momento. Pubblicano e ritirano il direttore, gli amministratori del territorio e il superadmin
+- feat: esami, esito finale — nella pagina Valutazioni → Discenti chi gestisce l'esame (direttore, amministratori del territorio, superadmin) pubblica l'esito al singolo discente quando ha tutte le prove fissate («Pubblica l'esito», anche a esame chiuso, ritirabile dalla riga) oppure con «Pubblica l'esito a tutti», che salta gli incompleti e si spegne quando non resta nessuno da pubblicare; il discente vede nella app una griglia con, per ogni prova, il punteggio sul suo massimo e la conversione in centesimi sul suo peso, poi punteggio finale su 100, LAP dell'esame ed esito (idoneo / non idoneo)
+- feat: esami, app del discente — la pagina dell'esame ha due pulsanti: «Test scritto» (da compilare, risposte in sola lettura o correzione, secondo lo stato) ed «Esito finale» (solo quando pubblicato)
 
 ## 1.86.1 — 2026-11-19
 

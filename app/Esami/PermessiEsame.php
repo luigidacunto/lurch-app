@@ -149,6 +149,16 @@ class PermessiEsame
     }
 
     /**
+     * Esito finale pubblicato a questo discente (totale, idoneità, contributo delle prove). Ha sempre inviato il test
+     * (è una delle prove): la pagina è quella del test inviato.
+     */
+    public function vedeEsitoComeDiscente(): bool
+    {
+        return $this->vedeTestInviatoComeDiscente()
+            && $this->esame->esitoPubblicazioni()->where('discente_socio_id', $this->socioId)->whereNotNull('pubblicato_il')->exists();
+    }
+
+    /**
      * L'esame compare nella PWA: il personale (vedeEsame), il discente avviato o quello che ha inviato il test.
      * Gemello SQL: Esame::scopeVisibiliAlSocio.
      */

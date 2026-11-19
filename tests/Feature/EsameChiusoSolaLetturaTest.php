@@ -41,7 +41,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
     ];
     private const AZIONI_SOLA_LETTURA = ['csv', 'modifica', 'proiezione'];
     /** Scrivono solo la visibilità dei risultati del test (test_pubblicazioni, fuori da TABELLE): permesse anche a esame chiuso. */
-    private const AZIONI_VISIBILITA = ['pubblicaTutti', 'pubblicaSelezionati', 'pubblicaUno', 'ritiraUno', 'ritiraTutti'];
+    private const AZIONI_VISIBILITA = ['pubblicaTutti', 'pubblicaSelezionati', 'pubblicaUno', 'ritiraUno', 'ritiraTutti', 'pubblicaEsito', 'ritiraEsito', 'pubblicaEsitoTutti'];
 
     protected function setUp(): void
     {
@@ -267,6 +267,9 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
         $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Risultato del test scritto');
         $this->assertSame(2, \App\Esami\PubblicazioneTest::ritira($this->esame, $this->u['direttore']));
         $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertDontSee('Risultato del test scritto');
+        \App\Esami\PubblicazioneEsito::pubblica($this->esame, $this->u['direttore'], $this->s['x']->id);
+        $this->come('x')->get(route('app.esame.esito', $this->esame))->assertOk()->assertSee('su 100');
+        \App\Esami\PubblicazioneEsito::ritira($this->esame, $this->u['direttore'], $this->s['x']->id);
         $this->uguale($prima, 'pubblicazione');
     }
 

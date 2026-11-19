@@ -325,7 +325,9 @@ class EsameTestScrittoTest extends EsameTestScrittoBase
 
         $this->come('x')->get(route('app.esami'))->assertOk()->assertSee('Discente')->assertSee('Esame');
         $this->come('x')->get(route('app.home'))->assertSee('I tuoi esami');
-        $this->come('x')->get(route('app.esame', $this->esame))->assertRedirect(route('app.esame.test', $this->esame));
+        // la pagina dell'esame del discente: solo i pulsanti Test scritto (ed Esito finale quando pubblicato), mai le schede
+        $this->come('x')->get(route('app.esame', $this->esame))->assertOk()->assertSee('Test scritto')->assertSee('Da compilare')
+            ->assertSee(route('app.esame.test', $this->esame))->assertDontSee(route('app.esame.esito', $this->esame));
         $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Domanda numero 1 zz')->assertSee('Tutte le risposte sono obbligatorie');
 
         // nessuna delle pagine delle schede
@@ -374,7 +376,7 @@ class EsameTestScrittoTest extends EsameTestScrittoBase
         $this->invia('x')->assertRedirect(route('app.esame.test', $this->esame));
 
         $this->assertSame('3,0 su 5,0', $this->punteggio('x'));
-        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Test inviato');
+        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Hai concluso il test scritto');
     }
 
     public function test_con_penalita_si_puo_lasciare_vuoto_e_il_punteggio_e_4_5_su_10(): void
@@ -495,7 +497,7 @@ class EsameTestScrittoTest extends EsameTestScrittoBase
 
         $this->rispondi('y', $this->ids()[0], 1, $tokenY)->assertStatus(409);
         $this->invia('y', $tokenY)->assertStatus(409);
-        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Test inviato');
+        $this->come('x')->get(route('app.esame.test', $this->esame))->assertOk()->assertSee('Hai concluso il test scritto');
     }
 
     public function test_due_discenti_indipendenti(): void

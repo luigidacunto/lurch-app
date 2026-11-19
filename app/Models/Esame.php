@@ -245,6 +245,7 @@ class Esame extends Model
             || $this->testAvvii()->exists()
             || $this->testConsegne()->exists()
             || $this->testPubblicazioni()->exists()
+            || $this->esitoPubblicazioni()->exists()
             || $this->esiti()->exists();
     }
 
@@ -459,6 +460,11 @@ class Esame extends Model
         return $this->hasMany(TestPubblicazione::class);
     }
 
+    public function esitoPubblicazioni(): HasMany
+    {
+        return $this->hasMany(EsitoPubblicazione::class);
+    }
+
     // ---- Test scritto: stato derivato e regole del pannello ----
 
     public const TEST_BOZZA = 'bozza';
@@ -515,6 +521,15 @@ class Esame extends Model
 
         return ($user->isAdmin() && $evento?->comitato_regionale_id === $user->comitato_regionale_id)
             || ($user->isAdminLocale() && $evento?->comitato_locale_id === $user->comitato_locale_id);
+    }
+
+    /**
+     * Pubblicare ai discenti i risultati del test scritto e l'esito finale: chi gestisce l'esame, a esame attivo (in corso
+     * o chiuso: è visibilità, non valutazione).
+     */
+    public function puoPubblicareRisultati(?User $user): bool
+    {
+        return ! $this->isBozza() && $this->eGestore($user);
     }
 
     /** Chi gestisce l'esame (direttore, admin dell'ambito, superadmin): la stessa regola di «Attiva esame» e «Apri la prova finale». */

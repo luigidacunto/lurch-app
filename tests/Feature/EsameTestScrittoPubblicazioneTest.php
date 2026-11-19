@@ -101,7 +101,7 @@ class EsameTestScrittoPubblicazioneTest extends EsameTestScrittoBase
         $this->assertStringContainsString('0,0 su 5,0', $this->pagina('y'));
     }
 
-    public function test_si_pubblica_solo_a_chi_ha_inviato_e_solo_il_direttore(): void
+    public function test_si_pubblica_solo_a_chi_ha_inviato_e_solo_chi_gestisce_l_esame(): void
     {
         $this->domande();
         $this->avvia('x', 'y');
@@ -111,7 +111,8 @@ class EsameTestScrittoPubblicazioneTest extends EsameTestScrittoBase
         $ids = [$this->s['y']->id, $this->s['nonAmmesso']->id, $this->s['estraneo']->id];
         $this->assertSame(0, PubblicazioneTest::pubblica($this->esame->fresh(), $this->u['direttore'], $ids));
 
-        foreach (['presidente', 'docComm', 'super', 'adminReg'] as $chi) {
+        // presidente e docenti leggono ma non pubblicano
+        foreach (['presidente', 'docComm', 'docente'] as $chi) {
             try {
                 PubblicazioneTest::pubblica($this->esame->fresh(), $this->u[$chi]);
                 $this->fail("{$chi} non deve poter pubblicare");
@@ -120,6 +121,12 @@ class EsameTestScrittoPubblicazioneTest extends EsameTestScrittoBase
             }
         }
         $this->assertSame(0, $this->esame->testPubblicazioni()->count());
+
+        // chi gestisce l'esame sì: superadmin, admin regionale e locale dell'ambito
+        foreach (['super', 'adminReg', 'adminLoc'] as $chi) {
+            PubblicazioneTest::ritira($this->esame->fresh(), $this->u[$chi]);
+            $this->assertSame(1, PubblicazioneTest::pubblica($this->esame->fresh(), $this->u[$chi]), $chi);
+        }
     }
 
     public function test_il_cartaceo_rivede_le_risposte_inserite_e_poi_le_correzioni(): void
@@ -140,7 +147,7 @@ class EsameTestScrittoPubblicazioneTest extends EsameTestScrittoBase
         $this->assertStringContainsString('Test svolto su carta', $html);
         $this->assertStringNotContainsString('Risultato del test scritto', $html);
         $this->assertStringContainsString($this->esame->titolo, $this->come('y')->get(route('app.esami'))->getContent());
-        $this->come('y')->get(route('app.esame', $this->esame))->assertRedirect(route('app.esame.test', $this->esame));
+        $this->come('y')->get(route('app.esame', $this->esame))->assertOk()->assertSee('Inviato · le tue risposte in sola lettura');
 
         PubblicazioneTest::pubblica($this->esame->fresh(), $this->u['direttore'], [$this->s['y']->id]);
         $this->assertStringContainsString('5,0 su 5,0', $this->pagina('y'));

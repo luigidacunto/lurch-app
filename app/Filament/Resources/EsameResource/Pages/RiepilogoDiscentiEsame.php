@@ -6,10 +6,16 @@ use App\Esami\Calcolo\Frazione;
 use App\Esami\ColoreScala;
 use App\Esami\Formato;
 use App\Esami\ProiezioneEsame;
+use App\Esami\PubblicazioneEsito;
+use App\Esami\PubblicazioneTest;
+use App\Esami\RisultatiEsame;
+use App\Esami\TestException;
 use App\Filament\Resources\EsameResource;
 use App\Filament\Resources\EsameResource\Concerns\HaSubNavigationEsame;
 use App\Models\Iscrizione;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
+use Filament\Notifications\Notification;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\ManageRelatedRecords;
@@ -22,8 +28,9 @@ use Illuminate\Support\HtmlString;
 /**
  * Riepilogo dei discenti nella sezione Valutazioni (in fondo alla barra): per ogni discente ammesso i contributi in
  * centesimi di itinere, colloquio, prova pratica e test, il totale e lo stato (idoneo / non idoneo) solo con tutte e quattro
- * le prove fissate, e la finestra «Proiezione» con valori ipotetici temporanei. SOLA lettura: nulla si salva e niente entra
- * nell'esito. La lista di configurazione (comitato, età, ammissione) sta in Gestione → Discenti.
+ * le prove fissate, e la finestra «Proiezione» con valori ipotetici temporanei (nulla si salva, niente entra nell'esito).
+ * Unica scrittura: «Pubblica l'esito» / «Ritira l'esito» al discente (PubblicazioneEsito, uno alla volta, solo con tutte le
+ * prove fissate). La lista di configurazione (comitato, età, ammissione) sta in Gestione → Discenti.
  */
 class RiepilogoDiscentiEsame extends ManageRelatedRecords
 {
@@ -58,8 +65,36 @@ class RiepilogoDiscentiEsame extends ManageRelatedRecords
                     ->state(fn (Iscrizione $record) => $this->cellaTotale($record))->html(),
                 Tables\Columns\TextColumn::make('proiezione_stato')->label('Stato')
                     ->state(fn (Iscrizione $record) => $this->cellaStato($record))->html(),
+                Tables\Columns\TextColumn::make('esito_pubblicato')->label('Al discente')
+                    ->state(fn (Iscrizione $record) => ($d = $this->pubblicatoIl($record->partecipante_id)) ? 'Pubblicato il '.$d->format('d/m/Y') : '–')
+                    ->tooltip('Esito finale pubblicato nella app del discente (totale, idoneità e contributo delle prove).'),
             ])
             ->recordActions([
+                Action::make('pubblicaEsito')
+                    ->label("Pubblica l'esito")
+                    ->icon('heroicon-o-megaphone')
+                    ->color('success')
+                    ->iconButton()
+                    ->visible(fn (Iscrizione $record) => $this->pubblicatoIl($record->partecipante_id) === null)
+                    ->disabled(fn (Iscrizione $record) => $this->motivoEsito($record) !== null)
+                    ->tooltip(fn (Iscrizione $record) => $this->motivoEsito($record) ?? "Pubblica l'esito finale al discente")
+                    ->requiresConfirmation()
+                    ->modalHeading(fn (Iscrizione $record) => "Pubblica l'esito — ".$record->partecipante?->nome_completo)
+                    ->modalDescription("Il discente vedrà nella app il punteggio totale, l'esito (idoneo / non idoneo) e il contributo di ogni prova. Puoi ritirare la pubblicazione in qualsiasi momento.")
+                    ->modalSubmitActionLabel('Pubblica')
+                    ->action(fn (Iscrizione $record, Action $action) => $this->eseguiEsito($action, fn () => PubblicazioneEsito::pubblica($this->getRecord(), auth()->user(), (int) $record->partecipante_id), 'Esito pubblicato.')),
+                ActionGroup::make([
+                    Action::make('ritiraEsito')
+                        ->label("Ritira l'esito")
+                        ->icon('heroicon-o-eye-slash')
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->modalHeading(fn (Iscrizione $record) => "Ritira l'esito — ".$record->partecipante?->nome_completo)
+                        ->modalDescription("Il discente non vedrà più l'esito finale nella app.")
+                        ->modalSubmitActionLabel('Ritira')
+                        ->action(fn (Iscrizione $record, Action $action) => $this->eseguiEsito($action, fn () => PubblicazioneEsito::ritira($this->getRecord(), auth()->user(), (int) $record->partecipante_id), 'Esito ritirato.')),
+                ])->label('Altre azioni')->icon('heroicon-o-ellipsis-vertical')->color('danger')->iconButton()
+                    ->visible(fn (Iscrizione $record) => $this->pubblicatoIl($record->partecipante_id) !== null),
                 Action::make('proiezione')
                     ->label('Proiezione')
                     ->tooltip(fn (Iscrizione $record) => $record->non_ammesso ? 'Non ammesso: nessuna prova finale' : 'Proiezione del punteggio finale')
@@ -79,6 +114,77 @@ class RiepilogoDiscentiEsame extends ManageRelatedRecords
             ->header(view('app.partials.esami-legenda-lap', ['soglie' => ProiezioneEsame::soglieLap($this->getRecord()), 'tooltip' => true]))
             ->description('Contributi in centesimi delle singole prove (peso dopo la barra), totale e stato solo a prove tutte fissate. Per simulare i punteggi mancanti usa «Proiezione».')
             ->emptyStateHeading('Nessun discente iscritto al corso');
+    }
+
+    /** Un solo pulsante d'intestazione: «Pubblica l'esito a tutti» (salta gli incompleti, si spegne quando non resta nessuno). */
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('pubblicaEsitoTutti')
+                ->label("Pubblica l'esito a tutti")
+                ->icon('heroicon-o-megaphone')
+                ->color('success')
+                ->visible(fn () => PubblicazioneTest::motivoNonPubblicabile($this->getRecord(), auth()->user()) === null)
+                ->disabled(fn () => $this->nDaPubblicare() === 0)
+                ->tooltip(fn () => $this->nDaPubblicare() === 0
+                    ? "Nessun discente completo senza esito pubblicato."
+                    : "Pubblica l'esito ai discenti con tutte le prove fissate ({$this->nDaPubblicare()}); gli incompleti si saltano.")
+                ->requiresConfirmation()
+                ->modalHeading("Pubblica l'esito a tutti i discenti completi")
+                ->modalDescription(fn () => "Pubblica l'esito ai {$this->nDaPubblicare()} discenti con tutte le prove fissate che non lo hanno ancora: vedranno nella app totale, esito e contributo delle prove. Chi non è completo viene saltato; ripeti più avanti per pubblicare a chi si completa nel frattempo. Ogni pubblicazione si ritira dalla riga.")
+                ->modalSubmitActionLabel('Pubblica')
+                ->action(fn (Action $action) => $this->eseguiEsito($action, fn () => PubblicazioneEsito::pubblicaTutti($this->getRecord(), auth()->user()), 'Esiti pubblicati.')),
+        ];
+    }
+
+    private function nDaPubblicare(): int
+    {
+        $this->risultati ??= collect(RisultatiEsame::per($this->getRecord()))->keyBy(fn ($r) => (int) $r['socio']->id)->all();
+
+        return count(PubblicazioneEsito::daPubblicare($this->getRecord(), array_values($this->risultati)));
+    }
+
+    // ---- Pubblicazione dell'esito al discente (chi gestisce l'esame, uno alla volta, anche a esame chiuso) ----
+
+    /** @var array<int, array>|null righe di RisultatiEsame per discente, una volta per render */
+    private ?array $risultati = null;
+
+    /** @var array<int, \Illuminate\Support\Carbon>|null */
+    private ?array $pubblicati = null;
+
+    private function pubblicatoIl(int $discenteId): ?\Illuminate\Support\Carbon
+    {
+        $this->pubblicati ??= $this->getRecord()->esitoPubblicazioni()->whereNotNull('pubblicato_il')
+            ->pluck('pubblicato_il', 'discente_socio_id')->map(fn ($d) => \Illuminate\Support\Carbon::parse($d))->all();
+
+        return $this->pubblicati[$discenteId] ?? null;
+    }
+
+    /** Perché «Pubblica l'esito» è spento (tooltip), null se acceso. */
+    private function motivoEsito(Iscrizione $record): ?string
+    {
+        if ($motivo = PubblicazioneTest::motivoNonPubblicabile($this->getRecord(), auth()->user())) {
+            return $motivo;
+        }
+        $this->risultati ??= collect(RisultatiEsame::per($this->getRecord()))->keyBy(fn ($r) => (int) $r['socio']->id)->all();
+        $riga = $this->risultati[(int) $record->partecipante_id] ?? null;
+
+        return $riga ? PubblicazioneEsito::motivoNonPubblicabilePer($this->getRecord(), (int) $record->partecipante_id, $riga) : 'Discente ritirato.';
+    }
+
+    private function eseguiEsito(Action $action, \Closure $operazione, string $esito): void
+    {
+        try {
+            $operazione();
+        } catch (TestException $e) {
+            Notification::make()->title($e->getMessage())->danger()->send();
+            $action->halt();
+
+            return;
+        }
+        $this->pubblicati = null;
+        $this->risultati = null;
+        Notification::make()->title($esito)->success()->send();
     }
 
     // ---- Proiezione del punteggio (sola lettura, nulla salvato) ----

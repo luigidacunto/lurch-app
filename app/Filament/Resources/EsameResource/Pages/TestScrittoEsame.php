@@ -222,7 +222,7 @@ class TestScrittoEsame extends Page
             });
     }
 
-    // ---- Pubblicazione dei risultati ai discenti (solo il direttore, anche a esame chiuso) ----
+    // ---- Pubblicazione dei risultati ai discenti (chi gestisce l'esame, anche a esame chiuso) ----
 
     private const AVVISO_PUBBLICA = 'Il discente vedrà nella app il punteggio, le domande sbagliate e le risposte corrette. Attenzione: chi vede le correzioni può passarle a chi deve ancora svolgere il test. Puoi ritirare la pubblicazione in qualsiasi momento.';
 
