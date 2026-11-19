@@ -15,7 +15,7 @@ Ogni laboratorio è un riquadro con il numero, la data e i suoi gruppi. Ogni gru
 
 - **Aggiungi laboratorio**, in fondo alla pagina, crea il laboratorio successivo; la data si può indicare subito o dopo.
 - **Modifica data** cambia la data del laboratorio.
-- Dai **tre puntini** del laboratorio: **Copia i gruppi da un altro laboratorio** (vedi sotto) ed **Elimina laboratorio**, che elimina anche i suoi gruppi.
+- Dai **tre puntini** del laboratorio: **Copia i gruppi** (vedi sotto) ed **Elimina laboratorio**, che elimina anche i suoi gruppi.
 
 <!-- screenshot: route=/admin/esami/1/gestione/laboratori · v1.86.2 · 2026-11-19 · menu del laboratorio -->
 ![Menu del laboratorio](../../immagini/esami/laboratorio-menu.png)
@@ -41,7 +41,7 @@ Dai tre puntini della riga, **Elimina gruppo** toglie il gruppo e le sue assegna
 
 ## Copiare i gruppi da un altro laboratorio
 
-Se i gruppi si ripetono da un laboratorio all'altro, dai tre puntini del laboratorio di arrivo scegli **Copia i gruppi da un altro laboratorio**, poi:
+Se i gruppi si ripetono da un laboratorio all'altro, dai tre puntini del laboratorio di arrivo scegli **Copia i gruppi**, poi:
 
 - **Copia dal**: il laboratorio di partenza;
 - **Gruppi da copiare**: **Tutti i gruppi** oppure uno solo.
