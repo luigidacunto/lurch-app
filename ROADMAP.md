@@ -40,7 +40,7 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 - Pulsante «Elimina» spostato dalla tabella alla pagina di modifica.
 - Traduzione italiana completa dei messaggi di validazione di Laravel.
 - Questionari (struttura del database già presente).
-- Guida completa: capitolo sugli esami (pannello e app) e sezione pubblica nell'app con le parti per volontari e moduli pubblici.
+- Guida completa: sezione pubblica nell'app con le parti per volontari e moduli pubblici.
 
 ### Tecnico
 - Compattazione delle migrazioni in uno schema di prima installazione.

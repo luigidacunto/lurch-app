@@ -4,7 +4,7 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
-## In sviluppo
+## 1.86.3 — 2026-11-19
 
 - docs: guida, nuova sezione «Esami» (anche nel pannello, menu Guida → Esami), divisa in parti comuni a ogni esame e un capitolo per ogni modello di valutazione (oggi TCRI); scritti con le schermate «Come funziona», «Preparazione», «Svolgimento e chiusura» e il capitolo «Modello TCRI» (calcolo e pesi, laboratori a semaforo, itinere, colloquio, prova pratica). Le voci «Esami» di Pannello e App dei soci rimandano alla nuova sezione
 - feat: guida nel pannello, il titolo di un gruppo di pagine si può prendere dal README del gruppo (per le sigle maiuscole, come «Modello TCRI»)
