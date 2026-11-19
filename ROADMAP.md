@@ -38,10 +38,9 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 - Pulsante «Elimina» spostato dalla tabella alla pagina di modifica.
 - Traduzione italiana completa dei messaggi di validazione di Laravel.
 - Questionari (struttura del database già presente).
-- Guida completa: scrittura dei capitoli con gli screenshot, guida dedicata agli esami, sezione pubblica nell'app con le parti per volontari e moduli pubblici.
+- Guida completa: capitolo sugli esami (pannello e app) e sezione pubblica nell'app con le parti per volontari e moduli pubblici.
 
 ### Tecnico
-- Passaggio a PHP 8.4 in locale e in produzione.
 - Compattazione delle migrazioni in uno schema di prima installazione.
 - Verifica generale del pannello su una copia recente dei dati di produzione.
 - Editor dei messaggi del badge su Quill 2 (la 1.3.7 ha un avviso di sicurezza, oggi neutralizzato dal filtro lato server; la 2 cambia l'HTML degli elenchi).

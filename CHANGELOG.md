@@ -4,7 +4,7 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
-## In sviluppo
+## 1.86.0 — 2026-11-19
 
 - fix: login dell'app (PWA), pagina del codice: se il codice si invia da solo al sesto carattere e si tocca subito «Accedi», partiva una seconda richiesta che rispondeva «token scaduto»; ora l'invio avviene una sola volta (come già nell'accesso al pannello)
 - feat: esami TCRI, pagina «Domande del test»: pulsante «Scarica il correttore (PDF)» con tutte le domande e la risposta corretta salvata, per verificare il caricamento; visibile a direttore, admin di competenza e superadmin quando c'è almeno una domanda
