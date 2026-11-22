@@ -40,7 +40,8 @@ class TestScritto
     public const EVIDENZE = [
         self::EVIDENZA_PEGGIORE => ['etichetta' => 'La più sbagliata', 'sfondo' => 'rgba(239,68,68,.16)', 'stampa' => '#fee2e2', 'bordo' => '#dc2626'],
         self::EVIDENZA_ALTA     => ['etichetta' => 'Sbagliata da oltre la metà', 'sfondo' => 'rgba(245,158,11,.16)', 'stampa' => '#fef3c7', 'bordo' => '#d97706'],
-        self::EVIDENZA_PERFETTA => ['etichetta' => 'Giusta per tutti', 'sfondo' => 'rgba(34,197,94,.12)', 'stampa' => '#dcfce7', 'bordo' => '#16a34a'],
+        // Azzurro come la fascia più alta dei voti (ColoreScala), non verde: il verde è della risposta corretta.
+        self::EVIDENZA_PERFETTA => ['etichetta' => 'Giusta per tutti', 'sfondo' => 'rgba(59,130,246,.12)', 'stampa' => '#e0f0fd', 'bordo' => '#2563eb'],
     ];
 
     /**

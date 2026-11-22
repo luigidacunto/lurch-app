@@ -69,7 +69,7 @@
 @if(count($domande) > 0)
 <details class="box">
     <summary>Statistica delle risposte · {{ $inviati }} {{ $inviati === 1 ? 'test inviato' : 'test inviati' }}</summary>
-    <p class="nota" style="margin-bottom:10px">Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in verde quelle giuste per tutti.</p>
+    <p class="nota" style="margin-bottom:10px">Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in azzurro quelle giuste per tutti.</p>
     @foreach($domande as $i => $d)
         @php $ev = $d['evidenza'] ? \App\Esami\TestScritto::EVIDENZE[$d['evidenza']] : null; @endphp
         <div style="margin-bottom:12px; {{ $ev ? 'background:' . $ev['sfondo'] . '; border-left:4px solid ' . $ev['bordo'] . ';' : '' }}" class="{{ $d['annullata'] ? 'annullata' : ($ev ? 'evidenziata' : '') }}">

@@ -58,7 +58,7 @@ Per ogni domanda, nell'ordine del test, mostra le quattro opzioni con la corrett
 
 - **La più sbagliata**, in rosso: la domanda con più risposte non corrette (se sono più d'una a pari merito, tutte);
 - **Sbagliata da oltre la metà**, in ambra: più della metà dei discenti non ha dato la risposta corretta (la metà esatta non è evidenziata);
-- **Giusta per tutti**, in verde: tutti hanno dato la risposta corretta.
+- **Giusta per tutti**, in azzurro: tutti hanno dato la risposta corretta (il verde resta per la risposta corretta di ogni domanda).
 
 Le domande annullate non hanno evidenze e non contano nel confronto.
 

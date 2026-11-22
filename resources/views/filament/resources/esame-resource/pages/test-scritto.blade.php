@@ -46,7 +46,7 @@
     {{-- Statistica delle risposte: chiusa di default (ricaricando la pagina il correttore non compare) --}}
     @if(count($d['domande']) > 0)
         <x-filament::section heading="Statistica delle risposte" collapsible collapsed
-            description="Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Contano solo i test inviati ({{ $stat['inviati'] }}). In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in verde quelle giuste per tutti.">
+            description="Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Contano solo i test inviati ({{ $stat['inviati'] }}). In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in azzurro quelle giuste per tutti.">
             <div style="margin:0 0 10px;">
                 <x-filament::button tag="a" size="sm" color="gray" target="_blank" :href="route('esami.test-statistica-pdf', $esame)">Scarica la statistica (PDF)</x-filament::button>
             </div>
