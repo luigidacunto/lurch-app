@@ -4,7 +4,7 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
-## In sviluppo
+## 1.86.4 — 2026-11-22
 
 - feat: esami, prova pratica — la scheda personale di direttore e docenti in commissione ha l'annotazione libera come i laboratori, scrivibile anche prima di scegliere le voci; nel riepilogo della prova finale la leggono direttore, presidente o delegato e commissione, solo a scheda inviata
 - feat: esami, prova pratica — la scheda finale del direttore ha una motivazione facoltativa, nota agli atti sul punteggio definitivo, mostrata nel riepilogo della prova finale (non negli export)

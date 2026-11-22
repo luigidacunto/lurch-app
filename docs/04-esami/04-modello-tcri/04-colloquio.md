@@ -20,7 +20,7 @@ Il testo completo di ogni livello è nella scheda. Le **domande guida** del coll
 
 La compilano il **direttore** e i **docenti in commissione**, quando la prova finale è aperta ([Ciclo di vita](../01-come-funziona/02-ciclo-di-vita.md#prova-finale-aperta-o-chiusa)); il presidente o delegato non compila. Dalla pagina dell'esame, nella sezione **Prova finale**, **Colloquio** elenca i discenti ammessi con il proprio voto oppure «Da fare».
 
-<!-- screenshot: route=/app/esami/1/colloquio/discenti/9226 · v1.86.2 · 2026-11-19 · larghezza telefono, docente di prova in commissione, voto e impressione d'esempio -->
+<!-- screenshot: route=/app/esami/1/colloquio/discenti/9226 · v1.86.4 · 2026-11-22 · larghezza telefono, docente di prova in commissione, voto e impressione d'esempio -->
 ![Scheda personale del colloquio](../../immagini/esami/app-scheda-colloquio.png)
 
 - **Descrittori dei voti** apre il testo dei cinque livelli; è aperto finché non si sceglie un voto.
