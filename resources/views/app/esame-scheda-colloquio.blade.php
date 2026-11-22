@@ -22,6 +22,7 @@
     .scala button:disabled { cursor: default; opacity: .7; }
     .scheda-box { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
     .scheda-box h3 { font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+    .nota-voto { font-size: 12px; color: #6b7280; margin: -6px 0 10px; }
     .livello-scelto { font-size: 13px; color: #374151; line-height: 1.4; overflow-wrap: anywhere; min-height: 20px; }
     textarea.impressione {
         width: 100%; min-height: 110px; box-sizing: border-box; padding: 10px 12px; font-size: 16px; font-family: inherit;
@@ -54,7 +55,8 @@
 </details>
 
 <div class="scheda-box">
-    <h3>Voto ({{ $struttura['min'] }}–{{ $struttura['max'] }}) · obbligatorio</h3>
+    <h3>Voto ({{ $struttura['min'] }}–{{ $struttura['max'] }})</h3>
+    <p class="nota-voto">Senza voto la scheda non entra nella media.</p>
     <div class="scala" id="scala">
         @foreach($struttura['livelli'] as $l)
             <button type="button" data-voto="{{ $l['valore'] }}" aria-label="Voto {{ $l['valore'] }}"

@@ -6,7 +6,7 @@ Da **Valutazioni → Test scritto** il direttore avvia il test ai discenti, segu
 
 La pagina la vedono chi gestisce l'esame e la commissione. **Avviare, disattivare e gestire il test su carta spetta solo al direttore**, a esame in corso; per gli altri la pagina è in sola lettura, tranne la pubblicazione dei risultati (vedi sotto).
 
-<!-- screenshot: route=/admin/esami/1/valutazioni/test-scritto · v1.86.2 · 2026-11-19 · come direttore del corso -->
+<!-- screenshot: route=/admin/esami/1/valutazioni/test-scritto · v1.86.3-dev · 2026-11-22 · come direttore del corso, statistica chiusa -->
 ![Pagina Test scritto](../../immagini/esami/test-scritto.png)
 
 ## Lo stato del test
@@ -54,7 +54,18 @@ Il motivo resta scritto sulla riga del discente, insieme a chi ha inserito le ri
 
 La sezione **Statistica delle risposte** è **chiusa di default**: si apre con un clic, così aggiornando la pagina durante il test le risposte corrette non restano in vista. La vedono tutti quelli che leggono la pagina.
 
-Per ogni domanda, nell'ordine del test, mostra le quattro opzioni con la corretta in verde e, accanto a ciascuna, quante volte è stata scelta. Sotto il testo ci sono la percentuale di errore e i numeri di risposte giuste, sbagliate e non date. Contano solo i test **inviati**, online e su carta. Le domande in cui la metà o più dei discenti non ha dato la risposta corretta hanno lo sfondo ambra: possono essere difficili o scritte poco chiare.
+Per ogni domanda, nell'ordine del test, mostra le quattro opzioni con la corretta in verde e, accanto a ciascuna, quante volte è stata scelta. Sotto il testo ci sono la percentuale di errore e i numeri di risposte giuste, sbagliate e non date. Contano solo i test **inviati**, online e su carta. Tre evidenze, con una scritta accanto ai numeri, aiutano a trovare le domande difficili o scritte poco chiare:
+
+- **La più sbagliata**, in rosso: la domanda con più risposte non corrette (se sono più d'una a pari merito, tutte);
+- **Sbagliata da oltre la metà**, in ambra: più della metà dei discenti non ha dato la risposta corretta (la metà esatta non è evidenziata);
+- **Giusta per tutti**, in verde: tutti hanno dato la risposta corretta.
+
+Le domande annullate non hanno evidenze e non contano nel confronto.
+
+**Scarica la statistica (PDF)**, in cima alla sezione, scarica la stessa statistica che vede il direttore, con le evidenze e le domande annullate (chi, quando, motivo), per condividerla con i docenti. Non contiene nomi di discenti, ma contiene le **risposte corrette**: non va dato ai discenti. Lo scarica chi vede la pagina, anche a esame chiuso.
+
+<!-- screenshot: route=/admin/esami/1/valutazioni/test-scritto · v1.86.3-dev · 2026-11-22 · come direttore, statistica aperta sulle prime 4 domande; domande sostituite a video con domande d'esempio -->
+![Statistica delle risposte con una domanda annullata](../../immagini/esami/test-scritto-statistica.png)
 
 ## Annullare una domanda
 
@@ -65,6 +76,9 @@ Se una domanda è sbagliata o poco chiara, il direttore la può **annullare** co
 - la domanda resta, con le risposte di tutti, ma **non conta più nel punteggio**: niente punti né penalità, e il punteggio massimo scende (per esempio da 30 a 29). Punteggi ed esiti si aggiornano da soli, anche quelli già pubblicati;
 - nella statistica, in **Vedi risposte** e nell'app della commissione la domanda compare come **Domanda annullata**, con chi l'ha annullata, quando e perché; il discente la vede annullata, con il motivo, solo quando gli vengono pubblicati i risultati;
 - **Ripristina la domanda** la fa tornare nel calcolo, alle stesse condizioni. Non si può annullare l'ultima domanda valida del test.
+
+<!-- screenshot: route=/admin/esami/1/valutazioni/test-scritto · v1.86.3-dev · 2026-11-22 · come direttore, finestra «Annulla la domanda» con un motivo d'esempio -->
+![Finestra per annullare una domanda](../../immagini/esami/annulla-domanda.png)
 
 ## Risultati e pubblicazione ai discenti
 

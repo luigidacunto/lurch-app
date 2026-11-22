@@ -5,7 +5,7 @@
         $bordo  = 'rgba(128,128,128,.35)';
         $grigio = 'rgba(128,128,128,.10)';
         $verde  = 'rgba(34,197,94,.25)';
-        $ambra  = 'rgba(234,179,8,.20)';
+        $evidenze = \App\Esami\TestScritto::EVIDENZE;
         $stat   = $d['statistica'];
         $annullate = collect($d['domande'])->whereNotNull('annullata')->keyBy('id');
         $lettere = ['A', 'B', 'C', 'D'];
@@ -46,7 +46,10 @@
     {{-- Statistica delle risposte: chiusa di default (ricaricando la pagina il correttore non compare) --}}
     @if(count($d['domande']) > 0)
         <x-filament::section heading="Statistica delle risposte" collapsible collapsed
-            description="Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Contano solo i test inviati ({{ $stat['inviati'] }}). Sfondo ambra: la metà o più non ha dato la risposta corretta.">
+            description="Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Contano solo i test inviati ({{ $stat['inviati'] }}). In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in verde quelle giuste per tutti.">
+            <div style="margin:0 0 10px;">
+                <x-filament::button tag="a" size="sm" color="gray" target="_blank" :href="route('esami.test-statistica-pdf', $esame)">Scarica la statistica (PDF)</x-filament::button>
+            </div>
             @if($d['eDirettore'])
                 <p style="margin:0 0 10px; font-size:13px;">
                     @if($d['motivoAnnulla'] === null) Puoi annullare una domanda scritta poco chiara o sbagliata: resta con le risposte di tutti ma non conta più nel punteggio.
@@ -55,13 +58,14 @@
             @endif
             @foreach($stat['domande'] as $i => $q)
                 @php
-                    $difficile = $q['annullata'] === null && $q['errore'] !== null && $q['errore'] >= 50;
+                    $ev = $q['evidenza'] ? $evidenze[$q['evidenza']] : null;
                     $argomenti = \Illuminate\Support\Js::from(['domanda_id' => $q['id'], 'numero' => $i + 1]);
                 @endphp
-                <div style="border-top:1px solid {{ $bordo }}; padding:8px 6px; {{ $difficile ? 'background:' . $ambra . ';' : '' }}">
+                <div style="border-top:1px solid {{ $bordo }}; padding:8px 6px; {{ $ev ? 'background:' . $ev['sfondo'] . '; border-left:4px solid ' . $ev['bordo'] . ';' : '' }}">
                     <div style="display:flex; flex-wrap:wrap; gap:6px 14px; align-items:flex-start; justify-content:space-between;">
                         <div style="flex:1 1 260px; font-weight:600; overflow-wrap:anywhere; white-space:pre-wrap; {{ $q['annullata'] ? 'text-decoration:line-through;' : '' }}">{{ $i + 1 }}. {{ $q['testo'] }}</div>
                         <div style="font-size:13px; text-align:right;">
+                            @if($ev)<strong style="color:{{ $ev['bordo'] }};">{{ $ev['etichetta'] }}</strong> · @endif
                             @if($q['annullata'])
                                 <strong>Domanda annullata</strong>
                             @elseif($q['errore'] !== null)

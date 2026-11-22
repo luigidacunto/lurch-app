@@ -230,12 +230,11 @@ class AdminPanelProvider extends PanelProvider
                                 fail(({ status, preventDefault }) => {
                                     if (status !== 419) return;
                                     preventDefault();
-                                    Livewire.pausePolling();
                                     if (document.getElementById('lurch-session-banner')) return;
                                     const banner = document.createElement('div');
                                     banner.id = 'lurch-session-banner';
                                     banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#fef2f2;border-bottom:2px solid #f87171;padding:12px 20px;display:flex;align-items:center;gap:12px;font-size:14px;color:#991b1b;';
-                                    banner.innerHTML = '<span style="font-size:18px;">⚠</span><span>La sessione è scaduta. Il polling è stato messo in pausa.</span><button onclick="window.location.reload()" style="margin-left:auto;background:#dc2626;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Ricarica la pagina</button>';
+                                    banner.innerHTML = '<span style="font-size:18px;">⚠</span><span>La sessione è scaduta: ricarica la pagina per continuare.</span><button onclick="window.location.reload()" style="margin-left:auto;background:#dc2626;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600;">Ricarica la pagina</button>';
                                     document.body.prepend(banner);
                                 });
                             });

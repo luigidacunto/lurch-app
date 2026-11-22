@@ -24,7 +24,7 @@ La compilano il **direttore** e i **docenti in commissione**, quando la prova fi
 ![Scheda personale del colloquio](../../immagini/esami/app-scheda-colloquio.png)
 
 - **Descrittori dei voti** apre il testo dei cinque livelli; è aperto finché non si sceglie un voto.
-- Il **voto**, da 1 a 5 senza decimali, è obbligatorio: si può cambiare ma non togliere. Sotto compare la descrizione del livello scelto.
+- Il **voto**, da 1 a 5 senza decimali: una volta scelto si può cambiare ma non togliere. Senza voto la scheda non entra nella media, come ricorda la nota sotto il titolo. Sotto i pulsanti compare la descrizione del livello scelto.
 - L'**impressione**, facoltativa e fino a 1000 caratteri, si scrive anche prima di scegliere il voto. Finché manca il voto la scheda non conta nella media e risulta tra le schede mancanti.
 - **Domande guida** apre le domande da porre al discente.
 - Ogni modifica si salva da sola; non c'è un invio.

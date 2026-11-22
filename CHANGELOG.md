@@ -12,6 +12,10 @@ Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifich
 - feat: esami, test scritto — statistica delle risposte nel pannello e nell'app della commissione: per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione, giuste, sbagliate, non date e percentuale di errore (solo test inviati); le domande sbagliate dalla metà o più sono evidenziate
 - feat: esami, test scritto — il direttore annulla una domanda con motivazione quando tutti i discenti ammessi hanno inviato il test: la domanda resta con le risposte ma esce dal punteggio (niente punti né penalità, massimo ridotto), segnata come annullata nel pannello, nell'app della commissione, nel PDF del correttore e, a risultati pubblicati, nella correzione del discente con il motivo; si ripristina finché l'esame è in corso
 - feat: esami, app della commissione — nella pagina Test scritto le domande con la risposta corretta e la statistica stanno in riquadri chiusi di default, così aggiornando la pagina durante il test il correttore non resta in vista
+- feat: esami, test scritto — nella statistica delle risposte, in pannello e app, la domanda più sbagliata è evidenziata in rosso, quelle sbagliate da oltre la metà dei discenti in ambra e quelle giuste per tutti in verde, ognuna con la sua scritta
+- feat: esami, test scritto — «Scarica la statistica (PDF)» nel pannello: la statistica delle risposte come la vede il direttore (evidenze e domande annullate comprese), senza nomi di discenti, per chi vede la pagina Test scritto
+- fix: pannello — l'avviso «sessione scaduta» non compariva mai: lo script si fermava con un errore prima di mostrarlo
+- fix: esami, colloquio — la scheda personale non indica più il voto come obbligatorio e ricorda che senza voto la scheda non entra nella media
 
 ## 1.86.3 — 2026-11-19
 

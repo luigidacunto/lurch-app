@@ -68,6 +68,84 @@ class EsameTestAnnullamentoTest extends EsameTestScrittoBase
         $this->assertSame(50, $st['domande'][0]['errore']);
     }
 
+    /** Tre inviati (x, y e il terzo iscritto reso ammesso): errori per domanda 0, 1, 2, 3, 0. */
+    private function treInviati(): void
+    {
+        \App\Models\Iscrizione::where('partecipante_id', $this->s['nonAmmesso']->id)->update(['non_ammesso' => false, 'non_ammesso_motivo' => null]);
+        $this->domande();
+        $this->avvia('x', 'y', 'nonAmmesso');
+        $this->compilaEInvia('x', [1, 0, 0, 0, 1]);              // sbaglia 3 e 4
+        $this->compilaEInvia('y', [1, 1, 3, 0, 1]);              // sbaglia 2 e 4
+        $this->compilaEInvia('nonAmmesso', [1, 0, 0, 0, 1]);     // sbaglia 3 e 4
+    }
+
+    public function test_evidenze_della_statistica_sui_conteggi_esatti(): void
+    {
+        $this->treInviati();
+        $ev = fn () => array_column(TestScritto::statistica($this->esame->fresh())['domande'], 'evidenza');
+
+        // 4: 3 errori su 3 → la più sbagliata; 3: 2 su 3 → oltre la metà; 2: 1 su 3 → niente; 1 e 5: giuste per tutti.
+        $this->assertSame([TestScritto::EVIDENZA_PERFETTA, null, TestScritto::EVIDENZA_ALTA, TestScritto::EVIDENZA_PEGGIORE, TestScritto::EVIDENZA_PERFETTA], $ev());
+
+        // Annullata la 4: nessuna evidenza per lei, e la più sbagliata diventa la 3.
+        AnnullamentoDomandaTest::annulla($this->esame->fresh(), $this->u['direttore'], $this->ids()[3], 'Fuori programma');
+        $this->assertSame([TestScritto::EVIDENZA_PERFETTA, null, TestScritto::EVIDENZA_PEGGIORE, null, TestScritto::EVIDENZA_PERFETTA], $ev());
+
+        // Pannello e app della commissione mostrano le stesse etichette.
+        $this->pannello('direttore');
+        Livewire::test(EsameResource\Pages\TestScrittoEsame::class, ['record' => $this->esame->getRouteKey()])
+            ->assertSee('La più sbagliata')->assertSee('Giusta per tutti')->assertSee('Scarica la statistica (PDF)');
+        $this->come('docComm')->get(route('app.esame.test.anteprima', $this->esame))->assertOk()
+            ->assertSee('La più sbagliata')->assertSee('Giusta per tutti');
+    }
+
+    public function test_evidenze_con_la_meta_esatta_e_con_pari_merito(): void
+    {
+        $this->domande();
+        $this->avvia('x', 'y');
+        $this->compilaEInvia('x', [1, 0, 0, 0, 1]);              // sbaglia 3 e 4
+        $this->compilaEInvia('y', [1, 1, 3, 0, 1]);              // sbaglia 2 e 4
+        $ev = fn () => array_column(TestScritto::statistica($this->esame->fresh())['domande'], 'evidenza');
+
+        // 2 e 3 sbagliate dalla metà esatta: nessuna evidenza.
+        $this->assertSame([TestScritto::EVIDENZA_PERFETTA, null, null, TestScritto::EVIDENZA_PEGGIORE, TestScritto::EVIDENZA_PERFETTA], $ev());
+        // Annullata la 4, la 2 e la 3 sono pari merito: entrambe le più sbagliate.
+        AnnullamentoDomandaTest::annulla($this->esame->fresh(), $this->u['direttore'], $this->ids()[3], 'x');
+        $this->assertSame([TestScritto::EVIDENZA_PERFETTA, TestScritto::EVIDENZA_PEGGIORE, TestScritto::EVIDENZA_PEGGIORE, null, TestScritto::EVIDENZA_PERFETTA], $ev());
+    }
+
+    public function test_pdf_statistica_per_chi_vede_la_pagina_con_tutto_quello_che_vede_il_direttore(): void
+    {
+        $this->treInviati();
+        AnnullamentoDomandaTest::annulla($this->esame->fresh(), $this->u['direttore'], $this->ids()[3], 'Fuori programma');
+        $url = route('esami.test-statistica-pdf', $this->esame);
+
+        foreach (['direttore', 'super', 'adminReg', 'adminLoc', 'presidente', 'docComm'] as $chi) {
+            $r = $this->actingAs($this->u[$chi])->get($url);
+            $r->assertOk();
+            $this->assertStringContainsString('application/pdf', $r->headers->get('Content-Type'), $chi);
+        }
+        foreach (['docente', 'x'] as $chi) {
+            $this->actingAs($this->u[$chi])->get($url)->assertForbidden();
+        }
+
+        $e = $this->esame->fresh()->load('corso');
+        $stat = TestScritto::statistica($e);
+        $html = view('pdf.test-statistica', [
+            'esame' => $e, 'stat' => $stat, 'nAnnullate' => 1, 'evidenze' => TestScritto::EVIDENZE,
+            'regola' => '', 'massimo' => '4,0', 'generata' => now(),
+        ])->render();
+        foreach (['3 test inviati', '(1 annullata)', 'La più sbagliata', 'Giusta per tutti', 'Domanda annullata', 'Motivo: Fuori programma', '✓', '2 · 67%'] as $atteso) {
+            $this->assertStringContainsString($atteso, $html);
+        }
+        $this->assertStringNotContainsString($this->s['x']->cognome, $html, 'nessun nome di discente');
+
+        // senza domande niente PDF (nessun controllo sullo stato dell'esame: è una lettura)
+        \App\Models\TestRisposta::query()->delete();
+        \App\Models\TestDomanda::query()->delete();
+        $this->actingAs($this->u['direttore'])->get($url)->assertNotFound();
+    }
+
     public function test_annullamento_solo_del_direttore_e_solo_a_test_inviato_da_tutti(): void
     {
         $this->domande();

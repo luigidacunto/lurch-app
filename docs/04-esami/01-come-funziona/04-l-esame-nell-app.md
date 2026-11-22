@@ -34,6 +34,11 @@ Aprendo un esame si trovano, a seconda del ruolo:
 
 Quando la prova finale è aperta, la sezione **Prova finale** passa in cima alla pagina. Se viene richiusa, chi ha già scritto delle schede le ritrova in sola lettura.
 
+Nella pagina **Test scritto** la statistica ha le stesse evidenze del pannello ([Statistica delle risposte](../03-svolgimento-e-chiusura/02-test-scritto.md#statistica-delle-risposte)); il PDF si scarica solo dal pannello. I riquadri delle domande e della statistica restano chiusi a ogni apertura e aggiornamento della pagina: chi la ricarica durante il test per vedere chi ha inviato non mette in vista le risposte corrette.
+
+<!-- screenshot: route=/app/esami/1/test/anteprima · v1.86.3-dev · 2026-11-22 · larghezza telefono, docente di prova in commissione, riquadri chiusi -->
+![La pagina Test scritto della commissione](../../immagini/esami/app-test-commissione.png)
+
 Le singole schede sono descritte nel capitolo del modello: per gli esami TCRI vedi [Modello TCRI](../04-modello-tcri/README.md).
 
 ## Discenti

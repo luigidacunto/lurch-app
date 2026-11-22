@@ -13,6 +13,9 @@ Le compilano il **direttore** e i **docenti in commissione**, quando la prova fi
 
 La scheda funziona come quella dei laboratori: timer in alto, un tocco per voce che si salva da solo, **Invia scheda** con tutte le 28 voci, modifiche possibili anche dopo l'invio. Sotto le voci c'è l'**annotazione**, facoltativa e fino a 1000 caratteri, come nei laboratori: si scrive anche prima di scegliere le voci e si salva da sola. La leggono il direttore, il presidente o delegato e i docenti in commissione nel riepilogo, solo dopo l'invio della scheda. Qui non c'è il confronto con gli altri: le schede di tutti si leggono nel riepilogo. Se la prova finale viene richiusa, o l'esame non è in corso, la scheda si può solo consultare.
 
+<!-- screenshot: route=/app/esami/1/prova-pratica/discenti/9226 · v1.86.3-dev · 2026-11-22 · larghezza telefono, docente di prova in commissione, scheda inviata e annotazione d'esempio -->
+![Annotazione della scheda personale della prova pratica](../../immagini/esami/app-scheda-prova-pratica.png)
+
 Nella proposta del direttore contano solo le schede **inviate**.
 
 ## La pagina Prova pratica nel pannello
@@ -27,6 +30,9 @@ Nella proposta del direttore contano solo le schede **inviate**.
 - **Vedi voci** apre la tabella voce per commissario, con la colonna della proposta; le voci su cui i commissari non concordano hanno «≠» e lo sfondo ambra.
 - La **scheda finale della prova pratica**: il totale, l'eventuale motivazione, chi l'ha inserita e quando.
 
+<!-- screenshot: route=/admin/esami/1/valutazioni/prova-pratica · v1.86.3-dev · 2026-11-22 · come direttore, discente aperto con annotazione e motivazione d'esempio -->
+![Annotazione di una scheda inviata e motivazione della scheda finale](../../immagini/esami/prova-pratica-note.png)
+
 ## Inserire la scheda finale
 
 **Inserisci prova pratica finale** lo vede solo il direttore ed è attivo a esame in corso, anche con la prova finale chiusa. Apre una pagina con tutte le 28 voci.
@@ -40,6 +46,9 @@ Nella proposta del direttore contano solo le schede **inviate**.
 - La **motivazione**, facoltativa e fino a 3000 caratteri, è una nota agli atti sul punteggio definitivo, per esempio quando si discosta dalla proposta. Compare nel riepilogo della prova finale, non negli export.
 - Una scheda personale si invia solo completa, quindi con almeno una scheda inviata la proposta copre già tutte le 28 voci: per accettarla basta controllarla e premere **Salva scheda finale**.
 - Si modifica fino alla chiusura con **Modifica prova pratica finale**; **Annulla** torna alla pagina senza salvare.
+
+<!-- screenshot: route=/admin/esami/1/valutazioni/prova-pratica/9226/finale · v1.86.3-dev · 2026-11-22 · come direttore, fondo della pagina con una motivazione d'esempio -->
+![Motivazione della scheda finale](../../immagini/esami/prova-pratica-finale-motivazione.png)
 
 ## Il riepilogo nell'app
 

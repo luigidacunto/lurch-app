@@ -128,6 +128,11 @@ Route::get('/admin/esami/{esame}/test-scritto/correttore-pdf', \App\Http\Control
     ->middleware(['web', 'auth'])
     ->name('esami.test-correttore-pdf');
 
+// Statistica delle risposte del test scritto (con le risposte corrette), per chi vede la pagina Test scritto.
+Route::get('/admin/esami/{esame}/valutazioni/test-scritto/statistica-pdf', \App\Http\Controllers\EsameStatisticaTestPdfController::class)
+    ->middleware(['web', 'auth'])
+    ->name('esami.test-statistica-pdf');
+
 // Esito dell'esame. PDF per discente e CSV di tutto l'esame (provvisori finché l'esame non è chiuso).
 Route::get('/admin/esami/{esame}/valutazioni/esito/{discente}/pdf', \App\Http\Controllers\EsameEsitoPdfController::class)
     ->middleware(['web', 'auth'])

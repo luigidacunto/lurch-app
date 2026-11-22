@@ -26,6 +26,23 @@ class TestScritto
 {
     public const N_OPZIONI = 4;
 
+    /** Evidenza di una domanda nella statistica (TestScritto::statistica), uguale in pannello, app e PDF. */
+    public const EVIDENZA_PEGGIORE = 'peggiore';
+
+    public const EVIDENZA_ALTA = 'alta';
+
+    public const EVIDENZA_PERFETTA = 'perfetta';
+
+    /**
+     * Etichette e colori delle evidenze, una sola fonte per pannello, app e PDF: `sfondo` trasparente (leggibile anche
+     * nel tema scuro del pannello), `stampa` a tinta piena per il PDF (dompdf non gestisce bene la trasparenza).
+     */
+    public const EVIDENZE = [
+        self::EVIDENZA_PEGGIORE => ['etichetta' => 'La più sbagliata', 'sfondo' => 'rgba(239,68,68,.16)', 'stampa' => '#fee2e2', 'bordo' => '#dc2626'],
+        self::EVIDENZA_ALTA     => ['etichetta' => 'Sbagliata da oltre la metà', 'sfondo' => 'rgba(245,158,11,.16)', 'stampa' => '#fef3c7', 'bordo' => '#d97706'],
+        self::EVIDENZA_PERFETTA => ['etichetta' => 'Giusta per tutti', 'sfondo' => 'rgba(34,197,94,.12)', 'stampa' => '#dcfce7', 'bordo' => '#16a34a'],
+    ];
+
     /**
      * Configurazione del punteggio. Con le penalità non attive: 1 punto per corretta, tutte le risposte obbligatorie.
      *
@@ -276,6 +293,24 @@ class TestScritto
                 'errore'    => $inviati > 0 ? (int) round(100 * ($inviati - $giuste) / $inviati) : null,
             ];
         }, self::domandeComplete($esame));
+
+        // Evidenza sui conteggi esatti (non sulla percentuale arrotondata), solo per le domande valide: «peggiore» = più
+        // errori di tutte (pari merito comprese, almeno un errore), «alta» = sbagliata da più della metà (la metà esatta
+        // no), «perfetta» = giusta per tutti. Una sola evidenza per domanda, in quest'ordine.
+        $errori = fn (array $d) => $inviati - $d['giuste'];
+        $valide = array_filter($domande, fn (array $d) => $d['annullata'] === null);
+        $peggiore = $valide === [] ? 0 : max(array_map($errori, $valide));
+        foreach ($domande as &$d) {
+            $e = $errori($d);
+            $d['evidenza'] = match (true) {
+                $d['annullata'] !== null || $inviati === 0 => null,
+                $e > 0 && $e === $peggiore                 => self::EVIDENZA_PEGGIORE,
+                2 * $e > $inviati                          => self::EVIDENZA_ALTA,
+                $e === 0                                   => self::EVIDENZA_PERFETTA,
+                default                                    => null,
+            };
+        }
+        unset($d);
 
         return ['inviati' => $inviati, 'domande' => $domande];
     }

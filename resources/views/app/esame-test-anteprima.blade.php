@@ -26,7 +26,7 @@
     details.box[open] > summary { margin-bottom: 10px; }
     .op .conta { float: right; font-weight: 400; color: #374151; margin-left: 8px; }
     .stat-riga { font-size: 12px; color: #374151; margin: 2px 0 4px; }
-    .difficile { background: #fef3c7; border-radius: 8px; padding: 6px 8px; }
+    .evidenziata { border-radius: 8px; padding: 6px 8px; }
     .annullata .dom-testo { text-decoration: line-through; }
     .etichetta-annullata { font-size: 12px; font-weight: 700; color: #b91c1c; }
 </style>
@@ -69,11 +69,13 @@
 @if(count($domande) > 0)
 <details class="box">
     <summary>Statistica delle risposte · {{ $inviati }} {{ $inviati === 1 ? 'test inviato' : 'test inviati' }}</summary>
-    <p class="nota" style="margin-bottom:10px">Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Sfondo giallo: la metà o più non ha dato la risposta corretta.</p>
+    <p class="nota" style="margin-bottom:10px">Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. In rosso la domanda più sbagliata, in ambra quelle sbagliate da oltre la metà, in verde quelle giuste per tutti.</p>
     @foreach($domande as $i => $d)
-        <div style="margin-bottom:12px" class="{{ $d['annullata'] ? 'annullata' : ($d['errore'] !== null && $d['errore'] >= 50 ? 'difficile' : '') }}">
+        @php $ev = $d['evidenza'] ? \App\Esami\TestScritto::EVIDENZE[$d['evidenza']] : null; @endphp
+        <div style="margin-bottom:12px; {{ $ev ? 'background:' . $ev['sfondo'] . '; border-left:4px solid ' . $ev['bordo'] . ';' : '' }}" class="{{ $d['annullata'] ? 'annullata' : ($ev ? 'evidenziata' : '') }}">
             <div class="dom-testo">{{ $i + 1 }}. {{ $d['testo'] }}</div>
             <div class="stat-riga">
+                @if($ev)<strong style="color:{{ $ev['bordo'] }}">{{ $ev['etichetta'] }}</strong> · @endif
                 @if($d['annullata'])<span class="etichetta-annullata">Domanda annullata</span> ·
                 @elseif($d['errore'] !== null)Errori <strong>{{ $d['errore'] }}%</strong> · @endif
                 giuste {{ $d['giuste'] }} · sbagliate {{ $d['sbagliate'] }} · non date {{ $d['vuote'] }}
