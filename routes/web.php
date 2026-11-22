@@ -299,6 +299,7 @@ Route::prefix('app')->name('app.')->group(function () {
         Route::get('/esami/{esame}/prova-pratica/discenti/{socio}',                    [\App\Http\Controllers\App\AppEsamiProvaPraticaController::class, 'scheda'])->name('esame.provapratica.scheda');
         Route::put('/esami/{esame}/prova-pratica/discenti/{socio}/voci',               [\App\Http\Controllers\App\AppEsamiProvaPraticaController::class, 'salvaVoce'])->name('esame.provapratica.voce');
         Route::post('/esami/{esame}/prova-pratica/discenti/{socio}/invia',             [\App\Http\Controllers\App\AppEsamiProvaPraticaController::class, 'invia'])->name('esame.provapratica.invia');
+        Route::put('/esami/{esame}/prova-pratica/discenti/{socio}/annotazione',        [\App\Http\Controllers\App\AppEsamiProvaPraticaController::class, 'salvaAnnotazione'])->name('esame.provapratica.annotazione');
         Route::get('/esami/{esame}/prova-finale/riepilogo',                            [\App\Http\Controllers\App\AppEsamiRiepilogoProvaFinaleController::class, 'riepilogo'])->name('esame.provafinale.riepilogo');
         // Test scritto. Discente avviato: modulo, salvataggio a ogni tocco, invio. Commissione: anteprima/risultati in sola lettura.
         Route::get('/esami/{esame}/test',                                              [\App\Http\Controllers\App\AppEsamiTestController::class, 'mostra'])->name('esame.test');

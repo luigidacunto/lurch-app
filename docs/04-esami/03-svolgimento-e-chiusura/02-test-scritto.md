@@ -2,7 +2,7 @@
 
 > **A chi serve:** direttori dei corsi, commissioni e amministratori.
 
-Da **Valutazioni → Test scritto** il direttore avvia il test ai discenti, segue chi lo svolge, inserisce i test su carta e pubblica i risultati. Le domande e il punteggio si preparano prima, in [Domande del test](../02-preparazione/06-domande-del-test.md); il pulsante **Domande e punteggio** porta lì.
+Da **Valutazioni → Test scritto** il direttore avvia il test ai discenti, segue chi lo svolge, inserisce i test su carta, guarda la statistica delle risposte, annulla le domande sbagliate o poco chiare e pubblica i risultati. Le domande e il punteggio si preparano prima, in [Domande del test](../02-preparazione/06-domande-del-test.md); il pulsante **Domande e punteggio** porta lì.
 
 La pagina la vedono chi gestisce l'esame e la commissione. **Avviare, disattivare e gestire il test su carta spetta solo al direttore**, a esame in corso; per gli altri la pagina è in sola lettura, tranne la pubblicazione dei risultati (vedi sotto).
 
@@ -50,9 +50,25 @@ Per chi ha bisogno di svolgere il test su carta (per esempio per BES/DSA):
 
 Il motivo resta scritto sulla riga del discente, insieme a chi ha inserito le risposte e quando.
 
+## Statistica delle risposte
+
+La sezione **Statistica delle risposte** è **chiusa di default**: si apre con un clic, così aggiornando la pagina durante il test le risposte corrette non restano in vista. La vedono tutti quelli che leggono la pagina.
+
+Per ogni domanda, nell'ordine del test, mostra le quattro opzioni con la corretta in verde e, accanto a ciascuna, quante volte è stata scelta. Sotto il testo ci sono la percentuale di errore e i numeri di risposte giuste, sbagliate e non date. Contano solo i test **inviati**, online e su carta. Le domande in cui la metà o più dei discenti non ha dato la risposta corretta hanno lo sfondo ambra: possono essere difficili o scritte poco chiare.
+
+## Annullare una domanda
+
+Se una domanda è sbagliata o poco chiara, il direttore la può **annullare** con **Annulla domanda**, sotto la domanda nella statistica:
+
+- si può solo quando **tutti i discenti ammessi hanno inviato il test**, cartacei compresi, e con l'esame in corso; finché manca qualcuno il pulsante è spento e dice quanti test mancano;
+- il **motivo** è obbligatorio e lo vedono anche i discenti;
+- la domanda resta, con le risposte di tutti, ma **non conta più nel punteggio**: niente punti né penalità, e il punteggio massimo scende (per esempio da 30 a 29). Punteggi ed esiti si aggiornano da soli, anche quelli già pubblicati;
+- nella statistica, in **Vedi risposte** e nell'app della commissione la domanda compare come **Domanda annullata**, con chi l'ha annullata, quando e perché; il discente la vede annullata, con il motivo, solo quando gli vengono pubblicati i risultati;
+- **Ripristina la domanda** la fa tornare nel calcolo, alle stesse condizioni. Non si può annullare l'ultima domanda valida del test.
+
 ## Risultati e pubblicazione ai discenti
 
-Per chi ha inviato, la riga mostra il punteggio e **Vedi risposte**, che elenca risposta per risposta quella data, se è giusta e qual era quella corretta.
+Per chi ha inviato, la riga mostra il punteggio e **Vedi risposte**, che elenca risposta per risposta quella data, se è giusta e qual era quella corretta (le domande annullate sono segnate come tali).
 
 Dopo l'invio il discente rivede le proprie risposte, ma **non il punteggio né le correzioni**, finché non gli vengono pubblicati. Il riquadro **Risultati ai discenti** dice a quanti sono stati pubblicati:
 

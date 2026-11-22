@@ -29,7 +29,7 @@ Aprendo un esame si trovano, a seconda del ruolo:
 | **Tutoraggio** | **I miei tutorati**: l'andamento dei discenti che si seguono, in sola lettura | i tutor |
 | **Itinere** | **Schede itinere**, con il numero di schede iniziate; **Riepilogo itinere**, in sola lettura | le schede: tutti i docenti, compreso il direttore; il riepilogo: la commissione |
 | **Prova finale** | **Colloquio** e **Prova pratica**: le proprie schede personali; **Riepilogo prova finale**, in sola lettura | le schede: direttore e docenti in commissione, quando la prova finale è aperta; il riepilogo: la commissione |
-| **Test scritto** | Le domande con le risposte corrette e i risultati, in sola lettura | la commissione |
+| **Test scritto** | Le domande con le risposte corrette e la statistica delle risposte (due riquadri chiusi di default), poi i risultati dei discenti, in sola lettura | la commissione |
 | **Laboratori** | Un riquadro per laboratorio, con la data e quante schede si sono inviate sui propri discenti | tutti; chi non ha discenti in quel laboratorio legge «Nessun discente assegnato a te» |
 
 Quando la prova finale è aperta, la sezione **Prova finale** passa in cima alla pagina. Se viene richiusa, chi ha già scritto delle schede le ritrova in sola lettura.

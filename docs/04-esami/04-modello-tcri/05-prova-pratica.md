@@ -11,7 +11,7 @@ Le compilano il **direttore** e i **docenti in commissione**, quando la prova fi
 <!-- screenshot: route=/app/esami/1/prova-pratica · v1.86.2 · 2026-11-19 · larghezza telefono, docente di prova in commissione -->
 ![Elenco della prova pratica](../../immagini/esami/app-prova-pratica-elenco.png)
 
-La scheda funziona come quella dei laboratori: timer in alto, un tocco per voce che si salva da solo, **Invia scheda** con tutte le 28 voci, modifiche possibili anche dopo l'invio. Qui non ci sono l'annotazione e il confronto con gli altri: le schede di tutti si leggono nel riepilogo. Se la prova finale viene richiusa, o l'esame non è in corso, la scheda si può solo consultare.
+La scheda funziona come quella dei laboratori: timer in alto, un tocco per voce che si salva da solo, **Invia scheda** con tutte le 28 voci, modifiche possibili anche dopo l'invio. Sotto le voci c'è l'**annotazione**, facoltativa e fino a 1000 caratteri, come nei laboratori: si scrive anche prima di scegliere le voci e si salva da sola. La leggono il direttore, il presidente o delegato e i docenti in commissione nel riepilogo, solo dopo l'invio della scheda. Qui non c'è il confronto con gli altri: le schede di tutti si leggono nel riepilogo. Se la prova finale viene richiusa, o l'esame non è in corso, la scheda si può solo consultare.
 
 Nella proposta del direttore contano solo le schede **inviate**.
 
@@ -22,10 +22,10 @@ Nella proposta del direttore contano solo le schede **inviate**.
 <!-- screenshot: route=/admin/esami/1/valutazioni/prova-pratica · v1.86.2 · 2026-11-19 · come direttore, primo discente aperto con «Vedi voci» -->
 ![Pagina Prova pratica](../../immagini/esami/prova-pratica.png)
 
-- Le **schede personali dei commissari**: inviata con il totale, oppure bozza con le voci scelte (una bozza non conta nella proposta). Se mancano schede inviate lo segnala, senza bloccare nulla.
+- Le **schede personali dei commissari**: inviata con il totale e l'eventuale annotazione, oppure bozza con le voci scelte (una bozza non conta nella proposta e la sua annotazione non si vede). Se mancano schede inviate lo segnala, senza bloccare nulla.
 - La **proposta voce per voce**: per ogni voce il valore più frequente tra le schede inviate; in caso di pareggio, il **più basso**. Nell'esempio una scheda dà 23,75 e l'altra 28,0: sulle voci in pareggio vince il valore più basso, e la proposta è 23,75.
 - **Vedi voci** apre la tabella voce per commissario, con la colonna della proposta; le voci su cui i commissari non concordano hanno «≠» e lo sfondo ambra.
-- La **scheda finale della prova pratica**: il totale, chi l'ha inserita e quando.
+- La **scheda finale della prova pratica**: il totale, l'eventuale motivazione, chi l'ha inserita e quando.
 
 ## Inserire la scheda finale
 
@@ -36,7 +36,8 @@ Nella proposta del direttore contano solo le schede **inviate**.
 
 - Le voci sono **già scelte secondo la proposta**; accanto, le risposte di ogni commissario. Senza schede inviate si scelgono tutte a mano.
 - Si cambia una voce toccando **R**, **G** o **V** nella colonna **Finale**. **Ripristina la proposta** riporta tutte le voci alla proposta.
-- **Salva scheda finale** si attiva con tutte le 28 voci scelte: una scheda finale a metà non si salva. Non serve una motivazione.
+- **Salva scheda finale** si attiva con tutte le 28 voci scelte: una scheda finale a metà non si salva.
+- La **motivazione**, facoltativa e fino a 3000 caratteri, è una nota agli atti sul punteggio definitivo, per esempio quando si discosta dalla proposta. Compare nel riepilogo della prova finale, non negli export.
 - Una scheda personale si invia solo completa, quindi con almeno una scheda inviata la proposta copre già tutte le 28 voci: per accettarla basta controllarla e premere **Salva scheda finale**.
 - Si modifica fino alla chiusura con **Modifica prova pratica finale**; **Annulla** torna alla pagina senza salvare.
 

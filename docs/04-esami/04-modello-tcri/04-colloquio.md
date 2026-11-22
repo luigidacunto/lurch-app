@@ -25,7 +25,7 @@ La compilano il **direttore** e i **docenti in commissione**, quando la prova fi
 
 - **Descrittori dei voti** apre il testo dei cinque livelli; è aperto finché non si sceglie un voto.
 - Il **voto**, da 1 a 5 senza decimali, è obbligatorio: si può cambiare ma non togliere. Sotto compare la descrizione del livello scelto.
-- L'**impressione**, facoltativa e fino a 1000 caratteri, si scrive dopo aver scelto il voto.
+- L'**impressione**, facoltativa e fino a 1000 caratteri, si scrive anche prima di scegliere il voto. Finché manca il voto la scheda non conta nella media e risulta tra le schede mancanti.
 - **Domande guida** apre le domande da porre al discente.
 - Ogni modifica si salva da sola; non c'è un invio.
 
@@ -38,7 +38,7 @@ Se la prova finale viene richiusa, o l'esame non è in corso, la scheda si può 
 <!-- screenshot: route=/admin/esami/1/valutazioni/autovalutazione · v1.86.2 · 2026-11-19 · come direttore; due discenti spostati a video in cima, il primo aperto -->
 ![Pagina Autovalutazione](../../immagini/esami/autovalutazione.png)
 
-- Le **schede personali dei commissari**: il voto di ciascuno e la sua impressione. Se mancano schede lo segnala, senza bloccare nulla.
+- Le **schede personali dei commissari**: il voto di ciascuno («nessun voto» se c'è solo l'impressione) e la sua impressione. Se mancano schede lo segnala, senza bloccare nulla.
 - La **media dei voti**, troncata a un decimale, è la **proposta** per il voto finale.
 - La **scheda finale del colloquio**: il voto, chi l'ha inserito e quando, la motivazione.
 

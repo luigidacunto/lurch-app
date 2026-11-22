@@ -24,6 +24,7 @@
 
     <div x-data="{
             v: @js($d['iniziali']),
+            motivazione: @js($d['motivazione']),
             proposta: @js($d['proposta']),
             tot: {{ $nVoci }},
             fatte() { return Object.values(this.v).filter(x => x).length },
@@ -87,9 +88,17 @@
 
         <div style="font-size:11px;">R = rosso · G = giallo · V = verde @if(count($conf['commissari']) > 0)· «≠» e sfondo ambra = voce su cui i commissari non concordano @endif</div>
 
+        <section style="border:1px solid {{ $bordo }}; border-radius:10px; padding:10px 14px;">
+            <label for="motivazione" style="display:block; font-size:15px; font-weight:700; margin-bottom:2px;">Motivazione · facoltativa</label>
+            <div style="font-size:12px; margin-bottom:6px;">Nota agli atti sul punteggio definitivo, per esempio se si discosta dalla proposta. Resta nel riepilogo della prova finale, non negli export.</div>
+            <textarea id="motivazione" x-model="motivazione" rows="4" maxlength="{{ \App\Esami\FinaleProvaFinale::MOTIVAZIONE_MAX }}"
+                      style="width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid {{ $bordo }}; border-radius:8px; background:transparent; color:inherit; font:inherit; resize:vertical;"></textarea>
+            <div style="font-size:11px; text-align:right;"><span x-text="motivazione.length"></span>/{{ \App\Esami\FinaleProvaFinale::MOTIVAZIONE_MAX }}</div>
+        </section>
+
         <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;">
             <x-filament::button color="gray" tag="a" :href="\App\Filament\Resources\EsameResource::getUrl('prova-pratica', ['record' => $this->record])">Annulla</x-filament::button>
-            <x-filament::button color="success" type="button" x-bind:disabled="fatte() < tot" @click="$wire.salva(v)">Salva scheda finale</x-filament::button>
+            <x-filament::button color="success" type="button" x-bind:disabled="fatte() < tot" @click="$wire.salva(v, motivazione)">Salva scheda finale</x-filament::button>
         </div>
     </div>
 </x-filament-panels::page>

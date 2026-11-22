@@ -27,5 +27,10 @@
 
 @include('app.partials.semaforo-corpo')
 
+@include('app.partials.esami-annotazione', [
+    'urlAnnotazione' => route('app.esame.provapratica.annotazione', [$esame, $socio]),
+    'chiLegge' => 'a scheda inviata la leggono il direttore, il presidente e i docenti di commissione',
+])
+
 @include('app.partials.semaforo-barra')
 @endsection

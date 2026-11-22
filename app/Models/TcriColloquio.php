@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Colloquio. Due famiglie sempre separate:
  *  - TIPO_PERSONALE = appunti di un membro compilatore (direttore o docente di commissione; il presidente non compila):
- *    voto INTERO 1–5 obbligatorio + impressione facoltativa. Non entra nel calcolo.
+ *    voto INTERO 1–5 + impressione facoltativa; l'impressione si scrive anche prima del voto (punteggio NULL = senza voto,
+ *    esclusa da proposta e completezza). Non entra nel calcolo.
  *  - TIPO_FINALE = scheda del direttore (membro NULL), voto con fino a 1 decimale + motivazione se diverso dalla
  *    proposta (media dei voti personali troncata a 1 decimale). L'unica che entra nel calcolo.
  * ⚠️ L'unicità è garantita da indici univoci PARZIALI (migrazione): con membro NULL un UNIQUE normale non protegge.

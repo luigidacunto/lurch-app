@@ -67,8 +67,8 @@
 
 <div class="scheda-box">
     <h3>Impressione · facoltativa</h3>
-    <textarea class="impressione" id="impressione" maxlength="{{ $impressioneMax }}" placeholder="Scegli prima il voto, poi scrivi la tua impressione"
-              @disabled(! $modificabile || $voto === null)>{{ $impressione }}</textarea>
+    <textarea class="impressione" id="impressione" maxlength="{{ $impressioneMax }}" placeholder="Scrivi qui la tua impressione"
+              @disabled(! $modificabile)>{{ $impressione }}</textarea>
     <div class="conta-caratteri"><span id="conta">{{ mb_strlen((string) $impressione) }}</span>/{{ $impressioneMax }}</div>
 </div>
 
@@ -141,7 +141,6 @@
             mostraLivello(btn.dataset.voto);
             invia(urlVoto, {voto: parseInt(btn.dataset.voto, 10)}, function () {
                 riepilogo.textContent = 'Il tuo voto: ' + btn.dataset.voto;
-                testo.disabled = false;
             }, function () { segna(precedente); mostraLivello(precedente); });
         });
     });

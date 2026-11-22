@@ -8,6 +8,7 @@ use App\Esami\StrutturaSemaforo;
 use App\Filament\Resources\EsameResource;
 use App\Models\Esame;
 use App\Models\Socio;
+use App\Models\TcriProvaPratica;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
 use Filament\Resources\Pages\Page;
@@ -73,6 +74,8 @@ class InserisciProvaPraticaFinale extends Page
         $struttura = StrutturaSemaforo::per($this->record);
         $confronto = RiepilogoProvaFinale::provaPraticaDiscente($this->record, $this->discenteId);
         $attuali = RiepilogoProvaFinale::valoriFinaleProvaPratica($this->record, $this->discenteId);
+        $motivazione = $this->record->provePratiche()->where('tipo', TcriProvaPratica::TIPO_FINALE)
+            ->where('discente_socio_id', $this->discenteId)->value('motivazione');
         $esiste = $attuali !== [];
 
         $iniziali = [];
@@ -88,14 +91,15 @@ class InserisciProvaPraticaFinale extends Page
             'iniziali'  => $iniziali,
             'proposta'  => array_map(fn ($v) => StrutturaSemaforo::livello($struttura['scala'], $v), $confronto['proposta']),
             'esiste'    => $esiste,
+            'motivazione' => (string) $motivazione,
         ];
     }
 
     /** @param array<string, ?string> $voci codice voce => chiave della scala */
-    public function salva(array $voci): void
+    public function salva(array $voci, ?string $motivazione = null): void
     {
         try {
-            FinaleProvaFinale::salvaProvaPratica($this->record, auth()->user(), $this->discenteId, $voci);
+            FinaleProvaFinale::salvaProvaPratica($this->record, auth()->user(), $this->discenteId, $voci, $motivazione);
         } catch (ValidationException $e) {
             Notification::make()->title(collect($e->errors())->flatten()->first())->danger()->send();
 

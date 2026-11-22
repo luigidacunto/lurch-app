@@ -9,8 +9,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * Annotazione libera del docente sulla PROPRIA scheda personale (laboratorio, itinere): appunto, mai nel calcolo né
- * negli export. La leggono solo l'autore e il direttore (RiepilogoItinere con $conAnnotazioni). Se la scheda non
+ * Annotazione libera del docente sulla PROPRIA scheda personale (laboratorio, itinere, prova pratica): appunto, mai nel
+ * calcolo né negli export. Chi altro la legge dipende dalla scheda (RiepilogoItinere, RiepilogoProvaFinale). Se la scheda non
  * esiste ancora la crea: una scheda senza voti è già uno stato valido (il motore la ignora). I permessi li controlla il chiamante.
  */
 trait SalvaAnnotazione

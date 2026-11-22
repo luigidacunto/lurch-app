@@ -58,7 +58,7 @@
             <div class="blocco-personale">
                 <div class="etichetta">Schede personali — appunti</div>
                 @forelse($d['colloquio']['personali'] as $p)
-                    <div class="riga-commissario"><strong>{{ $p['membro'] }}</strong>: voto {{ $p['voto'] }}
+                    <div class="riga-commissario"><strong>{{ $p['membro'] }}</strong>: {{ $p['voto'] !== null ? 'voto '.$p['voto'] : 'nessun voto' }}
                         @if($p['impressione'])<div class="impressione">{{ $p['impressione'] }}</div>@endif
                     </div>
                 @empty
@@ -86,6 +86,7 @@
                     <div class="riga-commissario"><strong>{{ $p['membro'] }}</strong>:
                         @if($p['inviata']) inviata{{ $p['totale'] !== null ? ' · '.$p['totale'].' su '.$r['massimo_pratica'] : '' }}
                         @else bozza ({{ $p['voci'] }} voci) @endif
+                        @if($p['annotazione'])<div class="impressione">{{ $p['annotazione'] }}</div>@endif
                     </div>
                 @empty
                     <div class="mancante">Nessuna scheda personale.</div>
@@ -96,6 +97,7 @@
                 <div class="etichetta">Scheda finale — entra nel calcolo</div>
                 @if($d['prova_pratica']['finale'])
                     <div><strong>{{ $d['prova_pratica']['finale']['totale'] ?? '—' }} su {{ $d['prova_pratica']['finale']['massimo'] }}</strong></div>
+                    @if($d['prova_pratica']['finale']['motivazione'])<div class="impressione">{{ $d['prova_pratica']['finale']['motivazione'] }}</div>@endif
                     <div>{{ $d['prova_pratica']['finale']['autore'] ?? '—' }} · {{ $d['prova_pratica']['finale']['data']?->format('d/m/Y H:i') }}</div>
                 @else
                     <div class="mancante">Finale non ancora inserita.</div>

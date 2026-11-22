@@ -4,6 +4,15 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## In sviluppo
+
+- feat: esami, prova pratica — la scheda personale di direttore e docenti in commissione ha l'annotazione libera come i laboratori, scrivibile anche prima di scegliere le voci; nel riepilogo della prova finale la leggono direttore, presidente o delegato e commissione, solo a scheda inviata
+- feat: esami, prova pratica — la scheda finale del direttore ha una motivazione facoltativa, nota agli atti sul punteggio definitivo, mostrata nel riepilogo della prova finale (non negli export)
+- fix: esami, colloquio — l'impressione della scheda personale si scrive da subito, senza dover prima scegliere il voto; una scheda senza voto non entra nella media e resta tra le schede mancanti
+- feat: esami, test scritto — statistica delle risposte nel pannello e nell'app della commissione: per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione, giuste, sbagliate, non date e percentuale di errore (solo test inviati); le domande sbagliate dalla metà o più sono evidenziate
+- feat: esami, test scritto — il direttore annulla una domanda con motivazione quando tutti i discenti ammessi hanno inviato il test: la domanda resta con le risposte ma esce dal punteggio (niente punti né penalità, massimo ridotto), segnata come annullata nel pannello, nell'app della commissione, nel PDF del correttore e, a risultati pubblicati, nella correzione del discente con il motivo; si ripristina finché l'esame è in corso
+- feat: esami, app della commissione — nella pagina Test scritto le domande con la risposta corretta e la statistica stanno in riquadri chiusi di default, così aggiornando la pagina durante il test il correttore non resta in vista
+
 ## 1.86.3 — 2026-11-19
 
 - docs: guida, nuova sezione «Esami» (anche nel pannello, menu Guida → Esami), divisa in parti comuni a ogni esame e un capitolo per ogni modello di valutazione (oggi TCRI); scritti con le schermate «Come funziona», «Preparazione», «Svolgimento e chiusura» e il capitolo «Modello TCRI» (calcolo e pesi, laboratori a semaforo, itinere, colloquio, prova pratica). Le voci «Esami» di Pannello e App dei soci rimandano alla nuova sezione

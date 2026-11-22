@@ -20,6 +20,9 @@ use Illuminate\Validation\ValidationException;
  */
 class FinaleProvaFinale
 {
+    /** Motivazione della prova pratica finale. */
+    public const MOTIVAZIONE_MAX = 3000;
+
     /**
      * Colloquio finale: da min a max della scala con al più 1 decimale. Motivazione obbligatoria solo se esiste una
      * proposta (schede personali visibili, a prova finale aperta) e il valore è diverso.
@@ -60,13 +63,14 @@ class FinaleProvaFinale
 
     /**
      * Prova pratica finale: tutte le voci del semaforo (nessun salvataggio parziale: il calcolo non deve mai vedere
-     * una finale a metà). `$voci` = voce_codice => chiave della scala (rosso/giallo/verde).
+     * una finale a metà). `$voci` = voce_codice => chiave della scala (rosso/giallo/verde). `$motivazione` sempre
+     * facoltativa (a differenza del colloquio): nota agli atti sul punteggio definitivo.
      *
      * @param  array<string, ?string>  $voci
      *
      * @throws ValidationException messaggi per l'utente; \RuntimeException se non autorizzato.
      */
-    public static function salvaProvaPratica(Esame $esame, ?User $utente, int $discenteId, array $voci): TcriProvaPratica
+    public static function salvaProvaPratica(Esame $esame, ?User $utente, int $discenteId, array $voci, ?string $motivazione = null): TcriProvaPratica
     {
         self::controlla($esame, $utente, $discenteId);
 
@@ -84,11 +88,16 @@ class FinaleProvaFinale
             throw ValidationException::withMessages(['voci' => 'Compila tutte le '.count($struttura['codici']).' voci per salvare la scheda finale (mancano '.count($totale['mancanti']).').']);
         }
 
-        return DB::transaction(function () use ($esame, $utente, $discenteId, $valori) {
+        $motivazione = Formato::testo($motivazione);
+        if ($motivazione !== null && mb_strlen($motivazione) > self::MOTIVAZIONE_MAX) {
+            throw ValidationException::withMessages(['motivazione' => 'La motivazione può avere al massimo '.self::MOTIVAZIONE_MAX.' caratteri.']);
+        }
+
+        return DB::transaction(function () use ($esame, $utente, $discenteId, $valori, $motivazione) {
             Esame::verificaInCorsoConBlocco($esame->id);
             $scheda = TcriProvaPratica::updateOrCreate(
                 ['esame_id' => $esame->id, 'discente_socio_id' => $discenteId, 'tipo' => TcriProvaPratica::TIPO_FINALE],
-                ['inserito_da' => SocioCorrente::perUtente($utente)],
+                ['inserito_da' => SocioCorrente::perUtente($utente), 'motivazione' => $motivazione],
             );
             foreach ($valori as $codice => $valore) {
                 $scheda->voci()->updateOrCreate(['voce_codice' => $codice], ['valore' => $valore]);

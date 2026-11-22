@@ -19,6 +19,8 @@ use App\Models\TestRisposta;
  * ⚠️ Verso il discente passa SOLO domandePerDiscente(): niente `corretta`, niente punteggio. Unica eccezione:
  * correzionePerDiscente(), per il suo test inviato e solo dopo che il direttore gli ha pubblicato i risultati.
  * Indice delle opzioni in base 0 (posizione nell'array), N_OPZIONI = 4.
+ * Domande ANNULLATE (AnnullamentoDomandaTest): fuori da domandePerCalcolo(), quindi fuori da punteggio, massimo, giuste
+ * e risposteDi(); restano in domandeComplete() (con `annullata`) e nelle risposte salvate.
  */
 class TestScritto
 {
@@ -79,9 +81,15 @@ class TestScritto
         return $esame->testDomande()->count();
     }
 
+    /** Domande valide, cioè non annullate: sono quelle che contano nel punteggio. */
+    public static function numeroDomandeValide(Esame $esame): int
+    {
+        return $esame->testDomande()->whereNull('annullata_il')->count();
+    }
+
     public static function massimo(Esame $esame): Frazione
     {
-        return Frazione::da(self::configurazione($esame)['corretta'])->per(Frazione::di(self::numeroDomande($esame)));
+        return Frazione::da(self::configurazione($esame)['corretta'])->per(Frazione::di(self::numeroDomandeValide($esame)));
     }
 
     /**
@@ -117,17 +125,21 @@ class TestScritto
     }
 
     /**
-     * Le domande per chi prepara e legge (commissione, admin, direttore, PDF): con la corretta.
+     * Le domande per chi prepara e legge (commissione, admin, direttore, PDF): con la corretta e, se annullata,
+     * data, autore e motivo dell'annullamento.
      *
-     * @return list<array{id: int, ordine: int, testo: string, opzioni: list<string>, corretta: int}>
+     * @return list<array{id: int, ordine: int, testo: string, opzioni: list<string>, corretta: int, annullata: ?array{il: \Illuminate\Support\Carbon, da: ?string, motivo: string}}>
      */
     public static function domandeComplete(Esame $esame): array
     {
-        return TestDomanda::query()->where('esame_id', $esame->id)->orderBy('ordine')->orderBy('id')->get()
+        return TestDomanda::query()->where('esame_id', $esame->id)->with('annullataDa')->orderBy('ordine')->orderBy('id')->get()
             ->makeVisible('corretta')
             ->map(fn (TestDomanda $d) => [
                 'id' => $d->id, 'ordine' => $d->ordine, 'testo' => $d->testo,
                 'opzioni' => array_values((array) $d->opzioni), 'corretta' => (int) $d->corretta,
+                'annullata' => $d->eAnnullata()
+                    ? ['il' => $d->annullata_il, 'da' => $d->annullataDa?->nome_completo, 'motivo' => (string) $d->motivo_annullamento]
+                    : null,
             ])->all();
     }
 
@@ -136,7 +148,7 @@ class TestScritto
     {
         $c = self::configurazione($esame);
         $domande = [];
-        foreach (TestDomanda::query()->where('esame_id', $esame->id)->get(['id', 'corretta']) as $d) {
+        foreach (TestDomanda::query()->where('esame_id', $esame->id)->whereNull('annullata_il')->get(['id', 'corretta']) as $d) {
             $domande[$d->id] = [
                 'corretta'        => (int) $d->corretta,
                 'punti'           => $c['corretta'],
@@ -149,7 +161,7 @@ class TestScritto
         return $domande;
     }
 
-    /** @return array<int, ?int> id domanda => opzione (null = vuota), per tutte le domande dell'esame. */
+    /** @return array<int, ?int> id domanda => opzione (null = vuota), per le domande VALIDE dell'esame. */
     public static function risposteDi(Esame $esame, TestConsegna $consegna): array
     {
         $date = $consegna->risposte()->pluck('opzione', 'domanda_id')->all();
@@ -212,11 +224,15 @@ class TestScritto
      * Correzione di un test INVIATO per il discente stesso, SOLO dopo la pubblicazione (PermessiEsame::vedeRisultatiTest):
      * è l'unico punto in cui le corrette vanno verso un discente.
      *
-     * @return array{punteggio: ?string, giuste: int, totale: int, corrette: array<int, int>}
+     * `annullate` = id domanda => motivo: la domanda resta visibile al discente, segnata come annullata.
+     *
+     * @return array{punteggio: ?string, giuste: int, totale: int, corrette: array<int, int>, annullate: array<int, string>}
      */
     public static function correzionePerDiscente(Esame $esame, TestConsegna $consegna): array
     {
         $corrette = array_map(fn (array $d) => $d['corretta'], self::domandePerCalcolo($esame));
+        $annullate = TestDomanda::query()->where('esame_id', $esame->id)->whereNotNull('annullata_il')
+            ->pluck('motivo_annullamento', 'id')->map(fn ($m) => (string) $m)->all();
         $risposte = self::risposteDi($esame, $consegna);
         $giuste = count(array_filter($risposte, fn ($r, $id) => $r !== null && $r === ($corrette[$id] ?? null), ARRAY_FILTER_USE_BOTH));
 
@@ -225,7 +241,43 @@ class TestScritto
             'giuste'    => $giuste,
             'totale'    => count($corrette),
             'corrette'  => $corrette,
+            'annullate' => $annullate,
         ];
+    }
+
+    /**
+     * Statistica delle risposte, domanda per domanda nell'ordine del test (annullate comprese, segnate): conta solo i test
+     * INVIATI (online e cartacei) dei discenti AMMESSI. Calcolata a ogni lettura, nulla è salvato. `errore` = percentuale
+     * di chi non ha dato la corretta (sbagliate + non date) sugli inviati, null senza inviati.
+     *
+     * @return array{inviati: int, domande: list<array>}
+     */
+    public static function statistica(Esame $esame): array
+    {
+        $ammessi = $esame->discentiAmmessi()->pluck('iscrizioni.partecipante_id');
+        $consegne = $esame->testConsegne()->whereNotNull('consegnato_il')->whereIn('discente_socio_id', $ammessi)->pluck('id');
+        $inviati = $consegne->count();
+        $conteggi = TestRisposta::query()->whereIn('consegna_id', $consegne)->whereNotNull('opzione')
+            ->selectRaw('domanda_id, opzione, count(*) as n')->groupBy('domanda_id', 'opzione')->get()->groupBy('domanda_id');
+
+        $domande = array_map(function (array $d) use ($conteggi, $inviati) {
+            $scelte = array_fill(0, self::N_OPZIONI, 0);
+            foreach ($conteggi->get($d['id'], collect()) as $c) {
+                $scelte[(int) $c->opzione] = (int) $c->n;
+            }
+            $giuste = $scelte[$d['corretta']] ?? 0;
+            $date = array_sum($scelte);
+
+            return $d + [
+                'scelte'    => $scelte,
+                'giuste'    => $giuste,
+                'sbagliate' => $date - $giuste,
+                'vuote'     => $inviati - $date,
+                'errore'    => $inviati > 0 ? (int) round(100 * ($inviati - $giuste) / $inviati) : null,
+            ];
+        }, self::domandeComplete($esame));
+
+        return ['inviati' => $inviati, 'domande' => $domande];
     }
 
     /** "x su Tmax" con una virgola. */

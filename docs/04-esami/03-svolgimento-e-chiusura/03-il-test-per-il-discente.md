@@ -24,7 +24,7 @@ Se il test è stato svolto **su carta**, la pagina lo dice: le risposte sono que
 
 ## La correzione
 
-Quando il direttore pubblica i risultati, il pulsante diventa **Correzione disponibile** e la pagina mostra il punteggio e, per ogni domanda, **Giusta** o **Sbagliata**: in verde la risposta corretta, in rosso la propria se era sbagliata.
+Quando il direttore pubblica i risultati, il pulsante diventa **Correzione disponibile** e la pagina mostra il punteggio e, per ogni domanda, **Giusta** o **Sbagliata**: in verde la risposta corretta, in rosso la propria se era sbagliata. Una domanda **annullata** dal direttore è barrata, con il motivo, e non conta nel punteggio.
 
 <!-- screenshot: route=/app/esami/1/test · v1.86.2 · 2026-11-19 · larghezza telefono, risultati pubblicati; domande d'esempio -->
 ![La correzione del test nell'app](../../immagini/esami/app-test-corretto.png)

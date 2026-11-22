@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\DB;
  */
 class AppEsamiProvaPraticaController extends Controller
 {
+    use Concerns\SalvaAnnotazione;
+
     public function elenco(Esame $esame)
     {
         $permessi = $this->permessi($esame);
@@ -65,7 +67,18 @@ class AppEsamiProvaPraticaController extends Controller
             'modificabile' => $permessi->puoCompilareProvaPersonale($socio->id),
             'inviata'      => $scheda?->eInviata() ?? false,
             'totale'       => $scheda?->totaleFormattato($esame->modello_snapshot),
+            'annotazione'  => $scheda?->annotazione,
+            'annotazioneMax' => self::ANNOTAZIONE_MAX,
         ]);
+    }
+
+    /** Annotazione libera (Concerns\SalvaAnnotazione): stessi permessi delle voci, si scrive anche prima di ogni voce. */
+    public function salvaAnnotazione(Request $request, Esame $esame, Socio $socio): JsonResponse
+    {
+        $permessi = $this->permessi($esame);
+        abort_unless($permessi->puoCompilareProvaPersonale($socio->id), 403);
+
+        return $this->salvaAnnotazioneSu($request, TcriProvaPratica::class, $this->attributi($esame, $socio));
     }
 
     /** Salva UNA voce a ogni tocco (bozza che non si perde). Crea la scheda al primo tocco. */

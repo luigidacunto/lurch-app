@@ -206,7 +206,7 @@ class EsameProvaFinaleTest extends TestCase
         $this->come('docA')->get(route('app.esame', $this->esame))->assertOk()->assertDontSee('Il tuo voto e la tua impressione')->assertDontSee('La tua scheda a semaforo');
     }
 
-    public function test_pwa_colloquio_elenco_voto_intero_obbligatorio_e_impressione(): void
+    public function test_pwa_colloquio_elenco_voto_intero_e_impressione_anche_prima_del_voto(): void
     {
         $this->apri();
         $x = $this->s['x'];
@@ -216,7 +216,8 @@ class EsameProvaFinaleTest extends TestCase
             ->assertSee('Testx')->assertSee('Testy')
             ->assertDontSee('TestnonAmmesso')->assertDontSee('Testritirato');
         $this->come('docA')->get(route('app.esame.colloquio.scheda', [$this->esame, $x]))->assertOk()
-            ->assertSee('Autovalutazione assente'); // descrittore dal modello
+            ->assertSee('Autovalutazione assente') // descrittore dal modello
+            ->assertDontSee('Scegli prima il voto'); // l'impressione è libera da subito
         $this->come('docA')->get(route('app.esame.colloquio.scheda', [$this->esame, $this->s['nonAmmesso']]))->assertNotFound();
         $this->come('docA')->get(route('app.esame.colloquio.scheda', [$this->esame, $this->s['ritirato']]))->assertNotFound();
 
@@ -227,9 +228,17 @@ class EsameProvaFinaleTest extends TestCase
         $voto(null)->assertStatus(422);
         $this->assertSame(0, $this->esame->colloqui()->count());
 
-        // Impressione senza voto: nessuna scheda creata.
-        $this->come('docA')->putJson(route('app.esame.colloquio.impressione', [$this->esame, $x]), ['impressione' => 'ok'])->assertStatus(422);
-        $this->assertSame(0, $this->esame->colloqui()->count());
+        // Impressione prima del voto: crea la scheda senza voto, che non conta né in proposta né in completezza.
+        $this->come('docA')->putJson(route('app.esame.colloquio.impressione', [$this->esame, $x]), ['impressione' => 'Prima del voto'])->assertOk();
+        $this->assertSame(1, $this->esame->colloqui()->count());
+        $this->assertNull($this->esame->colloqui()->first()->punteggio);
+        $this->assertNull(RiepilogoProvaFinale::propostaColloquio($this->esame->fresh(), $x->id));
+        $this->assertSame(2, CompletezzaEsame::per($this->esame->fresh())[$x->id]['personali_mancanti']['colloquio']);
+        $d = collect(RiepilogoProvaFinale::per($this->esame->fresh())['discenti'])->first(fn ($d) => $d['socio']->id === $x->id);
+        $this->assertNull($d['colloquio']['proposta']);
+        $this->assertSame([['membro' => 'TestdocA docANome', 'voto' => null, 'impressione' => 'Prima del voto']], $d['colloquio']['personali']);
+        $this->come('docA')->get(route('app.esame.colloquio', $this->esame))->assertOk()->assertSee('Da fare');
+        $this->come('docA')->get(route('app.esame.colloquio.scheda', [$this->esame, $x]))->assertOk()->assertSee('Prima del voto');
 
         $voto(4)->assertOk()->assertJson(['voto' => 4]);
         $voto(5)->assertOk();
@@ -299,6 +308,29 @@ class EsameProvaFinaleTest extends TestCase
         // Correggibile dopo l'invio, finché in corso; il presidente non scrive.
         $voce($this->voci[0], 'giallo')->assertOk();
         $this->come('presidente')->putJson(route('app.esame.provapratica.voce', [$this->esame, $x]), ['voce' => $this->voci[0], 'valore' => 'rosso'])->assertNotFound();
+    }
+
+    public function test_pwa_prova_pratica_annotazione_da_subito_letta_solo_a_scheda_inviata(): void
+    {
+        $this->apri();
+        $x = $this->s['x'];
+        $nota = fn ($t, $chi = 'docA') => $this->come($chi)->putJson(route('app.esame.provapratica.annotazione', [$this->esame, $x]), ['annotazione' => $t]);
+        $nota(str_repeat('a', 1001))->assertStatus(422);
+        $nota('Esitante sulla sicurezza')->assertOk(); // prima di ogni voce: crea la bozza
+        $prova = $this->esame->provePratiche()->sole();
+        $this->assertSame('Esitante sulla sicurezza', $prova->annotazione);
+        $this->assertSame(0, $prova->voci()->count());
+        $this->come('docA')->get(route('app.esame.provapratica.scheda', [$this->esame, $x]))->assertOk()->assertSee('Esitante sulla sicurezza');
+        $nota('x', 'presidente')->assertNotFound();
+
+        $personale = fn () => collect(RiepilogoProvaFinale::per($this->esame->fresh())['discenti'])
+            ->first(fn ($d) => $d['socio']->id === $x->id)['prova_pratica']['personali'][0];
+        $this->assertNull($personale()['annotazione']); // bozza: la nota non si legge
+        $prova->update(['inviata_il' => now()]);
+        $this->assertSame('Esitante sulla sicurezza', $personale()['annotazione']);
+
+        $nota('   ')->assertOk(); // solo spazi = nessuna nota
+        $this->assertNull($prova->fresh()->annotazione);
     }
 
     // ---- Prova finale richiusa: le personali restano visibili, in sola lettura ----
@@ -489,10 +521,26 @@ class EsameProvaFinaleTest extends TestCase
         $this->assertNull($f->membro_socio_id);
         $this->assertSame('28,00', $f->fresh('voci')->totaleFormattato($e->modello_snapshot)['punti']);
 
-        FinaleProvaFinale::salvaProvaPratica($e, $this->u['direttore'], $x, $this->tutteLeVoci('giallo'));
+        $this->assertNull($f->motivazione); // facoltativa, anche senza proposta
+
+        FinaleProvaFinale::salvaProvaPratica($e, $this->u['direttore'], $x, $this->tutteLeVoci('giallo'), '  Errori ripetuti sulla sicurezza  ');
         $this->assertSame(1, $e->provePratiche()->count());
         $this->assertSame(28, $f->voci()->count());
         $this->assertSame('7,00', $f->fresh('voci')->totaleFormattato($e->modello_snapshot)['punti']);
+        $this->assertSame('Errori ripetuti sulla sicurezza', $f->fresh()->motivazione);
+        $d = collect(RiepilogoProvaFinale::per($e->fresh())['discenti'])->first(fn ($d) => $d['socio']->id === $x);
+        $this->assertSame('Errori ripetuti sulla sicurezza', $d['prova_pratica']['finale']['motivazione']);
+
+        try {
+            FinaleProvaFinale::salvaProvaPratica($e, $this->u['direttore'], $x, $this->tutteLeVoci('verde'), str_repeat('a', FinaleProvaFinale::MOTIVAZIONE_MAX + 1));
+            $this->fail('motivazione troppo lunga');
+        } catch (ValidationException $ex) {
+            $this->assertArrayHasKey('motivazione', $ex->errors());
+        }
+        $this->assertSame('7,00', $f->fresh('voci')->totaleFormattato($e->modello_snapshot)['punti']); // nulla salvato
+
+        FinaleProvaFinale::salvaProvaPratica($e, $this->u['direttore'], $x, $this->tutteLeVoci('giallo'), '');
+        $this->assertNull($f->fresh()->motivazione); // svuotata
     }
 
     public function test_proposta_prova_pratica_dalle_sole_schede_inviate_con_discordanze(): void
@@ -566,8 +614,11 @@ class EsameProvaFinaleTest extends TestCase
         $this->provaPersonale('docA', 'x', '1');
         Livewire::test(EsameResource\Pages\InserisciProvaPraticaFinale::class, ['record' => $this->esame->getRouteKey(), 'discente' => $this->s['x']->id])
             ->assertSee('precompilate')
-            ->call('salva', $this->tutteLeVoci('verde'));
-        $this->assertNotNull($this->esame->provePratiche()->where('tipo', 'finale')->first());
+            ->assertSee('Motivazione · facoltativa')
+            ->call('salva', $this->tutteLeVoci('verde'), 'Proposta confermata');
+        $this->assertSame('Proposta confermata', $this->esame->provePratiche()->where('tipo', 'finale')->value('motivazione'));
+        Livewire::test(EsameResource\Pages\InserisciProvaPraticaFinale::class, ['record' => $this->esame->getRouteKey(), 'discente' => $this->s['x']->id])
+            ->assertSee('Proposta confermata'); // in modifica la motivazione si ritrova
 
         // Non ammessi e ritirati: la pagina non esiste.
         foreach (['nonAmmesso', 'ritirato'] as $k) {

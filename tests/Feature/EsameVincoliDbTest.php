@@ -102,7 +102,7 @@ class EsameVincoliDbTest extends TestCase
         $this->assertRifiutato(fn () => $this->prova('personale'), 'tcri_prove_pratiche_tipo_membro_check');
     }
 
-    private function colloquio(string $tipo, ?int $discente = null, ?int $membro = null, string $punteggio = '4'): int
+    private function colloquio(string $tipo, ?int $discente = null, ?int $membro = null, ?string $punteggio = '4'): int
     {
         return DB::table('tcri_colloqui')->insertGetId([
             'esame_id' => $this->esame, 'discente_socio_id' => $discente ?? $this->soci[0], 'tipo' => $tipo,
@@ -126,6 +126,12 @@ class EsameVincoliDbTest extends TestCase
     {
         $this->assertRifiutato(fn () => $this->colloquio('finale', null, $this->soci[1]), 'tcri_colloqui_tipo_membro_check');
         $this->assertRifiutato(fn () => $this->colloquio('personale'), 'tcri_colloqui_tipo_membro_check');
+    }
+
+    public function test_colloquio_voto_facoltativo_solo_sulla_personale(): void
+    {
+        $this->colloquio('personale', null, $this->soci[1], null); // solo impressione: ok
+        $this->assertRifiutato(fn () => $this->colloquio('finale', null, null, null), 'tcri_colloqui_finale_punteggio_check');
     }
 
     public function test_una_sola_consegna_del_test_per_discente(): void

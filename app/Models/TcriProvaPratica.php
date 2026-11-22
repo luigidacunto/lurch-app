@@ -33,6 +33,8 @@ class TcriProvaPratica extends Model
         'membro_socio_id',
         'inserito_da',
         'inviata_il',
+        'annotazione', // solo personale: appunto libero, come i laboratori
+        'motivazione', // solo finale: nota facoltativa del direttore sul punteggio definitivo
     ];
 
     protected function casts(): array

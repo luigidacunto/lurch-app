@@ -46,9 +46,11 @@ class RiepilogoProvaFinale
             $dellaPersonaP = $prove->get($socio->id, collect());
 
             // ---- Colloquio
+            // Una scheda svuotata (né voto né impressione) non si mostra.
             $personaliC = $dellaPersonaC->where('tipo', TcriColloquio::TIPO_PERSONALE)
+                ->filter(fn ($c) => $c->punteggio !== null || Formato::testo($c->impressione) !== null)
                 ->sortBy(fn ($c) => mb_strtolower($nomi[$c->membro_socio_id] ?? ''))->values();
-            $propostaC = $calcolo->propostaColloquio($snapshot, $personaliC->map(fn ($c) => (int) $c->punteggio)->all());
+            $propostaC = $calcolo->propostaColloquio($snapshot, $personaliC->whereNotNull('punteggio')->map(fn ($c) => (int) $c->punteggio)->values()->all());
             $propostaC = $propostaC === null ? null : Frazione::da($propostaC->tronca(1));
             $finaleC = $dellaPersonaC->firstWhere('tipo', TcriColloquio::TIPO_FINALE);
 
@@ -63,8 +65,8 @@ class RiepilogoProvaFinale
                 'colloquio' => [
                     'personali' => $personaliC->map(fn ($c) => [
                         'membro'      => $nomi[$c->membro_socio_id] ?? '?',
-                        'voto'        => (string) (int) $c->punteggio,
-                        'impressione' => $c->impressione,
+                        'voto'        => $c->punteggio === null ? null : (string) (int) $c->punteggio, // null = solo impressione
+                        'impressione' => Formato::testo($c->impressione),
                     ])->all(),
                     'proposta'       => Formato::unDecimale($propostaC),
                     'proposta_input' => $propostaC?->tronca(1),
@@ -85,6 +87,8 @@ class RiepilogoProvaFinale
                             'inviata' => $p->eInviata(),
                             'voci'    => $p->voci->whereNotNull('valore')->count(),
                             'totale'  => $t['punti'] === null ? null : Formato::decimale($t['punti']),
+                            // Come nei laboratori: la nota si legge solo a scheda inviata.
+                            'annotazione' => $p->eInviata() ? Formato::testo($p->annotazione) : null,
                         ];
                     })->all(),
                     'n_inviate'       => $personaliP->filter->eInviata()->count(),
@@ -106,6 +110,7 @@ class RiepilogoProvaFinale
         return [
             'totale'  => $t['punti'] === null ? null : Formato::decimale($t['punti']),
             'massimo' => Formato::decimale($t['massimo']),
+            'motivazione' => Formato::testo($finale->motivazione),
             'autore'  => $finale->inseritoDa?->nome_completo,
             'data'    => $finale->updated_at,
         ];
@@ -135,7 +140,7 @@ class RiepilogoProvaFinale
     public static function propostaColloquio(Esame $esame, int $discenteId): ?Frazione
     {
         $voti = $esame->colloqui()->where('tipo', TcriColloquio::TIPO_PERSONALE)->where('discente_socio_id', $discenteId)
-            ->pluck('punteggio')->map(fn ($v) => (int) $v)->all();
+            ->whereNotNull('punteggio')->pluck('punteggio')->map(fn ($v) => (int) $v)->all();
         $media = CalcoloEsameFactory::tcri()->propostaColloquio($esame->modello_snapshot, $voti);
 
         return $media === null ? null : Frazione::da($media->tronca(1));

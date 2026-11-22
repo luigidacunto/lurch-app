@@ -37,7 +37,7 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
     private const AZIONI_SCRIVONO = [
         'segnaNonAmmesso', 'togliNonAmmesso', 'riportaInBozza', 'chiudi', 'riapri', 'attiva', 'provaFinale', 'commissione',
         'copiaGruppi', 'importaTest', 'creaLaboratorio', 'modificaLaboratorio', 'eliminaLaboratorio', 'nuovoGruppo', 'modificaGruppo', 'eliminaGruppo', 'invia', 'colloquioFinale', 'decidi', 'configurazione', 'domanda', 'eliminaDomanda', 'avviaTutti',
-        'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo', 'nuovoTutoraggio', 'modificaTutoraggio', 'eliminaTutoraggio',
+        'avviaSelezionati', 'avviaUno', 'disattiva', 'cartaceo', 'annullaDomanda', 'ripristinaDomanda', 'nuovoTutoraggio', 'modificaTutoraggio', 'eliminaTutoraggio',
     ];
     private const AZIONI_SOLA_LETTURA = ['csv', 'modifica', 'proiezione'];
     /** Scrivono solo la visibilità dei risultati del test (test_pubblicazioni, fuori da TABELLE): permesse anche a esame chiuso. */
@@ -142,6 +142,8 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
             fn () => DecisioneItinere::salva($e, $dir, $xid, 'team_work', '3.0', 'motivo'),
             fn () => FinaleProvaFinale::salvaColloquio($e, $dir, $xid, '3.0', 'motivo'),
             fn () => FinaleProvaFinale::salvaProvaPratica($e, $dir, $xid, []),
+            fn () => \App\Esami\AnnullamentoDomandaTest::annulla($e, $dir, $d->id, 'motivo'),
+            fn () => \App\Esami\AnnullamentoDomandaTest::ripristina($e, $dir, $d->id),
             fn () => $e->attiva(),
             fn () => $e->riportaInBozza(),
             fn () => $e->apriProvaFinale(),
@@ -205,6 +207,8 @@ class EsameChiusoSolaLetturaTest extends EsameChiusuraBase
                 'avviaTutti' => [[]], 'avviaSelezionati' => [[]], 'riportaInBozza' => [[]],
                 'avviaUno' => [[], ['discente_id' => $x, 'discente_nome' => 'X']], 'disattiva' => [[], ['discente_id' => $x, 'discente_nome' => 'X']],
                 'cartaceo' => [['motivo' => 'DSA'], ['discente_id' => $this->s['y']->id, 'discente_nome' => 'Y']],
+                'annullaDomanda' => [['motivo' => 'x'], ['domanda_id' => $d, 'numero' => 1]],
+                'ripristinaDomanda' => [[], ['domanda_id' => $d, 'numero' => 1]],
             ]],
         ];
         foreach (['direttore', 'super', 'adminReg'] as $chi) {

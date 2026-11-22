@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\EsameResource\Pages;
 
+use App\Esami\AnnullamentoDomandaTest;
 use App\Esami\AvvioTest;
 use App\Esami\PubblicazioneTest;
 use App\Esami\TestScritto;
@@ -18,7 +19,8 @@ use Filament\Resources\Pages\Page;
  * Test scritto. Lettura per chi legge l'esame (direttore, commissione, admin, superadmin); preparazione
  * (domande e punteggio, solo con il test in bozza) per direttore, admin dell'ambito e superadmin; avvio per discente,
  * interruttore cartaceo, disattivazione e inserimento a mano SOLO per il direttore (Esame::puoAvviareTest).
- * Ogni azione ricontrolla i permessi nel servizio (PreparaTest / AvvioTest): i pulsanti spenti in Blade non sono la difesa.
+ * Statistica delle risposte e annullamento di una domanda (solo il direttore, a test inviato da tutti: AnnullamentoDomandaTest).
+ * Ogni azione ricontrolla i permessi nel servizio (PreparaTest / AvvioTest / ...): i pulsanti spenti in Blade non sono la difesa.
  */
 class TestScrittoEsame extends Page
 {
@@ -89,6 +91,8 @@ class TestScrittoEsame extends Page
             'motivoGestione' => $this->motivoGestione(),
             'motivoBozza'    => AvvioTest::motivoNonRiportabileInBozza($esame, $utente),
             'motivoPubblica' => PubblicazioneTest::motivoNonPubblicabile($esame, $utente),
+            'statistica'     => TestScritto::statistica($esame),
+            'motivoAnnulla'  => AnnullamentoDomandaTest::motivoNonAnnullabile($esame, $utente),
         ];
     }
 
@@ -311,6 +315,43 @@ class TestScrittoEsame extends Page
             ->closeModalByEscaping(false)
             ->action(function (Action $action) {
                 $this->esegui($action, fn () => PubblicazioneTest::ritira($this->record, auth()->user()), 'Pubblicazione ritirata per tutti.');
+            });
+    }
+
+    // ---- Annullamento di una domanda (solo il direttore, quando tutti hanno inviato) ----
+
+    public function annullaDomandaAction(): Action
+    {
+        return Action::make('annullaDomanda')
+            ->label('Annulla domanda')
+            ->color('danger')
+            ->modalHeading(fn (array $arguments) => 'Annulla la domanda ' . ($arguments['numero'] ?? ''))
+            ->modalDescription('La domanda resta con le risposte di tutti ma non conta più nel punteggio: niente punti né penalità, e il punteggio massimo scende. Punteggi ed esiti si aggiornano da soli, anche quelli già pubblicati; il discente, con i risultati pubblicati, la vede segnata come annullata con il motivo. Puoi ripristinarla finché l\'esame è in corso.')
+            ->modalSubmitActionLabel('Annulla la domanda')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->schema([
+                Forms\Components\Textarea::make('motivo')->label('Motivo (lo vedono anche i discenti)')->rows(3)->required()
+                    ->maxLength(AnnullamentoDomandaTest::MOTIVO_MAX),
+            ])
+            ->action(function (array $data, array $arguments, Action $action) {
+                $this->esegui($action, fn () => AnnullamentoDomandaTest::annulla($this->record, auth()->user(), (int) $arguments['domanda_id'], (string) $data['motivo']), 'Domanda annullata.');
+            });
+    }
+
+    public function ripristinaDomandaAction(): Action
+    {
+        return Action::make('ripristinaDomanda')
+            ->label('Ripristina')
+            ->color('success')
+            ->requiresConfirmation()
+            ->modalHeading(fn (array $arguments) => 'Ripristina la domanda ' . ($arguments['numero'] ?? ''))
+            ->modalDescription('La domanda torna a contare nel punteggio di tutti; il motivo dell\'annullamento viene tolto.')
+            ->modalSubmitActionLabel('Ripristina')
+            ->closeModalByClickingAway(false)
+            ->closeModalByEscaping(false)
+            ->action(function (array $arguments, Action $action) {
+                $this->esegui($action, fn () => AnnullamentoDomandaTest::ripristina($this->record, auth()->user(), (int) $arguments['domanda_id']), 'Domanda ripristinata.');
             });
     }
 

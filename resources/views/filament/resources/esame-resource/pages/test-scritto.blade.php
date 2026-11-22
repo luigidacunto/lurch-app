@@ -5,6 +5,9 @@
         $bordo  = 'rgba(128,128,128,.35)';
         $grigio = 'rgba(128,128,128,.10)';
         $verde  = 'rgba(34,197,94,.25)';
+        $ambra  = 'rgba(234,179,8,.20)';
+        $stat   = $d['statistica'];
+        $annullate = collect($d['domande'])->whereNotNull('annullata')->keyBy('id');
         $lettere = ['A', 'B', 'C', 'D'];
         $etichettaStato = ['bozza' => 'In bozza', 'avviato' => 'Avviato', 'con_consegne' => 'Con test inviati'][$d['stato']];
         $nAttivi = collect($d['righe'])->whereIn('stato', ['avviato', 'in_compilazione', 'inviato'])->count();
@@ -36,9 +39,62 @@
 
     {{-- Domande e punteggio: configurazione, in una pagina a parte --}}
     <div style="display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; justify-content:space-between;">
-        <span style="font-size:14px;">{{ count($d['domande']) }} domande · punteggio massimo <strong>{{ \App\Esami\Formato::unDecimale($d['massimo']) }}</strong></span>
+        <span style="font-size:14px;">{{ count($d['domande']) }} domande @if($annullate->isNotEmpty()) ({{ $annullate->count() }} {{ $annullate->count() === 1 ? 'annullata' : 'annullate' }})@endif · punteggio massimo <strong>{{ \App\Esami\Formato::unDecimale($d['massimo']) }}</strong></span>
         <x-filament::button tag="a" size="sm" color="info" :href="\App\Filament\Resources\EsameResource::getUrl('domande-test', ['record' => $esame])">Domande e punteggio</x-filament::button>
     </div>
+
+    {{-- Statistica delle risposte: chiusa di default (ricaricando la pagina il correttore non compare) --}}
+    @if(count($d['domande']) > 0)
+        <x-filament::section heading="Statistica delle risposte" collapsible collapsed
+            description="Per ogni domanda, nell'ordine del test, quante volte è stata scelta ogni opzione. Contano solo i test inviati ({{ $stat['inviati'] }}). Sfondo ambra: la metà o più non ha dato la risposta corretta.">
+            @if($d['eDirettore'])
+                <p style="margin:0 0 10px; font-size:13px;">
+                    @if($d['motivoAnnulla'] === null) Puoi annullare una domanda scritta poco chiara o sbagliata: resta con le risposte di tutti ma non conta più nel punteggio.
+                    @else Annullare una domanda: {{ $d['motivoAnnulla'] }} @endif
+                </p>
+            @endif
+            @foreach($stat['domande'] as $i => $q)
+                @php
+                    $difficile = $q['annullata'] === null && $q['errore'] !== null && $q['errore'] >= 50;
+                    $argomenti = \Illuminate\Support\Js::from(['domanda_id' => $q['id'], 'numero' => $i + 1]);
+                @endphp
+                <div style="border-top:1px solid {{ $bordo }}; padding:8px 6px; {{ $difficile ? 'background:' . $ambra . ';' : '' }}">
+                    <div style="display:flex; flex-wrap:wrap; gap:6px 14px; align-items:flex-start; justify-content:space-between;">
+                        <div style="flex:1 1 260px; font-weight:600; overflow-wrap:anywhere; white-space:pre-wrap; {{ $q['annullata'] ? 'text-decoration:line-through;' : '' }}">{{ $i + 1 }}. {{ $q['testo'] }}</div>
+                        <div style="font-size:13px; text-align:right;">
+                            @if($q['annullata'])
+                                <strong>Domanda annullata</strong>
+                            @elseif($q['errore'] !== null)
+                                Errori <strong>{{ $q['errore'] }}%</strong>
+                            @endif
+                            · giuste {{ $q['giuste'] }} · sbagliate {{ $q['sbagliate'] }} · non date {{ $q['vuote'] }}
+                        </div>
+                    </div>
+                    <div style="margin-top:4px; font-size:13px;">
+                        @foreach($q['opzioni'] as $k => $testo)
+                            @php $n = $q['scelte'][$k] ?? 0; @endphp
+                            <div style="display:flex; gap:10px; justify-content:space-between; padding:2px 6px; border-radius:6px; {{ $k === $q['corretta'] ? 'background:' . $verde . '; font-weight:600;' : '' }}">
+                                <span style="overflow-wrap:anywhere;">{{ $lettere[$k] }}) {{ $testo }}@if($k === $q['corretta']) ✓@endif</span>
+                                <span style="white-space:nowrap;">{{ $n }}@if($stat['inviati'] > 0) · {{ (int) round(100 * $n / $stat['inviati']) }}%@endif</span>
+                            </div>
+                        @endforeach
+                    </div>
+                    @if($q['annullata'])
+                        <div style="font-size:12px; margin-top:4px;">Annullata da {{ $q['annullata']['da'] ?? 'il direttore' }} il {{ $q['annullata']['il']->format('d/m/Y H:i') }} · Motivo: <span style="white-space:pre-line; overflow-wrap:anywhere;">{{ $q['annullata']['motivo'] }}</span></div>
+                    @endif
+                    @if($d['eDirettore'])
+                        <div style="margin-top:6px;">
+                            @if($q['annullata'])
+                                <x-filament::button size="xs" color="success" type="button" :disabled="$d['motivoAnnulla'] !== null" :tooltip="$d['motivoAnnulla']" wire:click="mountAction('ripristinaDomanda', {{ $argomenti }})">Ripristina la domanda</x-filament::button>
+                            @else
+                                <x-filament::button size="xs" color="danger" type="button" :disabled="$d['motivoAnnulla'] !== null" :tooltip="$d['motivoAnnulla']" wire:click="mountAction('annullaDomanda', {{ $argomenti }})">Annulla domanda</x-filament::button>
+                            @endif
+                        </div>
+                    @endif
+                </div>
+            @endforeach
+        </x-filament::section>
+    @endif
 
     {{-- Svolgimento --}}
     <x-filament::section heading="Svolgimento" description="Solo i discenti ammessi (i ritirati e i non ammessi non compaiono). L'avvio è per discente.">
@@ -134,6 +190,10 @@
                     <div style="margin-top:8px; font-size:13px;">
                         @foreach($d['domande'] as $i => $q)
                             @php($data = $dettagli[$r['socio']->id][$q['id']] ?? null)
+                            @if($q['annullata'])
+                                <div style="padding:2px 0;">{{ $i + 1 }}. <em>domanda annullata</em></div>
+                                @continue
+                            @endif
                             <div style="padding:2px 0; {{ $data !== null && $data === $q['corretta'] ? 'background:' . $verde . ';' : '' }}">
                                 {{ $i + 1 }}. @if($data === null) <em>non data</em> @else {{ $lettere[$data] ?? $data + 1 }}) {{ $q['opzioni'][$data] ?? '' }} @if($data === $q['corretta']) ✓ @else ✗ (corretta: {{ $lettere[$q['corretta']] }}) @endif @endif
                             </div>

@@ -28,7 +28,7 @@ class CompletezzaEsame
         $decisioni = $esame->decisioniItinere()->get()->groupBy('discente_socio_id');
         $colloquiFinali = $esame->colloqui()->where('tipo', TcriColloquio::TIPO_FINALE)->pluck('discente_socio_id')->flip();
         $proveFinali = $esame->provePratiche()->where('tipo', TcriProvaPratica::TIPO_FINALE)->with('voci')->get()->keyBy('discente_socio_id');
-        $personaliC = $esame->colloqui()->where('tipo', TcriColloquio::TIPO_PERSONALE)->get()->groupBy('discente_socio_id');
+        $personaliC = $esame->colloqui()->where('tipo', TcriColloquio::TIPO_PERSONALE)->whereNotNull('punteggio')->get()->groupBy('discente_socio_id');
         $personaliP = $esame->provePratiche()->where('tipo', TcriProvaPratica::TIPO_PERSONALE)->whereNotNull('inviata_il')->get()->groupBy('discente_socio_id');
         // Test scritto inviato (online o cartaceo). Solo segnalazione: NON entra in `completa`.
         $testInviati = $esame->testConsegne()->whereNotNull('consegnato_il')->pluck('discente_socio_id')->flip();

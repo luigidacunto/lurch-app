@@ -11,7 +11,8 @@ use App\Services\SocioCorrente;
 
 /**
  * Test scritto in PWA, lato COMMISSIONE: domande con le risposte corrette (anche in bozza, per verificare il
- * test insieme al direttore) e, per i discenti ammessi, stato e punteggio. Sola lettura: nessuna rotta di scrittura.
+ * test insieme al direttore), statistica delle risposte e, per i discenti ammessi, stato e punteggio. Domande e
+ * statistica in riquadri chiusi di default: ricaricando la pagina durante il test il correttore non compare. Sola lettura: nessuna rotta di scrittura.
  * Direttore, presidente/delegato e docenti di commissione; i docenti non in commissione e i discenti: 404.
  */
 class AppEsamiRiepilogoTestController extends Controller
@@ -27,9 +28,12 @@ class AppEsamiRiepilogoTestController extends Controller
             return $r;
         });
 
+        $statistica = TestScritto::statistica($esame);
+
         return view('app.esame-test-anteprima', [
             'esame'    => $esame,
-            'domande'  => TestScritto::domandeComplete($esame),
+            'domande'  => $statistica['domande'], // domandeComplete() + conteggi
+            'inviati'  => $statistica['inviati'],
             'config'   => TestScritto::configurazione($esame),
             'stato'    => $esame->statoTest(),
             'massimo'  => Formato::unDecimale(TestScritto::massimo($esame)),

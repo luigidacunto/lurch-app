@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\App;
 
+use App\Esami\Formato;
 use App\Esami\PermessiEsame;
 use App\Http\Controllers\Controller;
 use App\Models\Esame;
@@ -14,7 +15,7 @@ use Illuminate\Http\Request;
 
 /**
  * Colloquio in PWA: scheda PERSONALE di direttore e docenti di commissione (appunti: voto intero + impressione
- * facoltativa), mai la scheda finale (quella la inserisce il direttore dal pannello). Una scheda per (esame, discente,
+ * facoltativa, scrivibile anche prima del voto), mai la scheda finale (quella la inserisce il direttore dal pannello). Una scheda per (esame, discente,
  * membro), salvata a ogni tocco, nessun invio. Si compila solo a «Apri la prova finale» aperta (richiusa: sola lettura); non ammessi e ritirati mai.
  * Chi-vede-cosa sta in PermessiEsame.
  */
@@ -31,7 +32,7 @@ class AppEsamiColloquioController extends Controller
             ->where('membro_socio_id', SocioCorrente::id())->get()->keyBy('discente_socio_id');
         $righe = $permessi->discentiProvaFinale()->map(fn (Socio $s) => [
             'socio' => $s,
-            'voto'  => $miei->has($s->id) ? (int) $miei->get($s->id)->punteggio : null,
+            'voto'  => $miei->get($s->id)?->punteggio === null ? null : (int) $miei->get($s->id)->punteggio,
         ]);
 
         return view('app.esame-colloquio', ['esame' => $esame, 'righe' => $righe]);
@@ -49,7 +50,7 @@ class AppEsamiColloquioController extends Controller
             'esame'        => $esame,
             'socio'        => $socio,
             'struttura'    => static::struttura($esame),
-            'voto'         => $scheda ? (int) $scheda->punteggio : null,
+            'voto'         => $scheda?->punteggio === null ? null : (int) $scheda->punteggio,
             'impressione'  => $scheda?->impressione,
             'modificabile' => $permessi->puoCompilareProvaPersonale($socio->id),
             'impressioneMax' => self::IMPRESSIONE_MAX,
@@ -67,12 +68,7 @@ class AppEsamiColloquioController extends Controller
             'voto' => ['required', 'integer', 'between:'.$struttura['min'].','.$struttura['max']],
         ]);
 
-        $attributi = [
-            'esame_id'          => $esame->id,
-            'discente_socio_id' => $socio->id,
-            'tipo'              => TcriColloquio::TIPO_PERSONALE,
-            'membro_socio_id'   => SocioCorrente::id(),
-        ];
+        $attributi = $this->attributi($esame, $socio);
         try {
             $scheda = TcriColloquio::updateOrCreate($attributi, ['punteggio' => $dati['voto'], 'inserito_da' => SocioCorrente::id()]);
         } catch (UniqueConstraintViolationException) {
@@ -84,7 +80,7 @@ class AppEsamiColloquioController extends Controller
         return response()->json(['voto' => (int) $scheda->punteggio]);
     }
 
-    /** Impressione facoltativa (max 1000 caratteri). Serve la scheda: il voto è obbligatorio e la crea. */
+    /** Impressione facoltativa (max 1000 caratteri), anche prima del voto: se la scheda non c'è la crea senza voto. */
     public function salvaImpressione(Request $request, Esame $esame, Socio $socio): JsonResponse
     {
         $permessi = $this->permessi($esame);
@@ -93,12 +89,14 @@ class AppEsamiColloquioController extends Controller
         $dati = $request->validate([
             'impressione' => ['present', 'nullable', 'string', 'max:'.self::IMPRESSIONE_MAX],
         ]);
-        $scheda = $this->miaScheda($esame, $socio);
-        if (! $scheda) {
-            return response()->json(['errore' => 'Scegli prima il voto.'], 422);
+        $attributi = $this->attributi($esame, $socio);
+        $valore = ['impressione' => Formato::testo($dati['impressione'])];
+        try {
+            TcriColloquio::updateOrCreate($attributi, $valore + ['inserito_da' => SocioCorrente::id()]);
+        } catch (UniqueConstraintViolationException) {
+            // Voto e impressione hanno creato la scheda insieme: gli indici parziali hanno tenuto, aggiorno la riga.
+            TcriColloquio::where($attributi)->firstOrFail()->update($valore);
         }
-        $testo = trim((string) $dati['impressione']);
-        $scheda->update(['impressione' => $testo === '' ? null : $testo]);
 
         return response()->json(['ok' => true]);
     }
@@ -109,6 +107,16 @@ class AppEsamiColloquioController extends Controller
         abort_unless($esame->modello_snapshot && $permessi->accedeProvaPersonale(), 404);
 
         return $permessi;
+    }
+
+    private function attributi(Esame $esame, Socio $socio): array
+    {
+        return [
+            'esame_id'          => $esame->id,
+            'discente_socio_id' => $socio->id,
+            'tipo'              => TcriColloquio::TIPO_PERSONALE,
+            'membro_socio_id'   => SocioCorrente::id(),
+        ];
     }
 
     private function miaScheda(Esame $esame, Socio $socio): ?TcriColloquio

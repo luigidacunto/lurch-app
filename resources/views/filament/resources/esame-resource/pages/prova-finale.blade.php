@@ -78,7 +78,7 @@
                                 <div style="font-size:12px; font-weight:600; margin-bottom:6px;">Schede personali dei commissari — appunti, non entrano nel calcolo</div>
                                 @forelse($d['colloquio']['personali'] as $p)
                                     <div style="padding:3px 0; font-size:13px;">
-                                        <strong>{{ $p['membro'] }}</strong>: voto <strong>{{ $p['voto'] }}</strong>
+                                        <strong>{{ $p['membro'] }}</strong>: @if($p['voto'] !== null) voto <strong>{{ $p['voto'] }}</strong> @else nessun voto @endif
                                         @if($p['impressione'])<div style="white-space:pre-line; overflow-wrap:anywhere; font-style:italic;">{{ $p['impressione'] }}</div>@endif
                                     </div>
                                 @empty
@@ -137,6 +137,7 @@
                                         <strong>{{ $p['membro'] }}</strong>:
                                         @if($p['inviata']) inviata{{ $p['totale'] !== null ? ' · ' . $p['totale'] . ' su ' . $r['massimo_pratica'] : '' }}
                                         @else bozza ({{ $p['voci'] }} voci), non conta nella proposta @endif
+                                        @if($p['annotazione'])<div style="white-space:pre-line; overflow-wrap:anywhere; font-style:italic;">{{ $p['annotazione'] }}</div>@endif
                                     </div>
                                 @empty
                                     <p style="margin:0; font-size:13px;">Nessun commissario ha compilato la scheda di questo discente.</p>
@@ -197,6 +198,9 @@
                                         @if($d['prova_pratica']['finale'])
                                             Totale: <strong style="font-size:18px;">{{ $d['prova_pratica']['finale']['totale'] ?? '—' }}</strong> su {{ $d['prova_pratica']['finale']['massimo'] }}
                                             <div style="font-size:12px;">Inserita da {{ $d['prova_pratica']['finale']['autore'] ?? 'direttore' }} il {{ $d['prova_pratica']['finale']['data']?->format('d/m/Y H:i') }}</div>
+                                            @if($d['prova_pratica']['finale']['motivazione'])
+                                                <div style="font-size:13px; margin-top:4px; white-space:pre-line;">Motivazione: {{ $d['prova_pratica']['finale']['motivazione'] }}</div>
+                                            @endif
                                         @else
                                             <span>Non ancora inserita.</span>
                                         @endif

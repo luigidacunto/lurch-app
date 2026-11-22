@@ -26,6 +26,7 @@
     @foreach($domande as $i => $d)
         <div class="domanda">
             <div class="testo">{{ $i + 1 }}. {{ $d['testo'] }}</div>
+            @if($d['annullata'])<div><strong>Domanda annullata</strong> (non conta nel punteggio). Motivo: {{ $d['annullata']['motivo'] }}</div>@endif
             @foreach($d['opzioni'] as $k => $testo)
                 <div class="opzione {{ $k === $d['corretta'] ? 'giusta' : '' }}">{{ $k === $d['corretta'] ? '✓' : '' }} <strong>{{ ['A', 'B', 'C', 'D'][$k] ?? $k + 1 }})</strong> {{ $testo }}</div>
             @endforeach
