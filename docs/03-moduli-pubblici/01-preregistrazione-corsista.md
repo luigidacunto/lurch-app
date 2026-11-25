@@ -32,6 +32,11 @@ Queste sezioni compaiono solo quando servono.
 
 Si accendono i pasti e i pernottamenti che si prevede di consumare: l'elenco dipende dal corso. Il riepilogo arriva alla segreteria, che può correggerlo in seguito.
 
+Se gli organizzatori non forniscono alcuni pasti (per esempio un pranzo al sacco), questi non sono tra le voci da accendere: li elenca il riquadro **Pasti non forniti dall'organizzazione**, con l'invito a provvedere autonomamente. Se nessun pasto è fornito, la sezione **Presenze e vitto** non c'è e non si chiedono allergie né il consenso ai dati sulla salute.
+
+<!-- screenshot: route=/form/{token} · v1.86.4-dev · 2026-11-25 · pranzo del primo giorno non fornito -->
+![Presenze e vitto con un pasto non fornito dall'organizzazione](../immagini/moduli-pubblici/corsista-pasti-non-forniti.png)
+
 Accendendo **anche un solo pasto** compare la sezione **Allergie e regime alimentare**, con quattro gruppi da spuntare (allergeni, intolleranze, regime alimentare, esclusioni) e un campo **Altro** per un'allergia alimentare molto specifica, massimo 50 caratteri. Chi non ha esigenze non spunta nulla.
 
 <!-- screenshot: route=/form/{token} · v1.85.38-dev · 2026-11-19 · un pasto selezionato -->
@@ -61,4 +66,4 @@ Si apre la pagina **Preregistrazione confermata** con il corso e, se servono, du
 
 Il form inviato **non si può più modificare**: riaprendo il link si torna a questa pagina. Per correggere qualcosa si scrive alla segreteria del corso.
 
-Se il link mostra **Form non ancora disponibile**, gli organizzatori non hanno ancora impostato pasti e pernottamenti del corso: si riprova più tardi.
+Se il link mostra **Form non ancora disponibile**, gli organizzatori non hanno ancora impostato i giorni in presenza del corso: si riprova più tardi.

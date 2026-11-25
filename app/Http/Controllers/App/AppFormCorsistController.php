@@ -92,6 +92,7 @@ class AppFormCorsistController extends Controller
             'corso'              => $corso,
             'socio'              => $iscrizione->partecipante,
             'sezioni'            => $this->handler->sezioniAttive($iscrizione),
+            'pastiNonForniti'    => $this->handler->pastiNonForniti($iscrizione),
             'readonly'           => $readonly,
             'risposta'           => $iscrizione->rispostaPreregistrazione,
             'rispostaCheckin'    => $rispostaCheckin,

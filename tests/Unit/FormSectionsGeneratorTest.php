@@ -57,6 +57,36 @@ class FormSectionsGeneratorTest extends TestCase
         $this->assertSame([], $this->genera([], residenziale: true));
     }
 
+    public function test_pasti_non_forniti_esclusi_dalle_voci_pernotto_resta(): void
+    {
+        $corso = new Corso([
+            'giorni_presenza'   => ['2026-10-24', '2026-10-25'],
+            'residenziale'      => true,
+            'pasti_non_gestiti' => ['pranzo_2026-10-24', 'cena_2026-10-24'],
+        ]);
+        $gen = new FormSectionsGenerator();
+
+        $t = $this->tipiPerData($gen->calcola($corso));
+        $this->assertSame(['pernotto'], $t['2026-10-24']);
+        $this->assertSame(['pranzo'], $t['2026-10-25']);
+        $this->assertSame(['pranzo_2026-10-24', 'cena_2026-10-24'], array_keys($gen->pastiNonForniti($corso)));
+        // Il pernotto non è un pasto: non si può segnare come non fornito.
+        $this->assertArrayNotHasKey('pernotto_2026-10-24', $gen->pastiEscludibili($corso));
+    }
+
+    public function test_pasto_non_fornito_su_giorno_non_selezionato_ignorato(): void
+    {
+        $corso = new Corso([
+            'giorni_presenza'   => ['2026-10-24'],
+            'residenziale'      => false,
+            'pasti_non_gestiti' => ['pranzo_2026-10-30'],
+        ]);
+        $gen = new FormSectionsGenerator();
+
+        $this->assertCount(1, $gen->calcola($corso));
+        $this->assertSame([], $gen->pastiNonForniti($corso));
+    }
+
     public function test_colazione_mai_generata(): void
     {
         $sezioni = $this->genera(['2026-10-24', '2026-10-25'], residenziale: true);

@@ -46,8 +46,7 @@ class EditCorso extends EditRecord
                 )
                 ->openUrlInNewTab()
                 ->visible(fn () => $this->record->iscrizioni()->exists()
-                    && $this->record->form_sections
-                    && count($this->record->form_sections) > 0
+                    && $this->record->formConfigurato()
                 ),
         ];
     }

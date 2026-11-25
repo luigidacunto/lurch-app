@@ -227,7 +227,9 @@
     {{-- Pasti e pernotti --}}
     <div class="section-card">
         <h2>Pasti e pernotti</h2>
-        @if($presenze->isEmpty())
+        @if($presenze->isEmpty() && $sezioni->isEmpty())
+            <p class="empty-state">L'organizzazione non fornisce pasti né pernottamenti per questo corso.</p>
+        @elseif($presenze->isEmpty())
             <p class="empty-state">Nessun pasto o pernotto selezionato.</p>
         @else
             @foreach($presenze as $p)
@@ -239,6 +241,12 @@
                         <span class="fonte-badge fonte-form">Form</span>
                     @endif
                 </div>
+            @endforeach
+        @endif
+        @if(! empty($pastiNonForniti))
+            <p style="font-size:12px;font-weight:600;color:#6b7280;margin-top:12px;">Non forniti dall'organizzazione</p>
+            @foreach($pastiNonForniti as $labelPasto)
+                <div class="presenza-row"><span>{{ $labelPasto }}</span></div>
             @endforeach
         @endif
     </div>
@@ -534,6 +542,19 @@
                 <span>{{ ucfirst($sezione['tipo']) }} · {{ \Carbon\Carbon::parse($sezione['data'])->translatedFormat('l j F') }}</span>
             </label>
         @endforeach
+    </div>
+    @endif
+
+    {{-- Pasti non forniti dall'organizzazione: solo informativa, nessun campo --}}
+    @if(! empty($pastiNonForniti))
+    <div class="section-card">
+        <h2>Pasti non forniti dall'organizzazione</h2>
+        <p style="font-size:13px;color:#6b7280;margin-bottom:8px;">Per questi pasti provvedi autonomamente.</p>
+        <ul style="font-size:14px;padding-left:18px;list-style:disc;line-height:1.6;">
+            @foreach($pastiNonForniti as $labelPasto)
+                <li>{{ $labelPasto }}</li>
+            @endforeach
+        </ul>
     </div>
     @endif
 

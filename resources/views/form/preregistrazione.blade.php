@@ -510,6 +510,21 @@
                 </div>
             @endif
 
+            {{-- Pasti non forniti dall'organizzazione: solo informativa, nessun campo --}}
+            @if(! empty($pastiNonForniti))
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-5 py-3">
+                        <p class="text-sm font-semibold text-gray-700">Pasti non forniti dall'organizzazione</p>
+                        <p class="text-xs text-gray-500 mt-0.5">Per questi pasti provvedi autonomamente.</p>
+                        <ul class="mt-2 text-sm text-gray-800 list-disc pl-5 space-y-0.5">
+                            @foreach($pastiNonForniti as $labelPasto)
+                                <li>{{ $labelPasto }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+
             {{-- 3. Allergie e regime alimentare --}}
             @php
                 // Priorità: old() → risposta form → anagrafica soci

@@ -4,6 +4,14 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## In sviluppo
+
+- feat: corsi — nella modifica del corso i singoli pranzi e cene si possono segnare come «non forniti dall'organizzazione» (es. pranzo al sacco): il giorno resta in presenza, il pasto esce da modulo di preregistrazione, report, griglie e check-in; il modulo, pubblico e nell'app, lo elenca in un riquadro informativo. La lista si blocca come i giorni quando il primo iscritto compila il modulo
+- feat: corsi — un corso con giorni in presenza ma nessun pasto fornito ha comunque il modulo di preregistrazione (dati, consensi, ricevuta di pagamento), senza allergie né consenso salute; invio e solleciti da «Gestione corso» attivi
+- feat: check-in — al primo ingresso, chi non ha pasti all'evento non vede alimentazione né consenso ai dati sulla salute (soci e ospiti)
+- fix: app dei soci — nel riepilogo del modulo inviato, se il corso non fornisce pasti né pernottamenti lo dice, invece di «Nessun pasto o pernotto selezionato»
+- docs: guida — pasti non forniti in Corsi, Iscritti, Presenze live, preregistrazione del corsista e moduli dall'app; schermate aggiornate
+
 ## 1.86.4 — 2026-11-22
 
 - feat: esami, prova pratica — la scheda personale di direttore e docenti in commissione ha l'annotazione libera come i laboratori, scrivibile anche prima di scegliere le voci; nel riepilogo della prova finale la leggono direttore, presidente o delegato e commissione, solo a scheda inviata

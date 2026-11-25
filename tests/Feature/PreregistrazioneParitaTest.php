@@ -396,4 +396,48 @@ class PreregistrazioneParitaTest extends TestCase
 
         $this->assertSame($atteso, $r->fresh()->documento_aggiuntivo_path);
     }
+
+    // ─── Pasti non forniti dall'organizzazione ───────────────────────────────
+
+    public function test_tutti_i_pasti_non_forniti_form_disponibile_senza_voci_pasto(): void
+    {
+        $s = $this->scenario();
+        $s['corso']->update(['pasti_non_gestiti' => ['pranzo_2026-10-24']]);
+        $this->assertSame([], $s['corso']->fresh()->form_sections);
+
+        $this->get(route('form.show', $s['iscrizione']->token))
+            ->assertOk()
+            ->assertSee("Pasti non forniti dall'organizzazione", false)
+            ->assertSee('Pranzo — sabato 24 ottobre')
+            ->assertDontSee('name="pranzo_2026-10-24"', false);
+
+        $this->withSession(['app_socio_id' => $s['socio']->id])
+            ->get(route('app.evento.form.corsista', [$s['evento'], $s['iscrizione']]))
+            ->assertOk()->assertSee('Pranzo — sabato 24 ottobre');
+
+        // Senza pasti: niente consenso salute, ricevuta comunque obbligatoria e salvata.
+        $this->post(route('form.store', $s['iscrizione']->token), $this->payloadCompleto($s))
+            ->assertSessionHasNoErrors();
+        $this->assertNotNull(RispostaPreregistrazione::firstWhere('iscrizioneable_id', $s['iscrizione']->id)->ricevuta_path);
+
+        // Riepilogo nell'app: niente «nessun pasto selezionato», che farebbe pensare a una scelta dell'iscritto.
+        $this->withSession(['app_socio_id' => $s['socio']->id])
+            ->get(route('app.evento.form.corsista', [$s['evento'], $s['iscrizione']]))
+            ->assertOk()
+            ->assertSee("L'organizzazione non fornisce pasti né pernottamenti per questo corso.", false)
+            ->assertDontSee('Nessun pasto o pernotto selezionato.');
+    }
+
+    public function test_pasto_non_fornito_scartato_se_il_giorno_viene_tolto(): void
+    {
+        $s = $this->scenario();
+        $s['corso']->update(['pasti_non_gestiti' => ['pranzo_2026-10-24']]);
+
+        $s['corso']->update(['giorni_presenza' => ['2026-10-25']]);
+        $s['corso']->update(['giorni_presenza' => ['2026-10-24', '2026-10-25']]);
+
+        $corso = $s['corso']->fresh();
+        $this->assertNull($corso->pasti_non_gestiti);
+        $this->assertCount(2, $corso->form_sections);
+    }
 }

@@ -206,6 +206,8 @@
                             </div>
                         </div>
 
+                        {{-- Alimentazione e consenso salute solo se la persona ha pasti all'evento (come nel form) --}}
+                        @if(!empty($sezioni))
                         <div class="section-title">Alimentazione</div>
                         <div class="form-row">
                             <label>Allergeni</label>
@@ -260,6 +262,7 @@
                             <input type="text" name="note_extra" maxlength="50"
                                 value="{{ $prefill['note_extra'] ?? '' }}" placeholder="es. kiwi, fragole (solo alimentare, max 50 caratteri)">
                         </div>
+                        @endif
 
                         @if(!empty($slotsStaff ?? []))
                             @php
@@ -334,11 +337,13 @@
                                 {{ ($prefill['privacy_accettata'] ?? false) ? 'checked' : '' }} required>
                             <span>Informativa privacy accettata *</span>
                         </div>
+                        @if(!empty($sezioni))
                         <div class="checkbox-row">
                             <input type="checkbox" name="consenso_salute_accettata" value="1"
                                 {{ ($prefill['consenso_salute_accettata'] ?? false) ? 'checked' : '' }}>
                             <span>Consenso trattamento dati salute</span>
                         </div>
+                        @endif
                         <div class="checkbox-row">
                             <input type="checkbox" name="foto_video_accettata" value="1"
                                 {{ ($prefill['foto_video_accettata'] ?? false) ? 'checked' : '' }}>

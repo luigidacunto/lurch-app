@@ -36,6 +36,7 @@ class Corso extends Model
         'richiede_documento_aggiuntivo',
         'dicitura_documento_aggiuntivo',
         'giorni_presenza',
+        'pasti_non_gestiti',
         'form_sections',
         'invio_massivo_iscritti_at',
         'invio_massivo_sollecito_iscritti_at',
@@ -54,6 +55,7 @@ class Corso extends Model
             'quota_partecipazione'  => 'decimal:2',
             'richiede_documento_aggiuntivo' => 'boolean',
             'giorni_presenza'            => 'array',
+            'pasti_non_gestiti'          => 'array',
             'form_sections'              => 'array',
             'invio_massivo_iscritti_at'           => 'datetime',
             'invio_massivo_sollecito_iscritti_at' => 'datetime',
@@ -74,6 +76,16 @@ class Corso extends Model
         return $this->iscrizioniConRisposta()->exists();
     }
 
+    /**
+     * Il form di preregistrazione è utilizzabile: il corso ha giorni in presenza (o voci già
+     * generate, per i corsi precedenti a `giorni_presenza`). Non serve alcun pasto: con tutti i
+     * pasti non forniti il form raccoglie comunque dati, consensi ed eventuale ricevuta.
+     */
+    public function formConfigurato(): bool
+    {
+        return filled($this->giorni_presenza) || filled($this->form_sections);
+    }
+
     protected static function booted(): void
     {
         // Il testo `direttore_corso` resta letto da liste/stampe/altre funzioni: lo scrive solo qui,
@@ -88,17 +100,21 @@ class Corso extends Model
             }
         });
 
-        // Le voci pasto (form_sections) sono sempre derivate da giorni_presenza + residenziale:
-        // si rigenerano a ogni salvataggio, tranne quando il form è già stato compilato da
-        // qualcuno (in quel caso restano congelate).
+        // Le voci pasto (form_sections) sono sempre derivate da giorni_presenza + residenziale
+        // + pasti_non_gestiti: si rigenerano a ogni salvataggio, tranne quando il form è già stato
+        // compilato da qualcuno (in quel caso restano congelate). I pasti non forniti che non
+        // corrispondono più a una voce (giorno tolto, corso non più residenziale) si scartano,
+        // così non riemergono se il giorno viene riselezionato.
         static::saving(function (Corso $corso) {
-            if (! $corso->isDirty(['giorni_presenza', 'residenziale'])) {
+            if (! $corso->isDirty(['giorni_presenza', 'residenziale', 'pasti_non_gestiti'])) {
                 return;
             }
             if ($corso->exists && $corso->haRisposte()) {
                 return;
             }
-            $corso->form_sections = app(\App\Services\FormSectionsGenerator::class)->calcola($corso);
+            $generatore = app(\App\Services\FormSectionsGenerator::class);
+            $corso->pasti_non_gestiti = array_keys($generatore->pastiNonForniti($corso)) ?: null;
+            $corso->form_sections     = $generatore->calcola($corso);
         });
 
         static::saved(function (Corso $corso) {

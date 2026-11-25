@@ -150,12 +150,12 @@ class GestioneCorso extends Page
 
     /**
      * Stessa condizione di FormPreregistrazioneController::show() (mostra "form.non-disponibile"
-     * invece del form) — se il corso non ha ancora sezioni di form configurate, il link che
+     * invece del form) — se il corso non ha ancora giorni in presenza, il link che
      * "Invia form"/"Invia sollecito" mandano via email non porta a un form funzionante.
      */
     private function formNonGenerato(): bool
     {
-        return blank($this->record->form_sections) || count($this->record->form_sections) === 0;
+        return ! $this->record->formConfigurato();
     }
 
     private function caricaConflitti(): void
@@ -855,10 +855,15 @@ class GestioneCorso extends Page
      */
     private function generaSezioniCorso(bool $isAdmin): array
     {
-        return \App\Services\EventoSezioniGenerator::perElencoGiorni(
+        $sezioni = \App\Services\EventoSezioniGenerator::perElencoGiorni(
             $this->record->giorniInPresenza(),
             $isAdmin || $this->record->residenziale,
         );
+
+        // I pasti non forniti dall'organizzazione non si propongono all'operatore; l'admin può forzarli.
+        $esclusi = $isAdmin ? [] : ($this->record->pasti_non_gestiti ?? []);
+
+        return array_values(array_filter($sezioni, fn ($s) => ! in_array($s['chiave'], $esclusi, true)));
     }
 
     public function gestisciPresenzeAction(): Action

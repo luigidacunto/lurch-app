@@ -127,6 +127,8 @@
 
                     <div style="padding: 12px 0;">
 
+                        {{-- Alimentazione e consenso salute solo se ci sono pasti all'evento (come nel form) --}}
+                        @if(!empty($sezioni))
                         <div class="section-title">Alimentazione</div>
                         <div class="form-row">
                             <label>Allergeni</label>
@@ -176,6 +178,7 @@
                             <label>Note alimentari</label>
                             <input type="text" name="note_extra" maxlength="50" placeholder="es. kiwi, fragole (solo alimentare, max 50 caratteri)">
                         </div>
+                        @endif
 
                         @if(!empty($sezioni))
                             @php
@@ -213,10 +216,12 @@
                             <input type="checkbox" name="privacy_accettata" value="1" required>
                             <span>Informativa privacy accettata *</span>
                         </div>
+                        @if(!empty($sezioni))
                         <div class="checkbox-row">
                             <input type="checkbox" name="consenso_salute_accettata" value="1">
                             <span>Consenso trattamento dati salute</span>
                         </div>
+                        @endif
                         <div class="checkbox-row">
                             <input type="checkbox" name="foto_video_accettata" value="1">
                             <span>Consenso foto/video</span>

@@ -19,7 +19,7 @@ Ogni riga è un corso, dal più recente al più vecchio. **Un clic sulla riga ap
 | Iscritti | Quanti iscritti attivi ha (i ritirati non sono contati) |
 | Risposte | Quanti iscritti attivi hanno compilato il modulo di preregistrazione, su quanti sono: **grigio** se non c'è ancora nessuno, **arancione** se mancano delle compilazioni, **verde** se hanno compilato tutti |
 
-Con l'icona a colonne accanto ai filtri si possono mostrare altre colonne, che per risparmiare spazio sono nascoste: **Direttore**, **Residenziale**, **Pagamento** (se il corso richiede una quota) e **Form** (se il modulo di preregistrazione è già stato generato). La scelta va confermata con **Applica colonne**; **Reimposta** torna alla vista iniziale.
+Con l'icona a colonne accanto ai filtri si possono mostrare altre colonne, che per risparmiare spazio sono nascoste: **Direttore**, **Residenziale**, **Pagamento** (se il corso richiede una quota) e **Form** (se il modulo di preregistrazione è pronto, cioè il corso ha almeno un giorno in presenza). La scelta va confermata con **Applica colonne**; **Reimposta** torna alla vista iniziale.
 
 > Su uno schermo non molto largo la tabella scorre in orizzontale: conviene chiudere il menu a sinistra con la freccia in alto.
 

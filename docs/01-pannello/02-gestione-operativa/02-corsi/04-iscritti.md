@@ -54,7 +54,7 @@ A destra, lo stato dei documenti e i pulsanti:
 
 **Presenze** apre l'elenco dei pasti e dei pernottamenti dei giorni in presenza del corso. Le voci già dichiarate dal corsista nel modulo portano la scritta **(form)**; la segreteria può spuntarne o toglierne altre (per esempio per chi ha cambiato idea all'ultimo) e salvare con **Invia**. Le colazioni non si indicano: derivano dai pernottamenti.
 
-Per i corsi non residenziali, il superadmin e gli amministratori regionali vedono nell'elenco anche cene e pernottamenti (compresi quelli del giorno prima, per chi arriva in anticipo), così da poter gestire i casi eccezionali; gli altri ruoli vedono solo i pranzi. Le presenze inserite qui alimentano i riepiloghi del corso e dell'evento ([Presenze effettive](../01-eventi/08-presenze-effettive.md)).
+Per i corsi non residenziali, il superadmin e gli amministratori regionali vedono nell'elenco anche cene e pernottamenti (compresi quelli del giorno prima, per chi arriva in anticipo), così da poter gestire i casi eccezionali; gli altri ruoli vedono solo i pranzi. Allo stesso modo, i [pasti non forniti dall'organizzazione](02-creare-e-modificare.md#pasti-non-forniti-dallorganizzazione) li vedono e li possono assegnare solo il superadmin e gli amministratori regionali. Le presenze inserite qui alimentano i riepiloghi del corso e dell'evento ([Presenze effettive](../01-eventi/08-presenze-effettive.md)).
 
 ## Le altre azioni: reset del form e ritiro
 

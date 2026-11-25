@@ -34,7 +34,7 @@ class FormPreregistrazioneController extends Controller
 
         $corso = $iscrizione->corso;
 
-        if (! $corso->form_sections || count($corso->form_sections) === 0) {
+        if (! $corso->formConfigurato()) {
             return view('form.non-disponibile', compact('iscrizione', 'corso'));
         }
 
@@ -79,6 +79,7 @@ class FormPreregistrazioneController extends Controller
             'evento'                 => $evento,
             'partecipante'           => $iscrizione->partecipante,
             'sezioni'                => $this->handler->sezioniAttive($iscrizione),
+            'pastiNonForniti'        => $this->handler->pastiNonForniti($iscrizione),
             'giaSalvata'             => $iscrizione->rispostaPreregistrazione !== null,
             'risposta'               => $iscrizione->rispostaPreregistrazione,
             'readonly'               => $readonly,

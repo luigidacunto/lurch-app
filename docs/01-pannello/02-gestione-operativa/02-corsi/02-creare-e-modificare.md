@@ -38,7 +38,7 @@ Sono le date e gli orari in cui il corso svolge attività in presenza presso il 
 
 ## Configurazione
 
-<!-- screenshot: route=/admin/corsi/{id}/edit · v1.85.38-dev · 2026-11-18 · configurazione e giorni in presenza e pasti -->
+<!-- screenshot: route=/admin/corsi/{id}/edit · v1.86.4-dev · 2026-11-25 · configurazione, giorni in presenza e un pranzo non fornito -->
 ![Configurazione del corso e giorni in presenza e pasti](../../../immagini/corsi/modulo-3.png)
 
 - **Corso residenziale (pernotto previsto)**: se è acceso, il modulo di preregistrazione propone cena e pernottamento; se è spento, solo pranzo. Il pernotto di un corso non residenziale può essere aggiunto a mano dagli amministratori ([Iscritti](04-iscritti.md)). Il corso residenziale compare con la spunta nella colonna «Residenziale» dell'elenco.
@@ -49,9 +49,20 @@ Sono le date e gli orari in cui il corso svolge attività in presenza presso il 
 
 ## Giorni in presenza e pasti
 
-Sono le pillole con i giorni dell'**evento**: si accendono (con la spunta verde) quelli in cui questo corso è al campo. Da questa scelta e dall'interruttore «residenziale» derivano da soli le voci del modulo di preregistrazione, che sono elencate sotto, in **Voci pasto che verranno generate** (nell'esempio: pranzo e cena del sabato, pernotto, pranzo della domenica). Finché nessuno ha compilato il modulo, le voci si ricalcolano a ogni salvataggio. Servono anche all'evento per i conteggi di pasti e pernottamenti.
+Sono le pillole con i giorni dell'**evento**: si accendono (con la spunta verde) quelli in cui questo corso è al campo. Da questa scelta e dall'interruttore «residenziale» derivano da soli le voci del modulo di preregistrazione, che sono elencate sotto, in **Voci pasto che verranno generate** (nell'esempio, un corso non residenziale di tre sabati: i pranzi del 5 e del 19 dicembre, perché quello del 28 novembre è segnato come non fornito). Finché nessuno ha compilato il modulo, le voci si ricalcolano a ogni salvataggio. Servono anche all'evento per i conteggi di pasti e pernottamenti.
 
-> Appena un iscritto compila il modulo, i giorni si **bloccano**: le voci pasto già scelte dai corsisti non possono cambiare. Per modificarli bisogna azzerare le risposte, operazione riservata al superadmin: nel modulo compare il pulsante rosso **Azzera tutte le risposte**, che elimina definitivamente tutte le risposte al modulo, le ricevute, i nullaosta, i documenti aggiuntivi e le presenze registrate dal modulo; gli iscritti dovranno ricompilare da capo.
+### Pasti non forniti dall'organizzazione
+
+Sotto le pillole, **Pasti non forniti dall'organizzazione** elenca i pranzi e le cene che derivano dai giorni scelti. Si spuntano quelli a cui ognuno provvede da sé, per esempio un pranzo al sacco. Il giorno resta un giorno in presenza del corso, ma il pasto spuntato:
+
+- sparisce dalle **voci pasto** del modulo, dai conteggi dei pasti dell'evento e dal check-in;
+- compare al corsista, nel modulo, in un riquadro **Pasti non forniti dall'organizzazione**, solo come informazione ([Preregistrazione corsista](../../../03-moduli-pubblici/01-preregistrazione-corsista.md#presenze-e-vitto)).
+
+Il pernottamento non è in elenco, perché non è un pasto. Se si toglie un giorno, il suo pasto non fornito si dimentica: riaccendendo il giorno, il pasto torna fornito.
+
+Se nessun pasto è fornito, il modulo non chiede allergie, intolleranze né il consenso ai dati sulla salute, ma resta da compilare: conferma dei dati, consensi ed eventuale ricevuta di pagamento. L'invio del modulo funziona come sempre ([Form e comunicazioni](05-form-e-comunicazioni.md)).
+
+> Appena un iscritto compila il modulo, i giorni e i pasti non forniti si **bloccano**: le voci pasto già scelte dai corsisti non possono cambiare. Per modificarli bisogna azzerare le risposte, operazione riservata al superadmin: nel modulo compare il pulsante rosso **Azzera tutte le risposte**, che elimina definitivamente tutte le risposte al modulo, le ricevute, i nullaosta, i documenti aggiuntivi e le presenze registrate dal modulo; gli iscritti dovranno ricompilare da capo.
 
 ## Automazioni (solo in modifica)
 

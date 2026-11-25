@@ -33,7 +33,7 @@ Aprendo un form già inviato si vede il riepilogo di ciò che è stato dichiarat
 Le sezioni del riepilogo:
 
 - **Dati personali**: comitato, telefono ed email comunicati.
-- **Pasti e pernotti**, con l'origine di ciascuno: **Form** se scelto dal socio, **Segreteria** se aggiunto o cambiato dalla segreteria. Così il socio sa sempre quali pasti e pernotti risultano prenotati a suo nome.
+- **Pasti e pernotti**, con l'origine di ciascuno: **Form** se scelto dal socio, **Segreteria** se aggiunto o cambiato dalla segreteria. Così il socio sa sempre quali pasti e pernotti risultano prenotati a suo nome. Sotto, se ci sono, i pasti **non forniti dall'organizzazione**; se il corso non ne fornisce nessuno, il riquadro lo dice al posto dell'elenco.
 - **Esigenze alimentari**: allergeni e diete, solo se il socio ha dato il consenso al trattamento dei dati sulla salute.
 - **Consensi**: privacy, qualifiche da GAIA, foto e video, dati sulla salute.
 - **Documenti**: ricevuta di pagamento con la data, nullaosta, documento aggiuntivo, se il corso li prevede.

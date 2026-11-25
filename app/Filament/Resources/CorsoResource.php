@@ -507,6 +507,7 @@ class CorsoResource extends Resource
                     ->label('Corso residenziale (pernotto previsto)')
                     ->default(false)
                     ->live()
+                    ->afterStateUpdated(fn (Get $get, Set $set) => self::allineaPastiNonGestiti($get, $set))
                     ->inline(false)
                     ->disabled(fn (?Model $record) =>
                         $record && $record->iscrizioni()->whereHas('rispostaPreregistrazione')->exists()
@@ -580,18 +581,32 @@ class CorsoResource extends Resource
                                 : 'Seleziona prima un evento.';
                         })
                         ->live()
+                        ->afterStateUpdated(fn (Get $get, Set $set) => self::allineaPastiNonGestiti($get, $set))
+                        ->disabled(fn (?Model $record) => $record && $record->haRisposte()),
+
+                    Forms\Components\CheckboxList::make('pasti_non_gestiti')
+                        ->label('Pasti non forniti dall\'organizzazione')
+                        ->helperText('Spunta i pasti a cui ciascuno provvede da sé (es. pranzo al sacco): il giorno resta in presenza, ma quel pasto non compare nel form né nei report pasti. Se nessun pasto è fornito, il form non chiede allergie e intolleranze.')
+                        ->options(fn (Get $get) => self::pastiEscludibili($get))
+                        ->live()
+                        ->visible(fn (Get $get) => filled($get('giorni_presenza')))
                         ->disabled(fn (?Model $record) => $record && $record->haRisposte()),
 
                     Forms\Components\Placeholder::make('anteprima_form_sections')
                         ->label('Voci pasto che verranno generate')
                         ->content(function (Get $get) {
                             $sezioni = app(FormSectionsGenerator::class)->calcola(new Corso([
-                                'giorni_presenza' => $get('giorni_presenza') ?: [],
-                                'residenziale'    => (bool) $get('residenziale'),
+                                'giorni_presenza'   => $get('giorni_presenza') ?: [],
+                                'residenziale'      => (bool) $get('residenziale'),
+                                'pasti_non_gestiti' => $get('pasti_non_gestiti') ?: [],
                             ]));
 
                             if (empty($sezioni)) {
-                                return new \Illuminate\Support\HtmlString('<span style="color:#6b7280;">Nessuna voce — seleziona almeno un giorno.</span>');
+                                return new \Illuminate\Support\HtmlString('<span style="color:#6b7280;">'
+                                    . (filled($get('giorni_presenza'))
+                                        ? 'Nessuna voce pasto: il form chiederà solo dati, consensi ed eventuale ricevuta di pagamento.'
+                                        : 'Nessuna voce — seleziona almeno un giorno.')
+                                    . '</span>');
                             }
 
                             $rows = collect($sezioni)->map(fn ($s) => '<li>' . e($s['label']) . '</li>')->implode('');
@@ -667,6 +682,27 @@ class CorsoResource extends Resource
         ]);
     }
 
+    /** Pasti segnabili come non forniti, dai giorni e dal flag residenziale attualmente nel modulo. */
+    private static function pastiEscludibili(Get $get): array
+    {
+        return app(FormSectionsGenerator::class)->pastiEscludibili(new Corso([
+            'giorni_presenza' => $get('giorni_presenza') ?: [],
+            'residenziale'    => (bool) $get('residenziale'),
+        ]));
+    }
+
+    /**
+     * Toglie dai pasti non forniti quelli che non esistono più (giorno tolto, corso non più
+     * residenziale): una spunta fuori dalle opzioni farebbe fallire la validazione del salvataggio.
+     */
+    private static function allineaPastiNonGestiti(Get $get, Set $set): void
+    {
+        $set('pasti_non_gestiti', array_values(array_intersect(
+            $get('pasti_non_gestiti') ?: [],
+            array_keys(self::pastiEscludibili($get)),
+        )));
+    }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -738,7 +774,7 @@ class CorsoResource extends Resource
                 Tables\Columns\TextColumn::make('form_sections')
                     ->label('Form')
                     ->badge()
-                    ->state(fn (Corso $record) => $record->form_sections && count($record->form_sections) > 0
+                    ->state(fn (Corso $record) => $record->formConfigurato()
                         ? 'Generato'
                         : 'Non generato')
                     ->color(fn (string $state) => $state === 'Generato' ? 'success' : 'gray')

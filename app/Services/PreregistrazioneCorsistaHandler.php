@@ -32,6 +32,12 @@ class PreregistrazioneCorsistaHandler
             ->values();
     }
 
+    /** Pasti non forniti dall'organizzazione, `chiave => label`: solo nota informativa nel form. */
+    public function pastiNonForniti(Iscrizione $iscrizione): array
+    {
+        return app(FormSectionsGenerator::class)->pastiNonForniti($iscrizione->corso);
+    }
+
     /**
      * Il nullaosta del Presidente del Comitato Locale serve se NON siamo certi che il
      * partecipante appartenga alla stessa regione organizzatrice del corso.
