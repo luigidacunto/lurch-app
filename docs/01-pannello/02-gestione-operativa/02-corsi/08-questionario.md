@@ -73,10 +73,10 @@ Il riquadro in alto mostra fino a quando il questionario è aperto, chi ha fatto
 
 Sono solo numeri: non c'è modo di sapere chi è in quale gruppo. Per un sollecito fuori dal pannello basta ricordare a tutti di aprire l'app.
 
-Nell'elenco dei destinatari chi ha ricevuto l'email ha la casella grigia e la data dell'invio. Gli altri si possono ancora selezionare: **Invia ai nuovi selezionati** manda l'email solo a loro, finché il questionario è aperto, con la stessa data di chiusura.
+Dopo il primo invio il riquadro **Destinatari** è chiuso, con accanto al titolo quante email sono partite, così i risultati restano subito in vista: si apre toccando il titolo. Nell'elenco chi ha ricevuto l'email ha la casella grigia e la data dell'invio. Gli altri si possono ancora selezionare: **Invia ai nuovi selezionati** manda l'email solo a loro, finché il questionario è aperto, con la stessa data di chiusura.
 
-<!-- screenshot: route=/admin/corsi/{id}/questionario · v1.86.4-dev · 2026-11-27 -->
-![Destinatari dopo il primo invio](../../../immagini/questionario/destinatari-dopo.png)
+<!-- screenshot: route=/admin/corsi/{id}/questionario · v1.87.1-dev · 2026-11-27 -->
+![Destinatari dopo il primo invio, riquadro aperto](../../../immagini/questionario/destinatari-dopo.png)
 
 ## Risultati
 

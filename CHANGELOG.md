@@ -4,6 +4,10 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## In sviluppo
+
+- feat: questionario di gradimento, dopo il primo invio il riquadro dei destinatari parte chiuso (con il numero di email inviate nel titolo), così i risultati sono subito in vista.
+
 ## 1.87.1 — 2026-11-27
 
 - feat: corsi, questionario — «Anteprima email» accanto all'invio: mostra l'email esattamente come arriva (mittente, destinatario d'esempio, oggetto, testo, frase sull'esame), senza inviare nulla

@@ -63,9 +63,9 @@
         <div style="margin-top:14px;">{{ $this->configuraAction }}</div>
     </x-filament::section>
 
-    {{-- Destinatari e invio --}}
-    <x-filament::section>
-        <x-slot name="heading">Destinatari</x-slot>
+    {{-- Destinatari e invio: dopo il primo invio la sezione parte chiusa, così i risultati restano subito in vista. --}}
+    <x-filament::section :collapsible="$inviato" :collapsed="$inviato">
+        <x-slot name="heading">Destinatari @if($inviato)<span style="font-weight:400; color:#6b7280;">· email inviate: {{ count($invitati) }} di {{ $iscrizioni->count() }} iscritti</span>@endif</x-slot>
         <x-slot name="description">
             Si invia una sola email per iscritto, senza solleciti: chi l'ha già ricevuta non è più selezionabile. Il pannello mostra solo quanti hanno aperto, iniziato o completato il questionario, mai chi.
         </x-slot>
