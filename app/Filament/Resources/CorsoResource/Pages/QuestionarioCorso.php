@@ -186,6 +186,39 @@ class QuestionarioCorso extends Page
             });
     }
 
+    /** Iscritto d'esempio per l'anteprima: il primo selezionato, altrimenti il primo iscritto con email. */
+    private function iscrizioneEsempio(): ?Iscrizione
+    {
+        return $this->selezionate()->first() ?? $this->iscrizioni()->first(fn (Iscrizione $i) => (bool) $i->partecipante?->email);
+    }
+
+    public function anteprimaAction(): Action
+    {
+        return Action::make('anteprima')
+            ->label('Anteprima email')
+            ->icon('heroicon-o-envelope')
+            ->color('info')
+            ->disabled(fn () => ! $this->questionario() || ! $this->iscrizioneEsempio())
+            ->tooltip(fn () => ! $this->questionario() ? 'Prima imposta il questionario' : (! $this->iscrizioneEsempio() ? 'Nessun iscritto con email' : null))
+            ->modalHeading('Anteprima email del questionario')
+            ->modalContent(function () {
+                $esempio = $this->iscrizioneEsempio();
+                $selezionate = $this->selezionate();
+
+                return view('filament.resources.corso-resource.partials.anteprima-questionario', [
+                    ...InvioQuestionario::anteprima($this->record, $this->questionario(), $esempio),
+                    'a'           => trim($esempio->partecipante->nome . ' ' . $esempio->partecipante->cognome) . ' <' . $esempio->partecipante->email . '>',
+                    'selezionato' => $selezionate->isNotEmpty(),
+                    'conEsame'    => (bool) $this->record->esame,
+                    'nSelezionati' => $selezionate->count(),
+                    'nConFrase'   => $selezionate->filter(fn (Iscrizione $i) => InvioQuestionario::fraseEsame($i))->count(),
+                ]);
+            })
+            ->modalSubmitAction(false)
+            ->modalCancelActionLabel('Chiudi')
+            ->slideOver();
+    }
+
     public function inviaAction(): Action
     {
         return Action::make('invia')

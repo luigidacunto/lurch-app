@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'version' => '1.87.0',
+    'version' => '1.87.1',
 
     // Anno di nascita del software: i footer mostrano «© anno_inizio–anno corrente» (App\Support\Copyright).
     'anno_inizio' => 2026,

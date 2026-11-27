@@ -45,7 +45,7 @@ Il pulsante **Invia il questionario**, in fondo all'elenco, resta spento, con il
 - il direttore del corso non è collegato a un socio ([modifica del corso](02-creare-e-modificare.md));
 - le impostazioni non sono state salvate.
 
-**Avviso sull'esame.** Se il corso ha un esame in L.U.R.C.H., l'email dice a ogni discente che nell'app può consultare i risultati dell'esame, ma solo a chi ha già pubblicati il test scritto o l'esito finale (mai ai ritirati e ai non ammessi). Se tra i selezionati ci sono discenti ammessi senza risultati pubblicati, sopra l'elenco compare un riquadro rosso che dice quanti sono. Si può inviare lo stesso; se è una svista conviene pubblicare prima i risultati e mandare un'unica email.
+**Avviso sull'esame.** Se il corso ha un esame in L.U.R.C.H., l'email di ogni discente aggiunge in automatico una frase su ciò che di suo è già pubblicato: i risultati del test scritto, l'esito finale o tutti e due, da consultare nell'app. Chi non ha nulla di pubblicato riceve solo l'invito al questionario, come i ritirati e i non ammessi (a loro la frase non arriva mai). Se tra i selezionati ci sono discenti ammessi senza risultati pubblicati, sopra l'elenco compare un riquadro rosso che dice quanti sono. Si può inviare lo stesso; se è una svista conviene pubblicare prima i risultati e mandare un'unica email.
 
 Alla pressione del pulsante una finestra riassume l'invio e ripete l'avviso:
 
@@ -53,6 +53,11 @@ Alla pressione del pulsante una finestra riassume l'invio e ripete l'avviso:
 ![Conferma dell'invio](../../../immagini/questionario/conferma.png)
 
 L'email spiega che il questionario è anonimo, indica la data di chiusura e porta all'app dei soci.
+
+**Anteprima email**, accanto al pulsante d'invio, mostra l'email esattamente come arriva, senza inviare nulla: mittente, destinatario, oggetto e testo. L'esempio usa il primo dei selezionati (se nessuno è selezionato, il primo iscritto con email); la data di chiusura è quella che risulterebbe inviando in quel momento. Se il corso ha un esame, sotto l'email una nota dice quale frase sui risultati dell'esame compare nell'esempio e a quanti dei selezionati arriverà una frase. L'anteprima resta disponibile anche dopo l'invio.
+
+<!-- screenshot: route=/admin/corsi/{id}/questionario · v1.87.0-dev · 2026-11-27 -->
+![Anteprima dell'email del questionario](../../../immagini/questionario/anteprima.png)
 
 ## Dopo l'invio
 

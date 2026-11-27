@@ -4,6 +4,13 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
+## 1.87.1 — 2026-11-27
+
+- feat: corsi, questionario — «Anteprima email» accanto all'invio: mostra l'email esattamente come arriva (mittente, destinatario d'esempio, oggetto, testo, frase sull'esame), senza inviare nulla
+- feat: corsi, questionario — la frase sull'esame nell'email dice cosa è pubblicato: risultati del test scritto, esito finale o tutti e due; chi non ha nulla di pubblicato riceve solo l'invito
+- fix: corsi, questionario — l'email del questionario usa l'impaginazione delle altre email di corsi ed eventi (intestazione «Croce Rossa Italiana», piè di pagina in italiano con comitato e referenti) invece di quella standard con il nome dell'applicazione e «All rights reserved»
+- docs: guida — anteprima dell'email e frasi sull'esame nella pagina del questionario
+
 ## 1.87.0 — 2026-11-27
 
 - feat: corsi — questionario di gradimento anonimo per i discenti, nella nuova pagina «Questionario» del corso: giorni di apertura e sezioni facoltative (logistica, pasti, pernotto, Se.P, esame finale, tempo per i mandati), invio dopo la fine del corso ai discenti scelti, senza doppioni né solleciti; il questionario si compila nell'app dei soci dopo l'accesso, una volta sola, e ha una sezione per il direttore e per ogni docente. Lo gestiscono gli admin del territorio e il direttore del corso, non gli operatori

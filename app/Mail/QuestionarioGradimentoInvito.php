@@ -11,8 +11,9 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Invito al questionario di gradimento: testo fisso (nessun template modificabile). Il link porta all'app dei soci,
- * dove si compila dopo il login: nessun token nell'indirizzo.
+ * Invito al questionario di gradimento: testo fisso (nessun template modificabile) nell'impaginazione comune delle
+ * email di eventi e corsi (emails.template-corpo). Il link porta all'app dei soci, dove si compila dopo il login:
+ * nessun token nell'indirizzo. $fraseEsame: chiave di InvioQuestionario::FRASI_ESAME o null.
  */
 class QuestionarioGradimentoInvito extends Mailable
 {
@@ -21,7 +22,7 @@ class QuestionarioGradimentoInvito extends Mailable
     public function __construct(
         public Iscrizione $iscrizione,
         public QuestionarioGradimento $questionario,
-        public bool $fraseEsame,
+        public ?string $fraseEsame,
     ) {}
 
     public function envelope(): Envelope
@@ -36,14 +37,19 @@ class QuestionarioGradimentoInvito extends Mailable
         $corso  = $this->iscrizione->corso;
         $evento = $corso->evento;
 
-        return new Content(markdown: 'emails.questionario-gradimento', with: [
+        $corpo = view('emails.questionario-gradimento', [
             'partecipante' => $this->iscrizione->partecipante,
             'corso'        => $corso,
-            'evento'       => $evento,
             'chiudeIl'     => $this->questionario->chiude_il,
             'link'         => \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'app.questionario', $this->questionario->id),
             'linkApp'      => \App\Services\PortaleRegionale::route($evento->comitato_regionale_id, 'app.home'),
-            'fraseEsame'   => $this->fraseEsame,
+            'fraseEsame'   => \App\Questionari\InvioQuestionario::FRASI_ESAME[$this->fraseEsame] ?? null,
+        ])->render();
+
+        return new Content(view: 'emails.template-corpo', with: [
+            'corpo'        => $corpo,
+            'comitatoNome' => $evento->comitatoLocale?->nome ?? $evento->comitatoRegionale?->nome ?? 'Comitato organizzatore',
+            'referenti'    => $evento->referenti()->where('attivo', true)->get(),
         ]);
     }
 }

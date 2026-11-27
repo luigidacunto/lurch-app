@@ -127,6 +127,7 @@
         </div>
 
         <div style="margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            {{ $this->anteprimaAction }}
             {{ $this->inviaAction }}
             <span style="font-size:12px; color:#6b7280;">Selezionati: {{ count($selezionati) }}</span>
         </div>

@@ -57,26 +57,41 @@ class InvioQuestionario
         return ($valutato['ruolo'] === 'direttore' ? 'Direttore del corso – ' : 'Docente – ') . $valutato['nome'];
     }
 
+    /** Frasi dell'email sui risultati dell'esame consultabili nell'app, per ciò che il discente ha di pubblicato. */
+    public const FRASI_ESAME = [
+        'test'     => 'Nell\'app puoi consultare anche i <strong>risultati del test scritto</strong> del tuo esame.',
+        'esito'    => 'Nell\'app puoi consultare anche l\'<strong>esito finale</strong> del tuo esame.',
+        'entrambi' => 'Nell\'app puoi consultare anche i <strong>risultati del test scritto</strong> e l\'<strong>esito finale</strong> del tuo esame.',
+    ];
+
     /**
-     * La frase «risultati dell'esame consultabili nell'app» va a chi ha pubblicati il test scritto o l'esito finale,
-     * mai a ritirati o non ammessi (distinta dalla spunta «Esame finale» del questionario).
+     * Quale frase sull'esame va nell'email: 'test', 'esito', 'entrambi' secondo ciò che ha pubblicato (pubblicato_il
+     * valorizzato), null se nulla è pubblicato e sempre per ritirati e non ammessi (distinta dalla spunta «Esame finale»
+     * del questionario).
      */
-    public static function fraseEsame(Iscrizione $iscrizione): bool
+    public static function fraseEsame(Iscrizione $iscrizione): ?string
     {
         if ($iscrizione->isRitirato() || $iscrizione->isNonAmmesso()) {
-            return false;
+            return null;
         }
         $esameId = $iscrizione->corso?->esame?->id;
         if (! $esameId) {
-            return false;
+            return null;
         }
 
         $pubblicata = fn (string $modello) => $modello::where('esame_id', $esameId)
             ->where('discente_socio_id', $iscrizione->partecipante_id)
             ->whereNotNull('pubblicato_il')
             ->exists();
+        $test  = $pubblicata(TestPubblicazione::class);
+        $esito = $pubblicata(EsitoPubblicazione::class);
 
-        return $pubblicata(TestPubblicazione::class) || $pubblicata(EsitoPubblicazione::class);
+        return match (true) {
+            $test && $esito => 'entrambi',
+            $test           => 'test',
+            $esito          => 'esito',
+            default         => null,
+        };
     }
 
     /** Selezionati ammessi e non ritirati che non riceverebbero la frase sull'esame (avviso prima dell'invio). */
@@ -90,6 +105,33 @@ class InvioQuestionario
             ->reject(fn (Iscrizione $i) => $i->isRitirato() || $i->isNonAmmesso())
             ->reject(fn (Iscrizione $i) => static::fraseEsame($i))
             ->count();
+    }
+
+    /**
+     * Anteprima dell'email per un iscritto d'esempio, generata con la stessa Mailable dell'invio: nessun invio, nessun
+     * salvataggio. Prima del primo invio la chiusura è quella che risulterebbe inviando adesso.
+     *
+     * @return array{da: ?string, oggetto: string, html: string, frase_esame: ?string}
+     */
+    public static function anteprima(Corso $corso, QuestionarioGradimento $questionario, Iscrizione $iscrizione): array
+    {
+        $q = clone $questionario;
+        if (! $q->eInviato()) {
+            $q->chiude_il = now()->addDays($q->giorni_apertura)->endOfDay();
+        }
+
+        $frase = static::fraseEsame($iscrizione);
+        $mail  = new QuestionarioGradimentoInvito($iscrizione, $q, $frase);
+        $regione = \App\Models\ComitatoRegionale::find($corso->evento?->comitato_regionale_id);
+
+        return [
+            'da'          => $regione?->haPostaConfigurata()
+                ? ($regione->mail_from_name ?: config('mail.from.name')) . ' <' . $regione->mail_from_address . '>'
+                : null,
+            'oggetto'     => $mail->envelope()->subject,
+            'html'        => $mail->render(),
+            'frase_esame' => $frase,
+        ];
     }
 
     /** @return array{inviati: int, saltati: int} saltati = senza email o già invitati */

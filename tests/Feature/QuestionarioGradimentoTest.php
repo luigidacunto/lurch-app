@@ -227,25 +227,57 @@ class QuestionarioGradimentoTest extends TestCase
         $this->corso->update(['catalogo_corso_id' => $catalogo->id]);
         $esame = Esame::creaPerCorso($this->corso->fresh(), 'Esame', 60);
 
-        foreach (['a', 'ritirato', 'nonAmmesso'] as $k) {
+        foreach (['a', 'd', 'ritirato', 'nonAmmesso'] as $k) {
             TestPubblicazione::create(['esame_id' => $esame->id, 'discente_socio_id' => $this->s[$k]->id, 'pubblicato_il' => now()]);
+        }
+        foreach (['d', 'e'] as $k) {
+            \App\Models\EsitoPubblicazione::create(['esame_id' => $esame->id, 'discente_socio_id' => $this->s[$k]->id, 'pubblicato_il' => now()]);
         }
         TestPubblicazione::create(['esame_id' => $esame->id, 'discente_socio_id' => $this->s['c']->id, 'pubblicato_il' => null]);
 
-        $this->assertTrue(InvioQuestionario::fraseEsame($this->i['a']->fresh()));
-        $this->assertFalse(InvioQuestionario::fraseEsame($this->i['b']->fresh()), 'nessuna pubblicazione');
-        $this->assertFalse(InvioQuestionario::fraseEsame($this->i['c']->fresh()), 'pubblicazione ritirata');
-        $this->assertFalse(InvioQuestionario::fraseEsame($this->i['ritirato']->fresh()));
-        $this->assertFalse(InvioQuestionario::fraseEsame($this->i['nonAmmesso']->fresh()));
+        $this->assertSame('test', InvioQuestionario::fraseEsame($this->i['a']->fresh()));
+        $this->assertSame('entrambi', InvioQuestionario::fraseEsame($this->i['d']->fresh()));
+        $this->assertSame('esito', InvioQuestionario::fraseEsame($this->i['e']->fresh()));
+        $this->assertNull(InvioQuestionario::fraseEsame($this->i['b']->fresh()), 'nessuna pubblicazione');
+        $this->assertNull(InvioQuestionario::fraseEsame($this->i['c']->fresh()), 'pubblicazione ritirata');
+        $this->assertNull(InvioQuestionario::fraseEsame($this->i['ritirato']->fresh()));
+        $this->assertNull(InvioQuestionario::fraseEsame($this->i['nonAmmesso']->fresh()));
 
         // Avviso prima dell'invio: b e c (ammessi, senza risultati); ritirato e non ammesso non contano.
         $sel = collect(['a', 'b', 'c', 'ritirato', 'nonAmmesso'])->map(fn ($k) => $this->i[$k]->fresh());
         $this->assertSame(2, InvioQuestionario::senzaRisultatiPubblicati($this->corso->fresh(), $sel));
 
         $q = $this->questionario();
-        $this->invia($q, ['a', 'b']);
-        Mail::assertSent(QuestionarioGradimentoInvito::class, fn ($m) => $m->hasTo('a@example.invalid') && str_contains($m->render(), 'risultati del tuo esame'));
-        Mail::assertSent(QuestionarioGradimentoInvito::class, fn ($m) => $m->hasTo('b@example.invalid') && ! str_contains($m->render(), 'risultati del tuo esame'));
+        $this->invia($q, ['a', 'b', 'd', 'e']);
+        $testo = fn (string $k) => Mail::sent(QuestionarioGradimentoInvito::class, fn ($m) => $m->hasTo("{$k}@example.invalid"))->first()->render();
+        $this->assertStringContainsString('risultati del test scritto</strong> del tuo esame', $testo('a'));
+        $this->assertStringContainsString('risultati del test scritto</strong> e l\'<strong>esito finale', $testo('d'));
+        $this->assertStringContainsString('anche l\'<strong>esito finale</strong> del tuo esame', $testo('e'));
+        $this->assertStringNotContainsString('del tuo esame', $testo('b'));
+        // Impaginazione comune delle email di corsi ed eventi, mai quella standard di Laravel.
+        $this->assertStringContainsString('Croce Rossa Italiana', $testo('b'));
+        $this->assertStringNotContainsString('All rights reserved', $testo('b'));
+        $this->assertStringNotContainsString('Laravel', $testo('b'));
+    }
+
+    public function test_anteprima_email_dal_pannello_senza_invio_ne_salvataggi(): void
+    {
+        Mail::fake();
+        $q = $this->questionario();
+        $this->actingAs($this->utente('superadmin'));
+        $this->get(CorsoResource::getUrl('questionario', ['record' => $this->corso]))->assertOk();
+
+        \Livewire\Livewire::test(CorsoResource\Pages\QuestionarioCorso::class, ['record' => $this->corso])
+            ->set('selezionati', [$this->i['b']->id])
+            ->mountAction('anteprima')
+            ->assertMountedActionModalSee([
+                'Questionario di gradimento – X/2026/Q/1', 'b@example.invalid', 'Ciao B Test', '17/11/2026',
+                'posta in uscita della regione non configurata', 'primo dei selezionati',
+            ]);
+
+        Mail::assertNothingSent();
+        $this->assertSame(0, $q->inviti()->count());
+        $this->assertNull($q->fresh()->chiude_il, 'la chiusura calcolata per l\'anteprima non si salva');
     }
 
     public function test_compilazione_dall_app_e_soglia_dei_risultati_per_il_docente(): void
