@@ -286,11 +286,6 @@ class Evento extends Model implements HasMedia
         return $this->hasMany(CandidaturaStaff::class, 'evento_id');
     }
 
-    public function questionari(): HasMany
-    {
-        return $this->hasMany(Questionario::class, 'evento_id');
-    }
-
     public function camere(): HasMany
     {
         return $this->hasMany(CameraEvento::class, 'evento_id')->orderBy('data')->orderBy('nome');

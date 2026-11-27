@@ -6,7 +6,7 @@
 
 Si accede alla pagina per tutti i corsi che si vedono nell'elenco; chi arriva solo perché direttore del corso la vede in sola consultazione (può guardare anteprime e documenti, e creare l'esame, ma non modificare iscritti e dati).
 
-<!-- screenshot: route=/admin/corsi/{id}/gestione · v1.85.38-dev · 2026-11-18 -->
+<!-- screenshot: route=/admin/corsi/{id}/gestione · v1.86.4-dev · 2026-11-27 -->
 ![Gestione del corso, parte alta](../../../immagini/corsi/gestione-1.png)
 
 ## L'intestazione
@@ -18,7 +18,7 @@ In alto la scheda del corso riporta:
 - il protocollo, le date e la sede dell'evento;
 - una riga sull'**invio massivo del modulo di preregistrazione**: in verde se è già stato fatto (con data e ora; da quel momento i nuovi iscritti ricevono il modulo con l'invio singolo), in grigio se non è ancora stato fatto.
 
-Sopra la scheda, sotto il titolo, la barra con **Gestione** e, se il corso richiede pagamento, **Gestione quote** ([Quote e pagamenti](07-quote-e-pagamenti.md)). In alto a destra c'è il pulsante **Azioni**, descritto più sotto.
+Sopra la scheda, sotto il titolo, la barra con **Gestione**, **Gestione quote** se il corso richiede pagamento ([Quote e pagamenti](07-quote-e-pagamenti.md)) e **Questionario**, visibile agli amministratori e al direttore del corso ([Questionario di gradimento](08-questionario.md)). In alto a destra c'è il pulsante **Azioni**, descritto più sotto.
 
 ## I numeri
 

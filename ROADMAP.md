@@ -39,7 +39,6 @@ Elenco di ciò che non è ancora stato rilasciato. Una voce completata viene tol
 ### Pannello
 - Pulsante «Elimina» spostato dalla tabella alla pagina di modifica.
 - Traduzione italiana completa dei messaggi di validazione di Laravel.
-- Questionari (struttura del database già presente).
 - Guida completa: sezione pubblica nell'app con le parti per volontari e moduli pubblici.
 
 ### Tecnico

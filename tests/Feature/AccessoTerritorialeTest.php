@@ -120,7 +120,7 @@ class AccessoTerritorialeTest extends TestCase
         foreach (['gestione', 'staff', 'candidature-staff', 'partecipanti', 'presenze-live', 'checkin-risposte', 'presenze-effettive', 'report'] as $p) {
             $pagine["evento.{$p}"] = EventoResource::getUrl($p, ['record' => $e]);
         }
-        foreach (['edit', 'gestione', 'gestione-quote'] as $p) {
+        foreach (['edit', 'gestione', 'gestione-quote', 'questionario'] as $p) {
             $pagine["corso.{$p}"] = CorsoResource::getUrl($p, ['record' => $c]);
         }
         foreach (['edit', 'candidati'] as $p) {

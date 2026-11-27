@@ -11,3 +11,4 @@ I corsi sono la parte didattica e amministrativa di un [evento](../01-eventi/REA
 5. [Form e comunicazioni](05-form-e-comunicazioni.md)
 6. [Documenti da verificare](06-documenti-da-verificare.md)
 7. [Quote e pagamenti](07-quote-e-pagamenti.md)
+8. [Questionario di gradimento](08-questionario.md)

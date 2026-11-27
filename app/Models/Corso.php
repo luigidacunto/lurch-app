@@ -168,6 +168,11 @@ class Corso extends Model
         return $this->hasOne(Esame::class);
     }
 
+    public function questionarioGradimento(): HasOne
+    {
+        return $this->hasOne(QuestionarioGradimento::class);
+    }
+
     /**
      * Punto unico da cui il modulo esami legge direttore, presidente o delegato e docenti.
      *
@@ -270,6 +275,11 @@ class Corso extends Model
     {
         // esami.corso_id è restrictOnDelete: un corso con esame non si elimina.
         if ($this->esame()->exists()) {
+            return true;
+        }
+
+        // Un questionario già inviato ha inviti e (forse) risposte anonime da conservare.
+        if ($this->questionarioGradimento()->whereNotNull('inviato_il')->exists()) {
             return true;
         }
 

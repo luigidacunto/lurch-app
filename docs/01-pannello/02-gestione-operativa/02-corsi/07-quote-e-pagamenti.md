@@ -6,7 +6,7 @@ Se un corso prevede una quota di iscrizione (interruttore **Richiede pagamento**
 
 La pagina si raggiunge in tre modi: dalla scheda **Gestione quote** nella barra del corso, dall'icona delle banconote sulla riga dell'[elenco](01-elenco.md), oppure da **Gestione quote** nella pagina di modifica. Per un corso senza pagamento la scheda non compare, l'icona è grigia e spenta e l'indirizzo diretto non esiste.
 
-<!-- screenshot: route=/admin/corsi/{id}/gestione-quote · v1.85.38-dev · 2026-11-18 -->
+<!-- screenshot: route=/admin/corsi/{id}/gestione-quote · v1.86.4-dev · 2026-11-27 · senza barra delle schede -->
 ![Gestione quote, intestazione e numeri](../../../immagini/corsi/quote-1.png)
 
 ## L'intestazione e i numeri

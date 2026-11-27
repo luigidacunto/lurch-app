@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Esame;
 use App\Models\Iscrizione;
 use App\Models\IscrizioneStaff;
+use App\Models\QuestionarioGradimento;
 use App\Models\Socio;
 use Illuminate\Http\Request;
 
@@ -62,6 +63,21 @@ class AppHomeController extends Controller
         $haEsami = $esami->isNotEmpty();
         $areaDocenti = $esami->contains(fn (Esame $e) => \App\Esami\PermessiEsame::per($e, $socio->id)->vedeEsame());
 
-        return view('app.home', compact('socio', 'eventi', 'haEsami', 'areaDocenti'));
+        // Questionari di gradimento: da compilare (invitato, aperto, non ancora compilato) e, per docenti e direttore
+        // valutati, i risultati della propria sezione.
+        $questionariDaCompilare = QuestionarioGradimento::query()
+            ->with('corso')
+            ->where('chiude_il', '>=', now())
+            ->whereHas('inviti', fn ($q) => $q->where('compilato', false)
+                ->whereHas('iscrizione', fn ($i) => $i->where('partecipante_id', $socio->id)))
+            ->get();
+        $questionariValutato = QuestionarioGradimento::query()
+            ->with('corso')
+            ->whereNotNull('inviato_il')
+            ->whereJsonContains('valutati', [['socio_id' => $socio->id]])
+            ->orderByDesc('inviato_il')
+            ->get();
+
+        return view('app.home', compact('socio', 'eventi', 'haEsami', 'areaDocenti', 'questionariDaCompilare', 'questionariValutato'));
     }
 }

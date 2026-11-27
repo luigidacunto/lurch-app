@@ -80,6 +80,32 @@
 @section('content')
 <p class="home-greeting">Ciao, <strong>{{ $socio->nome }} {{ $socio->cognome }}</strong></p>
 
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
+@if($questionariDaCompilare->isNotEmpty())
+    <p class="section-title">Questionari da compilare</p>
+    @foreach($questionariDaCompilare as $q)
+        <a href="{{ route('app.questionario', $q) }}" class="evento-card">
+            <div class="card-nome">Questionario di gradimento – {{ $q->corso->numero_protocollo ?: $q->corso->nome }}</div>
+            <div class="card-data">Anonimo · entro il {{ $q->chiude_il->format('d/m/Y') }}</div>
+            <span class="card-arrow">›</span>
+        </a>
+    @endforeach
+@endif
+
+@if($questionariValutato->isNotEmpty())
+    <p class="section-title">Questionari: la tua valutazione</p>
+    @foreach($questionariValutato as $q)
+        <a href="{{ route('app.questionario.risultati', $q) }}" class="evento-card">
+            <div class="card-nome">{{ $q->corso->numero_protocollo ?: $q->corso->nome }}</div>
+            <div class="card-data">Risultati anonimi della tua sezione</div>
+            <span class="card-arrow">›</span>
+        </a>
+    @endforeach
+@endif
+
 @if($areaDocenti)
     <p class="section-title">Area docenti</p>
     <a href="{{ route('app.esami') }}" class="evento-card">

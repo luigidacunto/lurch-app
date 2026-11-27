@@ -922,6 +922,11 @@ class CorsoResource extends Resource
             $tabs[] = $tab('gestione-quote', 'Gestione quote', 'heroicon-o-banknotes');
         }
 
+        // Solo a chi gestisce il questionario (mai agli operatori); l'invio si sblocca dopo la fine del corso.
+        if (\App\Questionari\PermessiQuestionario::puoGestire(auth()->user(), $record)) {
+            $tabs[] = $tab('questionario', 'Questionario', 'heroicon-o-clipboard-document-check');
+        }
+
         // Un solo tab ("Gestione") punterebbe alla pagina corrente — niente da navigare,
         // stessa regola già applicata alle breadcrumb (mai un livello autoreferenziale).
         return count($tabs) > 1 ? $tabs : [];
@@ -935,6 +940,7 @@ class CorsoResource extends Resource
             'edit'     => Pages\EditCorso::route('/{record}/edit'),
             'gestione'       => Pages\GestioneCorso::route('/{record}/gestione'),
             'gestione-quote' => Pages\GestioneQuote::route('/{record}/gestione-quote'),
+            'questionario'   => Pages\QuestionarioCorso::route('/{record}/questionario'),
         ];
     }
 }

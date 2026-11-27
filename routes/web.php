@@ -123,6 +123,13 @@ Route::get('/admin/esami/{esame}/valutazioni/test-scritto/{discente}/cartaceo-pd
     ->middleware(['web', 'auth'])
     ->name('esami.test-cartaceo-pdf');
 
+// Questionario di gradimento: export per chi gestisce il questionario del corso, solo da SOGLIA compilazioni.
+Route::middleware(['web', 'auth'])->prefix('/admin/corsi/{corso}/questionario')->name('corsi.')->group(function () {
+    Route::get('/excel', [\App\Http\Controllers\QuestionarioExportController::class, 'excel'])->name('questionario-excel');
+    Route::get('/pdf', [\App\Http\Controllers\QuestionarioExportController::class, 'pdf'])->name('questionario-pdf');
+    Route::get('/pdf/valutati/{indice}', [\App\Http\Controllers\QuestionarioExportController::class, 'pdfValutato'])->whereNumber('indice')->name('questionario-pdf-docente');
+});
+
 // Correttore del test scritto (domande con la risposta corretta), solo per chi gestisce l'esame.
 Route::get('/admin/esami/{esame}/test-scritto/correttore-pdf', \App\Http\Controllers\EsameCorrettoreTestPdfController::class)
     ->middleware(['web', 'auth'])
@@ -312,6 +319,11 @@ Route::prefix('app')->name('app.')->group(function () {
         Route::post('/esami/{esame}/test/invia',                                       [\App\Http\Controllers\App\AppEsamiTestController::class, 'invia'])->name('esame.test.invia');
         Route::get('/esami/{esame}/esito',                                             [\App\Http\Controllers\App\AppEsamiTestController::class, 'esito'])->name('esame.esito');
         Route::get('/esami/{esame}/test/anteprima',                                    [\App\Http\Controllers\App\AppEsamiRiepilogoTestController::class, 'anteprima'])->name('esame.test.anteprima');
+        // Questionario di gradimento: compilazione (solo invitati, una volta) e risultati della propria sezione (valutati)
+        Route::get('/questionari/{questionario}',            [\App\Http\Controllers\App\AppQuestionarioController::class, 'mostra'])->whereNumber('questionario')->name('questionario');
+        Route::post('/questionari/{questionario}',           [\App\Http\Controllers\App\AppQuestionarioController::class, 'invia'])->whereNumber('questionario')->name('questionario.invia');
+        Route::post('/questionari/{questionario}/bozza',     [\App\Http\Controllers\App\AppQuestionarioController::class, 'salvaBozza'])->whereNumber('questionario')->name('questionario.bozza');
+        Route::get('/questionari/{questionario}/risultati',  [\App\Http\Controllers\App\AppQuestionarioController::class, 'risultati'])->whereNumber('questionario')->name('questionario.risultati');
         Route::get('/evento/{evento}',                    [\App\Http\Controllers\App\AppEventoController::class,     'show'])->name('evento');
         Route::get('/evento/{evento}/info',               [\App\Http\Controllers\App\AppInfoEventoController::class, 'show'])->name('evento.info');
         Route::get('/evento/{evento}/documenti/{media}',  \App\Http\Controllers\App\AppDocumentoController::class)->name('documento');

@@ -83,9 +83,9 @@ Il sistema copre tre profili di utilizzo distinti:
 - Sessione lunga per tutta la durata dell'evento una volta eseguito l'accesso
 
 ### Questionario di gradimento
-- Questionario post-evento configurabile con domande personalizzate
-- Link univoco per ogni partecipante, risposte salvate in forma completamente anonima
-- Report aggregato disponibile nel pannello di gestione
+- Questionario anonimo per i discenti di un corso, con domande fisse e versionate e sezioni facoltative attivate a mano
+- Compilazione nel portale dei soci dopo l'accesso, una sola volta, con una sezione per il direttore e per ogni docente
+- Risultati aggregati da 5 compilazioni in su, export Excel e PDF; ogni docente vede solo la propria sezione
 
 ---
 
@@ -170,7 +170,7 @@ I campi codice fiscale, telefono, indirizzo ed email vengono oscurati nell'inter
           ↓
 9. Dati visibili nel portale mobile del partecipante
           ↓
-10. Post-evento: link questionario gradimento (anonimo)
+10. Dopo il corso: questionario di gradimento anonimo nel portale dei soci
 ```
 
 ### Gestione cambio email
@@ -321,12 +321,12 @@ Il pannello mostra in tempo reale: quante email sono state inviate, quante compi
 
 ## Questionario di gradimento
 
-Al termine dell'evento è possibile inviare un questionario di gradimento configurabile:
+Dopo la fine di un corso, l'amministratore del territorio o il direttore del corso invia ai discenti scelti un questionario di gradimento:
 
-- Le domande sono personalizzabili per ogni evento (testo libero, scala 1-5, scelta multipla)
-- Ogni partecipante riceve un link univoco
-- Le risposte vengono salvate in forma completamente anonima — nessun collegamento al partecipante
-- I risultati aggregati sono consultabili nel pannello di gestione
+- Le domande sono definite nel codice e versionate (scala 1–5, scelta singola, sì/no, testo); le sezioni facoltative (logistica, pasti, pernotto, Se.P, esame finale, tempo per i mandati) si attivano a mano
+- Ogni discente riceve una sola email e compila il questionario nel portale dei soci dopo l'accesso, una volta sola, entro la data di chiusura
+- Le risposte non hanno nessun collegamento al discente: nessun riferimento all'invito, identificativo casuale, nessuna data
+- I risultati aggregati si vedono da 5 compilazioni in su; il pannello mostra quanti hanno compilato, mai chi
 
 ---
 
@@ -385,8 +385,8 @@ Accessibile solo agli utenti con account backend (superadmin, admin, operatori).
 **Portale partecipanti** (`/portale`)
 PWA mobile per corsisti, staff e operatori fisici. Accesso solo via OTP. Sola lettura — nessuna modifica possibile dai partecipanti.
 
-**Form pubblici** (`/form/{token}`, `/checkin/{token}`, `/questionario/{token}`)
-Accessibili tramite link univoco senza autenticazione (form preregistrazione e questionario) o tramite sessione operatore (check-in).
+**Form pubblici** (`/form/{token}`, `/checkin/{token}`)
+Accessibili tramite link univoco senza autenticazione (form preregistrazione) o tramite sessione operatore (check-in). Il questionario di gradimento si compila invece nel portale dei soci, dopo l'accesso.
 
 ---
 

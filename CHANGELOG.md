@@ -4,7 +4,14 @@ Una voce per ogni versione rilasciata, dalla più recente.
 
 Le voci fino alla 1.85.16 sono ricostruite dagli oggetti dei commit. Le modifiche non ancora rilasciate stanno in «In sviluppo» e ricevono il numero di versione al rilascio.
 
-## In sviluppo
+## 1.87.0 — 2026-11-27
+
+- feat: corsi — questionario di gradimento anonimo per i discenti, nella nuova pagina «Questionario» del corso: giorni di apertura e sezioni facoltative (logistica, pasti, pernotto, Se.P, esame finale, tempo per i mandati), invio dopo la fine del corso ai discenti scelti, senza doppioni né solleciti; il questionario si compila nell'app dei soci dopo l'accesso, una volta sola, e ha una sezione per il direttore e per ogni docente. Lo gestiscono gli admin del territorio e il direttore del corso, non gli operatori
+- feat: corsi, questionario — risultati da 5 compilazioni in su, in forma grafica (panoramica con una barra colorata per sezione, sezioni richiudibili, medie, distribuzioni, commenti in ordine casuale), mai chi ha compilato; Excel delle risposte, PDF del corso e PDF per ogni docente; ogni docente vede nell'app solo la propria sezione
+- feat: corsi, questionario — l'email cita i risultati dell'esame solo a chi ne ha già pubblicati il test scritto o l'esito; prima dell'invio un avviso in rosso segnala i discenti ammessi senza risultati pubblicati
+- feat: corsi, questionario — le risposte si salvano da sole come bozza cifrata mentre il discente compila e si riprendono anche da un altro dispositivo; all'invio vengono salvate in forma anonima, alla chiusura le bozze non inviate si cancellano; nel pannello i numeri di invitati, mai aperto, iniziati e completati
+- chore: database — tolte le tabelle segnaposto `questionari` e `risposte_questionario`, mai usate
+- docs: guida — nuove pagine «Questionario di gradimento» in Corsi e nell'App dei soci; schermate di Gestione corso e Gestione quote aggiornate
 
 - feat: corsi — nella modifica del corso i singoli pranzi e cene si possono segnare come «non forniti dall'organizzazione» (es. pranzo al sacco): il giorno resta in presenza, il pasto esce da modulo di preregistrazione, report, griglie e check-in; il modulo, pubblico e nell'app, lo elenca in un riquadro informativo. La lista si blocca come i giorni quando il primo iscritto compila il modulo
 - feat: corsi — un corso con giorni in presenza ma nessun pasto fornito ha comunque il modulo di preregistrazione (dati, consensi, ricevuta di pagamento), senza allergie né consenso salute; invio e solleciti da «Gestione corso» attivi
